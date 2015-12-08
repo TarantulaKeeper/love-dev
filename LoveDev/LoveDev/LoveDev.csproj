@@ -76,6 +76,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="PROJECT GUIDLINES\NAMING CONVENTION.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

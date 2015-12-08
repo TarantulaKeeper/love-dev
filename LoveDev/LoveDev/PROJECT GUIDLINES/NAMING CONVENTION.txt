@@ -1,0 +1,25 @@
+﻿C# and JAVASCRIPT 
+
+- Class properties are NOT to be camel-cased;
+- Class properties must start with a capital;
+- Variable names and Parameters are to be camel-cased;
+
+
+DATABASE GUIDELINES 
+
+- Table names must start with a "tb";
+- Table names are NOT to be pluralized unless everyone agrees otherwise or unless 
+	there is a meaningful comment;
+- Column names must start with a capital letter;
+- Procedure names must start with an "sp";
+- Procedure names must NOT be pluralized unless everyone agrees otherwise or unless 
+	there is a meaningful comment;
+- Capitalize in FULL all SQL keywords (ex. 'Sum', 'Convert', 'Insert', 'Select')
+- SQL Identity starts at 1, NOT 0; 
+
+GENERAL
+
+- Be SPECIFIC about what a variable is and what a procedure does;
+- For MULTI-USE procedures add the word "Generic" at the end of the procedure name;
+
+
