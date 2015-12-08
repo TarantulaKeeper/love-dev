@@ -68,6 +68,7 @@
   <ItemGroup>
     <Content Include="Index.aspx" />
     <Content Include="INSTALL.sql" />
+    <Content Include="MISCELLANEOUS FILES\QUESTIONS.txt" />
     <Content Include="packages.config" />
     <Content Include="Site1.Master" />
     <None Include="Web.Debug.config">
