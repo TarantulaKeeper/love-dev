@@ -41,6 +41,10 @@ namespace LoveDevLib
                 return false;
             }
         }
+        static public void Logout()
+        {
+            HttpContext.Current.Session.Abandon();
+        }
 
         static public void RegisterUser(string FirstName, string LastName, int Age, string City, string Country, string Email, int GenderID, int SexualOrientationID, bool IsActive)
         {
