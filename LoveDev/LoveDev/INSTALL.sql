@@ -32,8 +32,9 @@ CREATE TABLE tbUsers(
 UserID INT PRIMARY KEY IDENTITY (1,1),
 FirstName VARCHAR(50),
 LastName VARCHAR(50),
+Password VARCHAR(50),
 Age INT,
-City VARCHAR(100),
+City VARCHAR(50),
 Country VARCHAR(50),
 Email VARCHAR(50),
 IsActive BIT,
@@ -43,10 +44,10 @@ GenderID INT FOREIGN KEY REFERENCES tbGender(GenderID),
 SexualOrientationID INT FOREIGN KEY REFERENCES tbSexualOrientation(SexualOrientationID)
 )
 
-INSERT INTO tbUsers(FirstName, LastName, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID, SexualOrientationID)
+INSERT INTO tbUsers(FirstName, LastName, Password, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID, SexualOrientationID)
 	VALUES 
-		('Niko', 'Pastulovic', 20, 'Winnipeg', 'Canada', 'niko.pastulovic@robertsoncollege.net', 1, 1, 'NEED A PHOTO', 1, 8),
-		('T.J.', 'Petrowski', 24, 'Warren', 'Canada', 't.j.petrowski@robertsoncollege.net', 1, 1, 'NEED A PHOTO', 1, 4),
-		('Chris', 'Jeffrey', 21, 'Winnipeg', 'Canada', 'chris.jeffrey@robertsoncollege.net', 1, 1, 'NEED A PHOTO', 5, 5),
-		('Joseph', 'Maglalang', 30, 'Winnipeg', 'Canada', 'joseph.maglalang@robertsoncollege.net', 1, 1, 'NEED A PHOTO', 6, 1)
+		('Niko', 'Pastulovic', '1234', 20, 'Winnipeg', 'Canada', 'niko.pastulovic@robertsoncollege.net', 1, 1, 'NEED A PHOTO', 1, 8),
+		('T.J.', 'Petrowski', '1234', 24, 'Warren', 'Canada', 't.j.petrowski@robertsoncollege.net', 1, 1, 'NEED A PHOTO', 1, 4),
+		('Chris', 'Jeffrey', '1234', 21, 'Winnipeg', 'Canada', 'chris.jeffrey@robertsoncollege.net', 1, 1, 'NEED A PHOTO', 5, 5),
+		('Joseph', 'Maglalang', '1234', 30, 'Winnipeg', 'Canada', 'joseph.maglalang@robertsoncollege.net', 1, 1, 'NEED A PHOTO', 6, 1)
 
