@@ -37,7 +37,16 @@ City VARCHAR(100),
 Country VARCHAR(50),
 Email VARCHAR(50),
 IsActive BIT,
+IsAdmin BIT,
+UserPhoto VARCHAR(250),
 GenderID INT FOREIGN KEY REFERENCES tbGender(GenderID),
 SexualOrientationID INT FOREIGN KEY REFERENCES tbSexualOrientation(SexualOrientationID)
 )
+
+INSERT INTO tbUsers(FirstName, LastName, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID, SexualOrientationID)
+	VALUES 
+		('Niko', 'Pastulovic', 20, 'Winnipeg', 'Canada', 'niko.pastulovic@robertsoncollege.net', 1, 1, 'NEED A PHOTO', 1, 8),
+		('T.J.', 'Petrowski', 24, 'Warren', 'Canada', 't.j.petrowski@robertsoncollege.net', 1, 1, 'NEED A PHOTO', 1, 4),
+		('Chris', 'Jeffrey', 21, 'Winnipeg', 'Canada', 'chris.jeffrey@robertsoncollege.net', 1, 1, 'NEED A PHOTO', 5, 5),
+		('Joseph', 'Maglalang', 30, 'Winnipeg', 'Canada', 'joseph.maglalang@robertsoncollege.net', 1, 1, 'NEED A PHOTO', 6, 1)
 
