@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoveDev", "LoveDev\LoveDev.csproj", "{7CC791C9-E5CA-4EB5-A703-4EFCA9B40F1C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoveDevLib", "LoveDevLib\LoveDevLib.csproj", "{9D425C7F-5244-4573-A01A-AA4313FFBE9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL_Project", "DAL_Project\DAL_Project.csproj", "{E3026510-5B06-4FF2-816B-3F06CBE5F7DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{7CC791C9-E5CA-4EB5-A703-4EFCA9B40F1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CC791C9-E5CA-4EB5-A703-4EFCA9B40F1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CC791C9-E5CA-4EB5-A703-4EFCA9B40F1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D425C7F-5244-4573-A01A-AA4313FFBE9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D425C7F-5244-4573-A01A-AA4313FFBE9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D425C7F-5244-4573-A01A-AA4313FFBE9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D425C7F-5244-4573-A01A-AA4313FFBE9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3026510-5B06-4FF2-816B-3F06CBE5F7DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3026510-5B06-4FF2-816B-3F06CBE5F7DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3026510-5B06-4FF2-816B-3F06CBE5F7DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3026510-5B06-4FF2-816B-3F06CBE5F7DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
