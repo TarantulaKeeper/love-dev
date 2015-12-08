@@ -68,6 +68,7 @@
   <ItemGroup>
     <Content Include="Index.aspx" />
     <Content Include="INSTALL.sql" />
+    <Content Include="MISCELLANEOUS FILES\QUESTIONS.txt" />
     <Content Include="packages.config" />
     <Content Include="Site1.Master" />
     <None Include="Web.Debug.config">
@@ -108,6 +109,9 @@
       <Project>{9d425c7f-5244-4573-a01a-aa4313ffbe9d}</Project>
       <Name>LoveDevLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PROFILE_PHOTOS\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

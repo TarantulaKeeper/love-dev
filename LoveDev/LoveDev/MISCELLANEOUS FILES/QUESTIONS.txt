@@ -1,4 +1,24 @@
 ﻿NIKO - MUSIC
+
+1)Do you listen to music?
+2)Do you purchase music?
+3)Do you attend concerts?
+4)Can you play an instrument?
+5)
+
 JOSEPH - HOBBIES
 CHRIS - ATHLETICS
 TJ - POLITICS
+
+PERSONALITY QUESTIONS -
+
+1)Are you a talkative person?
+2)Do you attend parties?
+3)Do you enjoy time alone?
+4)Do you find it hard to introduce yourself to people for the first time?
+5)Do you tend to respond to messages quickly?
+6)Do you initiate conversations?
+7)Do you enjoy being the center of attention?
+8)Do you get upset easily?
+9)Is it easy for you to relate to others emotions?	
+10)Are you a reserved person
