@@ -15,11 +15,12 @@ DATABASE GUIDELINES
 - Procedure names must NOT be pluralized unless everyone agrees otherwise or unless 
 	there is a meaningful comment;
 - Capitalize in FULL all SQL keywords (ex. 'Sum', 'Convert', 'Insert', 'Select')
-- SQL Identity starts at 1, NOT 0; 
+- EVERYTHING starts at 1, not 0 
 
 GENERAL
 
 - Be SPECIFIC about what a variable is and what a procedure does;
 - For MULTI-USE procedures add the word "Generic" at the end of the procedure name;
+- ID must be capitalized (ex. No 'Id' or 'UserId')
 
 
