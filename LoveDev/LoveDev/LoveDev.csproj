@@ -68,7 +68,6 @@
   <ItemGroup>
     <Content Include="Index.aspx" />
     <Content Include="INSTALL.sql" />
-    <Content Include="MISCELLANEOUS FILES\QUESTIONS.txt" />
     <Content Include="packages.config" />
     <Content Include="Site1.Master" />
     <None Include="Web.Debug.config">
@@ -98,9 +97,6 @@
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PROFILE_PHOTOS\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

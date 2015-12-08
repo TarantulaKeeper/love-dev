@@ -28,7 +28,7 @@ INSERT INTO tbSexualOrientation(SexualOrientationName) VALUES ('Straight'), ('Ga
 
 -- TABLE FOR USERS
 
-CREATE TABLE tbUsers(
+CREATE TABLE tbUser(
 UserID INT PRIMARY KEY IDENTITY (1,1),
 FirstName VARCHAR(50),
 LastName VARCHAR(50),
@@ -51,3 +51,12 @@ INSERT INTO tbUsers(FirstName, LastName, Password, Age, City, Country, Email, Is
 		('Chris', 'Jeffrey', '1234', 21, 'Winnipeg', 'Canada', 'chris.jeffrey@robertsoncollege.net', 1, 1, 'NEED A PHOTO', 5, 5),
 		('Joseph', 'Maglalang', '1234', 30, 'Winnipeg', 'Canada', 'joseph.maglalang@robertsoncollege.net', 1, 1, 'NEED A PHOTO', 6, 1)
 
+-- TABLE FOR QUESTION CATEGORIES
+
+CREATE TABLE tbQuestionCategory(
+QuestionCategoryID INT PRIMARY KEY IDENTITY (1,1),
+QuestionCategoryName VARCHAR(50)
+)
+
+INSERT INTO tbQuestionCategory(QuestionCategoryName) VALUES ('Politics', 'Personality', 'Music', 'Athletics',
+	'Hobbies', 'Intellectual')
