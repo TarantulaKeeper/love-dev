@@ -24,20 +24,21 @@ namespace LoveDevLib
                 return user;
             }
         }
-        static public bool Login(string username, string password)
+        static public bool Login(string Email, string Password)
         {
-            User user = getUser(username, password);
+            User user = getUser(Email, Password);
             if (user != null)
             {
-                HttpContext.Current.Session["user"] = user;
+                HttpContext.Current.Session["User"] = user;
                 return true;
             }
             else
             {
-                DAL d = new DAL();
-                d.AddParam("username", username);
-                d.AddParam("password", password);
-                d.ExecuteNonQuery("spAddFailedLogin");
+                //This does an insert into a failed login table in the database
+                //DAL d = new DAL();
+                //d.AddParam("Email", Email);
+                //d.AddParam("password", Password);
+                //d.ExecuteNonQuery("spAddFailedLogin");
                 return false;
             }
         }
