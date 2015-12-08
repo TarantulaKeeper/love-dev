@@ -44,7 +44,7 @@ GenderID INT FOREIGN KEY REFERENCES tbGender(GenderID),
 SexualOrientationID INT FOREIGN KEY REFERENCES tbSexualOrientation(SexualOrientationID)
 )
 
-INSERT INTO tbUsers(FirstName, LastName, Password, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID, SexualOrientationID)
+INSERT INTO tbUser(FirstName, LastName, Password, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID, SexualOrientationID)
 	VALUES 
 		('Niko', 'Pastulovic', '1234', 20, 'Winnipeg', 'Canada', 'niko.pastulovic@robertsoncollege.net', 1, 1, 'NEED A PHOTO', 1, 8),
 		('T.J.', 'Petrowski', '1234', 24, 'Warren', 'Canada', 't.j.petrowski@robertsoncollege.net', 1, 1, 'NEED A PHOTO', 1, 4),
@@ -58,5 +58,14 @@ QuestionCategoryID INT PRIMARY KEY IDENTITY (1,1),
 QuestionCategoryName VARCHAR(50)
 )
 
-INSERT INTO tbQuestionCategory(QuestionCategoryName) VALUES ('Politics', 'Personality', 'Music', 'Athletics',
-	'Hobbies', 'Intellectual')
+INSERT INTO tbQuestionCategory(QuestionCategoryName) VALUES ('Politics'), ('Personality Type'), ('Music'), 
+('Athletics'), ('Hobbies'), ('Intellectual')
+
+-- TABLE FOR USER VALUES TO CATEGORY QUESTIONS
+
+CREATE TABLE tbUserValues(
+UserValueID INT PRIMARY KEY IDENTITY (1,1),
+UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
+QuestionCategoryID INT FOREIGN KEY REFERENCES tbQuestionCategory(QuestionCategoryID),
+UserCategoryValue INT
+)
