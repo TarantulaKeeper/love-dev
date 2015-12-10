@@ -6,6 +6,7 @@
 <head runat="server">
     <title>Developing Your Love | LoveDev</title>
     <link href="Content/StyleSheet.css" rel="stylesheet" />
+    <script src="Scripts/jquery-2.1.4.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
