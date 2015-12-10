@@ -1,1 +1,10 @@
-﻿
+﻿#signup_bg {
+    height:50px;
+    display: flex;
+    flex-flow: row-reverse;
+}
+
+#signup_header {
+    margin-right:8px;
+    align-items:center;
+}

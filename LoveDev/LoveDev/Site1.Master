@@ -1,23 +1,32 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="LoveDev.Site1" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Developing Your Love | LoveDev</title>
     <link href="Content/StyleSheet.css" rel="stylesheet" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.css" rel="stylesheet" />
     <script src="Scripts/jquery-2.1.4.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <div>
-        <header></header>
-    </div>
-    <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        </asp:ContentPlaceHolder>
-    </div>
-    <footer></footer>
+    <form id="form1" runat="server">
+        <div id="signup_bg" class="navbar-inverse navbar-fixed-top">
+            <header id="signup_header" class="navbar">
+                <span></span>
+
+                <span><a href="#" class="btn-link">Have an account?</a></span>
+                <span>
+                    <asp:Button ID="btnSignup" runat="server" Text="Sign in" CssClass="btn bottom-info navbar-btn" /></span>
+            </header>
+        </div>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <footer></footer>
+    </form>
 </body>
 </html>
