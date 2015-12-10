@@ -15,8 +15,10 @@
     <form id="form1" runat="server">
         <div id="signup_bg" class="navbar-inverse navbar-fixed-top">
             <header id="signup_header" class="navbar">
-                <span></span>
-
+                <span><asp:LinkButton ID="lnkIndex" runat="server" PostBackUrl="~/Index.aspx" Visible="false" /></span> <%--index page is set to visible false--%>
+                <span><asp:LinkButton ID="lnkHome" runat="server" PostBackUrl="~/Home.aspx">Home</asp:LinkButton></span>
+                <span><asp:LinkButton ID="lnkUserProfile" runat="server" PostBackUrl="~/UserProfile.aspx">Profile</asp:LinkButton></span>
+                <span><asp:LinkButton ID="lnkAdministration" runat="server" PostBackUrl="~/Administration.aspx">Administration</asp:LinkButton></span>
                 <span><a href="#" class="btn-link">Have an account?</a></span>
                 <span>
                     <asp:Button ID="btnSignup" runat="server" Text="Sign in" CssClass="btn bottom-info navbar-btn" /></span>
