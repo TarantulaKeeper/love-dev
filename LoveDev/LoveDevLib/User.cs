@@ -21,7 +21,7 @@ namespace LoveDevLib
         public bool IsAdmin { get; set; }
         public bool IsActive { get; set; }
 
-        public User(int userID, string FirstName, string LastName, int Age, string City, string Country, string Email, int GenderID, int SexualOrientationID, bool IsAdmin, bool IsActive)
+        public User(int UserID, string FirstName, string LastName, int Age, string City, string Country, string Email, int GenderID, int SexualOrientationID, bool IsAdmin, bool IsActive)
         {
             this.UserID = UserID;
             this.FirstName = FirstName;
