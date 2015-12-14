@@ -69,3 +69,24 @@ UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
 QuestionCategoryID INT FOREIGN KEY REFERENCES tbQuestionCategory(QuestionCategoryID),
 UserCategoryValue INT
 )
+
+
+go
+--</Tables>
+--<Procedures>
+
+CREATE PROC spGetUserByID
+(
+@userID int
+)
+as begin
+	select UserID, FirstName, LastName, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID, SexualOrientationID
+	from tbUser
+	where UserID= @userID
+end
+go
+
+
+
+--Testing Procs
+exec spGetUserByID 3
