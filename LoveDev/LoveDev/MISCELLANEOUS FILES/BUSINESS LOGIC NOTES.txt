@@ -1,0 +1,20 @@
+﻿MATCHMAKING:
+1- We will have 5 sections with points adding up to an agreed upon amount.
+2- We will have an "Importance scale" which will determine how much certain sections matter to them
+EX) John has a 37 in music, 24 in politics, 33 in hobbies, 19 in athletics and 29 in personality 
+*Max is 40 in this example
+His "Importance" in music is A , C in politics, B in hobbies, C in athletics and B in personality
+
+The importance scale will go something like this:
+A = 40 - 30
+B = 29-20
+C = 19-10
+D = 9-0
+
+Jane has a 31 in music, 9 in Politics, 21 in Hobbies, 37 in athletics and 17 in peronsality
+
+2/5 of this is matched.
+this will equal 40% matched.
+Jane and John will not be matched.
+
+****** THESE NUMBERS ARE SUBJECT TO CHANGE WITH ADDED SECTIONS / ME DECIDING WE NEED TO DO MORE MATH ******

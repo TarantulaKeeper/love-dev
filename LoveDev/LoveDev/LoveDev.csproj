@@ -75,6 +75,7 @@
     <Content Include="Home.aspx" />
     <Content Include="Index.aspx" />
     <Content Include="INSTALL.sql" />
+    <Content Include="MISCELLANEOUS FILES\BUSINESS LOGIC NOTES.txt" />
     <Content Include="MISCELLANEOUS FILES\QUESTIONS.txt" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
