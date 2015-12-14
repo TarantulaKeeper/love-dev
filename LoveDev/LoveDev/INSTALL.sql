@@ -102,7 +102,23 @@ AS BEGIN
 END
 GO
 
+create proc spUsernameCheck
+(
+@Email varchar(50)
+)
+as begin
+	if exists (select Email from tbUser where Email = @Email)
+	begin
+		select 0
+	end
+	else
+	begin
+		select 1
+	end
+end
+go
 
 --Testing Procs
 exec spGetUserByID 3
 exec spLogin'chris.jeffrey@robertsoncollege.net',1234
+exec spUsernameCheck 'chris.jeffrey@robertsoncollege.net'
