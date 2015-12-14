@@ -17,7 +17,7 @@ namespace LoveDev
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-
+            UserManager
         }
     }
 }

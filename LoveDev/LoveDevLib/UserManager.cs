@@ -55,7 +55,7 @@ namespace LoveDevLib
             d.AddParam("Email", Email);
             d.AddParam("GenderID", GenderID);
             d.AddParam("SexualOrientation", SexualOrientationID);
-            d.AddParam("IsActive", IsActive);
+            //d.AddParam("IsActive", IsActive);
             d.ExecuteNonQuery("spRegisterNewUser"); //proc needed
         }
     }

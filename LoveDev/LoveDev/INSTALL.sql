@@ -102,21 +102,44 @@ AS BEGIN
 END
 GO
 
-create proc spUsernameCheck
+CREATE PROC spUsernameCheck
 (
-@Email varchar(50)
+@Email VARCHAR(50)
 )
-as begin
-	if exists (select Email from tbUser where Email = @Email)
-	begin
-		select 0
-	end
-	else
-	begin
-		select 1
-	end
-end
-go
+AS BEGIN
+	IF EXISTS (SELECT Email FROM tbUser WHERE Email = @Email)
+	BEGIN
+		SELECT 0
+	END
+	ELSE
+	BEGIN
+		SELECT 1
+	END
+END
+GO
+
+CREATE PROC spRegisterUser
+(
+@FirstName VARCHAR(50) NOT NULL,
+@LastName  VARCHAR(50) NOT NULL,
+@Password  VARCHAR(50) NOT NULL,
+@Age       INT NOT NULL,
+@City	   VARCHAR(50) NOT NULL,
+@Country   VARCHAR(50) NOT NULL,
+@Email	   VARCHAR(50) NOT NULL,
+@IsActive  BIT =1, --Is Active by default
+@IsAdmin   BIT =0, --Is not Admin by default
+@UserPhoto VARCHAR(250) ='NoPhoto.jpg',
+@GenderID  INT NOT NULL,
+@SexualOrientation INT NOT NULL
+)
+AS BEGIN
+	INSERT INTO tbUser (FirstName,LastName,Password,Age,City,Country,Email,IsActive,IsAdmin,UserPhoto,GenderID,SexualOrientationID) VALUES
+					   (@FirstName,@LastName,@Password,@Age,@City,@Country,@Email,@IsActive,@IsAdmin,@UserPhoto,@GenderID,@SexualOrientation)
+END
+GO
+
+
 
 --Testing Procs
 exec spGetUserByID 3
