@@ -15,14 +15,14 @@ namespace LoveDevLib
             DAL d = new DAL();
             d.AddParam("Email", Email);
             d.AddParam("Password", Password);
-            DataSet ds = d.ExecuteProcedure("spLogin"); //proc needed
+            DataSet ds = d.ExecuteProcedure("spLogin"); 
             return UserFactory(ds);
         }
         static public User getUserByID(int userId)
         {
             DAL d = new DAL();
             d.AddParam("userID", userId);
-            DataSet ds = d.ExecuteProcedure("spGetUserByID"); //proc needed
+            DataSet ds = d.ExecuteProcedure("spGetUserByID"); 
             return UserFactory(ds);
         }
 
