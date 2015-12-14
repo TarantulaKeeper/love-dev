@@ -13,3 +13,7 @@
 #header_login {
     
 }
+/*push contents away from master navbar*/
+.webpage_content{
+    padding-top:50px;
+}
