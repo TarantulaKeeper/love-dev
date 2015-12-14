@@ -238,8 +238,9 @@ th {
   h3 {
     page-break-after: avoid;
   }
-  .navbar {
-    display: none;
+  .navbar {e able td,
+  .table 
+    text-decoration:none;
   }
   .btn > .caret,
   .dropup > .btn > .caret {
