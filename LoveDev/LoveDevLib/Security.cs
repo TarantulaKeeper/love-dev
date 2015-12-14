@@ -59,7 +59,7 @@ namespace LoveDevLib
             d.AddParam("GenderID", GenderID);
             d.AddParam("SexualOrientation", SexualOrientationID);
             d.AddParam("IsActive", IsActive);
-            d.ExecuteNonQuery("spRegisterNewUser");
+            d.ExecuteNonQuery("spRegisterNewUser"); //proc needed
         }
 
         static private User getUser(string Email, string Password)
@@ -67,14 +67,14 @@ namespace LoveDevLib
             DAL d = new DAL();
             d.AddParam("Email", Email);
             d.AddParam("Password", Password);
-            DataSet ds = d.ExecuteProcedure("spLogin");
+            DataSet ds = d.ExecuteProcedure("spLogin"); //proc needed
             return UserFactory(ds);
         }
         static private User getUserByID(int userId)
         {
             DAL d = new DAL();
             d.AddParam("userID", userId);
-            DataSet ds = d.ExecuteProcedure("spGetUserById");
+            DataSet ds = d.ExecuteProcedure("spGetUserById"); //proc needed
             return UserFactory(ds);
         }
 

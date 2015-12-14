@@ -14,13 +14,17 @@ DATABASE GUIDELINES
 - Procedure names must start with an "sp";
 - Procedure names must NOT be pluralized unless everyone agrees otherwise or unless 
 	there is a meaningful comment;
-- Capitalize in FULL all SQL keywords (ex. 'Sum', 'Convert', 'Insert', 'Select')
-- EVERYTHING starts at 1, not 0 
+- Capitalize in FULL all SQL keywords (ex. 'SUM', 'CONVERT', 'INSERT', 'SELECT');
+- EVERYTHING starts at 1, not 0;
 
 GENERAL
 
 - Be SPECIFIC about what a variable is and what a procedure does;
 - For MULTI-USE procedures add the word "Generic" at the end of the procedure name;
-- ID must be capitalized (ex. No 'Id' or 'UserId')
+- ID must be capitalized (ex. No 'Id' or 'UserId');
 
+Extra Info
 
+- Procedure calls anywhere in the C# with the comment "//proc needed" do NOT have a procedure in the database;
+- When creating these procdures be sure to include all of the paramaters from the C# (Proc could be called in more than one place and some params could need "= null");
+- After Proc is created, be sure to remove the "//proc needed" comment from the C#;
