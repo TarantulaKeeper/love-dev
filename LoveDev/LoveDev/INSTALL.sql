@@ -69,3 +69,40 @@ UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
 QuestionCategoryID INT FOREIGN KEY REFERENCES tbQuestionCategory(QuestionCategoryID),
 UserCategoryValue INT
 )
+
+
+go
+--</Tables>
+--<Procedures>
+
+CREATE PROC spGetUserByID
+(
+@userID INT
+)
+AS BEGIN
+	SELECT UserID, FirstName, LastName, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID, SexualOrientationID
+	FROM   tbUser
+	WHERE  UserID= @userID
+END
+GO
+
+CREATE PROC spLogin
+(
+@Email VARCHAR(50),
+@Password VARCHAR(50)
+)
+AS BEGIN
+	IF EXISTS (SELECT UserId from tbUser where Email = @Email)
+	BEGIN
+		select UserID, FirstName, LastName, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID, SexualOrientationID
+		from   tbUser
+		where  Email = @Email
+		and    Password = @Password
+	END
+END
+GO
+
+
+--Testing Procs
+exec spGetUserByID 3
+exec spLogin'chris.jeffrey@robertsoncollege.net',1234

@@ -67,6 +67,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Administration.aspx" />
+    <Content Include="bin\DAL_Project.dll" />
+    <Content Include="bin\LoveDev.dll" />
+    <Content Include="bin\LoveDev.pdb" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -168,7 +173,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>42384</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
