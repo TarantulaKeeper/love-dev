@@ -17,7 +17,7 @@ namespace LoveDev
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            UserManager
+            UserManager.RegisterUser(txtFirstName.Text, txtLastName.Text, txtPassword.Text, int.Parse(txtAge.Text), txtCity.Text, txtCountry.Text, txtEmail.Text, int.Parse(ddlGender.SelectedValue), int.Parse(ddlOrientation.SelectedValue));
         }
     }
 }

@@ -129,7 +129,7 @@ CREATE PROC spRegisterUser
 @Email	   VARCHAR(50) NOT NULL,
 @IsActive  BIT =1, --Is Active by default
 @IsAdmin   BIT =0, --Is not Admin by default
-@UserPhoto VARCHAR(250) ='NoPhoto.jpg',
+@UserPhoto VARCHAR(250) ='NoPhoto.jpg', --Sets photo to default photo if one is not provided
 @GenderID  INT NOT NULL,
 @SexualOrientation INT NOT NULL
 )

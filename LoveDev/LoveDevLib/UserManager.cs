@@ -43,7 +43,7 @@ namespace LoveDevLib
             return user;
         }
 
-        static public void RegisterUser(string FirstName, string LastName, string Password, int Age, string City, string Country, string Email, int GenderID, int SexualOrientationID, bool IsActive)
+        static public void RegisterUser(string FirstName, string LastName, string Password, int Age, string City, string Country, string Email, int GenderID, int SexualOrientationID)
         {
             DAL d = new DAL();
             d.AddParam("FirstName", FirstName);
@@ -55,7 +55,6 @@ namespace LoveDevLib
             d.AddParam("Email", Email);
             d.AddParam("GenderID", GenderID);
             d.AddParam("SexualOrientation", SexualOrientationID);
-            //d.AddParam("IsActive", IsActive);
             d.ExecuteNonQuery("spRegisterNewUser");
         }
     }

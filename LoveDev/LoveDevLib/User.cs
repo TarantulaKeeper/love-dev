@@ -35,5 +35,10 @@ namespace LoveDevLib
             this.GenderID = GenderID;
             this.SexualOrientationID = SexualOrientationID;
         }
+
+        public override string ToString()
+        {
+            return "UserID: " + UserID + " || Name: " + FirstName + " " + LastName + " || Age: " + Age + " || Country: " + Country;
+        }
     }
 }
