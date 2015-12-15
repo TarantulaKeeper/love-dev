@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Developing Your Love | LoveDev</title>
     <link href="Content/StyleSheet.css" rel="stylesheet" />
     <link href="Content/bootstrap.css" rel="stylesheet" />
@@ -28,13 +31,21 @@
                 </div>
 
                 <div id="header_login" class="navbar-right">
-                    <span><a href="#" class="navbar-link">Have an account?</a></span>
+                    <span><a href="#" class="navbar-link lightbox">Have an account?</a></span>
                     <span>
                         <asp:Button ID="btnSignup" runat="server" Text="Sign in" CssClass="btn btn-info navbar-btn" /></span>
                 </div>
             </div>
         </div>
-
+        <div class="backdrop"></div>
+        <div class="box">
+            <div class="closebox">x</div>
+            <div id="login_form">
+                <asp:TextBox ID="txtEmail" runat="server" />
+                <asp:TextBox ID="txtPassword" runat="server" />
+                <asp:Button Text="Log In" runat="server" />
+            </div>
+        </div>
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
@@ -42,7 +53,29 @@
 
         <footer></footer>
     </form>
+    <script type="text/javascript">
+        $(document).ready(function () {
 
+            $('.lightbox').click(function () {
+                $('.backdrop, .box').animate({ 'opacity': '.50' }, 300, 'linear');
+                $('.box').animate({ 'opacity': '1.00' }, 300, 'linear');
+                $('.backdrop, .box').css('display', 'block');
+            });
+            $('.closebox').click(function () {
+                close_box();
+            });
+            $('.backdrop').click(function () {
+                close_box();
+            });
+        });
+        function close_box()
+        {
+            $('.backdrop, .box').animate({ 'opacity': '0' }, 300, 'linear', function () {
+                $('.backdrop, .box').css('display', 'none');
+            });
+        }
+        
+    </script>
     <script src="Scripts/bootstrap.js"></script>
 </body>
 </html>
