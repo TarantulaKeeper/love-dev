@@ -139,8 +139,17 @@ AS BEGIN
 END
 GO
 
+CREATE PROC spGetGenders
+AS BEGIN
+	SELECT * FROM tbGender
+END
+GO
 
-
+CREATE PROC spGetSexualOrientations
+AS BEGIN
+	SELECT * FROM tbSexualOrientation
+END
+GO
 
 select * from tbUser
 --Testing Procs
