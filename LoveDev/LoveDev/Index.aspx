@@ -19,6 +19,7 @@
     <asp:TextBox ID="txtCountry" runat="server" placeholder="Country" required /><br />
     Gender: <asp:DropDownList ID="ddlGender" runat="server" required /><br />
     Sexual Orientation: <asp:DropDownList ID="ddlOrientation" runat="server" required /><br />
+    Profile Photo: <asp:FileUpload ID="fupPhoto" runat="server" />
     <br />
     <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" />
     </div>
