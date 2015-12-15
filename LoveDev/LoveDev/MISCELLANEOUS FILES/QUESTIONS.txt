@@ -1,15 +1,33 @@
 ﻿NIKO - MUSIC
 
 1)Do you listen to music?
-2)Do you purchase music?
-3)Do you attend concerts?
-4)Can you play an instrument?
-5)
+2)Do you listen to music on a daily basis?
+3)Do you purchase music?
+4)Do you attend concerts?
+5)Can you play an instrument?
+6)Do you feel that music plays an important role in your day?
+7)Do you follow music news?
+8)
+9)
+10)
 
 JOSEPH - HOBBIES
+
 CHRIS - ATHLETICS
+
 TJ - POLITICS
+
 GROUP EFFORT - Techonologies
+1)Do you enjoy playing with technology?
+2)Do you code?
+3)Does your family come to you for technology help?
+4)Do you play video games?
+5)Do you use technology on a daily basis?
+6)Do you feel technology plays a vital role in your daily activites?
+7)Is technology ESSENTIAL to your life? (Not including job)
+8)How often do you find yourself immersed in techonology?
+9)Do you follow new Technology releases?
+10)
 
 PERSONALITY QUESTIONS -
 
@@ -23,3 +41,5 @@ PERSONALITY QUESTIONS -
 8)Do you get upset easily?
 9)Is it easy for you to relate to others emotions?	
 10)Are you a reserved person
+
+**Answers are = Always, often, MIDDLEGROUND ,sometimes, never
