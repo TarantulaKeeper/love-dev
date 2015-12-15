@@ -43,7 +43,7 @@
             <div id="login_form">
                 <asp:TextBox ID="txtEmail" runat="server" />
                 <asp:TextBox ID="txtPassword" runat="server" />
-                <asp:Button Text="Log In" runat="server" />
+                <asp:Button ID="btnLogin" Text="Log In" runat="server" OnClick="btnLogin_Click" />
             </div>
         </div>
         <div>
