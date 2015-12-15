@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="webpage_content">
     <asp:Label ID="lblError" runat="server" />
-    <h1><b><u>Registration</u></b></h1>
+    <h1>Registration</h1>
 
     <asp:TextBox ID="txtFirstName" runat="server" placeholder="First Name" required /><br />
     <asp:TextBox ID="txtLastName" runat="server" placeholder="LastName" required /><br />
@@ -14,7 +14,7 @@
     <asp:Label ID="lblEmail" runat="server" /><br />
 
     <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" required /><br />
-    <asp:TextBox ID="txtAge" runat="server" TextMode="Number" placeholder="age" required /><br />
+    <asp:TextBox ID="txtAge" runat="server" TextMode="Number" placeholder="Age" required /><br />
     <asp:TextBox ID="txtCity" runat="server" placeholder="City" required /><br />
     <asp:TextBox ID="txtCountry" runat="server" placeholder="Country" required /><br />
     Gender: <asp:DropDownList ID="ddlGender" runat="server" required /><br />
