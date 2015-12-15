@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="webpage_content">
     <asp:Label ID="lblError" runat="server" />
     <h1><b><u>Registration</u></b></h1>
 
@@ -20,6 +21,7 @@
     Sexual Orientation: <asp:DropDownList ID="ddlOrientation" runat="server" required /><br />
     <br />
     <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" />
+    </div>
 
     <script>
         $(document).ready(function () {
