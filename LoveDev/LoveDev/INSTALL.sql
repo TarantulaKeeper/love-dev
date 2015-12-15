@@ -30,26 +30,26 @@ INSERT INTO tbSexualOrientation(SexualOrientationName) VALUES ('Straight'), ('Ga
 
 CREATE TABLE tbUser(
 UserID INT PRIMARY KEY IDENTITY (1,1),
-FirstName VARCHAR(50),
-LastName VARCHAR(50),
-Password VARCHAR(50),
-Age INT,
-City VARCHAR(50),
-Country VARCHAR(50),
-Email VARCHAR(50),
-IsActive BIT,
-IsAdmin BIT,
-UserPhoto VARCHAR(250),
-GenderID INT FOREIGN KEY REFERENCES tbGender(GenderID),
-SexualOrientationID INT FOREIGN KEY REFERENCES tbSexualOrientation(SexualOrientationID)
+FirstName VARCHAR(50) NOT NULL,
+LastName VARCHAR(50) NOT NULL,
+Password VARCHAR(50) NOT NULL,
+Age INT NOT NULL,
+City VARCHAR(50) NOT NULL,
+Country VARCHAR(50) NOT NULL,
+Email VARCHAR(50) NOT NULL,
+IsActive BIT NOT NULL,
+IsAdmin BIT NOT NULL,
+UserPhoto VARCHAR(250) NOT NULL,
+GenderID INT FOREIGN KEY REFERENCES tbGender(GenderID) NOT NULL,
+SexualOrientationID INT FOREIGN KEY REFERENCES tbSexualOrientation(SexualOrientationID) NOT NULL
 )
 
 INSERT INTO tbUser(FirstName, LastName, Password, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID, SexualOrientationID)
 	VALUES 
-		('Niko', 'Pastulovic', '1234', 20, 'Winnipeg', 'Canada', 'niko.pastulovic@robertsoncollege.net', 1, 1, 'NEED A PHOTO', 1, 8),
-		('T.J.', 'Petrowski', '1234', 24, 'Warren', 'Canada', 't.j.petrowski@robertsoncollege.net', 1, 1, 'NEED A PHOTO', 1, 4),
-		('Chris', 'Jeffrey', '1234', 21, 'Winnipeg', 'Canada', 'chris.jeffrey@robertsoncollege.net', 1, 1, 'NEED A PHOTO', 5, 5),
-		('Joseph', 'Maglalang', '1234', 30, 'Winnipeg', 'Canada', 'joseph.maglalang@robertsoncollege.net', 1, 1, 'NEED A PHOTO', 6, 1)
+		('Niko', 'Pastulovic', '1234', 20, 'Winnipeg', 'Canada', 'niko.pastulovic@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1, 8),
+		('T.J.', 'Petrowski', '1234', 24, 'Warren', 'Canada', 't.j.petrowski@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1, 4),
+		('Chris', 'Jeffrey', '1234', 21, 'Winnipeg', 'Canada', 'chris.jeffrey@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 5, 5),
+		('Joseph', 'Maglalang', '1234', 30, 'Winnipeg', 'Canada', 'joseph.maglalang@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 6, 1)
 
 -- TABLE FOR QUESTION CATEGORIES
 
@@ -120,18 +120,18 @@ GO
 
 CREATE PROC spRegisterUser
 (
-@FirstName VARCHAR(50) NOT NULL,
-@LastName  VARCHAR(50) NOT NULL,
-@Password  VARCHAR(50) NOT NULL,
-@Age       INT NOT NULL,
-@City	   VARCHAR(50) NOT NULL,
-@Country   VARCHAR(50) NOT NULL,
-@Email	   VARCHAR(50) NOT NULL,
+@FirstName VARCHAR(50),
+@LastName  VARCHAR(50),
+@Password  VARCHAR(50),
+@Age       INT,
+@City	   VARCHAR(50),
+@Country   VARCHAR(50),
+@Email	   VARCHAR(50),
 @IsActive  BIT =1, --Is Active by default
 @IsAdmin   BIT =0, --Is not Admin by default
-@UserPhoto VARCHAR(250) ='NoPhoto.jpg', --Sets photo to default photo if one is not provided
-@GenderID  INT NOT NULL,
-@SexualOrientation INT NOT NULL
+@UserPhoto VARCHAR(250) ='Images/NoPhoto.jpg', --Sets photo to default photo if one is not provided
+@GenderID  INT,
+@SexualOrientation INT
 )
 AS BEGIN
 	INSERT INTO tbUser (FirstName,LastName,Password,Age,City,Country,Email,IsActive,IsAdmin,UserPhoto,GenderID,SexualOrientationID) VALUES
@@ -139,8 +139,19 @@ AS BEGIN
 END
 GO
 
+CREATE PROC spGetGenders
+AS BEGIN
+	SELECT * FROM tbGender
+END
+GO
 
+CREATE PROC spGetSexualOrientations
+AS BEGIN
+	SELECT * FROM tbSexualOrientation
+END
+GO
 
+select * from tbUser
 --Testing Procs
 exec spGetUserByID 3
 exec spLogin'chris.jeffrey@robertsoncollege.net',1234

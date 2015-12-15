@@ -17,7 +17,7 @@ namespace LoveDev
             string email = context.Request.QueryString["email"];
             DAL myDal = new DAL();
             myDal.AddParam("email", email);
-            string result = myDal.ExecuteScalar("spUsernameCheck"); //proc needed
+            string result = myDal.ExecuteScalar("spUsernameCheck");
             string imageUrl;
             if (result == "1")
             {
