@@ -8,6 +8,7 @@
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/bootstrap-theme.css" rel="stylesheet" />
+    <script src="Scripts/jquery-2.1.4.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -15,7 +16,7 @@
     <form id="form1" runat="server">
         <div id="header_bg" class="navbar navbar-inverse navbar-fixed-top">
             <div id="header_navbar" class="container">
-                <div id="header_links"  class="navbar-left" >
+                <div id="header_links" class="navbar-left">
                     <span>
                         <asp:LinkButton ID="lnkIndex" runat="server" class="navbar-link" PostBackUrl="~/Index.aspx" Visible="false" /></span> <%--index page is set to visible false--%>
                     <span>
@@ -27,21 +28,21 @@
                 </div>
 
                 <div id="header_login" class="navbar-right">
-                    <span><a href="#" class="navbar-link" >Have an account?</a></span>
+                    <span><a href="#" class="navbar-link">Have an account?</a></span>
                     <span>
                         <asp:Button ID="btnSignup" runat="server" Text="Sign in" CssClass="btn btn-info navbar-btn" /></span>
                 </div>
             </div>
         </div>
+
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <footer></footer>
     </form>
-    <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        </asp:ContentPlaceHolder>
-    </div>
 
-    <footer></footer>
-
-    <script src="Scripts/jquery-2.1.4.js"></script>
     <script src="Scripts/bootstrap.js"></script>
 </body>
 </html>
