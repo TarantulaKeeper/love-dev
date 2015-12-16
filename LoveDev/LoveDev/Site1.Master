@@ -46,6 +46,7 @@
         </div>
         <div class="backdrop"></div>
         <div class="box">
+            <div class="closebox">[x]</div>
             <div id="login_form">
                 <asp:TextBox ID="txtEmail" runat="server" />
                 <asp:TextBox ID="txtPassword" runat="server" />
