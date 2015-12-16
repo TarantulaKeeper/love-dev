@@ -39,8 +39,19 @@ namespace LoveDev
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            UserManager.RegisterUser(txtFirstName.Text, txtLastName.Text, txtPassword.Text, int.Parse(txtAge.Text), txtCity.Text, txtCountry.Text, txtEmail.Text, int.Parse(ddlGender.SelectedValue), int.Parse(ddlOrientation.SelectedValue));
+            
             lblError.Text = "Registration Successful!";
+            if (fupPhoto.HasFiles)
+            {
+                string Path = Server.MapPath(".").ToString() + "\\Images\\PROFILE_PHOTOS\\";
+                string fileName = fupPhoto.FileName;
+                fupPhoto.PostedFile.SaveAs(Path + txtFirstName.Text + "_" + txtLastName.Text);
+                UserManager.RegisterUser(txtFirstName.Text, txtLastName.Text, txtPassword.Text, int.Parse(txtAge.Text), txtCity.Text, txtCountry.Text, txtEmail.Text, int.Parse(ddlGender.SelectedValue), int.Parse(ddlOrientation.SelectedValue), "Images/" + fupPhoto.FileName);
+            }
+            else
+            {
+                UserManager.RegisterUser(txtFirstName.Text, txtLastName.Text, txtPassword.Text, int.Parse(txtAge.Text), txtCity.Text, txtCountry.Text, txtEmail.Text, int.Parse(ddlGender.SelectedValue), int.Parse(ddlOrientation.SelectedValue));
+            }
         }
     }
 }

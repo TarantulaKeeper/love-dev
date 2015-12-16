@@ -33,7 +33,7 @@
                 <div id="header_login" class="navbar-right">
                     <span><a href="#" class="navbar-link lightbox">Have an account?</a></span>
                     <span>
-                        <asp:Button ID="btnSignup" runat="server" Text="Sign in" CssClass="btn btn-info navbar-btn" /></span>
+                        <asp:Button ID="btnSignup" runat="server" Text="Sign up" CssClass="btn btn-info navbar-btn" /></span>
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
             <div id="login_form">
                 <asp:TextBox ID="txtEmail" runat="server" />
                 <asp:TextBox ID="txtPassword" runat="server" />
-                <asp:Button Text="Log In" runat="server" />
+                <asp:Button ID="btnLogin" Text="Log In" runat="server" OnClick="btnLogin_Click" />
             </div>
         </div>
         <div>

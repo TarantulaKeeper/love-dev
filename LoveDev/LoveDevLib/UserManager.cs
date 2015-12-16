@@ -57,5 +57,21 @@ namespace LoveDevLib
             d.AddParam("SexualOrientation", SexualOrientationID);
             d.ExecuteNonQuery("spRegisterUser");
         }
+
+        static public void RegisterUser(string FirstName, string LastName, string Password, int Age, string City, string Country, string Email, int GenderID, int SexualOrientationID, string UserPhoto)
+        {
+            DAL d = new DAL();
+            d.AddParam("FirstName", FirstName);
+            d.AddParam("LastName", LastName);
+            d.AddParam("Password", Password);
+            d.AddParam("Age", Age);
+            d.AddParam("City", City);
+            d.AddParam("Country", Country);
+            d.AddParam("Email", Email);
+            d.AddParam("GenderID", GenderID);
+            d.AddParam("SexualOrientation", SexualOrientationID);
+            d.AddParam("UserPhoto", UserPhoto);
+            d.ExecuteNonQuery("spRegisterUser");
+        }
     }
 }
