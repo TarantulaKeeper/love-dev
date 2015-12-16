@@ -20,14 +20,21 @@
         <div id="header_bg" class="navbar navbar-inverse navbar-fixed-top">
             <div id="header_navbar" class="container">
                 <div id="header_links" class="navbar-left">
-                    <span>
-                        <asp:LinkButton ID="lnkIndex" runat="server" class="navbar-link" PostBackUrl="~/Index.aspx" Visible="false" /></span> <%--index page is set to visible false--%>
-                    <span>
-                        <asp:LinkButton ID="lnkHome" runat="server" class="navbar-link" PostBackUrl="~/Home.aspx" Visible="false">Home</asp:LinkButton></span>
-                    <span>
-                        <asp:LinkButton ID="lnkUserProfile" runat="server" class="navbar-link" PostBackUrl="~/UserProfile.aspx" Visible="false">Profile</asp:LinkButton></span>
-                    <span>
-                        <asp:LinkButton ID="lnkAdministration" runat="server" class="navbar-link" PostBackUrl="~/Administration.aspx" Visible="false">Administration</asp:LinkButton></span>
+                    <ul class="list-inline list-unstyled">
+                        <li>
+                            <asp:LinkButton ID="lnkIndex" runat="server" class="navbar-link" Visible="false" PostBackUrl="~/Index.aspx"  />
+                            <%--index page is set to visible false--%>
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="lnkHome" runat="server" class="navbar-link" Visible="false" PostBackUrl="~/Home.aspx" >Home</asp:LinkButton>
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="lnkUserProfile" runat="server" class="navbar-link" Visible="false" PostBackUrl="~/UserProfile.aspx">Profile</asp:LinkButton>
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="lnkAdministration" runat="server" class="navbar-link" Visible="false" PostBackUrl="~/Administration.aspx">Administration</asp:LinkButton>
+                        </li>
+                    </ul>
                 </div>
 
                 <div id="header_login" class="navbar-right">
@@ -68,13 +75,12 @@
                 close_box();
             });
         });
-        function close_box()
-        {
+        function close_box() {
             $('.backdrop, .box').animate({ 'opacity': '0' }, 300, 'linear', function () {
                 $('.backdrop, .box').css('display', 'none');
             });
         }
-        
+
     </script>
     <script src="Scripts/bootstrap.js"></script>
 </body>
