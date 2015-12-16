@@ -45,12 +45,12 @@
             </div>
         </div>
         <div class="backdrop"></div>
-        <div class="box">
-            <div class="closebox">[x]</div>
+        <div class="box ">
+            <div class="closebox text-danger">[x]</div>
             <div id="login_form">
-                <asp:TextBox ID="txtEmail" runat="server" />
-                <asp:TextBox ID="txtPassword" runat="server" />
-                <asp:Button ID="btnLogin" Text="Log In" runat="server" OnClick="btnLogin_Click" />
+                <asp:TextBox ID="txtEmail" placeholder="Email" runat="server" CssClass="input-sm" />
+                <asp:TextBox ID="txtPassword" placeholder="Password" runat="server" CssClass="input-sm" />
+                <asp:Button ID="btnLogin" Text="Log In" runat="server" CssClass="btn btn-info navbar-btn" OnClick="btnLogin_Click" />
             </div>
         </div>
         <div>
