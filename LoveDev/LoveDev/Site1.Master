@@ -40,7 +40,7 @@
                 <div id="header_login" class="navbar-right">
                     <span><a class="navbar-link ">Have an account?</a></span>
                     <span>
-                        <asp:Button ID="btnSignup" runat="server" Text="Sign in" CssClass="btn btn-info navbar-btn lightbox"/></span>
+                        <input type="button" id="btnSignIn" value="Sign In" class="btn btn-info navbar-btn lightbox" /></span>
                 </div>
             </div>
         </div>
@@ -51,6 +51,7 @@
                 <asp:TextBox ID="txtEmail" runat="server" />
                 <asp:TextBox ID="txtPassword" runat="server" />
                 <asp:Button ID="btnLogin" Text="Log In" runat="server" OnClick="btnLogin_Click" />
+                <asp:Label ID="lblError" runat="server" />
             </div>
         </div>
         <div>

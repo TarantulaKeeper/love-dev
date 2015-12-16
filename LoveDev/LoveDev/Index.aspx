@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="webpage_content">
         <div class="container-fluid">
             <div class="row">
@@ -10,26 +11,40 @@
                 <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
                     <asp:Label ID="lblError" runat="server" />
                     <h1>Registration</h1>
+                    <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="Reg" runat="server" />
 
-                    <asp:TextBox ID="txtFirstName" runat="server" placeholder="First Name" required /><br />
-                    <asp:TextBox ID="txtLastName" runat="server" placeholder="LastName" required /><br />
+                    <asp:TextBox ID="txtFirstName" runat="server" placeholder="First Name" />
+                    <asp:RequiredFieldValidator ID="rfFirstName" ControlToValidate="txtFirstName" ValidationGroup="Reg" runat="server" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator><br />
 
-                    <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" required />
+                    <asp:TextBox ID="txtLastName" runat="server" placeholder="LastName" />
+                    <asp:RequiredFieldValidator ID="rfLastName" runat="server" ControlToValidate="txtLastName" ValidationGroup="Reg" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator><br />
+
+                    <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" />
+                    <asp:RequiredFieldValidator ID="rfEmail" runat="server" ControlToValidate="txtEmail" ValidationGroup="Reg" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator><br />
                     <asp:Image ID="imgEmail" runat="server" Style="height: 25px; width: 25px; display: none;" />
                     <asp:Label ID="lblEmail" runat="server" /><br />
 
-                    <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" required /><br />
-                    <asp:TextBox ID="txtAge" runat="server" TextMode="Number" placeholder="Age" required /><br />
-                    <asp:TextBox ID="txtCity" runat="server" placeholder="City" required /><br />
-                    <asp:TextBox ID="txtCountry" runat="server" placeholder="Country" required /><br />
-                    Gender:
-            <asp:DropDownList ID="ddlGender" runat="server" required /><br />
-                    Sexual Orientation:
-            <asp:DropDownList ID="ddlOrientation" runat="server" required /><br />
-                    Profile Photo:
-            <asp:FileUpload ID="fupPhoto" runat="server" />
+                    <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" />
+                    <asp:RequiredFieldValidator ID="rfPassword" runat="server" ControlToValidate="txtPassword" ValidationGroup="Reg" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator><br />
+
+                    <asp:TextBox ID="txtAge" runat="server" TextMode="Number" placeholder="Age" />
+                    <asp:RequiredFieldValidator ID="rfAge" runat="server" ControlToValidate="txtAge" ValidationGroup="Reg" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator><br />
+
+                    <asp:TextBox ID="txtCity" runat="server" placeholder="City" />
+                    <asp:RequiredFieldValidator ID="rfCity" runat="server" ControlToValidate="txtCity" ValidationGroup="Reg" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator><br />
+
+                    <asp:TextBox ID="txtCountry" runat="server" placeholder="Country" />
+                    <asp:RequiredFieldValidator ID="rfCountry" runat="server" ControlToValidate="txtCountry" ValidationGroup="Reg" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator><br />
+
+                    Gender: <asp:DropDownList ID="ddlGender" runat="server" />
+                    <asp:RequiredFieldValidator ID="rfGender" runat="server" ControlToValidate="ddlGender" ValidationGroup="Reg" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator><br />
+
+                    Sexual Orientation: <asp:DropDownList ID="ddlOrientation" runat="server" />
+                    <asp:RequiredFieldValidator ID="rfOrientation" runat="server" ControlToValidate="ddlOrientation" ValidationGroup="Reg" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator><br />
+
+                    Profile Photo: <asp:FileUpload ID="fupPhoto" runat="server" />
                     <br />
-                    <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" />
+                    <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" ValidationGroup="Reg" />
                 </div>
             </div>
         </div>
