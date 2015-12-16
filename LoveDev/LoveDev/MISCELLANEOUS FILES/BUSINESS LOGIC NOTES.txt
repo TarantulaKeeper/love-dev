@@ -18,8 +18,3 @@ this will equal 40% matched.
 Jane and John will not be matched.
 
 ****** THESE NUMBERS ARE SUBJECT TO CHANGE WITH ADDED SECTIONS / ME DECIDING WE NEED TO DO MORE MATH ******
-
-                                        Current idea for Question class hierarchy:
-							Questions class which has an answer class with the answers inside them
-							Each Category class will have a list of questions which will be in the database
-							In theory, we will display questions through a for each (??)
