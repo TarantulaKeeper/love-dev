@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using LoveDevLib;
 
 namespace LoveDev
 {
@@ -16,7 +17,15 @@ namespace LoveDev
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-
+            bool success = Security.Login(txtEmail.Text, txtPassword.Text);
+            if (success)
+            {
+                Response.Redirect("Home.aspx?message=Login Successful!");
+            }
+            else
+            {
+                lblError.Text = "Invalid login, please try again.";
+            }
         }
     }
 }
