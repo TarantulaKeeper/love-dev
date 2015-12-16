@@ -29,7 +29,7 @@ namespace LoveDevLib
         static private User UserFactory(DataSet ds)
         {
             User user;
-            if (ds.Tables[0] != null)
+            if (ds.Tables.Count > 0)
             {
                 DataRow DR = ds.Tables[0].Rows[0];
 
