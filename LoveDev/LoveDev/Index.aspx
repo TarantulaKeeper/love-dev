@@ -7,8 +7,8 @@
     <div class="webpage_content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-4"></div>
-                <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
+                <div class=""></div>
+                <div class="col-lg-2 col-md-4 col-sm-8 col-xs-12 col-lg-offset-10 col-md-offset-8 col-md-offset-6 col-sm-offset-4">
                     <asp:Label ID="lblError" runat="server" />
                     <h1>Registration</h1>
                     <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="Reg" runat="server" />

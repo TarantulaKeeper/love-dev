@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL_Project", "DAL_Project\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox", "Sandbox\Sandbox.csproj", "{C5A6F875-AF27-4F48-9194-CF7220A8F593}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoveDevMatchmakingLib", "LoveDevMatchmakingLib\LoveDevMatchmakingLib.csproj", "{F8BF02F1-F3C4-4722-9511-5631EC2A6DD1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C5A6F875-AF27-4F48-9194-CF7220A8F593}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5A6F875-AF27-4F48-9194-CF7220A8F593}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5A6F875-AF27-4F48-9194-CF7220A8F593}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8BF02F1-F3C4-4722-9511-5631EC2A6DD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8BF02F1-F3C4-4722-9511-5631EC2A6DD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8BF02F1-F3C4-4722-9511-5631EC2A6DD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8BF02F1-F3C4-4722-9511-5631EC2A6DD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

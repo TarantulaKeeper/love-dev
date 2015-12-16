@@ -32,10 +32,10 @@
 }
 .box {
     position: absolute;
-    top: 20%;
-    left: 30%;
-    width: 500px;
-    height: 300px;
+    top: 35%;
+    left: 35%;
+    width: 185px;
+    height: 138px;
     background: #fff;
     z-index: 51;
     padding: 10px;
@@ -51,4 +51,7 @@
     float:right;
     margin-right:6px;
     cursor:pointer;
+}
+.input-bmargin{
+    margin-bottom:3px;
 }
