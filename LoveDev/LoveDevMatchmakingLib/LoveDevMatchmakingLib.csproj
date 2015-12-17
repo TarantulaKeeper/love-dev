@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AthleticCategory.cs" />
     <Compile Include="HobbiesCategory.cs" />
+    <Compile Include="MatchMakingAlgorithm.cs" />
     <Compile Include="MusicCategory.cs" />
     <Compile Include="PersonalityCategory.cs" />
     <Compile Include="PoliticsCategory.cs" />
