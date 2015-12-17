@@ -54,7 +54,7 @@
                 <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" TextMode="Password" />
                 <asp:RequiredFieldValidator ID="rfPassword" ControlToValidate="txtPassword" ValidationGroup="login" runat="server" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator>
 
-                <asp:Button ID="btnLogin" Text="Log In" runat="server" ValidationGroup="login" OnClick="btnLogin_Click" />
+                <asp:Button ID="btnLogin" Text="Log In" runat="server" ValidationGroup="login" OnClientClick="login()" />
                 <asp:Label ID="lblError" runat="server" />
             </div>
         </div>
