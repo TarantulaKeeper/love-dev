@@ -49,12 +49,12 @@
             <div class="closebox">[x]</div>
             <div id="login_form">
                 <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" />
-                <asp:RequiredFieldValidator ID="rfEmail" ControlToValidate="txtEmail" ValidationGroup="login" runat="server" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="rfEmail" ControlToValidate="txtEmail" ValidationGroup="login" runat="server" ErrorMessage="Email Required"></asp:RequiredFieldValidator>
 
                 <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" TextMode="Password" />
-                <asp:RequiredFieldValidator ID="rfPassword" ControlToValidate="txtPassword" ValidationGroup="login" runat="server" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="rfPassword" ControlToValidate="txtPassword" ValidationGroup="login" runat="server" ErrorMessage="Password Required"></asp:RequiredFieldValidator>
 
-                <asp:Button ID="btnLogin" Text="Log In" runat="server" ValidationGroup="login" OnClientClick="login()" />
+                <input type="button" id="btnLogin" runat="server" validationgroup="login" value="Log In" />
                 <asp:Label ID="lblError" runat="server" />
             </div>
         </div>
@@ -66,15 +66,17 @@
         <footer></footer>
     </form>
     <script>
-        function login() {
-            $(this).click(function () {
+        $(document).ready(function () {
+            $("#btnLogin").click(function () {
                 $.ajax("LoginHandler.ashx", {
                     data: { Email: $("#txtEmail").val(), Password: $("#txtPassword").val() },
                     success: function (response) {
                         if (response == "Login Successful!") {
+                            alert(response);
                             window.location.replace("http://localhost:42384/Index.aspx?message=" + response);
                         }
                         else {
+                            alert(response);
                             $("#lblError").val(response);
                         }
                     },
@@ -83,7 +85,7 @@
                     }
                 })
             })
-        }
+        })
     </script>
     <script type="text/javascript">
         $(document).ready(function () {
