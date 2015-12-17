@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class=""></div>
-                <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12 col-lg-offset-10 col-md-offset-8 col-md-offset-6 col-sm-offset-4">
+                <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12 col-lg-offset-9 col-md-offset-8 col-md-offset-6 col-sm-offset-4">
                     <asp:Label ID="lblError" runat="server" />
                     <h1>Registration</h1>
                     <asp:ValidationSummary ID="vsReg" ValidationGroup="Reg" runat="server" CssClass="text-danger" />
@@ -22,7 +22,7 @@
                     <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" />
                     <asp:RequiredFieldValidator ID="rfEmail" runat="server" ControlToValidate="txtEmail" ValidationGroup="Reg" Text="*" ErrorMessage="Email Required" CssClass="text-danger"></asp:RequiredFieldValidator>
                     <asp:Image ID="imgEmail" runat="server" Style="height: 25px; width: 25px; display: none;" />
-                    <asp:Label ID="lblEmail" runat="server" />
+                    <asp:Label ID="lblEmail" runat="server" /><br />
 
                     <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" />
                     <asp:RequiredFieldValidator ID="rfPassword" runat="server" ControlToValidate="txtPassword" ValidationGroup="Reg" Text="*" ErrorMessage="Password Required" CssClass="text-danger"></asp:RequiredFieldValidator><br />
