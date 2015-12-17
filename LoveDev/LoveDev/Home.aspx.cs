@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using LoveDevLib;
 
 namespace LoveDev
 {
@@ -11,7 +12,13 @@ namespace LoveDev
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Security.CurrentUser == null)
+                {
+                    Response.Redirect("Index.aspx?Must be logged in to view that page");
+                }
+            }
         }
     }
 }
