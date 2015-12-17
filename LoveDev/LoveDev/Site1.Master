@@ -22,11 +22,11 @@
                 <div id="header_links" class="navbar-left">
                     <ul class="list-inline list-unstyled">
                         <li>
-                            <asp:LinkButton ID="lnkIndex" runat="server" class="navbar-link" Visible="false" PostBackUrl="~/Index.aspx"  />
+                            <asp:LinkButton ID="lnkIndex" runat="server" class="navbar-link" Visible="false" PostBackUrl="~/Index.aspx" />
                             <%--index page is set to visible false--%>
                         </li>
                         <li>
-                            <asp:LinkButton ID="lnkHome" runat="server" class="navbar-link" Visible="false" PostBackUrl="~/Home.aspx" >Home</asp:LinkButton>
+                            <asp:LinkButton ID="lnkHome" runat="server" class="navbar-link" Visible="false" PostBackUrl="~/Home.aspx">Home</asp:LinkButton>
                         </li>
                         <li>
                             <asp:LinkButton ID="lnkUserProfile" runat="server" class="navbar-link" Visible="false" PostBackUrl="~/UserProfile.aspx">Profile</asp:LinkButton>
@@ -46,16 +46,17 @@
         </div>
         <div class="backdrop"></div>
         <div class="box">
-            <div class="closebox">[x]</div>
+            <div class="closebox text-danger">[x]</div>
             <div id="login_form">
-                <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" />
-                <asp:RequiredFieldValidator ID="rfEmail" ControlToValidate="txtEmail" ValidationGroup="login" runat="server" ErrorMessage="Email Required"></asp:RequiredFieldValidator>
+                <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" CssClass="input-bmargin input-sm input-width" /><br/>
+                <asp:RequiredFieldValidator ID="rfEmail" ControlToValidate="txtEmail" CssClass="input-width input-bmargin text-danger" Text="*"
+                     ValidationGroup="login" runat="server" ErrorMessage="Email Required"></asp:RequiredFieldValidator>
 
-                <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" TextMode="Password" />
-                <asp:RequiredFieldValidator ID="rfPassword" ControlToValidate="txtPassword" ValidationGroup="login" runat="server" ErrorMessage="Password Required"></asp:RequiredFieldValidator>
-                <asp:Label ID="lblError" runat="server" />
-                <input type="button" id="btnLogin" runat="server" validationgroup="login" value="Log In" />
-                
+                <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" TextMode="Password" CssClass="input-bmargin input-sm input-width" />
+                <asp:RequiredFieldValidator ID="rfPassword" ControlToValidate="txtPassword" CssClass="input-width input-bmargin"  ValidationGroup="login" runat="server" ErrorMessage="Password Required"></asp:RequiredFieldValidator><br />
+                <input type="button" id="btnLogin" runat="server" class="btn btn-info" validationgroup="login" value="Log In" />
+                <asp:Label ID="lblError" runat="server" CssClass="text-danger" />
+
             </div>
         </div>
         <div>
@@ -77,7 +78,7 @@
                         }
                         else {
                             alert(response);
-                            $("#lblError").val(response);
+                            $("#lblError").text(response);
                         }
                     },
                     error: function (error) {

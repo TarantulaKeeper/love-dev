@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class=""></div>
-                <div class="col-lg-2 col-md-4 col-sm-8 col-xs-12 col-lg-offset-10 col-md-offset-8 col-md-offset-6 col-sm-offset-4">
+                <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12 col-lg-offset-10 col-md-offset-8 col-md-offset-6 col-sm-offset-4">
                     <asp:Label ID="lblError" runat="server" />
                     <h1>Registration</h1>
                     <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="Reg" runat="server" />
@@ -22,7 +22,7 @@
                     <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" />
                     <asp:RequiredFieldValidator ID="rfEmail" runat="server" ControlToValidate="txtEmail" ValidationGroup="Reg" ErrorMessage="Email Required"></asp:RequiredFieldValidator><br />
                     <asp:Image ID="imgEmail" runat="server" Style="height: 25px; width: 25px; display: none;" />
-                    <asp:Label ID="lblEmail" runat="server" /><br />
+                    <asp:Label ID="lblEmail" runat="server" />
 
                     <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" />
                     <asp:RequiredFieldValidator ID="rfPassword" runat="server" ControlToValidate="txtPassword" ValidationGroup="Reg" ErrorMessage="Password Required"></asp:RequiredFieldValidator><br />
@@ -44,7 +44,7 @@
 
                     Profile Photo: <asp:FileUpload ID="fupPhoto" runat="server" />
                     <br />
-                    <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" ValidationGroup="Reg" />
+                    <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" ValidationGroup="Reg" CssClass="btn btn-info"/>
                 </div>
             </div>
         </div>
