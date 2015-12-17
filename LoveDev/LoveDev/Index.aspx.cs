@@ -22,6 +22,14 @@ namespace LoveDev
                 loadGenders();
                 loadSexualOrientations();
             }
+            if (Request.QueryString["message"] != null)
+            {
+                lblError.Text = Request.QueryString["message"];
+            }
+            else
+            {
+                lblError.Text = "";
+            }
         }
 
         public void loadGenders()
