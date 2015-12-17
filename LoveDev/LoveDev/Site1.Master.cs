@@ -15,17 +15,17 @@ namespace LoveDev
 
         }
 
-        protected void btnLogin_Click(object sender, EventArgs e)
-        {
-            bool success = Security.Login(txtEmail.Text, txtPassword.Text);
-            if (success)
-            {
-                Response.Redirect("Home.aspx?message=Login Successful!");
-            }
-            else
-            {
-                lblError.Text = "Invalid login, please try again.";
-            }
-        }
+        //protected void btnLogin_Click(object sender, EventArgs e)
+        //{
+        //    bool success = Security.Login(txtEmail.Text, txtPassword.Text);
+        //    if (success)
+        //    {
+        //        Response.Redirect("Home.aspx?message=Login Successful!");
+        //    }
+        //    else
+        //    {
+        //        lblError.Text = "Invalid login, please try again.";
+        //    }
+        //}
     }
 }

@@ -22,11 +22,11 @@
                 <div id="header_links" class="navbar-left">
                     <ul class="list-inline list-unstyled">
                         <li>
-                            <asp:LinkButton ID="lnkIndex" runat="server" class="navbar-link" Visible="false" PostBackUrl="~/Index.aspx" />
+                            <asp:LinkButton ID="lnkIndex" runat="server" class="navbar-link" Visible="false" PostBackUrl="~/Index.aspx"  />
                             <%--index page is set to visible false--%>
                         </li>
                         <li>
-                            <asp:LinkButton ID="lnkHome" runat="server" class="navbar-link" Visible="false" PostBackUrl="~/Home.aspx">Home</asp:LinkButton>
+                            <asp:LinkButton ID="lnkHome" runat="server" class="navbar-link" Visible="false" PostBackUrl="~/Home.aspx" >Home</asp:LinkButton>
                         </li>
                         <li>
                             <asp:LinkButton ID="lnkUserProfile" runat="server" class="navbar-link" Visible="false" PostBackUrl="~/UserProfile.aspx">Profile</asp:LinkButton>
@@ -46,12 +46,16 @@
         </div>
         <div class="backdrop"></div>
         <div class="box">
-            <div class="closebox text-danger">[x]</div>
+            <div class="closebox">[x]</div>
             <div id="login_form">
-                <asp:TextBox ID="txtEmail" runat="server" CssClass="input-sm input-bmargin" />
-                <asp:TextBox ID="txtPassword" runat="server" CssClass="input-sm input-bmargin" />
-                <asp:Button ID="btnLogin" Text="Log In" runat="server" OnClick="btnLogin_Click" CssClass="btn btn-info navbar-btn" />
-                <asp:Label ID="lblError" runat="server" CssClass="text-danger" />
+                <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" />
+                <asp:RequiredFieldValidator ID="rfEmail" ControlToValidate="txtEmail" ValidationGroup="login" runat="server" ErrorMessage="Email Required"></asp:RequiredFieldValidator>
+
+                <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" TextMode="Password" />
+                <asp:RequiredFieldValidator ID="rfPassword" ControlToValidate="txtPassword" ValidationGroup="login" runat="server" ErrorMessage="Password Required"></asp:RequiredFieldValidator>
+                <asp:Label ID="lblError" runat="server" />
+                <input type="button" id="btnLogin" runat="server" validationgroup="login" value="Log In" />
+                
             </div>
         </div>
         <div>
@@ -61,6 +65,28 @@
 
         <footer></footer>
     </form>
+    <script>
+        $(document).ready(function () {
+            $("#btnLogin").click(function () {
+                $.ajax("LoginHandler.ashx", {
+                    data: { Email: $("#txtEmail").val(), Password: $("#txtPassword").val() },
+                    success: function (response) {
+                        if (response == "Login Successful!") {
+                            alert(response);
+                            window.location.replace("http://localhost:42384/Index.aspx?message=" + response);
+                        }
+                        else {
+                            alert(response);
+                            $("#lblError").val(response);
+                        }
+                    },
+                    error: function (error) {
+                        alert(error)
+                    }
+                })
+            })
+        })
+    </script>
     <script type="text/javascript">
         $(document).ready(function () {
 
