@@ -27,14 +27,16 @@ namespace LoveDev
             ddlGender.DataTextField = "GenderName";
             ddlGender.DataValueField = "GenderId";
             ddlGender.DataBind();
+            ddlGender.Items.Insert(0, new ListItem("Select a Gender...", "-1"));
         }
         private void loadSexualOrientations()
         {
             DAL d = new DAL();
-            ddlOrientation.DataSource = d.ExecuteProcedure("spGetSexualOrientations");
+            ddlOrientation.DataSource = d.ExecuteProcedure("spGetSexualOrientations...");
             ddlOrientation.DataTextField = "SexualOrientationName";
             ddlOrientation.DataValueField = "SexualOrientationId";
             ddlOrientation.DataBind();
+            ddlOrientation.Items.Insert(0, new ListItem("Select an Orientation...","-1"));
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)

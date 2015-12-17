@@ -11,36 +11,36 @@
                 <div class="col-lg-2 col-md-4 col-sm-8 col-xs-12 col-lg-offset-10 col-md-offset-8 col-md-offset-6 col-sm-offset-4">
                     <asp:Label ID="lblError" runat="server" />
                     <h1>Registration</h1>
-                    <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="Reg" runat="server" />
+                    <asp:ValidationSummary ID="vsReg" ValidationGroup="Reg" runat="server" CssClass="text-danger" />
 
                     <asp:TextBox ID="txtFirstName" runat="server" placeholder="First Name" />
-                    <asp:RequiredFieldValidator ID="rfFirstName" ControlToValidate="txtFirstName" ValidationGroup="Reg" runat="server" ErrorMessage="First Name Required"></asp:RequiredFieldValidator><br />
+                    <asp:RequiredFieldValidator ID="rfFirstName" ControlToValidate="txtFirstName" ValidationGroup="Reg" Text="*" runat="server" ErrorMessage="First Name Required" CssClass="text-danger"></asp:RequiredFieldValidator><br />
 
                     <asp:TextBox ID="txtLastName" runat="server" placeholder="LastName" />
-                    <asp:RequiredFieldValidator ID="rfLastName" runat="server" ControlToValidate="txtLastName" ValidationGroup="Reg" ErrorMessage="Last Name Required"></asp:RequiredFieldValidator><br />
+                    <asp:RequiredFieldValidator ID="rfLastName" runat="server" ControlToValidate="txtLastName" ValidationGroup="Reg" Text="*" ErrorMessage="Last Name Required" CssClass="text-danger"></asp:RequiredFieldValidator><br />
 
                     <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" />
-                    <asp:RequiredFieldValidator ID="rfEmail" runat="server" ControlToValidate="txtEmail" ValidationGroup="Reg" ErrorMessage="Email Required"></asp:RequiredFieldValidator><br />
+                    <asp:RequiredFieldValidator ID="rfEmail" runat="server" ControlToValidate="txtEmail" ValidationGroup="Reg" Text="*" ErrorMessage="Email Required" CssClass="text-danger"></asp:RequiredFieldValidator>
                     <asp:Image ID="imgEmail" runat="server" Style="height: 25px; width: 25px; display: none;" />
                     <asp:Label ID="lblEmail" runat="server" /><br />
 
                     <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" />
-                    <asp:RequiredFieldValidator ID="rfPassword" runat="server" ControlToValidate="txtPassword" ValidationGroup="Reg" ErrorMessage="Password Required"></asp:RequiredFieldValidator><br />
+                    <asp:RequiredFieldValidator ID="rfPassword" runat="server" ControlToValidate="txtPassword" ValidationGroup="Reg" Text="*" ErrorMessage="Password Required" CssClass="text-danger"></asp:RequiredFieldValidator><br />
 
                     <asp:TextBox ID="txtAge" runat="server" TextMode="Number" placeholder="Age" />
-                    <asp:RequiredFieldValidator ID="rfAge" runat="server" ControlToValidate="txtAge" ValidationGroup="Reg" ErrorMessage="Age Required"></asp:RequiredFieldValidator><br />
+                    <asp:RequiredFieldValidator ID="rfAge" runat="server" ControlToValidate="txtAge" ValidationGroup="Reg" Text="*" ErrorMessage="Age Required" CssClass="text-danger"></asp:RequiredFieldValidator><br />
 
                     <asp:TextBox ID="txtCity" runat="server" placeholder="City" />
-                    <asp:RequiredFieldValidator ID="rfCity" runat="server" ControlToValidate="txtCity" ValidationGroup="Reg" ErrorMessage="City Required"></asp:RequiredFieldValidator><br />
+                    <asp:RequiredFieldValidator ID="rfCity" runat="server" ControlToValidate="txtCity" ValidationGroup="Reg" Text="*" ErrorMessage="City Required" CssClass="text-danger"></asp:RequiredFieldValidator><br />
 
                     <asp:TextBox ID="txtCountry" runat="server" placeholder="Country" />
-                    <asp:RequiredFieldValidator ID="rfCountry" runat="server" ControlToValidate="txtCountry" ValidationGroup="Reg" ErrorMessage="Country Required"></asp:RequiredFieldValidator><br />
+                    <asp:RequiredFieldValidator ID="rfCountry" runat="server" ControlToValidate="txtCountry" ValidationGroup="Reg" Text="*" ErrorMessage="Country Required" CssClass="text-danger"></asp:RequiredFieldValidator><br />
 
                     Gender: <asp:DropDownList ID="ddlGender" runat="server" />
-                    <asp:RequiredFieldValidator ID="rfGender" runat="server" ControlToValidate="ddlGender" ValidationGroup="Reg" ErrorMessage="Gender Required"></asp:RequiredFieldValidator><br />
+                    <asp:RequiredFieldValidator ID="rfGender" runat="server" ControlToValidate="ddlGender" ValidationGroup="Reg" Text="*" ErrorMessage="Gender Required" CssClass="text-danger" InitialValue="-1"></asp:RequiredFieldValidator><br />
 
                     Sexual Orientation: <asp:DropDownList ID="ddlOrientation" runat="server" />
-                    <asp:RequiredFieldValidator ID="rfOrientation" runat="server" ControlToValidate="ddlOrientation" ValidationGroup="Reg" ErrorMessage="Sexual Orientation Required"></asp:RequiredFieldValidator><br />
+                    <asp:RequiredFieldValidator ID="rfOrientation" runat="server" ControlToValidate="ddlOrientation" ValidationGroup="Reg" Text="*" ErrorMessage="Sexual Orientation Required" CssClass="text-danger" InitialValue="-1"></asp:RequiredFieldValidator><br />
 
                     Profile Photo: <asp:FileUpload ID="fupPhoto" runat="server" />
                     <br />
