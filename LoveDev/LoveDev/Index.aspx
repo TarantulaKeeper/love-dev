@@ -16,7 +16,7 @@
                     <asp:TextBox ID="txtFirstName" runat="server" placeholder="First Name" />
                     <asp:RequiredFieldValidator ID="rfFirstName" ControlToValidate="txtFirstName" ValidationGroup="Reg" Text="*" runat="server" ErrorMessage="First Name Required" CssClass="text-danger"></asp:RequiredFieldValidator><br />
 
-                    <asp:TextBox ID="txtLastName" runat="server" placeholder="LastName" />
+                    <asp:TextBox ID="txtLastName" runat="server" placeholder="Last Name" />
                     <asp:RequiredFieldValidator ID="rfLastName" runat="server" ControlToValidate="txtLastName" ValidationGroup="Reg" Text="*" ErrorMessage="Last Name Required" CssClass="text-danger"></asp:RequiredFieldValidator><br />
 
                     <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" />

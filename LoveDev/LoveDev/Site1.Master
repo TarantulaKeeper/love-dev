@@ -38,7 +38,7 @@
                 </div>
 
                 <div id="header_login" class="navbar-right">
-                    <span><a class="navbar-link ">Have an account?</a></span>
+                    <span style="color:#fff">Have an account?</span>
                     <span>
                         <input type="button" id="btnSignIn" value="Sign In" class="btn btn-info navbar-btn lightbox" /></span>
                 </div>
