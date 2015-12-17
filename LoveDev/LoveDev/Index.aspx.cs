@@ -15,6 +15,10 @@ namespace LoveDev
         {
             if (!IsPostBack)
             {
+                if (Security.CurrentUser != null)
+                {
+                    Response.Redirect("Home.aspx?message=Already Logged In");
+                }
                 loadGenders();
                 loadSexualOrientations();
             }
