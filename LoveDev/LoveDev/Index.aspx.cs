@@ -32,7 +32,7 @@ namespace LoveDev
         private void loadSexualOrientations()
         {
             DAL d = new DAL();
-            ddlOrientation.DataSource = d.ExecuteProcedure("spGetSexualOrientations...");
+            ddlOrientation.DataSource = d.ExecuteProcedure("spGetSexualOrientations");
             ddlOrientation.DataTextField = "SexualOrientationName";
             ddlOrientation.DataValueField = "SexualOrientationId";
             ddlOrientation.DataBind();
