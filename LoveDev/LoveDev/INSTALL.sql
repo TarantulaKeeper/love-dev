@@ -70,8 +70,7 @@ QuestionCategoryID INT FOREIGN KEY REFERENCES tbQuestionCategory(QuestionCategor
 UserCategoryValue INT
 )
 
-
-go
+-- TABLE FOR QUESTIONS
 
 CREATE TABLE tbQuestionsForQuiz(
 QuestionID INT PRIMARY KEY IDENTITY(1,1),
@@ -114,7 +113,7 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  (7, 'How often do you find yourself on social media?'),
  (7, 'How important is Technology to you in terms of Match Making?')
 
-
+ go
 --</Tables>
 --<Procedures>
 
