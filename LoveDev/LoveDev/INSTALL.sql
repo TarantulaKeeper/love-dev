@@ -59,7 +59,7 @@ QuestionCategoryName VARCHAR(50)
 )
 
 INSERT INTO tbQuestionCategory(QuestionCategoryName) VALUES ('Politics'), ('Personality Type'), ('Music'), 
-('Athletics'), ('Hobbies'), ('Intellectual')
+('Athletics'), ('Hobbies'), ('Intellectual'), ('Technologies')
 
 -- TABLE FOR USER VALUES TO CATEGORY QUESTIONS
 
@@ -72,6 +72,40 @@ UserCategoryValue INT
 
 
 go
+
+CREATE TABLE tbQuestionsForQuiz(
+QuestionID INT PRIMARY KEY IDENTITY(1,1),
+QuestionCategoryID  INT FOREIGN KEY REFERENCES tbQuestionCategory(QuestionCategoryID),
+QuestionString VARCHAR(250)
+)
+INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES 
+--[POLITICS SECTION]
+
+--[PERSONALITY SECTION]
+(2, 'Are you a talkative person?'), (2, 'Do you attend parties?'),
+(2, 'Do you enjoy being with people opposed to being alone?'),
+(2, 'Do you find it easy to introduce yourself for the first time?'),
+(2, 'Do you tend to respond to messages quickly?'),
+(2, 'Do you initiate conversations?'), (2, 'Do you enjoy being the center of attention?'), 
+(2, 'Are you cool headed?'), (2, 'Is it easy for you to relate to others emotions?'),
+(2, 'Are you an outgoing person?'),
+
+--[MUSIC SECTION]
+(3, 'Do you listen to music?'), (3, 'Do you listen to music on a daily basis?'),
+(3, 'Do you purchase music?'), (3,'Do you attend concerts?'),
+ (3, 'Can you play an instrument?'), (3,'Do you feel that music plays an important role in your day?'),
+ (3, 'Do you follow music news?'), (3, 'Do you feel music helps you concentrate?'),
+ --[ATHLETICS SECTION]
+
+ --[HOBBIES SECTION]
+
+ --[INTELLECTUAL SECTION]
+
+ --[TECHNOLOGIES SECTION]
+ (7, 'Do you enjoy playing with technology?'), (7, 'Do you write code?'),
+ (7, 'Does your family come to you for technology help?'),
+
+
 --</Tables>
 --<Procedures>
 
