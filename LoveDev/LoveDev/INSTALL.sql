@@ -95,6 +95,9 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
 (3, 'Do you purchase music?'), (3,'Do you attend concerts?'),
  (3, 'Can you play an instrument?'), (3,'Do you feel that music plays an important role in your day?'),
  (3, 'Do you follow music news?'), (3, 'Do you feel music helps you concentrate?'),
+ (3, 'How often do you find yourself singing in the shower?'),
+ (3, 'How often does music inspire you to take new heights?'),
+ (3, 'How important is Music to your matchmaking results?'),
  --[ATHLETICS SECTION]
 
  --[HOBBIES SECTION]
@@ -103,7 +106,13 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
 
  --[TECHNOLOGIES SECTION]
  (7, 'Do you enjoy playing with technology?'), (7, 'Do you write code?'),
- (7, 'Does your family come to you for technology help?'),
+ (7, 'Does your family come to you for technology help?'), (7, 'Do you play video games?'),
+ (7, 'Do you feel technology plays a vital role in your daily activites?'),
+ (7, 'Is technology ESSENTIAL to your life? (Not including job)'),
+ (7, 'How often do you find yourself immersed in techonology?'),
+ (7, 'Do you follow new Technology releases?'),
+ (7, 'How often do you find yourself on social media?'),
+ (7, 'How important is Technology to you in terms of Match Making?')
 
 
 --</Tables>
