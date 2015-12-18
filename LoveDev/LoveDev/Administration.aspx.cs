@@ -12,9 +12,13 @@ namespace LoveDev
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Security.CurrentUser == null || !Security.CurrentUser.IsAdmin)
+            if (Security.CurrentUser == null)
             {
-                Response.Redirect("Index.aspx?Must be logged in to view that page");
+                Response.Redirect("Index.aspx?message=Must be logged in to view that page");
+            }
+            else if (!Security.CurrentUser.IsAdmin)
+            {
+                Response.Redirect("Home.aspx?message=Must be an administrator to view that page");
             }
         }
     }

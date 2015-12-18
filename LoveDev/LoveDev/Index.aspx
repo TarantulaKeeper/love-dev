@@ -9,7 +9,7 @@
             <div class="row">
                 <div class=""></div>
                 <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12 col-lg-offset-9 col-md-offset-8 col-md-offset-6 col-sm-offset-4">
-                    <asp:Label ID="lblError" runat="server" />
+                    <asp:Label ID="lblError" runat="server" CssClass="text-danger" />
                     <h1>Registration</h1>
                     <asp:ValidationSummary ID="vsReg" ValidationGroup="Reg" runat="server" CssClass="text-danger" />
 

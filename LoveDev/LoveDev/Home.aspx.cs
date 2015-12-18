@@ -16,7 +16,7 @@ namespace LoveDev
             {
                 if (Security.CurrentUser == null)
                 {
-                    Response.Redirect("Index.aspx?Must be logged in to view that page");
+                    Response.Redirect("Index.aspx?message=Must be logged in to view that page");
                 }
             }
         }
