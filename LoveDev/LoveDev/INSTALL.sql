@@ -51,6 +51,13 @@ INSERT INTO tbUser(FirstName, LastName, Password, Age, City, Country, Email, IsA
 		('Chris', 'Jeffrey', '1234', 21, 'Winnipeg', 'Canada', 'chris.jeffrey@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 5, 5),
 		('Joseph', 'Maglalang', '1234', 30, 'Winnipeg', 'Canada', 'joseph.maglalang@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 6, 1)
 
+CREATE TABLE tbUserGuid
+(
+UserGuidID INT PRIMARY KEY IDENTITY(1,1),
+UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
+Guid varchar(50)
+)
+
 -- TABLE FOR QUESTION CATEGORIES
 
 CREATE TABLE tbQuestionCategory(
@@ -116,6 +123,36 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  go
 --</Tables>
 --<Procedures>
+CREATE PROC spSetGuid
+(
+@UserID INT,
+@Guid VARCHAR(50)
+)
+AS BEGIN
+	INSERT INTO tbUserGuid (UserID, Guid) VALUES (@UserID, @Guid)
+END
+GO
+
+CREATE PROC spVerifyUser
+(
+@UserID int
+)
+AS BEGIN
+	IF EXISTS (SELECT UserGuidID FROM tbUserGuid WHERE UserID = @UserID)
+	BEGIN
+		DELETE FROM tbUserGuid
+			   WHERE UserID = @UserID
+		UPDATE tbUser SET
+			IsActive = 1
+		WHERE UserID = @UserID
+		SELECT 1
+	END
+	ELSE
+	BEGIN
+		SELECT 0
+	END
+END
+GO
 
 CREATE PROC spGetUserByID
 (
@@ -169,7 +206,7 @@ CREATE PROC spRegisterUser
 @City	   VARCHAR(50),
 @Country   VARCHAR(50),
 @Email	   VARCHAR(50),
-@IsActive  BIT =1, --Is Active by default
+@IsActive  BIT =0, --Is not Active by default
 @IsAdmin   BIT =0, --Is not Admin by default
 @UserPhoto VARCHAR(250) ='Images/NoPhoto.jpg', --Sets photo to default photo if one is not provided
 @GenderID  INT,
