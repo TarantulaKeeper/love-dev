@@ -9,11 +9,11 @@ namespace LoveDevLib
 {
     class SendMail
     {
-        public SendMail(string From, string To, string Subject, string Body)
+        public SendMail(string To, string Subject, string Body)
         {
             MailMessage message = new MailMessage();
 
-            message.From = new MailAddress(From);
+            message.From = new MailAddress("lovedevhelp@gmail.com");
             message.To.Add(new MailAddress(To));
             message.Subject = Subject;
             message.Body = Body;

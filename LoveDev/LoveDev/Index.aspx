@@ -93,7 +93,7 @@
                     success: function (response) {
                         $('#<%= imgEmail.ClientID %>').attr("src", response).show();
                         if (response == "Images\\RedX.png") {
-                            $('#<%= lblEmail.ClientID %>').html("USERNAME NOT AVAILABLE").css('color', 'red');
+                            $('#<%= lblEmail.ClientID %>').html("Not Available").css('color', 'red');
                             $('#<%= btnRegister.ClientID%>').attr('disabled', 'disabled');
                         }
                         else {

@@ -43,7 +43,7 @@ namespace LoveDevLib
             return user;
         }
 
-        static public void RegisterUser(string FirstName, string LastName, string Password, int Age, string City, string Country, string Email, int GenderID, int SexualOrientationID)
+        static public void RegisterUser(string FirstName, string LastName, string Password, int Age, string City, string Country, string Email, int GenderID, int SexualOrientationID, Guid g)
         {
             DAL d = new DAL();
             d.AddParam("FirstName", FirstName);
@@ -55,10 +55,12 @@ namespace LoveDevLib
             d.AddParam("Email", Email);
             d.AddParam("GenderID", GenderID);
             d.AddParam("SexualOrientation", SexualOrientationID);
+            d.AddParam("Guid", g);
             d.ExecuteNonQuery("spRegisterUser");
+            SendEmailVerification(Email, FirstName + " " + LastName, g);
         }
 
-        static public void RegisterUser(string FirstName, string LastName, string Password, int Age, string City, string Country, string Email, int GenderID, int SexualOrientationID, string UserPhoto)
+        static public void RegisterUser(string FirstName, string LastName, string Password, int Age, string City, string Country, string Email, int GenderID, int SexualOrientationID, string UserPhoto, Guid g)
         {
             DAL d = new DAL();
             d.AddParam("FirstName", FirstName);
@@ -70,8 +72,22 @@ namespace LoveDevLib
             d.AddParam("Email", Email);
             d.AddParam("GenderID", GenderID);
             d.AddParam("SexualOrientation", SexualOrientationID);
+            d.AddParam("Guid", g);
             d.AddParam("UserPhoto", UserPhoto);
             d.ExecuteNonQuery("spRegisterUser");
+            SendEmailVerification(Email, FirstName + " " + LastName, g);
+        }
+
+        static public void SendEmailVerification(string Email, string Name, Guid g)
+        {
+            SendMail sm = new SendMail(Email, "Welcome " + Name + "!", "Please click the following link to complete your registration. Thank you for being a part of LoveDev and we hope you enjoy our services! \n"
+                + "http://localhost:42384/Index.aspx?guid=" + g);
+        }
+
+        static public void VerifyUser()
+        {
+            DAL d = new DAL();
+            d.AddParam()
         }
     }
 }

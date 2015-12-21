@@ -19,6 +19,10 @@ namespace LoveDev
                 {
                     Response.Redirect("Home.aspx?message=Already Logged In");
                 }
+                if (Request.QueryString["guid"] != null)
+                {
+
+                }
                 loadGenders();
                 loadSexualOrientations();
             }
@@ -53,18 +57,18 @@ namespace LoveDev
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            
+            Guid g = new Guid();
             lblError.Text = "Registration Successful!";
             if (fupPhoto.HasFiles)
             {
                 string Path = Server.MapPath(".").ToString() + "\\Images\\PROFILE_PHOTOS\\";
                 string fileName = fupPhoto.FileName;
                 fupPhoto.PostedFile.SaveAs(Path + txtFirstName.Text + "_" + txtLastName.Text);
-                UserManager.RegisterUser(txtFirstName.Text, txtLastName.Text, txtPassword.Text, int.Parse(txtAge.Text), txtCity.Text, txtCountry.Text, txtEmail.Text, int.Parse(ddlGender.SelectedValue), int.Parse(ddlOrientation.SelectedValue), "Images/" + fupPhoto.FileName);
+                UserManager.RegisterUser(txtFirstName.Text, txtLastName.Text, txtPassword.Text, int.Parse(txtAge.Text), txtCity.Text, txtCountry.Text, txtEmail.Text, int.Parse(ddlGender.SelectedValue), int.Parse(ddlOrientation.SelectedValue), "Images/" + fupPhoto.FileName, g);
             }
             else
             {
-                UserManager.RegisterUser(txtFirstName.Text, txtLastName.Text, txtPassword.Text, int.Parse(txtAge.Text), txtCity.Text, txtCountry.Text, txtEmail.Text, int.Parse(ddlGender.SelectedValue), int.Parse(ddlOrientation.SelectedValue));
+                UserManager.RegisterUser(txtFirstName.Text, txtLastName.Text, txtPassword.Text, int.Parse(txtAge.Text), txtCity.Text, txtCountry.Text, txtEmail.Text, int.Parse(ddlGender.SelectedValue), int.Parse(ddlOrientation.SelectedValue),g);
             }
         }
     }
