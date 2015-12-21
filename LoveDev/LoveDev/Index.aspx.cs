@@ -72,5 +72,11 @@ namespace LoveDev
                 UserManager.RegisterUser(txtFirstName.Text, txtLastName.Text, txtPassword.Text, int.Parse(txtAge.Text), txtCity.Text, txtCountry.Text, txtEmail.Text, int.Parse(ddlGender.SelectedValue), int.Parse(ddlOrientation.SelectedValue),g);
             }
         }
+
+        protected void btnContinue_register_Click(object sender, EventArgs e)
+        {
+            pnlWelcome.Visible = false;
+            pnlRegistration_cont.Visible = true;
+        }
     }
 }

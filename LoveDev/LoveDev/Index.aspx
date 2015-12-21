@@ -5,82 +5,93 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="webpage_content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-9 col-md-8 col-md-6 col-sm-4">
-                    <asp:ValidationSummary ID="vsReg" ValidationGroup="Reg" runat="server" CssClass="text-danger" />
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12">
-                    <asp:Label ID="lblError" runat="server" CssClass="text-danger" />
-                    <h1>Registration</h1>
-
-                    <div class="input-group input-group-sm">
-                        <asp:TextBox ID="txtFirstName" runat="server" placeholder="First Name" CssClass="form-control" />
-                        <span class="input-group-addon">
-                            <asp:RequiredFieldValidator ID="rfFirstName" ControlToValidate="txtFirstName" ValidationGroup="Reg"
-                                Text="*" runat="server" ErrorMessage="First Name Required" CssClass="text-danger"></asp:RequiredFieldValidator><br />
-                        </span>
-                    </div>
-                    <div class="input-group input-group-sm">
-                        <asp:TextBox ID="txtLastName" runat="server" placeholder="Last Name" CssClass="form-control" />
-                        <span class="input-group-addon">
-                            <asp:RequiredFieldValidator ID="rfLastName" runat="server" ControlToValidate="txtLastName"
-                                ValidationGroup="Reg" Text="*" ErrorMessage="Last Name Required" CssClass="text-danger"></asp:RequiredFieldValidator><br />
-                        </span>
-                    </div>
-                    <div class="input-group input-group-sm">
-                        <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" CssClass="form-control" />
-                        <span class="input-group-addon">
-                            <asp:RequiredFieldValidator ID="rfEmail" runat="server" ControlToValidate="txtEmail"
-                                ValidationGroup="Reg" Text="*" ErrorMessage="Email Required" CssClass="text-danger"></asp:RequiredFieldValidator>
-                            <asp:Image ID="imgEmail" runat="server" Style="height: 17px; width: 17px; display: none;" />
-                            <asp:Label ID="lblEmail" runat="server" /><br />
-                        </span>
-                    </div>
-                    <div class="input-group input-group-sm">
-                        <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" CssClass="form-control" />
-
-                        <span class="input-group-addon">
-                            <asp:RequiredFieldValidator ID="rfPassword" runat="server" ControlToValidate="txtPassword"
-                                ValidationGroup="Reg" Text="*" ErrorMessage="Password Required" CssClass="text-danger"></asp:RequiredFieldValidator><br />
-                        </span>
-                    </div>
-                    <div class="input-group input-group-sm">
-                        <asp:TextBox ID="txtAge" runat="server" TextMode="Number" placeholder="Age" CssClass="form-control" />
-                        <span class="input-group-addon">
-                            <asp:RequiredFieldValidator ID="rfAge" runat="server" ControlToValidate="txtAge"
-                                ValidationGroup="Reg" Text="*" ErrorMessage="Age Required" CssClass="text-danger"></asp:RequiredFieldValidator><br />
-                        </span>
-                    </div>
-                    <div class="input-group input-group-sm">
-                        <asp:TextBox ID="txtCity" runat="server" placeholder="City" CssClass="form-control" />
-                        <span class="input-group-addon">
-                            <asp:RequiredFieldValidator ID="rfCity" runat="server" ControlToValidate="txtCity"
-                                ValidationGroup="Reg" Text="*" ErrorMessage="City Required" CssClass="text-danger"></asp:RequiredFieldValidator><br />
-                        </span>
-                    </div>
-                    <div class="input-group input-group-sm">
-                        <asp:TextBox ID="txtCountry" runat="server" placeholder="Country" CssClass="form-control" />
-                        <span class="input-group-addon">
-                            <asp:RequiredFieldValidator ID="rfCountry" runat="server" ControlToValidate="txtCountry"
-                                ValidationGroup="Reg" Text="*" ErrorMessage="Country Required" CssClass="text-danger"></asp:RequiredFieldValidator><br />
-                        </span>
-                    </div>
-                    Gender:
+        <asp:Panel ID="pnlWelcome" runat="server">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        Gender:
                     <asp:DropDownList ID="ddlGender" runat="server" />
-                    <asp:RequiredFieldValidator ID="rfGender" runat="server" ControlToValidate="ddlGender" ValidationGroup="Reg" Text="*" ErrorMessage="Gender Required" CssClass="text-danger" InitialValue="-1"></asp:RequiredFieldValidator><br />
+                        <asp:RequiredFieldValidator ID="rfGender" runat="server" ControlToValidate="ddlGender" ValidationGroup="Reg" Text="*" ErrorMessage="Gender Required" CssClass="text-danger" InitialValue="-1"></asp:RequiredFieldValidator><br />
 
-                    Sexual Orientation:
+                        Sexual Orientation:
                     <asp:DropDownList ID="ddlOrientation" runat="server" />
-                    <asp:RequiredFieldValidator ID="rfOrientation" runat="server" ControlToValidate="ddlOrientation" ValidationGroup="Reg" Text="*" ErrorMessage="Sexual Orientation Required" CssClass="text-danger" InitialValue="-1"></asp:RequiredFieldValidator><br />
-
-                    Profile Photo:
-                    <asp:FileUpload ID="fupPhoto" runat="server" />
-                    <br />
-                    <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" ValidationGroup="Reg" CssClass="btn btn-info" />
+                        <asp:RequiredFieldValidator ID="rfOrientation" runat="server" ControlToValidate="ddlOrientation" ValidationGroup="Reg" Text="*" ErrorMessage="Sexual Orientation Required" CssClass="text-danger" InitialValue="-1"></asp:RequiredFieldValidator><br />
+                        <asp:Button ID="btnContinue_register" Text="Continue" runat="server" OnClick="btnContinue_register_Click" />
+                        <%--Profile Photo: set to false for now.--%>
+                    <asp:FileUpload ID="fupPhoto" runat="server" Visible="false"/>
+                    </div>
                 </div>
             </div>
-        </div>
+        </asp:Panel>
+
+        <asp:Panel runat="server" ID="pnlRegistration_cont" Visible="false">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-9 col-md-8 col-md-6 col-sm-4">
+                        <asp:ValidationSummary ID="vsReg" ValidationGroup="Reg" runat="server" CssClass="text-danger" />
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12">
+                        <asp:Label ID="lblError" runat="server" CssClass="text-danger" />
+                        <h1>Registration</h1>
+
+                        <div class="input-group input-group-sm">
+                            <asp:TextBox ID="txtFirstName" runat="server" placeholder="First Name" CssClass="form-control" />
+                            <span class="input-group-addon">
+                                <asp:RequiredFieldValidator ID="rfFirstName" ControlToValidate="txtFirstName" ValidationGroup="Reg"
+                                    Text="*" runat="server" ErrorMessage="First Name Required" CssClass="text-danger"></asp:RequiredFieldValidator><br />
+                            </span>
+                        </div>
+                        <div class="input-group input-group-sm">
+                            <asp:TextBox ID="txtLastName" runat="server" placeholder="Last Name" CssClass="form-control" />
+                            <span class="input-group-addon">
+                                <asp:RequiredFieldValidator ID="rfLastName" runat="server" ControlToValidate="txtLastName"
+                                    ValidationGroup="Reg" Text="*" ErrorMessage="Last Name Required" CssClass="text-danger"></asp:RequiredFieldValidator><br />
+                            </span>
+                        </div>
+                        <div class="input-group input-group-sm">
+                            <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" CssClass="form-control" />
+                            <span class="input-group-addon">
+                                <asp:RequiredFieldValidator ID="rfEmail" runat="server" ControlToValidate="txtEmail"
+                                    ValidationGroup="Reg" Text="*" ErrorMessage="Email Required" CssClass="text-danger"></asp:RequiredFieldValidator>
+                                <asp:Image ID="imgEmail" runat="server" Style="height: 15px; width: 15px; display: none;" />
+                                <asp:Label ID="lblEmail" runat="server" /><br />
+                            </span>
+                        </div>
+                        <div class="input-group input-group-sm">
+                            <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" CssClass="form-control" />
+
+                            <span class="input-group-addon">
+                                <asp:RequiredFieldValidator ID="rfPassword" runat="server" ControlToValidate="txtPassword"
+                                    ValidationGroup="Reg" Text="*" ErrorMessage="Password Required" CssClass="text-danger"></asp:RequiredFieldValidator><br />
+                            </span>
+                        </div>
+                        <div class="input-group input-group-sm">
+                            <asp:TextBox ID="txtAge" runat="server" TextMode="Number" placeholder="Age" CssClass="form-control" />
+                            <span class="input-group-addon">
+                                <asp:RequiredFieldValidator ID="rfAge" runat="server" ControlToValidate="txtAge"
+                                    ValidationGroup="Reg" Text="*" ErrorMessage="Age Required" CssClass="text-danger"></asp:RequiredFieldValidator><br />
+                            </span>
+                        </div>
+                        <div class="input-group input-group-sm">
+                            <asp:TextBox ID="txtCity" runat="server" placeholder="City" CssClass="form-control" />
+                            <span class="input-group-addon">
+                                <asp:RequiredFieldValidator ID="rfCity" runat="server" ControlToValidate="txtCity"
+                                    ValidationGroup="Reg" Text="*" ErrorMessage="City Required" CssClass="text-danger"></asp:RequiredFieldValidator><br />
+                            </span>
+                        </div>
+                        <div class="input-group input-group-sm">
+                            <asp:TextBox ID="txtCountry" runat="server" placeholder="Country" CssClass="form-control" />
+                            <span class="input-group-addon">
+                                <asp:RequiredFieldValidator ID="rfCountry" runat="server" ControlToValidate="txtCountry"
+                                    ValidationGroup="Reg" Text="*" ErrorMessage="Country Required" CssClass="text-danger"></asp:RequiredFieldValidator><br />
+                            </span>
+                        </div>
+                        <br />
+                        <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" ValidationGroup="Reg" CssClass="btn btn-info" />
+                    </div>
+                </div>
+            </div>
+        </asp:Panel>
     </div>
     <script>
         $(document).ready(function () {
