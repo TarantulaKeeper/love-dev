@@ -7,9 +7,9 @@ using System.Net.Mail;
 
 namespace LoveDevLib
 {
-    class SendMail
+    static public class SendMail
     {
-        public SendMail(string To, string Subject, string Body)
+        static public void Send(string To, string Subject, string Body)
         {
             MailMessage message = new MailMessage();
 

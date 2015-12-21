@@ -123,33 +123,25 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  go
 --</Tables>
 --<Procedures>
-CREATE PROC spSetGuid
-(
-@UserID INT,
-@Guid VARCHAR(50)
-)
-AS BEGIN
-	INSERT INTO tbUserGuid (UserID, Guid) VALUES (@UserID, @Guid)
-END
-GO
 
 CREATE PROC spVerifyUser
 (
-@UserID int
+@Guid varchar(50)
 )
 AS BEGIN
-	IF EXISTS (SELECT UserGuidID FROM tbUserGuid WHERE UserID = @UserID)
+	IF EXISTS (SELECT UserGuidID FROM tbUserGuid WHERE Guid = @Guid)
 	BEGIN
+	DECLARE @UserID int = (SELECT UserID FROM tbUserGuid WHERE Guid = @Guid)
 		DELETE FROM tbUserGuid
 			   WHERE UserID = @UserID
 		UPDATE tbUser SET
 			IsActive = 1
 		WHERE UserID = @UserID
-		SELECT 1
+		SELECT '1'
 	END
 	ELSE
 	BEGIN
-		SELECT 0
+		SELECT '0'
 	END
 END
 GO
@@ -171,7 +163,7 @@ CREATE PROC spLogin
 @Password VARCHAR(50)
 )
 AS BEGIN
-	IF EXISTS (SELECT UserId from tbUser where Email = @Email)
+	IF EXISTS (SELECT UserId from tbUser where Email = @Email and Password = @Password)
 	BEGIN
 		select UserID, FirstName, LastName, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID, SexualOrientationID
 		from   tbUser
@@ -210,11 +202,14 @@ CREATE PROC spRegisterUser
 @IsAdmin   BIT =0, --Is not Admin by default
 @UserPhoto VARCHAR(250) ='Images/NoPhoto.jpg', --Sets photo to default photo if one is not provided
 @GenderID  INT,
-@SexualOrientation INT
+@SexualOrientation INT,
+@Guid VARCHAR(50)
 )
 AS BEGIN
 	INSERT INTO tbUser (FirstName,LastName,Password,Age,City,Country,Email,IsActive,IsAdmin,UserPhoto,GenderID,SexualOrientationID) VALUES
 					   (@FirstName,@LastName,@Password,@Age,@City,@Country,@Email,@IsActive,@IsAdmin,@UserPhoto,@GenderID,@SexualOrientation)
+	INSERT INTO tbUserGuid (UserID, Guid) VALUES
+						(SCOPE_IDENTITY(),@Guid)
 END
 GO
 
@@ -235,3 +230,4 @@ select * from tbUser
 exec spGetUserByID 3
 exec spLogin'chris.jeffrey@robertsoncollege.net',1234
 exec spUsernameCheck 'chris.jeffrey@robertsoncollege.net'
+select * from tbUserGuid

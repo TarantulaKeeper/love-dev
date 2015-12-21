@@ -78,16 +78,25 @@ namespace LoveDevLib
             SendEmailVerification(Email, FirstName + " " + LastName, g);
         }
 
-        static public void SendEmailVerification(string Email, string Name, Guid g)
+        static private void SendEmailVerification(string Email, string Name, Guid g)
         {
-            SendMail sm = new SendMail(Email, "Welcome " + Name + "!", "Please click the following link to complete your registration. Thank you for being a part of LoveDev and we hope you enjoy our services! \n"
+            SendMail.Send(Email, "Welcome " + Name + "!", "Please click the following link to complete your registration. Thank you for being a part of LoveDev and we hope you enjoy our services! \n"
                 + "http://localhost:42384/Index.aspx?guid=" + g);
         }
 
-        static public void VerifyUser()
+        static public string VerifyUser(string g)
         {
             DAL d = new DAL();
-            d.AddParam()
+            d.AddParam("Guid", g);
+            string result = d.ExecuteScalar("spVerifyUser");
+            if (result == "1")
+            {
+                return "Account Verified!";
+            }
+            else
+            {
+                return "Something went wrong, please try again.";
+            }
         }
     }
 }
