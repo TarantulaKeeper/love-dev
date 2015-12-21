@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL_Project;
+using System.Data;
 
 namespace LoveDevMatchmakingLib
 {
@@ -10,9 +12,21 @@ namespace LoveDevMatchmakingLib
     {
         public int UserGeneralInterestValue { get; set; }
         public int MatchedUserGeneralInterestValue { get; set; }
-        public int UserPersonalityValue { get; set; }
+        public int UserPersonalityValue { get; set; }   
         public int MatchedUserPersonalityValue { get; set; }
 
+        static DAL dal;
+
+        public MatchMakingAlgorithm(int UserID)
+        {
+            dal = new DAL();
+            dal.AddParam("UserID", UserID);
+            DataSet ds = dal.ExecuteProcedure("spGetUserGeneralInterests");
+            this.UserGeneralInterestValue = (int)ds.Tables[0].Rows[0]["generalInterests"];
+            dal.AddParam("UserID", UserID);
+            DataSet dsTwo = dal.ExecuteProcedure("spGetUserPersonalityValue");
+            this.UserPersonalityValue = (int)ds.Tables[0].Rows[0]["UserCategoryValue"];
+        }
         // Personality :
         // 10 point difference available between both users. If not users will not be matched.
         //General Interest:

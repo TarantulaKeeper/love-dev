@@ -184,6 +184,10 @@
       <Project>{9d425c7f-5244-4573-a01a-aa4313ffbe9d}</Project>
       <Name>LoveDevLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LoveDevMatchmakingLib\LoveDevMatchmakingLib.csproj">
+      <Project>{f8bf02f1-f3c4-4722-9511-5631ec2a6dd1}</Project>
+      <Name>LoveDevMatchmakingLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\PROFILE_PHOTOS\" />
