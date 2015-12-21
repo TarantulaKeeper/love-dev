@@ -19,17 +19,22 @@ namespace LoveDev
                 {
                     Response.Redirect("Home.aspx?message=Already Logged In");
                 }
+                if (Request.QueryString["guid"] != null)
+                {
+                    lblError.Text = UserManager.VerifyUser(Request.QueryString["guid"]);
+                }               
+                if (Request.QueryString["message"] != null)
+                {
+                    lblError.Text = Request.QueryString["message"];
+                }
                 loadGenders();
                 loadSexualOrientations();
-            }
-            if (Request.QueryString["message"] != null)
-            {
-                lblError.Text = Request.QueryString["message"];
             }
             else
             {
                 lblError.Text = "";
             }
+            
         }
 
         public void loadGenders()
@@ -53,19 +58,25 @@ namespace LoveDev
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            
-            lblError.Text = "Registration Successful!";
+            Guid g = Guid.NewGuid();
+            lblError.Text = "Registration Successful! Please check your emails to verify account.";
             if (fupPhoto.HasFiles)
             {
                 string Path = Server.MapPath(".").ToString() + "\\Images\\PROFILE_PHOTOS\\";
                 string fileName = fupPhoto.FileName;
                 fupPhoto.PostedFile.SaveAs(Path + txtFirstName.Text + "_" + txtLastName.Text);
-                UserManager.RegisterUser(txtFirstName.Text, txtLastName.Text, txtPassword.Text, int.Parse(txtAge.Text), txtCity.Text, txtCountry.Text, txtEmail.Text, int.Parse(ddlGender.SelectedValue), int.Parse(ddlOrientation.SelectedValue), "Images/" + fupPhoto.FileName);
+                UserManager.RegisterUser(txtFirstName.Text, txtLastName.Text, txtPassword.Text, int.Parse(txtAge.Text), txtCity.Text, txtCountry.Text, txtEmail.Text, int.Parse(ddlGender.SelectedValue), int.Parse(ddlOrientation.SelectedValue), "Images/" + fupPhoto.FileName, g);
             }
             else
             {
-                UserManager.RegisterUser(txtFirstName.Text, txtLastName.Text, txtPassword.Text, int.Parse(txtAge.Text), txtCity.Text, txtCountry.Text, txtEmail.Text, int.Parse(ddlGender.SelectedValue), int.Parse(ddlOrientation.SelectedValue));
+                UserManager.RegisterUser(txtFirstName.Text, txtLastName.Text, txtPassword.Text, int.Parse(txtAge.Text), txtCity.Text, txtCountry.Text, txtEmail.Text, int.Parse(ddlGender.SelectedValue), int.Parse(ddlOrientation.SelectedValue),g);
             }
+        }
+
+        protected void btnContinue_register_Click(object sender, EventArgs e)
+        {
+            pnlWelcome.Visible = false;
+            pnlRegistration_cont.Visible = true;
         }
     }
 }

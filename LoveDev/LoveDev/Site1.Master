@@ -74,7 +74,7 @@
                     success: function (response) {
                         if (response == "Login Successful!") {
                             alert(response);
-                            window.location.replace("http://localhost:42384/Index.aspx?message=" + response);
+                            window.location.replace("http://localhost:42384/Home.aspx?message=" + response);
                         }
                         else {
                             alert(response);

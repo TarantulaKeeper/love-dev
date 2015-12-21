@@ -88,7 +88,7 @@ namespace DAL_Project
             conn.Open();
             da.Fill(dsResult);
             conn.Close();
-
+            ClearParams();
             return dsResult;
         }
 
@@ -108,7 +108,7 @@ namespace DAL_Project
             conn.Open();
             string result = cmd.ExecuteScalar().ToString();
             conn.Close();
-
+            ClearParams();
             return result;
         }
 
@@ -129,6 +129,7 @@ namespace DAL_Project
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
+            ClearParams();
         }
 
         /// <summary>
