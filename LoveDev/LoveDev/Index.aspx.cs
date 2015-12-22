@@ -19,22 +19,19 @@ namespace LoveDev
                 {
                     Response.Redirect("Home.aspx?message=Already Logged In");
                 }
-                if (Request.QueryString["guid"] != null)
-                {
-                    lblError.Text = UserManager.VerifyUser(Request.QueryString["guid"]);
-                }               
-                if (Request.QueryString["message"] != null)
-                {
-                    lblError.Text = Request.QueryString["message"];
-                }
+                
                 loadGenders();
                 loadSexualOrientations();
             }
-            else
+            if (Request.QueryString["guid"] != null)
             {
-                lblError.Text = "";
+                lblError.Text = UserManager.VerifyUser(Request.QueryString["guid"]);
             }
-            
+            if (Request.QueryString["message"] != null)
+            {
+                lblError.Text = Request.QueryString["message"];
+            }
+
         }
 
         public void loadGenders()

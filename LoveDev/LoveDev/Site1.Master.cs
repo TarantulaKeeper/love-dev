@@ -12,20 +12,38 @@ namespace LoveDev
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Security.CurrentUser != null)
+            {
+                
+                SetLinksVisible(true);
+            }
+            else
+            {
+                SetLinksVisible(false);
+            }
         }
 
-        //protected void btnLogin_Click(object sender, EventArgs e)
-        //{
-        //    bool success = Security.Login(txtEmail.Text, txtPassword.Text);
-        //    if (success)
-        //    {
-        //        Response.Redirect("Home.aspx?message=Login Successful!");
-        //    }
-        //    else
-        //    {
-        //        lblError.Text = "Invalid login, please try again.";
-        //    }
-        //}
+        private void SetLinksVisible(bool b)
+        {
+            btnSignIn.Visible = !b;
+            lnkHome.Visible = b;
+            lnkUserProfile.Visible = b;
+            btnSignOut.Visible = b;
+            if (b && Security.CurrentUser.IsAdmin)
+            {
+                lnkAdministration.Visible = true;
+            }
+            else
+            {
+                lnkAdministration.Visible = false;
+            }
+        }
+
+        protected void btnSignOut_Click(object sender, EventArgs e)
+        {
+            Security.Logout();
+            Response.Redirect("Index.aspx");
+            
+        }
     }
 }
