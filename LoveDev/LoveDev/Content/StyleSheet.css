@@ -58,7 +58,9 @@
 .input-width{
     width:100%;
 }
-
+.ddlContainer{
+    /*Chris' class*/
+}
 
 /*---------media queries-------------*/
 /*removes white space when screen is xs*/
