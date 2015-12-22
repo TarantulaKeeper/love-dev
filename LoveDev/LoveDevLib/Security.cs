@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Web;
 using DAL_Project;
 
 namespace LoveDevLib
@@ -15,11 +16,11 @@ namespace LoveDevLib
         {
             get
             {
-                User user = (User)System.Web.HttpContext.Current.Session["User"];
-                if (System.Web.HttpContext.Current.Session["User"] != null)
+                User user = (User)HttpContext.Current.Session["User"];
+                if (HttpContext.Current.Session["User"] != null)
                 {
                     user = UserManager.getUserByID(user.UserID);
-                    System.Web.HttpContext.Current.Session["User"] = user;
+                    HttpContext.Current.Session["User"] = user;
                 }
                 return user;
             }
@@ -31,7 +32,7 @@ namespace LoveDevLib
             User user = UserManager.getUser(Email, Password);
             if (user != null)
             {
-                System.Web.HttpContext.Current.Session["User"] = user;
+                HttpContext.Current.Session["User"] = user;
                 return true;
             }
             else
@@ -46,7 +47,7 @@ namespace LoveDevLib
         }
         static public void Logout()
         {
-            System.Web.HttpContext.Current.Session.Abandon();
+            HttpContext.Current.Session.Abandon();
         }
     }
 }
