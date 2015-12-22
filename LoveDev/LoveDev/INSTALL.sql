@@ -229,12 +229,19 @@ GO
 CREATE PROC spGetUserGeneralInterests
 (@UserID int)
 AS BEGIN
-	SELECT SUM(tbUserValues.UserCategoryValue) as [generalInterests]
+	SELECT tbUserValues.UserCategoryValue as [generalInterests]
 		FROM tbUserValues WHERE tbUserValues.UserID = @UserID 
 			AND tbUserValues.QuestionCategoryID!=2
 END
 GO
 
+CREATE PROC spGetUserSexualityAndGender
+(@UserID int)
+AS BEGIN
+	SELECT tbUser.GenderID, tbUser.SexualOrientationID
+		FROM tbUser WHERE tbUser.UserID = @UserID
+END
+GO
 CREATE PROC spGetUserPersonalityValue
 (@UserID int)
 AS BEGIN 
@@ -243,7 +250,16 @@ AS BEGIN
 			AND tbUserValues.QuestionCategoryID = 2
 END
 GO
+
+CREATE PROC spGetAllUsersForMatchh
+(@UserID int)
+AS BEGIN 
+	SELECT * FROM tbUser
+		WHERE tbUser.UserID != @UserID
+END
+GO
 exec spGetUserGeneralInterests 1
+
 select * from tbUser
 --Testing Procs
 exec spGetUserByID 3
