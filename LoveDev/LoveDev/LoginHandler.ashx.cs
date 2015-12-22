@@ -9,7 +9,7 @@ namespace LoveDev
     /// <summary>
     /// Summary description for LoginHandler
     /// </summary>
-    public class LoginHandler : IHttpHandler
+    public class LoginHandler : IHttpHandler, System.Web.SessionState.IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)
