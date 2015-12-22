@@ -42,6 +42,8 @@ namespace LoveDev
         protected void btnSignOut_Click(object sender, EventArgs e)
         {
             Security.Logout();
+            Response.Redirect("Index.aspx");
+            
         }
     }
 }
