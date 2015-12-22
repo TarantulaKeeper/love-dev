@@ -76,6 +76,7 @@ UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
 QuestionCategoryID INT FOREIGN KEY REFERENCES tbQuestionCategory(QuestionCategoryID),
 UserCategoryValue INT
 )
+INSERT INTO tbUserValues(UserID, QuestionCategoryID, UserCategoryValue) VALUES (1,1,20), (1,2, 25), (1, 3, 30)
 
 -- TABLE FOR QUESTIONS
 
@@ -225,6 +226,24 @@ AS BEGIN
 END
 GO
 
+CREATE PROC spGetUserGeneralInterests
+(@UserID int)
+AS BEGIN
+	SELECT SUM(tbUserValues.UserCategoryValue) as [generalInterests]
+		FROM tbUserValues WHERE tbUserValues.UserID = @UserID 
+			AND tbUserValues.QuestionCategoryID!=2
+END
+GO
+
+CREATE PROC spGetUserPersonalityValue
+(@UserID int)
+AS BEGIN 
+	SELECT tbUserValues.UserCategoryValue 
+		FROM tbUserValues WHERE tbUserValues.UserID = @UserID
+			AND tbUserValues.QuestionCategoryID = 2
+END
+GO
+exec spGetUserGeneralInterests 1
 select * from tbUser
 --Testing Procs
 exec spGetUserByID 3
