@@ -50,9 +50,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DAL_Project\DAL_Project.csproj">
+      <Project>{e3026510-5b06-4ff2-816b-3f06cbe5f7df}</Project>
+      <Name>DAL_Project</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LoveDevLib\LoveDevLib.csproj">
       <Project>{9d425c7f-5244-4573-a01a-aa4313ffbe9d}</Project>
       <Name>LoveDevLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LoveDevMatchmakingLib\LoveDevMatchmakingLib.csproj">
+      <Project>{f8bf02f1-f3c4-4722-9511-5631ec2a6dd1}</Project>
+      <Name>LoveDevMatchmakingLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LoveDev\LoveDev.csproj">
+      <Project>{7cc791c9-e5ca-4eb5-a703-4efca9b40f1c}</Project>
+      <Name>LoveDev</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

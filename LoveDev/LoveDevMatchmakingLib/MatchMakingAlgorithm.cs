@@ -9,7 +9,7 @@ using LoveDevLib;
 
 namespace LoveDevMatchmakingLib
 {
-    class MatchMakingAlgorithm
+    public class MatchMakingAlgorithm
     {
         public UserValues UserValues { get; set; }
         public List<UserValues> MatchedUserGeneralInterestValue { get; set; }
