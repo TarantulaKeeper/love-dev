@@ -27,10 +27,10 @@
         <asp:Panel runat="server" ID="pnlRegistration_cont" Visible="false">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-9 col-md-8 col-md-6 col-sm-4">
+                    <div class="col-lg-8 col-md-8 col-md-6 col-sm-4">
                         <asp:ValidationSummary ID="vsReg" ValidationGroup="Reg" runat="server" CssClass="text-danger" />
                     </div>
-                    <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                         <asp:Label ID="lblError" runat="server" CssClass="text-danger" />
                         <h1>Registration</h1>
 
