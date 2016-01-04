@@ -8,9 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Developing Your Love | LoveDev</title>
     <link href="Content/StyleSheet.css" rel="stylesheet" />
-    <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="Content/bootstrap-theme.css" rel="stylesheet" />
     <script src="Scripts/jquery-2.1.4.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -40,7 +38,8 @@
                 <div id="header_login" class="navbar-right">
                     <span style="color:#fff">Have an account?</span>
                     <span>
-                        <input type="button" id="btnSignIn" value="Sign In" class="btn btn-info navbar-btn lightbox" /></span>
+                        <input type="button" id="btnSignIn" runat="server" value="Sign In" class="btn btn-info navbar-btn lightbox" /></span>
+                    <span><asp:Button ID="btnSignOut" runat="server" Text="Sign Out" CssClass="btn btn-info navbar-btn" Visible="false" OnClick="btnSignOut_Click" /></span>
                 </div>
             </div>
         </div>
@@ -71,6 +70,7 @@
             $("#btnLogin").click(function () {
                 $.ajax("LoginHandler.ashx", {
                     data: { Email: $("#txtEmail").val(), Password: $("#txtPassword").val() },
+                    cache:false,
                     success: function (response) {
                         if (response == "Login Successful!") {
                             alert(response);
