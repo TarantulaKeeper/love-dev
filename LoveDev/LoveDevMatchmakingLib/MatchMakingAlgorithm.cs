@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL_Project;
 using System.Data;
-using LoveDevLib
+using LoveDevLib;
 
 namespace LoveDevMatchmakingLib
 {
@@ -13,6 +13,7 @@ namespace LoveDevMatchmakingLib
     {
         public UserValues UserValues { get; set; }
         public List<UserValues> MatchedUserGeneralInterestValue { get; set; }
+        public List<int> Matches { get; set; }
 
         static DAL dal;
 
@@ -20,7 +21,20 @@ namespace LoveDevMatchmakingLib
         {
             UserValues = new UserValues(Security.CurrentUser.UserID);
             MatchedUserGeneralInterestValue = UsersToMatch.GetAllUsers();
+            foreach (UserValues u in MatchedUserGeneralInterestValue)
+            {
+                if(u.CompareTo(this.UserValues) == 1)
+                {
+                    Matches.Add(u.UserID);
+                }
+            }
+            foreach(int m in Matches)
+            {
+                dal.AddParam("UserID", UserValues.UserID);
+                dal.AddParam("MatchID", m);
+                dal.ExecuteNonQuery("spSaveMatches"); //proc needed
 
+            }
         }
         // Personality :
         // 10 point difference available between both users. If not users will not be matched.
