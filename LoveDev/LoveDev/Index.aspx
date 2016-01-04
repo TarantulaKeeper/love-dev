@@ -7,18 +7,20 @@
     <div class="webpage_content">
         <asp:Panel ID="pnlWelcome" runat="server">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        Gender:
+                <div class="jumbotron">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            Gender:
                     <asp:DropDownList ID="ddlGender" runat="server" CssClass="ddlContainer" />
-                        <asp:RequiredFieldValidator ID="rfGender" runat="server" ControlToValidate="ddlGender" ValidationGroup="ddl" Text="*" ErrorMessage="Gender Required" CssClass="text-danger" InitialValue="-1"></asp:RequiredFieldValidator><br />
+                            <asp:RequiredFieldValidator ID="rfGender" runat="server" ControlToValidate="ddlGender" ValidationGroup="ddl" Text="*" ErrorMessage="Gender Required" CssClass="text-danger" InitialValue="-1"></asp:RequiredFieldValidator><br />
 
-                        Sexual Orientation:
+                            Sexual Orientation:
                     <asp:DropDownList ID="ddlOrientation" runat="server" CssClass="ddlContainer" />
-                        <asp:RequiredFieldValidator ID="rfOrientation" runat="server" ControlToValidate="ddlOrientation" ValidationGroup="ddl" Text="*" ErrorMessage="Sexual Orientation Required" CssClass="text-danger" InitialValue="-1"></asp:RequiredFieldValidator><br />
-                        <asp:Button ID="btnContinue_register" Text="Continue" runat="server" ValidationGroup="ddl" OnClick="btnContinue_register_Click" />
-                        <%--Profile Photo: set to false for now.--%>
-                    <asp:FileUpload ID="fupPhoto" runat="server" Visible="false"/>
+                            <asp:RequiredFieldValidator ID="rfOrientation" runat="server" ControlToValidate="ddlOrientation" ValidationGroup="ddl" Text="*" ErrorMessage="Sexual Orientation Required" CssClass="text-danger" InitialValue="-1"></asp:RequiredFieldValidator><br />
+                            <asp:Button ID="btnContinue_register" Text="Continue" runat="server" ValidationGroup="ddl" OnClick="btnContinue_register_Click" />
+                            <%--Profile Photo: set to false for now.--%>
+                            <asp:FileUpload ID="fupPhoto" runat="server" Visible="false" />
+                        </div>
                     </div>
                 </div>
             </div>
