@@ -30,7 +30,16 @@ namespace LoveDevMatchmakingLib
             DataSet dsTwo = dal.ExecuteProcedure("spGetUserPersonalityValue");
             this.UserPersonalityValue = (int)ds.Tables[0].Rows[0]["UserCategoryValue"];
         }
-
+       public static int CalculateValues(List<bool> valList)
+        {
+            int count = 0;
+            for (int i = 0; i < valList.Count; i++)
+            {
+                if (valList[i] == true)
+                    count++;
+            }
+            return count;
+        }
         public int CompareTo(UserValues other)
         {
             List<bool> TrueFalseMatchList = new List<bool>();
@@ -70,10 +79,15 @@ namespace LoveDevMatchmakingLib
                     TrueFalseMatchList.Add(false);
                 }
             }
-            if (TrueFalseMatchList.Count(true) > 3)
+            if (CalculateValues(TrueFalseMatchList) >= 3)
             {
-
+                Result = 1;
             }
+            else
+            {
+                Result = 0;
+            }
+            return Result;
         }
     }
 }
