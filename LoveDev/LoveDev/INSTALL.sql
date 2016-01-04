@@ -76,7 +76,14 @@ UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
 QuestionCategoryID INT FOREIGN KEY REFERENCES tbQuestionCategory(QuestionCategoryID),
 UserCategoryValue INT
 )
-INSERT INTO tbUserValues(UserID, QuestionCategoryID, UserCategoryValue) VALUES (1,1,20), (1,2, 25), (1, 3, 30)
+INSERT INTO tbUserValues(UserID, QuestionCategoryID, UserCategoryValue) VALUES (1,1,20), (1,2, 25), (1, 3, 30),(1,4,22),(1,5,11),(1,6,20),(1,7,20)
+
+CREATE TABLE tbMatches
+(
+MatchID INT PRIMARY KEY IDENTITY(1,1),
+UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
+OtherUserID INT FOREIGN KEY REFERENCES tbUser(UserID)
+)
 
 -- TABLE FOR QUESTIONS
 
@@ -231,7 +238,6 @@ CREATE PROC spGetUserGeneralInterests
 AS BEGIN
 	SELECT tbUserValues.UserCategoryValue as [generalInterests]
 		FROM tbUserValues WHERE tbUserValues.UserID = @UserID 
-			AND tbUserValues.QuestionCategoryID!=2
 END
 GO
 
@@ -258,7 +264,30 @@ AS BEGIN
 		WHERE tbUser.UserID != @UserID
 END
 GO
+
+CREATE PROC spSaveMatches
+(
+@UserID INT,
+@MatchID INT
+)
+AS BEGIN
+	INSERT INTO tbMatches (UserID, MatchID) VALUES (@UserID, @MatchID)
+END
+GO
+
+CREATE PROC spGetAllUsersForMatching
+(
+@UserID INT
+)
+AS BEGIN
+	SELECT UserID 
+	FROM tbUser
+	WHERE UserID != @UserID
+END
+GO
+
 exec spGetUserGeneralInterests 1
+exec spGetUserPersonalityValue 1
 
 select * from tbUser
 --Testing Procs

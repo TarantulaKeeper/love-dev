@@ -11,7 +11,7 @@ namespace LoveDevMatchmakingLib
     {
         public int UserID { get; set; }
         public List<int> UserGeneralInterestValue { get; set; }
-        public int UserPersonalityValue { get; set; }
+        //public int UserPersonalityValue { get; set; }
 
 
         static DAL dal;
@@ -26,9 +26,9 @@ namespace LoveDevMatchmakingLib
             {
                 this.UserGeneralInterestValue.Add(Convert.ToInt32(row));
             }
-            dal.AddParam("UserID", UserID);
-            DataSet dsTwo = dal.ExecuteProcedure("spGetUserPersonalityValue");
-            this.UserPersonalityValue = (int)ds.Tables[0].Rows[0]["UserCategoryValue"];
+            //dal.AddParam("UserID", UserID);
+            //DataSet dsTwo = dal.ExecuteProcedure("spGetUserPersonalityValue");
+            //this.UserPersonalityValue = (int)ds.Tables[0].Rows[0]["UserCategoryValue"];
         }
        public static int CalculateValues(List<bool> valList)
         {

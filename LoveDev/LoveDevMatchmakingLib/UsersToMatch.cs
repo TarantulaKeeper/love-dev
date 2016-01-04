@@ -15,7 +15,8 @@ namespace LoveDevMatchmakingLib
         static public List<UserValues> GetAllUsers()
         {
             dal = new DAL();
-            DataSet ds = dal.ExecuteProcedure("spGetAllUsersForMatching"); //proc needed
+            dal.AddParam("UserID", 1); //Security.CurrentUser.UserID);
+            DataSet ds = dal.ExecuteProcedure("spGetAllUsersForMatching"); 
             List<UserValues> UVList = new List<UserValues>();
             foreach (DataRow row in ds.Tables[0].Rows)
             {

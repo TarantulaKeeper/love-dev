@@ -17,22 +17,22 @@ namespace LoveDevMatchmakingLib
 
         static DAL dal;
 
-        public MatchMakingAlgorithm()
+        public void CalculateAndSaveMatches()
         {
-            UserValues = new UserValues(Security.CurrentUser.UserID);
+            UserValues = new UserValues(1);  //(Security.CurrentUser.UserID);
             MatchedUserGeneralInterestValue = UsersToMatch.GetAllUsers();
             foreach (UserValues u in MatchedUserGeneralInterestValue)
             {
-                if(u.CompareTo(this.UserValues) == 1)
+                if (u.CompareTo(this.UserValues) == 1)
                 {
                     Matches.Add(u.UserID);
                 }
             }
-            foreach(int m in Matches)
+            foreach (int m in Matches)
             {
                 dal.AddParam("UserID", UserValues.UserID);
                 dal.AddParam("MatchID", m);
-                dal.ExecuteNonQuery("spSaveMatches"); //proc needed
+                dal.ExecuteNonQuery("spSaveMatches"); 
 
             }
         }
