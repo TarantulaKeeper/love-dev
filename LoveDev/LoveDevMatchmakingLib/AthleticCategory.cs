@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LoveDevMatchmakingLib
 {
-    class AthleticCategory:Questions
+  public class AthleticCategory:Questions
     {
         public int TotalValue { get; set; }
         public List<string> Questions { get; set; }

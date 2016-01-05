@@ -43,6 +43,11 @@ namespace LoveDevLib
             return user;
         }
 
+        static public List<User> GetMatches(int UserID)
+        {
+
+        }
+
         static public void RegisterUser(string FirstName, string LastName, string Password, int Age, string City, string Country, string Email, int GenderID, int SexualOrientationID, Guid g)
         {
             DAL d = new DAL();

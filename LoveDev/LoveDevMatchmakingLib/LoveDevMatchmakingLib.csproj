@@ -57,6 +57,10 @@
       <Project>{e3026510-5b06-4ff2-816b-3f06cbe5f7df}</Project>
       <Name>DAL_Project</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LoveDevLib\LoveDevLib.csproj">
+      <Project>{9d425c7f-5244-4573-a01a-aa4313ffbe9d}</Project>
+      <Name>LoveDevLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
