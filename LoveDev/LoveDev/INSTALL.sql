@@ -99,10 +99,9 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
 (2, 'Are you a talkative person?'), (2, 'Do you attend parties?'),
 (2, 'Do you enjoy being with people opposed to being alone?'),
 (2, 'Do you find it easy to introduce yourself for the first time?'),
-(2, 'Do you tend to respond to messages quickly?'),
 (2, 'Do you initiate conversations?'), (2, 'Do you enjoy being the center of attention?'), 
 (2, 'Are you cool headed?'), (2, 'Is it easy for you to relate to others emotions?'),
-(2, 'Are you an outgoing person?'),
+(2, 'Are you an outgoing person?'), (2, 'How important is Personality to your matchmaking results?'),
 
 --[MUSIC SECTION]
 (3, 'Do you listen to music?'), (3, 'Do you listen to music on a daily basis?'),
@@ -110,14 +109,23 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  (3, 'Can you play an instrument?'), (3,'Do you feel that music plays an important role in your day?'),
  (3, 'Do you follow music news?'), (3, 'Do you feel music helps you concentrate?'),
  (3, 'How often do you find yourself singing in the shower?'),
- (3, 'How often does music inspire you to take new heights?'),
  (3, 'How important is Music to your matchmaking results?'),
  --[ATHLETICS SECTION]
-
- --[HOBBIES SECTION]
+ (4, 'Do you enjoy playing sports?'), (4, 'Do you enjoy watching sports?'),
+ (4, 'Do you agree with the concept of sports?'), (4, 'How often do you play sports?'),
+(4, 'Are sports prominent in your daily life?'), (4, 'Do you keep up with sports news?'),
+(4, 'Is exercise a daily activity for you?'),  (4, 'Do you often get together with friends to watch sports games?'),
+(4, 'How often are you at the gym?'), (4, 'How important is Sports and Athletics to your match making results?'),
+ --[HOBBIES/ART SECTION]
+ (5, 'Do you enjoy art?'), (5, 'Do you understand art?'), (5, 'Do you paint/draw in your spare time?'), 
+ (5, 'Do you consider yourself a creative person?'), (5, 'Do you keep up with Art culture and news?'), 
+ (5, 'Do you feel Art is a staple to society?'), (5, 'Do you express yourself with Art?'),
+ (5, 'Do you enjoy photography?'), (5, 'Do you shoot photography?'),
+ (5, 'How important is Art to your matchmaking results?'),
 
  --[INTELLECTUAL SECTION]
-
+ (6, 'Do you enjoy reading?'), (6, 'Do you feel as if you are an intellectual individual?'),
+ (6, 'Do you keep up with World events?'), (6, 'Do you feel knowledge is more important than wealth?'),
  --[TECHNOLOGIES SECTION]
  (7, 'Do you enjoy playing with technology?'), (7, 'Do you write code?'),
  (7, 'Does your family come to you for technology help?'), (7, 'Do you play video games?'),

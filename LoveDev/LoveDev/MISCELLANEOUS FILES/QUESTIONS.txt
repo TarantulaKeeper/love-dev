@@ -11,11 +11,17 @@
 9)
 10)
 
-JOSEPH - HOBBIES
+JOSEPH - HOBBIES/ARTS
+1)
+2)
+3)
 
 CHRIS - ATHLETICS
+1)Do you enjoy playing sports?
+2)Do you enjoy watching sports?
+3)
 
-TJ - POLITICS
+TJ - INTELLECTUAL
 
 GROUP EFFORT - Techonologies
 1)Do you enjoy playing with technology?
