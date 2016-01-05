@@ -76,7 +76,8 @@ UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
 QuestionCategoryID INT FOREIGN KEY REFERENCES tbQuestionCategory(QuestionCategoryID),
 UserCategoryValue INT
 )
-INSERT INTO tbUserValues(UserID, QuestionCategoryID, UserCategoryValue) VALUES (1,1,20), (1,2, 25), (1, 3, 30),(1,4,22),(1,5,11),(1,6,20),(1,7,20)
+INSERT INTO tbUserValues(UserID, QuestionCategoryID, UserCategoryValue) VALUES (1,1,20),(1,2,25),(1,3,30),(1,4,22),(1,5,11),(1,6,20),(1,7,20),
+																			   (3,1,20),(3,2,25),(3,3,30),(3,4,22),(3,5,11),(3,6,20),(3,7,20)
 
 CREATE TABLE tbMatches
 (
@@ -84,6 +85,7 @@ MatchID INT PRIMARY KEY IDENTITY(1,1),
 UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
 OtherUserID INT FOREIGN KEY REFERENCES tbUser(UserID)
 )
+INSERT INTO tbMatches (UserID, OtherUserID) VALUES (1,3)
 
 -- TABLE FOR QUESTIONS
 
@@ -223,13 +225,15 @@ GO
 
 CREATE PROC spGetGenders
 AS BEGIN
-	SELECT * FROM tbGender
+	SELECT * 
+	FROM tbGender
 END
 GO
 
 CREATE PROC spGetSexualOrientations
 AS BEGIN
-	SELECT * FROM tbSexualOrientation
+	SELECT * 
+	FROM tbSexualOrientation
 END
 GO
 
@@ -237,7 +241,8 @@ CREATE PROC spGetUserGeneralInterests
 (@UserID int)
 AS BEGIN
 	SELECT tbUserValues.UserCategoryValue as [generalInterests]
-		FROM tbUserValues WHERE tbUserValues.UserID = @UserID 
+	FROM tbUserValues 
+	WHERE tbUserValues.UserID = @UserID 
 END
 GO
 
@@ -245,33 +250,37 @@ CREATE PROC spGetUserSexualityAndGender
 (@UserID int)
 AS BEGIN
 	SELECT tbUser.GenderID, tbUser.SexualOrientationID
-		FROM tbUser WHERE tbUser.UserID = @UserID
+	FROM   tbUser 
+	WHERE  tbUser.UserID = @UserID
 END
 GO
 CREATE PROC spGetUserPersonalityValue
 (@UserID int)
 AS BEGIN 
 	SELECT tbUserValues.UserCategoryValue 
-		FROM tbUserValues WHERE tbUserValues.UserID = @UserID
-			AND tbUserValues.QuestionCategoryID = 2
+	FROM   tbUserValues
+	WHERE  tbUserValues.UserID = @UserID
+	AND    tbUserValues.QuestionCategoryID = 2
 END
 GO
 
-CREATE PROC spGetAllUsersForMatchh
+CREATE PROC spGetAllUsersForMatch
 (@UserID int)
 AS BEGIN 
-	SELECT * FROM tbUser
-		WHERE tbUser.UserID != @UserID
+	SELECT * 
+	FROM tbUser
+	WHERE tbUser.UserID != @UserID
 END
 GO
 
 CREATE PROC spSaveMatches
 (
 @UserID INT,
-@MatchID INT
+@OtherUserID INT
 )
 AS BEGIN
-	INSERT INTO tbMatches (UserID, MatchID) VALUES (@UserID, @MatchID)
+	INSERT INTO tbMatches (UserID, OtherUserID) VALUES (@UserID, @OtherUserID)
+	INSERT INTO tbMatches (UserID, OtherUserID) VALUES (@OtherUserID, @UserID)
 END
 GO
 
@@ -281,8 +290,19 @@ CREATE PROC spGetAllUsersForMatching
 )
 AS BEGIN
 	SELECT UserID 
-	FROM tbUser
-	WHERE UserID != @UserID
+	FROM   tbUser
+	WHERE  UserID != @UserID
+END
+GO
+
+CREATE PROC spGetUserIDMatches
+(
+@UserID int
+)
+AS BEGIN
+	SELECT * 
+	FROM  tbMatches
+	WHERE UserID = @UserID
 END
 GO
 

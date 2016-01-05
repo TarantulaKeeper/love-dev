@@ -33,7 +33,7 @@ namespace LoveDevLib
             {
                 DataRow DR = ds.Tables[0].Rows[0];
 
-                user = new User(int.Parse(DR["userID"].ToString()), DR["FirstName"].ToString(), DR["LastName"].ToString(), int.Parse(DR["Age"].ToString()), DR["City"].ToString(), DR["Country"].ToString(),
+                user = new User(int.Parse(DR["UserID"].ToString()), DR["FirstName"].ToString(), DR["LastName"].ToString(), int.Parse(DR["Age"].ToString()), DR["City"].ToString(), DR["Country"].ToString(),
                     DR["Email"].ToString(), int.Parse(DR["GenderID"].ToString()), int.Parse(DR["SexualOrientationID"].ToString()), (bool)DR["IsAdmin"], (bool)DR["IsActive"]);
             }
             else
@@ -43,9 +43,21 @@ namespace LoveDevLib
             return user;
         }
 
-        static public List<User> GetMatches(int UserID)
+        static public List<int> GetMatches(int UserID)
         {
-
+            DAL d = new DAL();
+            d.AddParam("UserID", UserID);
+            DataSet ds = d.ExecuteProcedure("spGetUserIDMatches");
+            int rowCount = ds.Tables[0].Rows.Count;
+            List<int> MatchUserIDList = new List<int>();
+            if (rowCount < 0)
+            {
+                for (int i = 0; i < rowCount; i++)
+                {
+                    MatchUserIDList.Add(int.Parse(ds.Tables[0].Rows[i]["OtherUserID"].ToString()));
+                }
+            }
+            return MatchUserIDList;
         }
 
         static public void RegisterUser(string FirstName, string LastName, string Password, int Age, string City, string Country, string Email, int GenderID, int SexualOrientationID, Guid g)
