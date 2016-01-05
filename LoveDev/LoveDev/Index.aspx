@@ -15,7 +15,7 @@
                                 <h2>Let us help in you develop your love.</h2>
                             </div>
                             <div class="displayinlineblock">
-                                <span style="padding-right:10px;">I am </span>
+                                <span style="padding-right: 10px;">I am </span>
                                 <span class="dropdown">
                                     <asp:DropDownList ID="ddlGender" runat="server" CssClass="btn btn-default dropdown-toggle" />
 
@@ -28,15 +28,13 @@
                                 </span>
 
                             </div>
-                        <%--Profile Photo: set to false for now.--%>
-                        <asp:FileUpload ID="fupPhoto" runat="server" Visible="false" />
+                            <%--Profile Photo: set to false for now.--%>
+                            <asp:FileUpload ID="fupPhoto" runat="server" Visible="false" />
                         </div>
                     </div>
                 </div>
             </div>
         </asp:Panel>
-    </div>
-
 
     <asp:Panel runat="server" ID="pnlRegistration_cont" Visible="false">
         <div class="container-fluid">

@@ -131,6 +131,20 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  (7, 'How important is Technology to you in terms of Match Making?')
 
  go
+
+ -- TABLE FOR MESSAGES
+
+ CREATE TABLE tbMessages(
+ MessageID INT PRIMARY KEY IDENTITY(1,1),
+ FromUserID INT,
+ ToUserID INT,
+ Message VARCHAR(MAX),
+ DateSent DATE DEFAULT GETDATE(),
+ MessageRead BIT
+ )
+
+ GO
+
 --</Tables>
 --<Procedures>
 
@@ -303,6 +317,62 @@ AS BEGIN
 	SELECT * 
 	FROM  tbMatches
 	WHERE UserID = @UserID
+END
+GO
+
+-- PROCEDURE FOR SENDING A MESSAGE
+
+CREATE PROCEDURE spSendMessage(
+@FromUserID INT,
+@ToUserID INT,
+@Message VARCHAR(MAX)
+)
+
+AS BEGIN
+	INSERT INTO tbMessages(FromUserID, ToUserID, Message) VALUES (@FromUserID, @ToUserID, @Message)
+	SELECT 'Success'
+END
+GO
+
+-- PROCEDURE TO CHECK FOR NEW, UNREAD MAIL
+
+CREATE PROCEDURE spCheckMail(
+@UserID INT
+)
+
+AS BEGIN
+	IF EXISTS (SELECT * FROM tbMessages WHERE ToUserID = @ToUserID AND MessageRead = 0)
+		BEGIN
+			SELECT 'Unread Mail'
+		END
+	ELSE
+		BEGIN
+			SELECT 'No Mail'
+		END
+END
+GO
+
+-- PROCEDURE TO GET USERS FOR INBOX
+
+CREATE PROCEDURE spGetUsersForInbox(
+@UserID INT
+)
+
+AS BEGIN
+	SELECT FromUserID FROM tbMessages WHERE ToUserID = @UserID
+END
+GO
+
+-- PROCEDURE FOR GETTING MESSAGES
+
+CREATE PROCEDURE spGetMessages(
+@FromUserID INT,
+@ToUserID INT
+)
+
+AS BEGIN
+	SELECT * FROM tbMessages WHERE (FromUsername = @FromUsername AND ToUsername = @ToUsername) OR
+	 (ToUsername = @FromUsername AND FromUsername = @ToUsername) ORDER BY DateSent DESC
 END
 GO
 
