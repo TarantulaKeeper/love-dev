@@ -352,6 +352,30 @@ AS BEGIN
 END
 GO
 
+-- PROCEDURE TO GET USERS FOR INBOX
+
+CREATE PROCEDURE spGetUsersForInbox(
+@UserID INT
+)
+
+AS BEGIN
+	SELECT FromUserID FROM tbMessages WHERE ToUserID = @UserID
+END
+GO
+
+-- PROCEDURE FOR GETTING MESSAGES
+
+CREATE PROCEDURE spGetMessages(
+@FromUserID INT,
+@ToUserID INT
+)
+
+AS BEGIN
+	SELECT * FROM tbMessages WHERE (FromUsername = @FromUsername AND ToUsername = @ToUsername) OR
+	 (ToUsername = @FromUsername AND FromUsername = @ToUsername) ORDER BY DateSent DESC
+END
+GO
+
 exec spGetUserGeneralInterests 1
 exec spGetUserPersonalityValue 1
 
