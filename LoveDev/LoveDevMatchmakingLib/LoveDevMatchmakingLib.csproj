@@ -49,7 +49,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Questions.cs" />
     <Compile Include="TechonologyCategory.cs" />
-    <Compile Include="UsersToMatch.cs" />
     <Compile Include="UserValues.cs" />
   </ItemGroup>
   <ItemGroup>

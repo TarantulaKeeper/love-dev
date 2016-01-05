@@ -18,13 +18,14 @@ namespace LoveDevMatchmakingLib
 
         public UserValues(int UserID)
         {
+            UserGeneralInterestValue = new List<int>();
             this.UserID = UserID;
             dal = new DAL();
             dal.AddParam("UserID", UserID);
             DataSet ds = dal.ExecuteProcedure("spGetUserGeneralInterests");
             foreach (DataRow row in ds.Tables[0].Rows)
             {
-                this.UserGeneralInterestValue.Add(Convert.ToInt32(row));
+                this.UserGeneralInterestValue.Add(Convert.ToInt32(row["generalInterests"]));
             }
             //dal.AddParam("UserID", UserID);
             //DataSet dsTwo = dal.ExecuteProcedure("spGetUserPersonalityValue");

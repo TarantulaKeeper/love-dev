@@ -85,7 +85,7 @@ MatchID INT PRIMARY KEY IDENTITY(1,1),
 UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
 OtherUserID INT FOREIGN KEY REFERENCES tbUser(UserID)
 )
-INSERT INTO tbMatches (UserID, OtherUserID) VALUES (1,3)
+--INSERT INTO tbMatches (UserID, OtherUserID) VALUES (1,3)
 
 -- TABLE FOR QUESTIONS
 
@@ -287,7 +287,7 @@ AS BEGIN
 END
 GO
 
-CREATE PROC spSaveMatches
+CREATE PROC spSaveMatch
 (
 @UserID INT,
 @OtherUserID INT
