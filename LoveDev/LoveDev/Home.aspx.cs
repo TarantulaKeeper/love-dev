@@ -20,5 +20,10 @@ namespace LoveDev
                 }
             }
         }
+
+        protected void btnMailMessage_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Inbox.aspx");
+        }
     }
 }

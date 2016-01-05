@@ -35,7 +35,7 @@
                     </ul>
                 </div>
 
-                <div id="header_login" class="navbar-right">
+                <div id="header_login" class="navbar-right navsigin">
                     <span style="color:#fff">Have an account?</span>
                     <span>
                         <input type="button" id="btnSignIn" runat="server" value="Sign In" class="btn btn-info navbar-btn lightbox" /></span>
@@ -53,7 +53,7 @@
 
                 <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" TextMode="Password" CssClass="input-bmargin input-sm input-width" />
                 <asp:RequiredFieldValidator ID="rfPassword" ControlToValidate="txtPassword" CssClass="input-width input-bmargin"  ValidationGroup="login" runat="server" ErrorMessage="Password Required"></asp:RequiredFieldValidator><br />
-                <input type="button" id="btnLogin" runat="server" class="btn btn-info" validationgroup="login" value="Log In" />
+                <input type="button" id="btnLogin" runat="server" class="btn btn-success" validationgroup="login" value="Log In" />
                 <asp:Label ID="lblError" runat="server" CssClass="text-danger" />
 
             </div>
