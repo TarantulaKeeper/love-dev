@@ -3,6 +3,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="webpage_content">
-
+        <div>
+            <span>
+                <asp:Button ID="btnMailMessage" runat="server" CssClass="glyphicon glyphicon-envelope" OnClick="btnMailMessage_Click" /></span>
+        </div>
     </div>
 </asp:Content>
