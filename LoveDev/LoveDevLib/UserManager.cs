@@ -50,7 +50,7 @@ namespace LoveDevLib
             DataSet ds = d.ExecuteProcedure("spGetUserIDMatches");
             int rowCount = ds.Tables[0].Rows.Count;
             List<int> MatchUserIDList = new List<int>();
-            if (rowCount < 0)
+            if (rowCount > 0)
             {
                 for (int i = 0; i < rowCount; i++)
                 {
