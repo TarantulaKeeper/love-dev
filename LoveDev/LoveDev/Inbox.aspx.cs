@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using LoveDevLib;
+using System.Data;
+using DAL_Project;
+
 
 namespace LoveDev
 {
@@ -15,8 +18,32 @@ namespace LoveDev
             if (Security.CurrentUser != null)
             {
                 int userID = Security.CurrentUser.UserID;
+                LoadUsers(userID);
+            }
+
+            else
+            {
+                Response.Redirect("Home.aspx");
             }
             
+        }
+
+        public void LoadUsers(int userID)
+        {
+            DAL myDAL = new DAL();
+            DataSet ds = new DataSet();
+            myDAL.AddParam("ToUserID", userID);
+            ds = myDAL.ExecuteProcedure("spGetUsersForInbox");
+
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+                lstboxUsers.Items.Add(Convert.ToString(row["FromUserID"]));
+            }          
+        }
+
+        protected void lstboxUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -359,7 +359,8 @@ CREATE PROCEDURE spGetUsersForInbox(
 )
 
 AS BEGIN
-	SELECT FromUserID FROM tbMessages WHERE ToUserID = @UserID
+	SELECT UserID, FirstName FROM tbUser
+		JOIN tbMessages ON tbUser.UserID = tbMessages.FromUserID
 END
 GO
 
