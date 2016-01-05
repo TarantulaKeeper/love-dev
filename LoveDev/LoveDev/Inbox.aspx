@@ -8,11 +8,17 @@
 
             </div>
             <div class="col-lg-9 col-md-9" style=" border:1px; border-color:white;">
-                <div>
-                    <%--<div></div>
-                    <div></div>
-                    <div></div>--%>
-                </div>
+                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                <asp:UpdatePanel ID="updpnlMessages" runat="server">
+                    <ContentTemplate>
+                        <div id="divContainer" runat="server">
+                            <%--<div></div>
+                            <div></div>
+                            <div></div>--%>
+                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+                
             </div>
         </div>
     </div>
