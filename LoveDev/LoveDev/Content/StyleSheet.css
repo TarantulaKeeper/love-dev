@@ -36,7 +36,7 @@
     left:35%;
     width: 300px;
     height: 192px;
-    background: #fff;
+    background: #e6e6e6;
     z-index: 51;
     padding: 10px;
     -moz-border-radius: 5px;
@@ -58,8 +58,8 @@
 .input-width{
     width:100%;
 }
-.ddlContainer{
-    /*Chris' class*/
+.displayinlineblock{
+    display:inline-block;
 }
 
 /*---------media queries-------------*/
@@ -67,5 +67,19 @@
 @media (max-width: 320px){
     .box{
         left:0;
+    }
+}
+
+@media (max-width: 640px) {
+    /*applied if browser window width is less than or equal to 600px*/
+    .navsigin {
+        display: none;
+    }
+}
+
+@media (min-width: 641px) {
+    /*applied if browser window width is greater than 600px*/
+    .icons {
+        display: none;
     }
 }
