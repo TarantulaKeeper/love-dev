@@ -447,29 +447,37 @@ GO
 
 --USER EDITING CONTROLS
 CREATE PROC spEditUserData
-(@UserID int,
+(@UserID INT,
 @FirstName VARCHAR(50),
 @LastName VARCHAR(50),
 @Password VARCHAR(50),
 @Age INT,
 @City VARCHAR(50),
 @Country VARCHAR(50),
-@UserPhoto VARCHAR(250),
 @GenderID INT,
 @SexualOrientationID INT
 )
 AS BEGIN
-UPDATE tbUser set
-	FirstName = @FirstName,
-	LastName = @LastName,
-	Password = @Password,
-	Age = @Age,
-	City = @City,
-	Country = @Country,
-	UserPhoto = ISNULL(@UserPhoto, UserPhoto),
-	GenderID = @GenderID,
-	SexualOrientationID = @SexualOrientationID
-WHERE UserID = @UserID
+	UPDATE tbUser set
+		FirstName = @FirstName,
+		LastName = @LastName,
+		Password = @Password,
+		Age = @Age,
+		City = @City,
+		Country = @Country,
+		GenderID = @GenderID,
+		SexualOrientationID = @SexualOrientationID
+	WHERE UserID = @UserID
+END
+GO
+CREATE PROC spEditUserProfilePicture(
+@UserID INT,
+@UserPhoto VARCHAR(250)
+)
+AS BEGIN
+	UPDATE tbUser set
+		UserPhoto = ISNULL(@UserPhoto, UserPhoto)
+	WHERE UserID = @UserID
 END
 GO
 
