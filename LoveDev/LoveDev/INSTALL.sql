@@ -445,10 +445,33 @@ WHERE tbUser.IsActive = 0
 END
 GO
 
-
-
-
-
+--USER EDITING CONTROLS
+CREATE PROC spEditUserData
+(@UserID int,
+@FirstName VARCHAR(50),
+@LastName VARCHAR(50),
+@Password VARCHAR(50),
+@Age INT,
+@City VARCHAR(50),
+@Country VARCHAR(50),
+@UserPhoto VARCHAR(250),
+@GenderID INT,
+@SexualOrientationID INT
+)
+AS BEGIN
+UPDATE tbUser set
+	FirstName = @FirstName,
+	LastName = @LastName,
+	Password = @Password,
+	Age = @Age,
+	City = @City,
+	Country = @Country,
+	UserPhoto = ISNULL(@UserPhoto, UserPhoto),
+	GenderID = @GenderID,
+	SexualOrientationID = @SexualOrientationID
+WHERE UserID = @UserID
+END
+GO
 
 --Testing Section--
 exec spGetUserGeneralInterests 1
@@ -461,4 +484,3 @@ select * from tbUserGuid
 select * from tbInvalidLogins
 go
 exec spInsertIntoInvalidLogin 'dgnrdnt', 'fgxnrgn'
---REPORTS AND PROCEDURES FOR REPORT CREATION.
