@@ -157,7 +157,7 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  FromUserID INT,
  ToUserID INT,
  Message VARCHAR(MAX),
- DateSent DATE,
+ DateSent DATE DEFAULT CONVERT(VARCHAR(8),GETDATE(),101),
  MessageRead BIT
  )
 
@@ -424,7 +424,7 @@ CREATE PROC	 spInsertIntoInvalidLogin
 AS BEGIN
 
 INSERT INTO tbInvalidLogins (InvalidEmail, InvalidPassword, DateOfAttempt, TimeOfAttempt)
-VALUES (@InvalidEmail, @InvalidPassword, CONVERT(DATE,GETDATE(),101), CONVERT(TIME,GETDATE()))
+VALUES (@InvalidEmail, @InvalidPassword, CONVERT(VARCHAR(8),GETDATE(),101), CONVERT(VARCHAR(8),GETDATE(),108))
 END
 GO
 
