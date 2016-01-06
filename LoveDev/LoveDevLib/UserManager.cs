@@ -43,7 +43,7 @@ namespace LoveDevLib
             return user;
         }
 
-        static public List<User> GetMatches(int UserID)
+        static public List<int> GetMatches(int UserID)
         {
             DAL d = new DAL();
             d.AddParam("UserID", UserID);
