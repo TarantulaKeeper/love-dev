@@ -20,6 +20,7 @@ namespace LoveDevLib
         public int SexualOrientationID { get; set; }
         public bool IsAdmin { get; set; }
         public bool IsActive { get; set; }
+        public List<int> MatchesUserIDList { get; set; }
 
         public User(int UserID, string FirstName, string LastName, int Age, string City, string Country, string Email, int GenderID, int SexualOrientationID, bool IsAdmin, bool IsActive)
         {
@@ -34,6 +35,7 @@ namespace LoveDevLib
             this.IsAdmin = IsAdmin;
             this.GenderID = GenderID;
             this.SexualOrientationID = SexualOrientationID;
+            this.MatchesUserIDList = UserManager.GetMatches(UserID);
         }
 
         public override string ToString()

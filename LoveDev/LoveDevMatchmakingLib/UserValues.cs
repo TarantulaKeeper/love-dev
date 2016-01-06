@@ -12,19 +12,18 @@ namespace LoveDevMatchmakingLib
         public int UserID { get; set; }
         public List<int> UserGeneralInterestValue { get; set; }
         //public int UserPersonalityValue { get; set; }
-
-
         static DAL dal;
 
         public UserValues(int UserID)
         {
+            UserGeneralInterestValue = new List<int>();
             this.UserID = UserID;
             dal = new DAL();
             dal.AddParam("UserID", UserID);
             DataSet ds = dal.ExecuteProcedure("spGetUserGeneralInterests");
             foreach (DataRow row in ds.Tables[0].Rows)
             {
-                this.UserGeneralInterestValue.Add(Convert.ToInt32(row));
+                this.UserGeneralInterestValue.Add(Convert.ToInt32(row["generalInterests"]));
             }
             //dal.AddParam("UserID", UserID);
             //DataSet dsTwo = dal.ExecuteProcedure("spGetUserPersonalityValue");
@@ -49,7 +48,7 @@ namespace LoveDevMatchmakingLib
             {
                 if (value > other.UserGeneralInterestValue[Count])
                 {
-                    if(value > other.UserGeneralInterestValue[Count] + 5)
+                    if (value > other.UserGeneralInterestValue[Count] + 5)
                     {
                         Result = 0;
                     }
@@ -59,9 +58,9 @@ namespace LoveDevMatchmakingLib
                     }
 
                 }
-                else if(value < other.UserGeneralInterestValue[Count])
+                else if (value < other.UserGeneralInterestValue[Count])
                 {
-                    if(value < other.UserGeneralInterestValue[Count] - 5)
+                    if (value < other.UserGeneralInterestValue[Count] - 5)
                     {
                         Result = 0;
                     }
@@ -69,6 +68,10 @@ namespace LoveDevMatchmakingLib
                     {
                         Result = 1;
                     }
+                }
+                else
+                {
+                    Result = 1;
                 }
                 if (Result == 1)
                 {
@@ -78,6 +81,7 @@ namespace LoveDevMatchmakingLib
                 {
                     TrueFalseMatchList.Add(false);
                 }
+                Count++;
             }
             if (CalculateValues(TrueFalseMatchList) >= 3)
             {

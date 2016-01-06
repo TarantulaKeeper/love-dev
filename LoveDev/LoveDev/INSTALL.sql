@@ -85,7 +85,7 @@ MatchID INT PRIMARY KEY IDENTITY(1,1),
 UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
 OtherUserID INT FOREIGN KEY REFERENCES tbUser(UserID)
 )
-INSERT INTO tbMatches (UserID, OtherUserID) VALUES (1,3)
+--INSERT INTO tbMatches (UserID, OtherUserID) VALUES (1,3)
 
 -- TABLE FOR QUESTIONS
 
@@ -131,6 +131,22 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  (7, 'How important is Technology to you in terms of Match Making?')
 
  go
+
+ -- TABLE FOR MESSAGES
+
+ CREATE TABLE tbMessages(
+ MessageID INT PRIMARY KEY IDENTITY(1,1),
+ FromUserID INT,
+ ToUserID INT,
+ Message VARCHAR(MAX),
+ DateSent DATE DEFAULT GETDATE(),
+ MessageRead BIT
+ )
+
+ INSERT INTO tbMessages(FromUserID, ToUserID, Message, MessageRead) VALUES (3, 2, 'Hello', 0)
+
+ GO
+
 --</Tables>
 --<Procedures>
 
@@ -273,7 +289,7 @@ AS BEGIN
 END
 GO
 
-CREATE PROC spSaveMatches
+CREATE PROC spSaveMatch
 (
 @UserID INT,
 @OtherUserID INT
@@ -303,6 +319,63 @@ AS BEGIN
 	SELECT * 
 	FROM  tbMatches
 	WHERE UserID = @UserID
+END
+GO
+
+-- PROCEDURE FOR SENDING A MESSAGE
+
+CREATE PROCEDURE spSendMessage(
+@FromUserID INT,
+@ToUserID INT,
+@Message VARCHAR(MAX)
+)
+
+AS BEGIN
+	INSERT INTO tbMessages(FromUserID, ToUserID, Message) VALUES (@FromUserID, @ToUserID, @Message)
+	SELECT 'Success'
+END
+GO
+
+-- PROCEDURE TO CHECK FOR NEW, UNREAD MAIL
+
+CREATE PROCEDURE spCheckMail(
+@UserID INT
+)
+
+AS BEGIN
+	IF EXISTS (SELECT * FROM tbMessages WHERE ToUserID = @UserID AND MessageRead = 0)
+		BEGIN
+			SELECT 'Unread Mail'
+		END
+	ELSE
+		BEGIN
+			SELECT 'No Mail'
+		END
+END
+GO
+
+-- PROCEDURE TO GET USERS FOR INBOX
+
+CREATE PROCEDURE spGetUsersForInbox(
+@UserID INT
+)
+
+AS BEGIN
+	SELECT UserID, FirstName FROM tbUser
+		JOIN tbMessages ON tbUser.UserID = tbMessages.FromUserID
+END
+GO
+
+-- PROCEDURE FOR GETTING MESSAGES
+
+CREATE PROCEDURE spGetMessages(
+@FromUserID INT,
+@ToUserID INT
+)
+
+AS BEGIN
+	SELECT * FROM tbMessages WHERE (FromUserID = @FromUserID AND ToUserID = @ToUserID) OR
+	 (ToUserID = @FromUserID AND FromUserID = @ToUserID) ORDER BY DateSent DESC
 END
 GO
 
