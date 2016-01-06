@@ -32,12 +32,13 @@ namespace LoveDev
         {
             DAL myDAL = new DAL();
             DataSet ds = new DataSet();
-            myDAL.AddParam("ToUserID", userID);
+            myDAL.AddParam("UserID", userID);
             ds = myDAL.ExecuteProcedure("spGetUsersForInbox");
 
             foreach (DataRow row in ds.Tables[0].Rows)
             {
-                lstboxUsers.Items.Add(Convert.ToString(row["FromUserID"]));
+                ListItem user = new ListItem(Convert.ToString(row["FirstName"]), Convert.ToString(row["UserID"]);
+                lstboxUsers.Items.Add(user);
             }          
         }
 
