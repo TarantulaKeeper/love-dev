@@ -15,17 +15,20 @@ namespace LoveDev
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Security.CurrentUser != null)
+            if (Security.CurrentUser == null)
+            {
+                Response.Redirect("Index.aspx?message=Must be logged in to view that page");
+            }
+            else if (!Security.CurrentUser.IsActive)
+            {
+                Response.Redirect("Index.aspx?message=Check emails and verify account to view that page");
+            }
+            else
             {
                 int userID = Security.CurrentUser.UserID;
                 LoadUsers(userID);
             }
 
-            else
-            {
-                Response.Redirect("Home.aspx");
-            }
-            
         }
 
         public void LoadUsers(int userID)
