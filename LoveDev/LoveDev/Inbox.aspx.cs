@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using LoveDevLib;
 using System.Data;
 using DAL_Project;
+using System.Web.UI.HtmlControls;
 
 
 namespace LoveDev
@@ -49,11 +50,51 @@ namespace LoveDev
         {
             string fromUserID = lstboxUsers.SelectedValue.ToString();
             string toUserID = Security.CurrentUser.UserID.ToString();
+
+            // Getting the user information from SQL 
+
+            User fromUser = UserManager.getUserByID(Convert.ToInt32(fromUserID));
+            User toUser = UserManager.getUserByID(Convert.ToInt32(toUserID));
+
+            // Getting messages
+
             DAL myDAL = new DAL();
             DataSet ds = new DataSet();
             myDAL.AddParam("FromUserID", fromUserID);
             myDAL.AddParam("ToUserID", toUserID);
             ds = myDAL.ExecuteProcedure("spGetMessages");
+
+            int counter = 0;
+
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+                HtmlGenericControl messageDIV = new HtmlGenericControl("div");
+                HtmlGenericControl dateDIV = new HtmlGenericControl("div");
+                Image imgProfilePicture = new Image();
+
+                messageDIV.ID = "messageDIV" + counter;
+                dateDIV.ID = "dateDIV" + counter;
+                imgProfilePicture.ID = "imgProfilePicture" + counter;
+
+                messageDIV.InnerText = row["Message"].ToString();
+                dateDIV.InnerText = row["DateSent"].ToString();
+
+                if (row["FromUserID"].ToString() == fromUserID)
+                {
+                    imgProfilePicture.ImageUrl = fromUser.UserPhoto;
+                }
+
+                else
+                {
+                    imgProfilePicture.ImageUrl = toUser.UserPhoto;
+                }
+
+                divContainer.Controls.Add(messageDIV);
+                divContainer.Controls.Add(dateDIV);
+                divContainer.Controls.Add(imgProfilePicture);
+
+                counter = counter + 1;
+            }
         }
     }
 }
