@@ -24,21 +24,23 @@
                             <div class="panel-heading">
                                 <h3 class="panel-title">Panel title</h3>
                             </div>
-                                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                                <asp:UpdatePanel ID="updpnlMessages" runat="server" UpdateMode="Conditional">
-                                    <Triggers>
-                                        <asp:AsyncPostBackTrigger ControlID="lstboxUsers" />
-                                    </Triggers>
-                                    <ContentTemplate>
-                                        <div id="divContainer" runat="server">
-                                            <div class="panel-body">
-<%--                                                Panel content--%>
-                                            </div>                                      
+                            <div class="col-lg-9 col-md-9" style="border: 1px; border-color: white;">
+                                <div class="panel-body">
+                                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                                    <asp:UpdatePanel ID="updpnlMessages" runat="server" UpdateMode="Conditional">
+                                        <Triggers>
+                                            <asp:AsyncPostBackTrigger ControlID="lstboxUsers" />
+                                        </Triggers>
+                                        <ContentTemplate>
+                                            <div id="divContainer" runat="server">
                                             </div>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                           </div>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </div>
+                            </div>
                         </div>
+
+                    </div>
                 </div>
             </div>
         </div>
