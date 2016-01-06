@@ -427,8 +427,21 @@ VALUES (@InvalidEmail, @InvalidPassword, CONVERT(DATE,GETDATE(),101), CONVERT(TI
 END
 GO
 
+create proc spGetUsersAndHowMuchTheyveBeenMatched
+as begin
+select tbUser.UserID, COUNT(tbMatches.MatchID)
+from tbMatches
+JOIN tbUser ON tbUser.UserID = tbMatches.UserID
+end
+go
 
-
+create proc spGetNonActiveUsers
+as begin
+select tbUser.UserID
+from tbUser 
+where tbUser.IsActive = 0
+end
+go
 
 
 
@@ -443,28 +456,3 @@ exec spUsernameCheck 'chris.jeffrey@robertsoncollege.net'
 select * from tbUserGuid
 go
 --REPORTS AND PROCEDURES FOR REPORT CREATION.
-create proc spInsertIntoInvalidLogin
-(@invalidUser varchar(max),
-@invalidPassword varchar(max)
-)
-as begin
-insert into tbInvalidLogins (invalidUser, invalidPassword)
-values (@invalidUser, @invalidPassword)
-end
-go
-
-create proc spGetUsersAndHowMuchTheyveBeenMatched
-as begin
-select tbUser.UserID, COUNT(tbMatches.MatchID)
-from tbUser
-INNER JOIN tbUser.UserID on tbMatches.UserID
-end
-go
-
-create proc spGetNonActiveUsers
-as begin
-select tbUser.UserID
-from tbUser 
-where tbUser.IsActive = 0
-end
-go
