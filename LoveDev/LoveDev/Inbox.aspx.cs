@@ -47,7 +47,13 @@ namespace LoveDev
 
         protected void lstboxUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            string fromUserID = lstboxUsers.SelectedValue.ToString();
+            string toUserID = Security.CurrentUser.UserID.ToString();
+            DAL myDAL = new DAL();
+            DataSet ds = new DataSet();
+            myDAL.AddParam("FromUserID", fromUserID);
+            myDAL.AddParam("ToUserID", toUserID);
+            ds = myDAL.ExecuteProcedure("spGetMessages");
         }
     }
 }

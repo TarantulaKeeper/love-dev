@@ -165,16 +165,25 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
 
  GO
  --TABLES FOR REPORTS
-create table tbInvalidLogins(
-invalidUser varchar(max),
-invalidPassword varchar(max)
+CREATE TABLE tbInvalidLogins(
+InvalidEmail VARCHAR(50),
+InvalidPassword VARCHAR(50),
+DateOfAttempt DATETIME,
+TimeOfAttempt DATETIME
 )
-insert into tbInvalidLogins(invalidUser, invalidPassword) values 
-('TEST','132323'), ('ROFLMAO','WRONG'), ('WOWLOTSOFTESTDATA', 'WOW'), ('FALLOUT4TODAY', 'WOOOOO')
+insert into tbInvalidLogins (InvalidEmail, invalidPassword) values ('TEST','132323'), ('ROFLMAO','WRONG'), ('WOWLOTSOFTESTDATA', 'WOW'), ('FALLOUT4TODAY', 'WOOOOO')
 go
+
+
+
+
 
 --</Tables>
 --<Procedures>
+
+
+
+
 
 CREATE PROC spVerifyUser
 (
@@ -405,11 +414,29 @@ AS BEGIN
 END
 GO
 
+--REPORTS AND PROCEDURES FOR REPORT CREATION.
+CREATE PROC	 spInsertIntoInvalidLogin
+(
+@InvalidEmail VARCHAR(50),
+@InvalidPassword VARCHAR(50)
+)
+AS BEGIN
+
+INSERT INTO tbInvalidLogins (InvalidEmail, InvalidPassword, DateOfAttempt, TimeOfAttempt)
+VALUES (@InvalidEmail, @InvalidPassword, CONVERT(DATE,GETDATE(),101), CONVERT(TIME,GETDATE()))
+END
+GO
+
+
+
+
+
+
+
+--Testing Section--
 exec spGetUserGeneralInterests 1
 exec spGetUserPersonalityValue 1
-
 select * from tbUser
---Testing Procs
 exec spGetUserByID 3
 exec spLogin'chris.jeffrey@robertsoncollege.net',1234
 exec spUsernameCheck 'chris.jeffrey@robertsoncollege.net'
