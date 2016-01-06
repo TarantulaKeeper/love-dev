@@ -164,6 +164,14 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  INSERT INTO tbMessages(FromUserID, ToUserID, Message, MessageRead) VALUES (3, 2, 'Hello', 0)
 
  GO
+ --TABLES FOR REPORTS
+create table tbInvalidLogins(
+invalidUser varchar(max),
+invalidPassword varchar(max)
+)
+insert into tbInvalidLogins(invalidUser, invalidPassword) values 
+('TEST','132323'), ('ROFLMAO','WRONG'), ('WOWLOTSOFTESTDATA', 'WOW'), ('FALLOUT4TODAY', 'WOOOOO')
+go
 
 --</Tables>
 --<Procedures>
@@ -406,5 +414,14 @@ exec spGetUserByID 3
 exec spLogin'chris.jeffrey@robertsoncollege.net',1234
 exec spUsernameCheck 'chris.jeffrey@robertsoncollege.net'
 select * from tbUserGuid
-
---REPORTS
+go
+--REPORTS AND PROCEDURES FOR REPORT CREATION.
+create proc spInsertIntoInvalidLogin
+(@invalidUser varchar(max),
+@invalidPassword varchar(max)
+)
+as begin
+insert into tbInvalidLogins (invalidUser, invalidPassword)
+values (@invalidUser, @invalidPassword)
+end
+go
