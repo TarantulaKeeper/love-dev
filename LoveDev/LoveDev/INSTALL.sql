@@ -157,16 +157,33 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  FromUserID INT,
  ToUserID INT,
  Message VARCHAR(MAX),
- DateSent DATE DEFAULT GETDATE(),
+ DateSent DATE DEFAULT CONVERT(VARCHAR(8),GETDATE(),101),
  MessageRead BIT
  )
 
- INSERT INTO tbMessages(FromUserID, ToUserID, Message, MessageRead) VALUES (3, 2, 'Hello', 0)
+ INSERT INTO tbMessages(FromUserID, ToUserID, Message, MessageRead, DateSent) VALUES (3, 2, 'Hello', 0, '2015-12-01'), (1, 2, 'Yo', 0, '2016-01-01'), (2, 3, 'Hey', 0, '2016-01-01') 
 
  GO
+ --TABLES FOR REPORTS
+CREATE TABLE tbInvalidLogins(
+InvalidEmail VARCHAR(50),
+InvalidPassword VARCHAR(50),
+DateOfAttempt DATETIME,
+TimeOfAttempt DATETIME
+)
+insert into tbInvalidLogins (InvalidEmail, invalidPassword) values ('TEST','132323'), ('ROFLMAO','WRONG'), ('WOWLOTSOFTESTDATA', 'WOW'), ('FALLOUT4TODAY', 'WOOOOO')
+go
+
+
+
+
 
 --</Tables>
 --<Procedures>
+
+
+
+
 
 CREATE PROC spVerifyUser
 (
@@ -381,6 +398,7 @@ CREATE PROCEDURE spGetUsersForInbox(
 AS BEGIN
 	SELECT UserID, FirstName FROM tbUser
 		JOIN tbMessages ON tbUser.UserID = tbMessages.FromUserID
+	WHERE UserID != @UserID
 END
 GO
 
@@ -397,14 +415,80 @@ AS BEGIN
 END
 GO
 
+--REPORTS AND PROCEDURES FOR REPORT CREATION.
+CREATE PROC	 spInsertIntoInvalidLogin
+(
+@InvalidEmail VARCHAR(50),
+@InvalidPassword VARCHAR(50)
+)
+AS BEGIN
+
+INSERT INTO tbInvalidLogins (InvalidEmail, InvalidPassword, DateOfAttempt, TimeOfAttempt)
+VALUES (@InvalidEmail, @InvalidPassword, CONVERT(VARCHAR(8),GETDATE(),101), CONVERT(VARCHAR(8),GETDATE(),108))
+END
+GO
+
+CREATE PROC spGetUsersAndHowMuchTheyveBeenMatched
+AS BEGIN
+SELECT tbUser.UserID, COUNT(tbMatches.MatchID)
+FROM tbMatches
+JOIN tbUser ON tbUser.UserID = tbMatches.UserID
+GROUP BY tbUser.UserID
+END
+GO
+
+CREATE PROC spGetNonActiveUsers
+AS BEGIN
+SELECT tbUser.UserID
+FROM tbUser 
+WHERE tbUser.IsActive = 0
+END
+GO
+
+--USER EDITING CONTROLS
+CREATE PROC spEditUserData
+(@UserID INT,
+@FirstName VARCHAR(50),
+@LastName VARCHAR(50),
+@Password VARCHAR(50),
+@Age INT,
+@City VARCHAR(50),
+@Country VARCHAR(50),
+@GenderID INT,
+@SexualOrientationID INT
+)
+AS BEGIN
+	UPDATE tbUser set
+		FirstName = @FirstName,
+		LastName = @LastName,
+		Password = @Password,
+		Age = @Age,
+		City = @City,
+		Country = @Country,
+		GenderID = @GenderID,
+		SexualOrientationID = @SexualOrientationID
+	WHERE UserID = @UserID
+END
+GO
+CREATE PROC spEditUserProfilePicture(
+@UserID INT,
+@UserPhoto VARCHAR(250)
+)
+AS BEGIN
+	UPDATE tbUser set
+		UserPhoto = ISNULL(@UserPhoto, UserPhoto)
+	WHERE UserID = @UserID
+END
+GO
+
+--Testing Section--
 exec spGetUserGeneralInterests 1
 exec spGetUserPersonalityValue 1
-
 select * from tbUser
---Testing Procs
 exec spGetUserByID 3
 exec spLogin'chris.jeffrey@robertsoncollege.net',1234
 exec spUsernameCheck 'chris.jeffrey@robertsoncollege.net'
 select * from tbUserGuid
-
---REPORTS
+select * from tbInvalidLogins
+go
+exec spInsertIntoInvalidLogin 'dgnrdnt', 'fgxnrgn'

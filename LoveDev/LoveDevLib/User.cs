@@ -16,8 +16,6 @@ namespace LoveDevLib
         public string Country { get; set; }
         public string Email { get; set; }
         public string UserPhoto { get; set; }
-        public int GenderID { get; set; }     
-        public int SexualOrientationID { get; set; }
         public bool IsAdmin { get; set; }
         public bool IsActive { get; set; }
         public List<int> MatchesUserIDList { get; set; }
@@ -33,8 +31,6 @@ namespace LoveDevLib
             this.Email = Email;
             this.IsActive = IsActive;
             this.IsAdmin = IsAdmin;
-            this.GenderID = GenderID;
-            this.SexualOrientationID = SexualOrientationID;
             this.MatchesUserIDList = UserManager.GetMatches(UserID);
         }
 
