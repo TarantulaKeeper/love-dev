@@ -157,11 +157,11 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  FromUserID INT,
  ToUserID INT,
  Message VARCHAR(MAX),
- DateSent DATE DEFAULT GETDATE(),
+ DateSent DATE,
  MessageRead BIT
  )
 
- INSERT INTO tbMessages(FromUserID, ToUserID, Message, MessageRead) VALUES (3, 2, 'Hello', 0)
+ INSERT INTO tbMessages(FromUserID, ToUserID, Message, MessageRead, DateSent) VALUES (3, 2, 'Hello', 0, '2015-12-01'), (1, 2, 'Yo', 0, '2016-01-01'), (2, 3, 'Hey', 0, '2016-01-01') 
 
  GO
  --TABLES FOR REPORTS
@@ -389,6 +389,7 @@ CREATE PROCEDURE spGetUsersForInbox(
 AS BEGIN
 	SELECT UserID, FirstName FROM tbUser
 		JOIN tbMessages ON tbUser.UserID = tbMessages.FromUserID
+	WHERE UserID != @UserID
 END
 GO
 
