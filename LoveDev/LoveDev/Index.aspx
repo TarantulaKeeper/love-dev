@@ -12,7 +12,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
                             <div>
-                                <h2>Let us help in you develop your love.</h2>
+                                <h2>Let us help you develop your love.</h2>
                             </div>
                             <div class="displayinlineblock">
                                 <span style="padding-right: 10px;">I am </span>
