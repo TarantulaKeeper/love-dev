@@ -4,13 +4,15 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="webpage_content">
-        <button class="btn btn-primary" type="button" onclick="btnMailMessage_Click">
-            Messages <span class="glyphicon glyphicon-envelope"></span>
-        </button>
-        <div class="well btn-info">
-            <asp:Button ID="btnMailMessage" runat="server" CssClass="btn btn-info" OnClick="btnMailMessage_Click" Text="Messages" />
-            <span class="glyphicon glyphicon-envelope"></span>
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Panel title</h3>
+                </div>
+                <div class="panel-body">
+                    <a href="Inbox.aspx" class="btn btn-info">Messages <span class="glyphicon glyphicon-envelope"></span></a>
+                </div>
+            </div>
         </div>
-
     </div>
 </asp:Content>
