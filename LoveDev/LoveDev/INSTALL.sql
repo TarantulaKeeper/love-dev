@@ -428,22 +428,24 @@ VALUES (@InvalidEmail, @InvalidPassword, CONVERT(DATE,GETDATE(),101), CONVERT(TI
 END
 GO
 
-create proc spGetUsersAndHowMuchTheyveBeenMatched
-as begin
-select tbUser.UserID, COUNT(tbMatches.MatchID)
-from tbMatches
+CREATE PROC spGetUsersAndHowMuchTheyveBeenMatched
+AS BEGIN
+SELECT tbUser.UserID, COUNT(tbMatches.MatchID)
+FROM tbMatches
 JOIN tbUser ON tbUser.UserID = tbMatches.UserID
 GROUP BY tbUser.UserID
-end
-go
+END
+GO
 
-create proc spGetNonActiveUsers
-as begin
-select tbUser.UserID
-from tbUser 
-where tbUser.IsActive = 0
-end
-go
+CREATE PROC spGetNonActiveUsers
+AS BEGIN
+SELECT tbUser.UserID
+FROM tbUser 
+WHERE tbUser.IsActive = 0
+END
+GO
+
+
 
 
 
