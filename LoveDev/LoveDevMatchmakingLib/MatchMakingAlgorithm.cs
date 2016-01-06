@@ -11,9 +11,9 @@ namespace LoveDevMatchmakingLib
 {
     public class MatchMakingAlgorithm
     {
-        public UserValues UserValues { get; set; }
-        public List<UserValues> MatchedUserGeneralInterestValue { get; set; }
-        public List<int> Matches { get; set; }
+        private UserValues UserValues { get; set; }
+        private List<UserValues> MatchedUserGeneralInterestValue { get; set; }
+        private List<int> Matches { get; set; }
 
         static DAL dal;
 

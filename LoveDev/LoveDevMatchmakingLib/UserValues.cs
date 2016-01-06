@@ -12,8 +12,6 @@ namespace LoveDevMatchmakingLib
         public int UserID { get; set; }
         public List<int> UserGeneralInterestValue { get; set; }
         //public int UserPersonalityValue { get; set; }
-
-
         static DAL dal;
 
         public UserValues(int UserID)
@@ -50,7 +48,7 @@ namespace LoveDevMatchmakingLib
             {
                 if (value > other.UserGeneralInterestValue[Count])
                 {
-                    if(value > other.UserGeneralInterestValue[Count] + 5)
+                    if (value > other.UserGeneralInterestValue[Count] + 5)
                     {
                         Result = 0;
                     }
@@ -60,9 +58,9 @@ namespace LoveDevMatchmakingLib
                     }
 
                 }
-                else if(value < other.UserGeneralInterestValue[Count])
+                else if (value < other.UserGeneralInterestValue[Count])
                 {
-                    if(value < other.UserGeneralInterestValue[Count] - 5)
+                    if (value < other.UserGeneralInterestValue[Count] - 5)
                     {
                         Result = 0;
                     }
@@ -70,6 +68,10 @@ namespace LoveDevMatchmakingLib
                     {
                         Result = 1;
                     }
+                }
+                else
+                {
+                    Result = 1;
                 }
                 if (Result == 1)
                 {
@@ -79,6 +81,7 @@ namespace LoveDevMatchmakingLib
                 {
                     TrueFalseMatchList.Add(false);
                 }
+                Count++;
             }
             if (CalculateValues(TrueFalseMatchList) >= 3)
             {

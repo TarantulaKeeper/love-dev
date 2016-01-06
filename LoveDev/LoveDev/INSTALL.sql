@@ -161,6 +161,8 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  MessageRead BIT
  )
 
+ INSERT INTO tbMessages(FromUserID, ToUserID, Message, MessageRead) VALUES (3, 2, 'Hello', 0)
+
  GO
 
 --</Tables>
@@ -359,7 +361,7 @@ CREATE PROCEDURE spCheckMail(
 )
 
 AS BEGIN
-	IF EXISTS (SELECT * FROM tbMessages WHERE ToUserID = @ToUserID AND MessageRead = 0)
+	IF EXISTS (SELECT * FROM tbMessages WHERE ToUserID = @UserID AND MessageRead = 0)
 		BEGIN
 			SELECT 'Unread Mail'
 		END
@@ -377,7 +379,8 @@ CREATE PROCEDURE spGetUsersForInbox(
 )
 
 AS BEGIN
-	SELECT FromUserID FROM tbMessages WHERE ToUserID = @UserID
+	SELECT UserID, FirstName FROM tbUser
+		JOIN tbMessages ON tbUser.UserID = tbMessages.FromUserID
 END
 GO
 
@@ -389,8 +392,8 @@ CREATE PROCEDURE spGetMessages(
 )
 
 AS BEGIN
-	SELECT * FROM tbMessages WHERE (FromUsername = @FromUsername AND ToUsername = @ToUsername) OR
-	 (ToUsername = @FromUsername AND FromUsername = @ToUsername) ORDER BY DateSent DESC
+	SELECT * FROM tbMessages WHERE (FromUserID = @FromUserID AND ToUserID = @ToUserID) OR
+	 (ToUserID = @FromUserID AND FromUserID = @ToUserID) ORDER BY DateSent DESC
 END
 GO
 
