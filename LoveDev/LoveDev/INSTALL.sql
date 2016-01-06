@@ -161,8 +161,6 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  MessageRead BIT
  )
 
- INSERT INTO tbMessages(FromUserID, ToUserID, Message, MessageRead) VALUES (3, 2, 'Hello', 0)
-
  GO
 
 --</Tables>
