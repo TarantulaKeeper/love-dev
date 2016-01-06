@@ -433,6 +433,7 @@ as begin
 select tbUser.UserID, COUNT(tbMatches.MatchID)
 from tbMatches
 JOIN tbUser ON tbUser.UserID = tbMatches.UserID
+GROUP BY tbUser.UserID
 end
 go
 
@@ -455,5 +456,7 @@ exec spGetUserByID 3
 exec spLogin'chris.jeffrey@robertsoncollege.net',1234
 exec spUsernameCheck 'chris.jeffrey@robertsoncollege.net'
 select * from tbUserGuid
+select * from tbInvalidLogins
 go
+exec spInsertIntoInvalidLogin 'dgnrdnt', 'fgxnrgn'
 --REPORTS AND PROCEDURES FOR REPORT CREATION.
