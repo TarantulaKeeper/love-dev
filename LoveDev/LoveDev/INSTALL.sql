@@ -161,7 +161,7 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  MessageRead BIT
  )
 
- INSERT INTO tbMessages(FromUserID, ToUserID, Message, MessageRead) VALUES (3, 2, 'Hello', 0)
+ INSERT INTO tbMessages(FromUserID, ToUserID, Message, MessageRead, DateSent) VALUES (3, 2, 'Hello', 0, '2015-12-01'), (1, 2, 'Yo', 0, '2016-01-01'), (2, 3, 'Hey', 0, '2016-01-01') 
 
  GO
  --TABLES FOR REPORTS
@@ -398,6 +398,7 @@ CREATE PROCEDURE spGetUsersForInbox(
 AS BEGIN
 	SELECT UserID, FirstName FROM tbUser
 		JOIN tbMessages ON tbUser.UserID = tbMessages.FromUserID
+	WHERE UserID != @UserID
 END
 GO
 
@@ -427,21 +428,24 @@ VALUES (@InvalidEmail, @InvalidPassword, CONVERT(VARCHAR(8),GETDATE(),101), CONV
 END
 GO
 
-create proc spGetUsersAndHowMuchTheyveBeenMatched
-as begin
-select tbUser.UserID, COUNT(tbMatches.MatchID)
-from tbMatches
+CREATE PROC spGetUsersAndHowMuchTheyveBeenMatched
+AS BEGIN
+SELECT tbUser.UserID, COUNT(tbMatches.MatchID)
+FROM tbMatches
 JOIN tbUser ON tbUser.UserID = tbMatches.UserID
-end
-go
+GROUP BY tbUser.UserID
+END
+GO
 
-create proc spGetNonActiveUsers
-as begin
-select tbUser.UserID
-from tbUser 
-where tbUser.IsActive = 0
-end
-go
+CREATE PROC spGetNonActiveUsers
+AS BEGIN
+SELECT tbUser.UserID
+FROM tbUser 
+WHERE tbUser.IsActive = 0
+END
+GO
+
+
 
 
 
@@ -454,5 +458,7 @@ exec spGetUserByID 3
 exec spLogin'chris.jeffrey@robertsoncollege.net',1234
 exec spUsernameCheck 'chris.jeffrey@robertsoncollege.net'
 select * from tbUserGuid
+select * from tbInvalidLogins
 go
+exec spInsertIntoInvalidLogin 'dgnrdnt', 'fgxnrgn'
 --REPORTS AND PROCEDURES FOR REPORT CREATION.
