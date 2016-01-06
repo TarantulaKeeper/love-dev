@@ -16,9 +16,13 @@ namespace LoveDev
             {
                 Response.Redirect("Index.aspx?message=Must be logged in to view that page");
             }
-            else if (!Security.CurrentUser.IsAdmin)
+            else if (!Security.CurrentUser.IsActive)
             {
-                Response.Redirect("Home.aspx?message=Must be an administrator to view that page");
+                if (!Security.CurrentUser.IsAdmin)
+                {
+                    Response.Redirect("Index.aspx?message=Must be an administrator to view that page");
+                }
+                Response.Redirect("Index.aspx?message=Check emails and verify account to view that page");
             }
         }
     }
