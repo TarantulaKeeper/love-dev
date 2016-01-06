@@ -96,7 +96,12 @@ QuestionString VARCHAR(250)
 )
 INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES 
 --[POLITICS SECTION]
-
+(1, 'Do you enjoy politics?'), (1, 'Do you follow politics?'),
+(1, 'Do you actively participate in politics?'), (1, 'Do you vote?'),
+(1, 'Do you think Abortion should be legal?'), (1, 'Do you think Euthanasia should be legal?'),
+(1, 'Do you think you should be politcally correct at all times?'),
+(1, 'Do you support same sex marriage?'), (1, 'Do you feel the bern? #Bernie2016'),
+(1, 'How important is Politics to your matchmaking results?'),
 --[PERSONALITY SECTION]
 (2, 'Are you a talkative person?'), (2, 'Do you attend parties?'),
 (2, 'Do you enjoy being with people opposed to being alone?'),
@@ -126,8 +131,13 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  (5, 'How important is Art to your matchmaking results?'),
 
  --[INTELLECTUAL SECTION]
- (6, 'Do you enjoy reading?'), (6, 'Do you feel as if you are an intellectual individual?'),
+ (6, 'Do you enjoy learning?'), (6, 'Do you feel as if you are an intellectual individual?'),
  (6, 'Do you keep up with World events?'), (6, 'Do you feel knowledge is more important than wealth?'),
+ (6, 'Do you find yourself always looking to learn?'), (6, 'Do you enjoy being challenged intellectually?'),
+ (6, 'Do you enjoy reading?'), (6, 'How often do you find yourself lost in a book?'),
+ (6, 'Does a night of intellectual stimulation sound better than a night out?'),
+ (6, 'How important is intellect to your match making result?'),
+
  --[TECHNOLOGIES SECTION]
  (7, 'Do you enjoy playing with technology?'), (7, 'Do you write code?'),
  (7, 'Does your family come to you for technology help?'), (7, 'Do you play video games?'),
@@ -136,7 +146,7 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  (7, 'How often do you find yourself immersed in techonology?'),
  (7, 'Do you follow new Technology releases?'),
  (7, 'How often do you find yourself on social media?'),
- (7, 'How important is Technology to you in terms of Match Making?')
+ (7, 'How important is Technology to your matchmaking results?')
 
  go
 
