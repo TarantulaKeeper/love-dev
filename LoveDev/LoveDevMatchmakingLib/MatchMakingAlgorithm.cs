@@ -12,7 +12,7 @@ namespace LoveDevMatchmakingLib
     public class MatchMakingAlgorithm
     {
         private UserValues UserValues { get; set; }
-        private List<UserValues> MatchedUserGeneralInterestValue { get; set; }
+        private List<UserValues> MatchesUserValuesList { get; set; }
         private List<int> Matches { get; set; }
 
         static DAL dal;
@@ -21,13 +21,13 @@ namespace LoveDevMatchmakingLib
         {
             this.UserValues = new UserValues(UserID);
             Matches = new List<int>();
-            MatchedUserGeneralInterestValue = GetAllUsersValues(UserID);
+            MatchesUserValuesList = GetAllUsersValues(UserID);
             dal = new DAL();
         }
 
         public void CalculateAndSaveMatches()
         {
-            foreach (UserValues u in MatchedUserGeneralInterestValue)
+            foreach (UserValues u in MatchesUserValuesList)
             {
                 if (u.CompareTo(this.UserValues) == 1)
                 {
