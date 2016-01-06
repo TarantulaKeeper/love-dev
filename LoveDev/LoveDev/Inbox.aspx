@@ -24,7 +24,6 @@
                             <div class="panel-heading">
                                 <h3 class="panel-title">Panel title</h3>
                             </div>
-                            <div class="col-lg-9 col-md-9" style="border: 1px; border-color: white;">
                                 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                                 <asp:UpdatePanel ID="updpnlMessages" runat="server" UpdateMode="Conditional">
                                     <Triggers>
@@ -33,17 +32,13 @@
                                     <ContentTemplate>
                                         <div id="divContainer" runat="server">
                                             <div class="panel-body">
-                                                Panel content
+<%--                                                Panel content--%>
                                             </div>                                      
                                             </div>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
-
-
-                            </div>
+                           </div>
                         </div>
-
-                    </div>
                 </div>
             </div>
         </div>
