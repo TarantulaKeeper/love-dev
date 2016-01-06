@@ -40,7 +40,7 @@ namespace LoveDev
 
             foreach (DataRow row in ds.Tables[0].Rows)
             {
-                ListItem user = new ListItem(Convert.ToString(row["FirstName"]), Convert.ToString(row["UserID"]);
+                ListItem user = new ListItem(Convert.ToString(row["FirstName"]), Convert.ToString(row["UserID"]));
                 lstboxUsers.Items.Add(user);
             }          
         }
