@@ -36,7 +36,7 @@
                 </div>
 
                 <div id="header_login" class="navbar-right navsigin">
-                    <span style="color:#fff">Have an account?</span>
+                    <span class="label label-default">Have an account?</span>
                     <span>
                         <input type="button" id="btnSignIn" runat="server" value="Sign In" class="btn btn-info navbar-btn lightbox" /></span>
                     <span><asp:Button ID="btnSignOut" runat="server" Text="Sign Out" CssClass="btn btn-info navbar-btn" Visible="false" OnClick="btnSignOut_Click" /></span>
