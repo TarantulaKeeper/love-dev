@@ -49,6 +49,7 @@ SexualOrientationID INT PRIMARY KEY IDENTITY (1,1),
 UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
 GenderID INT FOREIGN KEY REFERENCES tbGender(GenderID)
 )
+INSERT INTO tbSexualOrientation (UserID, GenderID) VALUES (1,1),(1,2),(2,3),(3,3),(3,5),(3,4),(4,1),(4,3)
 
 --INSERT INTO tbSexualOrientation(SexualOrientationName) VALUES ('Straight'), ('Gay'), ('Lesbian'), ('Asexual'),
 	--('Pansexual'), ('Bisexual'), ('Sapiosexual'), ('Heteroflexible'), ('Homoflexible')
@@ -229,7 +230,7 @@ CREATE PROC spLogin
 AS BEGIN
 	IF EXISTS (SELECT UserId from tbUser where Email = @Email and Password = @Password)
 	BEGIN
-		select UserID, FirstName, LastName, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID, SexualOrientationID
+		select UserID, FirstName, LastName, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto
 		from   tbUser
 		where  Email = @Email
 		and    Password = @Password
@@ -270,8 +271,8 @@ CREATE PROC spRegisterUser
 @Guid VARCHAR(50)
 )
 AS BEGIN
-	INSERT INTO tbUser (FirstName,LastName,Password,Age,City,Country,Email,IsActive,IsAdmin,UserPhoto,GenderID,SexualOrientationID) VALUES
-					   (@FirstName,@LastName,@Password,@Age,@City,@Country,@Email,@IsActive,@IsAdmin,@UserPhoto,@GenderID,@SexualOrientation)
+	INSERT INTO tbUser (FirstName,LastName,Password,Age,City,Country,Email,IsActive,IsAdmin,UserPhoto) VALUES
+					   (@FirstName,@LastName,@Password,@Age,@City,@Country,@Email,@IsActive,@IsAdmin,@UserPhoto)
 	INSERT INTO tbUserGuid (UserID, Guid) VALUES
 						(SCOPE_IDENTITY(),@Guid)
 END
@@ -284,12 +285,12 @@ AS BEGIN
 END
 GO
 
-CREATE PROC spGetSexualOrientations
-AS BEGIN
-	SELECT * 
-	FROM tbSexualOrientation
-END
-GO
+--CREATE PROC spGetSexualOrientations
+--AS BEGIN
+--	SELECT * 
+--	FROM tbSexualOrientation
+--END
+--GO
 
 CREATE PROC spGetUserGeneralInterests
 (@UserID int)
@@ -297,18 +298,22 @@ AS BEGIN
 	SELECT UV.UserCategoryValue as [generalInterests], S.GenderID
 	FROM tbUserValues UV full outer join
 		 tbSexualOrientation S on S.UserID = UV.UserID
-	WHERE tbUser.UserID = @UserID 
+	WHERE UV.UserID = @UserID 
 END
 GO
 
 CREATE PROC spGetUserSexualityAndGender
-(@UserID int)
+(
+@UserID int
+)
 AS BEGIN
-	SELECT tbUser.GenderID, tbUser.SexualOrientationID
-	FROM   tbUser 
-	WHERE  tbUser.UserID = @UserID
+	SELECT U.GenderID, S.GenderID as 'PreferenceID'
+	FROM   tbUser U join
+		   tbSexualOrientation S on U.UserID = S.UserID
+	WHERE  U.UserID = @UserID
 END
 GO
+
 CREATE PROC spGetUserPersonalityValue
 (@UserID int)
 AS BEGIN 
