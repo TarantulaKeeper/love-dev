@@ -4,8 +4,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="webpage_content">
-        <div>
-
             <div class="container">
                 <div class="row padtop">
                     <div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
@@ -18,7 +16,7 @@
                             <asp:Panel ID="pnlProfilePhotoEdit" runat="server">
                                 <asp:FileUpload ID="fuProfilePhoto" runat="server" />
                                 <asp:Button Text="Save" ID="btnSaveProfilePhoto" runat="server" CssClass="btn btn-danger" />
-                            </asp:Panel>
+            </asp:Panel>
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-8 col-sm-7 col-xs-6">
@@ -55,7 +53,7 @@
                                     </div>
                                     <asp:ImageButton ImageUrl="/Images/EditIcon.png" ID="imgbtnEditBasicInfo" runat="server" />
                                 </div>
-                            </asp:Panel>
+                </asp:Panel>
                             <asp:Panel ID="pnlBasicInformationEdit" Visible="true" runat="server" CssClass="">
                                 <div class="input-group">
                                     <span class="input-group-addon">First Name:</span>
@@ -79,10 +77,10 @@
                                 </div>
 
                                 <asp:Button Text="Save" CssClass="btn btn-danger" ID="btnSaveBasicInformation" runat="server" OnClick="btnSaveBasicInformation_Click" />
-                            </asp:Panel>
-                        </div>
-                    </div>
-                </div>
+                </asp:Panel>
+            </div>
+        </div>
+    </div>
             </div>
         </div>
     </div>

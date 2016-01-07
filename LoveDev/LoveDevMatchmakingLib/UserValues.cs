@@ -12,13 +12,15 @@ namespace LoveDevMatchmakingLib
         public int UserID { get; set; }
         public List<int> ValuesList { get; set; }
         public int GenderID { get; set; }
-        public int SexualOrientationID { get; set; }
+        public List<int> SexualPreferencesList { get; set; }
 
         static DAL dal;
 
         public UserValues(int UserID)
         {
             ValuesList = new List<int>();
+            SexualPreferencesList = new List<int>();
+
             this.UserID = UserID;
             dal = new DAL();
             dal.AddParam("UserID", UserID);
