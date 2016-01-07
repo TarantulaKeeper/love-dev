@@ -19,9 +19,9 @@
             <input type="button" id="btnMessage" value="Send Them a Message!" runat="server" data-CommandArgument='<%# Eval("UserID") %>' onclick="show(this)" />
         </ItemTemplate>
     </asp:DataList>
-    
-            <div id="divPopupWindow">
-                <span id="close" onclick="div_hide()"></span>
+            <div class="backdrop"></div>
+            <div id="divPopupWindow" class="popupbox">
+                <span id="close" onclick="div_hide()" class="closebox text-danger">[x]</span>
                 <input id="txtboxToUser" name="txtboxToUser" readonly="true" type="text" />
                 <input id="txtboxFromUser" name="txtboxFromUser" readonly="true" type="text"/>
                 <textarea id="msg" name="message" placeholder="Message"></textarea>
@@ -37,9 +37,27 @@
             var fromFirstName = $('#hfFirstName').val();
             $('#txtboxFromUser').val(fromFirstName);
         };
+    </script>
+     <script type="text/javascript">
+        $(document).ready(function () {
 
-
-
+            $('.lightbox').click(function () {
+                $('.backdrop, .popupbox').animate({ 'opacity': '.50' }, 300, 'linear');
+                $('.box').animate({ 'opacity': '1.00' }, 300, 'linear');
+                $('.backdrop, .popupbox').css('display', 'block');
+            });
+            $('.closebox').click(function () {
+                close_box();
+            });
+            $('.backdrop').click(function () {
+                close_box();
+            });
+        });
+        function close_box() {
+            $('.backdrop, .popupbox').animate({ 'opacity': '0' }, 300, 'linear', function () {
+                $('.backdrop, .popupbox').css('display', 'none');
+            });
+        }
 
     </script>
 </asp:Content>
