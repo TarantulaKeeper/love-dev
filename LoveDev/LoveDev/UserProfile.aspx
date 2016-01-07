@@ -5,11 +5,11 @@
     <div class="webpage_content">
         <div>
             <asp:Image ID="imgProfilePhoto" runat="server" />
-            <asp:ImageButton ImageUrl="/Images/EditIcon.png" ID="imgbtnEditProfilePhoto" runat="server" />
+            <asp:ImageButton ImageUrl="/Images/EditIcon.png" ID="imgbtnEditProfilePhoto" runat="server" OnClick="imgbtnEditProfilePhoto_Click" />
 
-            <asp:Panel ID="pnlProfilePhotoEdit" runat="server">
+            <asp:Panel ID="pnlProfilePhotoEdit" Visible="false" runat="server">
                 <asp:FileUpload id="fuProfilePhoto" runat="server" />
-                <asp:Button Text="Save" ID="btnSaveProfilePhoto" runat="server" />
+                <asp:Button Text="Save" ID="btnSaveProfilePhoto" runat="server" OnClick="btnSaveProfilePhoto_Click" />
             </asp:Panel>
             <div>
                 <asp:Panel ID="pnlBasicInformation" runat="server">
@@ -26,7 +26,7 @@
                     <asp:Label ID="lblGender" runat="server" />
                     <br />
                     <asp:Label ID="lblSexualOrientation" runat="server" />
-                    <asp:ImageButton ImageUrl="/Images/EditIcon.png" ID="imgbtnEditBasicInfo" runat="server" />
+                    <asp:ImageButton ImageUrl="/Images/EditIcon.png" ID="imgbtnEditBasicInfo" runat="server" OnClick="imgbtnEditBasicInfo_Click" />
                 </asp:Panel>
                 <asp:Panel ID="pnlBasicInformationEdit" Visible="false" runat="server">  
                    First Name: <asp:TextBox ID="tbFirstName" runat="server" /> 
