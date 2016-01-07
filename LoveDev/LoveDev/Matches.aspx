@@ -18,52 +18,46 @@
             </div>
             <input type="button" id="btnMessage" value="Send Them a Message!" runat="server" data-CommandArgument='<%# Eval("UserID") %>' onclick="show(this)" />
         </ItemTemplate>
-    </asp:DataList>  
-    <div id="divBody" style="display:none">  
-            <div id="divPopupWindow">
-                <span id="close" onclick="div_hide()"></span>
+    </asp:DataList>
+            <div class="backdrop"></div>
+            <div id="divPopupWindow" class="popupbox">
+                <span id="close" onclick="div_hide()" class="closebox text-danger">[x]</span>
                 <input id="txtboxToUser" name="txtboxToUser" readonly="true" type="text" />
                 <input id="txtboxFromUser" name="txtboxFromUser" readonly="true" type="text"/>
                 <textarea id="msg" name="message" placeholder="Message"></textarea>
                 <button id="submit" type="button" onclick="check_empty()">Send</button>
             </div>
-    </div>
     <script>
-        var globalDOMElement; 
         function show(DOMElement) {
             var messageBox = $('#divBody');
             messageBox.css('display', 'block');
             messageBox.dialog();
-            globalDOMElement = $('#' + DOMElement.id).data("UserID");
-            var tofirstName = $("#" + DOMElement.id).parent().find("span[id*='FirstName']").html();
-            $('#txtboxToUser').val(tofirstName);
+            var firstName = $("#" + DOMElement.id).parent().find("span[id*='FirstName']").html();
+            $('#txtboxToUser').val(firstName);
             var fromFirstName = $('#hfFirstName').val();
             $('#txtboxFromUser').val(fromFirstName);
         };
+    </script>
+     <script type="text/javascript">
+        $(document).ready(function () {
 
-        function check_empty() {
-            if ($('#msg').text == "") {
-                alert("Message cannot be empty. Please fill in the message area.");
-            }
-
-            else {
-                $.ajax('SendMessage.ashx', {
-                    data: {
-                        fromUserID: $('#hfUserLoggedIn').val(), toUserID: globalDOMElement, 
-                        messageToSend: $('#msg').val()
-                    },
-
-                    success: function (response) {
-                        alert("Message sent");
-                    },
-                    error: function (error) {
-                        var error = error;
-                    }
-
-                });
-            }
-        };
-
+            $('.lightbox').click(function () {
+                $('.backdrop, .popupbox').animate({ 'opacity': '.50' }, 300, 'linear');
+                $('.box').animate({ 'opacity': '1.00' }, 300, 'linear');
+                $('.backdrop, .popupbox').css('display', 'block');
+            });
+            $('.closebox').click(function () {
+                close_box();
+            });
+            $('.backdrop').click(function () {
+                close_box();
+            });
+        });
+        function close_box() {
+            $('.backdrop, .popupbox').animate({ 'opacity': '0' }, 300, 'linear', function () {
+                $('.backdrop, .popupbox').css('display', 'none');
+            });
+        }
 
     </script>
 </asp:Content>

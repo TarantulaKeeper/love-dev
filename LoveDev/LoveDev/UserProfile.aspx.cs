@@ -35,6 +35,8 @@ namespace LoveDev
             tbAge.Text = ds.Tables[0].Rows[0]["Age"].ToString();
             tbCity.Text = ds.Tables[0].Rows[0]["City"].ToString();
             tbCountry.Text = ds.Tables[0].Rows[0]["Country"].ToString();
+            txtareaUserBio.InnerText = ds.Tables[0].Rows[0]["Bio"].ToString();
+
         }
 
         private void LoadUserInfo()
@@ -51,6 +53,7 @@ namespace LoveDev
             lblCountry.Text = ds.Tables[0].Rows[0]["Country"].ToString();
             lblSexualOrientation.Text = ds.Tables[0].Rows[0]["SexualOrientationID"].ToString();
             lblGender.Text = ds.Tables[0].Rows[0]["GenderID"].ToString();
+            txtareaUserBio.InnerText = ds.Tables[0].Rows[0]["Bio"].ToString();
             
         }
 
@@ -63,6 +66,7 @@ namespace LoveDev
             myDal.AddParam("Age", tbAge.Text);
             myDal.AddParam("City", tbCity.Text);
             myDal.AddParam("Country", tbCountry.Text);
+            myDal.AddParam("Bio", txtareaEditBio.InnerText);
             myDal.ExecuteProcedure("spEditUserData");
         }
 

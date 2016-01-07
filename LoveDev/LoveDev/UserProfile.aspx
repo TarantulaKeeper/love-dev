@@ -51,7 +51,7 @@
                                         <span class="input-group-addon">Sexual Orientation:</span>
                                         <asp:Label ID="lblSexualOrientation" runat="server" CssClass="form-control" />
                                     </div>
-                                    <asp:ImageButton ImageUrl="/Images/EditIcon.png" ID="imgbtnEditBasicInfo" runat="server" />
+                                    <textarea id="txtareaUserBio" runat="server" disabled="disabled"></textarea>                                    <asp:ImageButton ImageUrl="/Images/EditIcon.png" ID="imgbtnEditBasicInfo" runat="server" />
                                 </div>
                 </asp:Panel>
                             <asp:Panel ID="pnlBasicInformationEdit" Visible="true" runat="server" CssClass="">
@@ -75,6 +75,7 @@
                                     <span class="input-group-addon">Country:</span>
                                     <asp:TextBox ID="tbCountry" runat="server" />
                                 </div>
+                                <textarea id="txtareaEditBio" runat="server"></textarea>
 
                                 <asp:Button Text="Save" CssClass="btn btn-danger" ID="btnSaveBasicInformation" runat="server" OnClick="btnSaveBasicInformation_Click" />
                 </asp:Panel>

@@ -33,6 +33,7 @@ IsActive BIT NOT NULL,
 IsAdmin BIT NOT NULL,
 UserPhoto VARCHAR(250) NOT NULL,
 GenderID INT FOREIGN KEY REFERENCES tbGender(GenderID) NOT NULL,
+Bio VARCHAR(500) NOT NULL
 )
 
 INSERT INTO tbUser(FirstName, LastName, Password, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID)
@@ -181,7 +182,6 @@ go
 
 
 
-
 --</Tables>
 --<Procedures>
 
@@ -216,7 +216,7 @@ CREATE PROC spGetUserByID
 @userID INT
 )
 AS BEGIN
-	SELECT UserID, FirstName, LastName, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto
+	SELECT UserID, FirstName, LastName, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, Bio
 	FROM   tbUser
 	WHERE  UserID= @userID
 END
@@ -266,8 +266,6 @@ CREATE PROC spRegisterUser
 @IsActive  BIT =0, --Is not Active by default
 @IsAdmin   BIT =0, --Is not Admin by default
 @UserPhoto VARCHAR(250) ='Images/NoPhoto.jpg', --Sets photo to default photo if one is not provided
-@GenderID  INT,
-@SexualOrientation INT,
 @Guid VARCHAR(50)
 )
 AS BEGIN
@@ -275,6 +273,16 @@ AS BEGIN
 					   (@FirstName,@LastName,@Password,@Age,@City,@Country,@Email,@IsActive,@IsAdmin,@UserPhoto)
 	INSERT INTO tbUserGuid (UserID, Guid) VALUES
 						(SCOPE_IDENTITY(),@Guid)
+END
+GO
+
+CREATE PROC spAddSexualOrientation
+(
+@UserID INT,
+@GenderID INT
+)
+AS BEGIN
+	INSERT INTO tbSexualOrientation (UserID, GenderID) VALUES (@UserID, @GenderID)
 END
 GO
 
@@ -479,7 +487,8 @@ CREATE PROC spEditUserData
 @City VARCHAR(50),
 @Country VARCHAR(50),
 @GenderID INT,
-@SexualOrientationID INT
+@SexualOrientationID INT,
+@Bio VARCHAR(500)
 )
 AS BEGIN
 	UPDATE tbUser set
@@ -487,7 +496,8 @@ AS BEGIN
 		LastName = @LastName,
 		Age = @Age,
 		City = @City,
-		Country = @Country
+		Country = @Country,
+		Bio = @Bio
 	WHERE UserID = @UserID
 END
 GO
@@ -511,6 +521,7 @@ exec spLogin'chris.jeffrey@robertsoncollege.net',1234
 exec spUsernameCheck 'chris.jeffrey@robertsoncollege.net'
 select * from tbUserGuid
 select * from tbInvalidLogins
+select * from tbSexualOrientation
 exec spGetMatchesForThisUserID 1
 select * from tbUserValues
 go
