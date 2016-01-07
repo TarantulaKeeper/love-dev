@@ -61,6 +61,9 @@
 .displayinlineblock{
     display:inline-block;
 }
+.padtop{
+    padding-top:15px;
+}
 
 /*---------media queries-------------*/
 /*removes white space when screen is xs*/

@@ -21,7 +21,6 @@ namespace LoveDev
             if(!IsPostBack)
             {
                 LoadUserInfo();
-                LoadUserInfoForEditing();
             }
         }
 
@@ -65,6 +64,30 @@ namespace LoveDev
             myDal.AddParam("City", tbCity.Text);
             myDal.AddParam("Country", tbCountry.Text);
             myDal.ExecuteProcedure("spEditUserData");
+        }
+
+        protected void btnSaveProfilePhoto_Click(object sender, EventArgs e)
+        {
+            DAL myDal = new DAL();
+            string Path = Server.MapPath(".").ToString() + "\\PROFILE_PHOTOS\\";
+            string fileName = fuProfilePhoto.FileName;
+           fuProfilePhoto.PostedFile.SaveAs(Path + fileName);
+            myDal.AddParam("UserPhoto", "PROFILE_PHOTOS/" + fileName);
+            myDal.ExecuteProcedure("spEditUserProfilePicture");
+            pnlProfilePhotoEdit.Visible = false;
+        }
+
+        protected void imgbtnEditBasicInfo_Click(object sender, ImageClickEventArgs e)
+        {
+            LoadUserInfoForEditing();
+            pnlBasicInformationEdit.Visible = true;
+            pnlBasicInformation.Visible = false;
+            
+        }
+
+        protected void imgbtnEditProfilePhoto_Click(object sender, ImageClickEventArgs e)
+        {
+            pnlProfilePhotoEdit.Visible = true;
         }
     }
 }

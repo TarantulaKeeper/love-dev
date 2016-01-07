@@ -125,6 +125,7 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Home.aspx" />
+    <Content Include="Images\EditIcon.png" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\LoveDevLogoTif.tif" />
     <Content Include="Images\NoPhoto.jpg" />
@@ -240,7 +241,9 @@
       <Name>LoveDevMatchmakingLib</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="PROFILE_PHOTOS\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

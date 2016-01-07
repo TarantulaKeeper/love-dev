@@ -16,15 +16,7 @@ GenderName VARCHAR(50)
 INSERT INTO tbGender(GenderName) VALUES ('Man'), ('Woman'), ('BiGender'), ('GenderQueer'), ('Non-Binary'),
 	('Two Spirit'), ('Transgender'), ('Transsexual')
 
--- TABLE FOR SEXUAL ORIENTATION 
 
-CREATE TABLE tbSexualOrientation(
-SexualOrientationID INT PRIMARY KEY IDENTITY (1,1),
-SexualOrientationName VARCHAR(50)
-)
-
-INSERT INTO tbSexualOrientation(SexualOrientationName) VALUES ('Straight'), ('Gay'), ('Lesbian'), ('Asexual'),
-	('Pansexual'), ('Bisexual'), ('Sapiosexual'), ('Heteroflexible'), ('Homoflexible')
 
 -- TABLE FOR USERS
 
@@ -41,15 +33,26 @@ IsActive BIT NOT NULL,
 IsAdmin BIT NOT NULL,
 UserPhoto VARCHAR(250) NOT NULL,
 GenderID INT FOREIGN KEY REFERENCES tbGender(GenderID) NOT NULL,
-SexualOrientationID INT FOREIGN KEY REFERENCES tbSexualOrientation(SexualOrientationID) NOT NULL
 )
 
-INSERT INTO tbUser(FirstName, LastName, Password, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID, SexualOrientationID)
+INSERT INTO tbUser(FirstName, LastName, Password, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID)
 	VALUES 
-		('Niko', 'Pastulovic', '1234', 20, 'Winnipeg', 'Canada', 'niko.pastulovic@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1, 8),
-		('T.J.', 'Petrowski', '1234', 24, 'Warren', 'Canada', 't.j.petrowski@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1, 4),
-		('Chris', 'Jeffrey', '1234', 21, 'Winnipeg', 'Canada', 'chris.jeffrey@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 5, 5),
-		('Joseph', 'Maglalang', '1234', 30, 'Winnipeg', 'Canada', 'joseph.maglalang@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 6, 1)
+		('Niko', 'Pastulovic', '1234', 20, 'Winnipeg', 'Canada', 'niko.pastulovic@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1),
+		('T.J.', 'Petrowski', '1234', 24, 'Warren', 'Canada', 't.j.petrowski@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1),
+		('Chris', 'Jeffrey', '1234', 21, 'Winnipeg', 'Canada', 'chris.jeffrey@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 5),
+		('Joseph', 'Maglalang', '1234', 30, 'Winnipeg', 'Canada', 'joseph.maglalang@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 6)
+
+-- TABLE FOR SEXUAL ORIENTATION 
+
+CREATE TABLE tbSexualOrientation(
+SexualOrientationID INT PRIMARY KEY IDENTITY (1,1),
+UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
+GenderID INT FOREIGN KEY REFERENCES tbGender(GenderID)
+)
+INSERT INTO tbSexualOrientation (UserID, GenderID) VALUES (1,1),(1,2),(2,3),(3,3),(3,5),(3,4),(4,1),(4,3)
+
+--INSERT INTO tbSexualOrientation(SexualOrientationName) VALUES ('Straight'), ('Gay'), ('Lesbian'), ('Asexual'),
+	--('Pansexual'), ('Bisexual'), ('Sapiosexual'), ('Heteroflexible'), ('Homoflexible')
 
 CREATE TABLE tbUserGuid
 (
@@ -86,7 +89,7 @@ UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
 OtherUserID INT FOREIGN KEY REFERENCES tbUser(UserID)
 )
 INSERT INTO tbMatches (UserID, OtherUserID) VALUES (1,3)
-INSERT INTO tbMatches (UserID, OtherUserID) VALUES (2, 1)
+INSERT INTO tbMatches (UserID, OtherUserID) VALUES (3, 1)
 
 -- TABLE FOR QUESTIONS
 
@@ -213,7 +216,7 @@ CREATE PROC spGetUserByID
 @userID INT
 )
 AS BEGIN
-	SELECT UserID, FirstName, LastName, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID, SexualOrientationID
+	SELECT UserID, FirstName, LastName, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto
 	FROM   tbUser
 	WHERE  UserID= @userID
 END
@@ -227,7 +230,7 @@ CREATE PROC spLogin
 AS BEGIN
 	IF EXISTS (SELECT UserId from tbUser where Email = @Email and Password = @Password)
 	BEGIN
-		select UserID, FirstName, LastName, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID, SexualOrientationID
+		select UserID, FirstName, LastName, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto
 		from   tbUser
 		where  Email = @Email
 		and    Password = @Password
@@ -268,8 +271,8 @@ CREATE PROC spRegisterUser
 @Guid VARCHAR(50)
 )
 AS BEGIN
-	INSERT INTO tbUser (FirstName,LastName,Password,Age,City,Country,Email,IsActive,IsAdmin,UserPhoto,GenderID,SexualOrientationID) VALUES
-					   (@FirstName,@LastName,@Password,@Age,@City,@Country,@Email,@IsActive,@IsAdmin,@UserPhoto,@GenderID,@SexualOrientation)
+	INSERT INTO tbUser (FirstName,LastName,Password,Age,City,Country,Email,IsActive,IsAdmin,UserPhoto) VALUES
+					   (@FirstName,@LastName,@Password,@Age,@City,@Country,@Email,@IsActive,@IsAdmin,@UserPhoto)
 	INSERT INTO tbUserGuid (UserID, Guid) VALUES
 						(SCOPE_IDENTITY(),@Guid)
 END
@@ -282,30 +285,35 @@ AS BEGIN
 END
 GO
 
-CREATE PROC spGetSexualOrientations
-AS BEGIN
-	SELECT * 
-	FROM tbSexualOrientation
-END
-GO
+--CREATE PROC spGetSexualOrientations
+--AS BEGIN
+--	SELECT * 
+--	FROM tbSexualOrientation
+--END
+--GO
 
 CREATE PROC spGetUserGeneralInterests
 (@UserID int)
 AS BEGIN
-	SELECT tbUserValues.UserCategoryValue as [generalInterests]
-	FROM tbUserValues 
-	WHERE tbUserValues.UserID = @UserID 
+	SELECT UV.UserCategoryValue as [generalInterests], S.GenderID
+	FROM tbUserValues UV full outer join
+		 tbSexualOrientation S on S.UserID = UV.UserID
+	WHERE UV.UserID = @UserID 
 END
 GO
 
 CREATE PROC spGetUserSexualityAndGender
-(@UserID int)
+(
+@UserID int
+)
 AS BEGIN
-	SELECT tbUser.GenderID, tbUser.SexualOrientationID
-	FROM   tbUser 
-	WHERE  tbUser.UserID = @UserID
+	SELECT U.GenderID, S.GenderID as 'PreferenceID'
+	FROM   tbUser U join
+		   tbSexualOrientation S on U.UserID = S.UserID
+	WHERE  U.UserID = @UserID
 END
 GO
+
 CREATE PROC spGetUserPersonalityValue
 (@UserID int)
 AS BEGIN 
@@ -504,5 +512,6 @@ exec spUsernameCheck 'chris.jeffrey@robertsoncollege.net'
 select * from tbUserGuid
 select * from tbInvalidLogins
 exec spGetMatchesForThisUserID 1
+select * from tbUserValues
 go
 exec spInsertIntoInvalidLogin 'dgnrdnt', 'fgxnrgn'
