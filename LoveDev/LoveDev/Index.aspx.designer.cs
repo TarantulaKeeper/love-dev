@@ -67,15 +67,6 @@ namespace LoveDev {
         protected global::System.Web.UI.WebControls.Button btnContinue_register;
         
         /// <summary>
-        /// fupPhoto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fupPhoto;
-        
-        /// <summary>
         /// pnlRegistration_cont control.
         /// </summary>
         /// <remarks>
