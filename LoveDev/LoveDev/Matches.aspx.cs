@@ -22,7 +22,7 @@ namespace LoveDev
             DAL myDAL = new DAL();
             DataSet ds = new DataSet();
             myDAL.AddParam("UserID", Security.CurrentUser.UserID);
-            ds = myDAL.ExecuteProcedure("spGetUserIDMatches");
+            ds = myDAL.ExecuteProcedure("spGetMatchesForThisUserID");
 
             dlMatches.DataSource = ds;
             dlMatches.DataBind(); 

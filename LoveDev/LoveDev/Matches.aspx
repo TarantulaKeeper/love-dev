@@ -12,16 +12,15 @@
                 <%# Eval("FirstName") %>
             </div>
             <div>
-                <%# Eval("Gender") %>
+                <%# Eval("GenderName") %>
             </div>
-            <div>
-                <%# Eval("Bio") %>
             </div>
             <asp:Button ID="btnMessage" Text="Send Them a Message!" runat="server" CommandArgument="UserID" OnClientClick="show(this)" />
         </ItemTemplate>
     </asp:DataList>
-    <div id="divDialog" style="overflow:hidden">
-        <div id="divToHoldPopupWindow">
+    
+    <div id="divBody" style="visibility:hidden">
+        <div id="divToHoldPopupWindow" style="overflow:hidden">
             <div id="divPopupWindow">
                 <span id="close" onclick="div_hide()"></span>
                 <input id="txtboxToUser" name="txtboxToUser" readonly="true" type="text" />
@@ -31,12 +30,13 @@
             </div>
         </div>
     </div>
-    <script src="Scripts/jquery-2.1.4.js"></script>
-    <script src="Scripts/jquery-ui-1.11.4.js"></script>
     <script>
         function show(DOMElement) {
-            $('#divDialog');
-
+            var messageBox = $('#divBody');
+            messageBox.dia
+            $('#txtboxToUser').val(text);
+            var userLoggedIn = $('#hfUserID').val();
+            $('#txtboxFromUser').val(userLoggedIn);
         }
     </script>
 </asp:Content>
