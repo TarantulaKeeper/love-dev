@@ -276,6 +276,16 @@ AS BEGIN
 END
 GO
 
+CREATE PROC spAddSexualOrientation
+(
+@UserID INT,
+@GenderID INT
+)
+AS BEGIN
+	INSERT INTO tbSexualOrientation (UserID, GenderID) VALUES (@UserID, @GenderID)
+END
+GO
+
 CREATE PROC spGetGenders
 AS BEGIN
 	SELECT * 

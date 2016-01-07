@@ -20,8 +20,8 @@ namespace LoveDev
                     Response.Redirect("Home.aspx?message=Already Logged In");
                 }
 
-                loadGenders();
-                loadSexualOrientations();
+                loadGenders(ddlGender);
+                loadGenders(cblOrientation);
             }
             if (Request.QueryString["guid"] != null)
             {
@@ -34,19 +34,22 @@ namespace LoveDev
 
         }
 
-        public void loadGenders()
+        public void loadGenders(ListControl l)
         {
             DAL d = new DAL();
-            ddlGender.DataSource = d.ExecuteProcedure("spGetGenders");
-            ddlGender.DataTextField = "GenderName";
-            ddlGender.DataValueField = "GenderId";
-            ddlGender.DataBind();
-            ddlGender.Items.Insert(0, new ListItem("Select a Gender...", "-1"));
+            l.DataSource = d.ExecuteProcedure("spGetGenders");
+            l.DataTextField = "GenderName";
+            l.DataValueField = "GenderId";
+            l.DataBind();
+            if (l is DropDownList)
+            {
+                l.Items.Insert(0, new ListItem("Select a Gender...", "-1"));
+            }
         }
-        private void loadSexualOrientations()
+        private void loadSexualOrientations() //currently discontinued
         {
             DAL d = new DAL();
-            cblOrientation.DataSource = d.ExecuteProcedure("spGetSexualOrientations");
+            cblOrientation.DataSource = d.ExecuteProcedure("spGetGenders");
             cblOrientation.DataTextField = "SexualOrientationName";
             cblOrientation.DataValueField = "SexualOrientationId";
             cblOrientation.DataBind();
