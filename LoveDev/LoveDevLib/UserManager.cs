@@ -34,7 +34,7 @@ namespace LoveDevLib
                 DataRow DR = ds.Tables[0].Rows[0];
 
                 user = new User(int.Parse(DR["UserID"].ToString()), DR["FirstName"].ToString(), DR["LastName"].ToString(), int.Parse(DR["Age"].ToString()), DR["City"].ToString(), DR["Country"].ToString(),
-                    DR["Email"].ToString(), int.Parse(DR["GenderID"].ToString()), int.Parse(DR["SexualOrientationID"].ToString()), (bool)DR["IsAdmin"], (bool)DR["IsActive"]);
+                    DR["Email"].ToString(), (bool)DR["IsAdmin"], (bool)DR["IsActive"]);
             }
             else
             {

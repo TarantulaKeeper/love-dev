@@ -16,15 +16,7 @@ GenderName VARCHAR(50)
 INSERT INTO tbGender(GenderName) VALUES ('Man'), ('Woman'), ('BiGender'), ('GenderQueer'), ('Non-Binary'),
 	('Two Spirit'), ('Transgender'), ('Transsexual')
 
--- TABLE FOR SEXUAL ORIENTATION 
 
-CREATE TABLE tbSexualOrientation(
-SexualOrientationID INT PRIMARY KEY IDENTITY (1,1),
-SexualOrientationName VARCHAR(50)
-)
-
-INSERT INTO tbSexualOrientation(SexualOrientationName) VALUES ('Straight'), ('Gay'), ('Lesbian'), ('Asexual'),
-	('Pansexual'), ('Bisexual'), ('Sapiosexual'), ('Heteroflexible'), ('Homoflexible')
 
 -- TABLE FOR USERS
 
@@ -41,15 +33,25 @@ IsActive BIT NOT NULL,
 IsAdmin BIT NOT NULL,
 UserPhoto VARCHAR(250) NOT NULL,
 GenderID INT FOREIGN KEY REFERENCES tbGender(GenderID) NOT NULL,
-SexualOrientationID INT FOREIGN KEY REFERENCES tbSexualOrientation(SexualOrientationID) NOT NULL
 )
 
-INSERT INTO tbUser(FirstName, LastName, Password, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID, SexualOrientationID)
+INSERT INTO tbUser(FirstName, LastName, Password, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID)
 	VALUES 
-		('Niko', 'Pastulovic', '1234', 20, 'Winnipeg', 'Canada', 'niko.pastulovic@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1, 8),
-		('T.J.', 'Petrowski', '1234', 24, 'Warren', 'Canada', 't.j.petrowski@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1, 4),
-		('Chris', 'Jeffrey', '1234', 21, 'Winnipeg', 'Canada', 'chris.jeffrey@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 5, 5),
-		('Joseph', 'Maglalang', '1234', 30, 'Winnipeg', 'Canada', 'joseph.maglalang@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 6, 1)
+		('Niko', 'Pastulovic', '1234', 20, 'Winnipeg', 'Canada', 'niko.pastulovic@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1),
+		('T.J.', 'Petrowski', '1234', 24, 'Warren', 'Canada', 't.j.petrowski@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1),
+		('Chris', 'Jeffrey', '1234', 21, 'Winnipeg', 'Canada', 'chris.jeffrey@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 5),
+		('Joseph', 'Maglalang', '1234', 30, 'Winnipeg', 'Canada', 'joseph.maglalang@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 6)
+
+-- TABLE FOR SEXUAL ORIENTATION 
+
+CREATE TABLE tbSexualOrientation(
+SexualOrientationID INT PRIMARY KEY IDENTITY (1,1),
+UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
+GenderID INT FOREIGN KEY REFERENCES tbGender(GenderID)
+)
+
+--INSERT INTO tbSexualOrientation(SexualOrientationName) VALUES ('Straight'), ('Gay'), ('Lesbian'), ('Asexual'),
+	--('Pansexual'), ('Bisexual'), ('Sapiosexual'), ('Heteroflexible'), ('Homoflexible')
 
 CREATE TABLE tbUserGuid
 (
@@ -212,7 +214,7 @@ CREATE PROC spGetUserByID
 @userID INT
 )
 AS BEGIN
-	SELECT UserID, FirstName, LastName, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID, SexualOrientationID
+	SELECT UserID, FirstName, LastName, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto
 	FROM   tbUser
 	WHERE  UserID= @userID
 END
@@ -291,9 +293,10 @@ GO
 CREATE PROC spGetUserGeneralInterests
 (@UserID int)
 AS BEGIN
-	SELECT tbUserValues.UserCategoryValue as [generalInterests]
-	FROM tbUserValues 
-	WHERE tbUserValues.UserID = @UserID 
+	SELECT UV.UserCategoryValue as [generalInterests], S.GenderID
+	FROM tbUserValues UV full outer join
+		 tbSexualOrientation S on S.UserID = UV.UserID
+	WHERE tbUser.UserID = @UserID 
 END
 GO
 
@@ -486,5 +489,6 @@ exec spLogin'chris.jeffrey@robertsoncollege.net',1234
 exec spUsernameCheck 'chris.jeffrey@robertsoncollege.net'
 select * from tbUserGuid
 select * from tbInvalidLogins
+select * from tbUserValues
 go
 exec spInsertIntoInvalidLogin 'dgnrdnt', 'fgxnrgn'
