@@ -21,10 +21,10 @@
                                     <asp:DropDownList ID="ddlGender" runat="server" CssClass="btn btn-default dropdown-toggle" />
 
                                     <asp:RequiredFieldValidator ID="rfGender" runat="server" ControlToValidate="ddlGender" ValidationGroup="ddl" Text="*" ErrorMessage="Gender Required" CssClass="text-danger" InitialValue="-1"></asp:RequiredFieldValidator>
-
+                                    Seeking
                                     <div class="btn-group">
                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Action <span class="caret"></span>
+                                        Select preferences <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
