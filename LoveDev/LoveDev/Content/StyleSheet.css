@@ -47,6 +47,23 @@
     box-shadow: 0px 0px 5px #444;
     display:none;
 }
+.popupbox {
+    position: absolute;
+    top: 35%;
+    left:35%;
+    width: 350px;
+    min-height: 192px;
+    background: #e6e6e6;
+    z-index: 51;
+    padding: 10px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0px 0px 5px #444;
+    -webkit-box-shadow: 0px 0px 5px #444;
+    box-shadow: 0px 0px 5px #444;
+    display:none;
+}
 .closebox{
     float:right;
     margin-right:6px;
