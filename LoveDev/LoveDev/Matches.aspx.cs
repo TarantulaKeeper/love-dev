@@ -14,7 +14,13 @@ namespace LoveDev
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            LoadMatches();
+            if (!IsPostBack)
+            {
+                LoadMatches();
+                hfUserLoggedIn.Value = Security.CurrentUser.UserID.ToString();
+                hfFirstName.Value = Security.CurrentUser.FirstName;
+            }
+            
         }
 
         public void LoadMatches()
