@@ -16,7 +16,7 @@
                 <%# Eval("GenderName") %>
             </div>
             </div>
-            <input type="button" id="btnMessage" value="Send Them a Message!" runat="server" data-CommandArgument='<%# Eval("UserID") %>' onclick="show(this)" />
+            <input type="button" class="btn btn-success lightbox" id="btnMessage" value="Send Them a Message!" runat="server" data-CommandArgument='<%# Eval("UserID") %>' onclick="show(this)" />
         </ItemTemplate>
     </asp:DataList>
             <div class="backdrop"></div>
