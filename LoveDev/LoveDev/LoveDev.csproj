@@ -126,11 +126,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Home.aspx" />
     <Content Include="Images\favicon.ico" />
+    <Content Include="Images\LoveDevLogoTif.tif" />
     <Content Include="Images\NoPhoto.jpg" />
     <Content Include="Inbox.aspx" />
     <Content Include="Index.aspx" />
     <Content Include="INSTALL.sql" />
-    <Content Include="Matches.aspx" />
     <Content Include="MISCELLANEOUS FILES\BUSINESS LOGIC NOTES.txt" />
     <Content Include="MISCELLANEOUS FILES\QUESTIONS.txt" />
     <Content Include="packages.config" />
@@ -198,13 +198,6 @@
     </Compile>
     <Compile Include="LoginHandler.ashx.cs">
       <DependentUpon>LoginHandler.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="Matches.aspx.cs">
-      <DependentUpon>Matches.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Matches.aspx.designer.cs">
-      <DependentUpon>Matches.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SendMessage.ashx.cs">
