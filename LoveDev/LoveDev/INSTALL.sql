@@ -450,7 +450,6 @@ CREATE PROC spEditUserData
 (@UserID INT,
 @FirstName VARCHAR(50),
 @LastName VARCHAR(50),
-@Password VARCHAR(50),
 @Age INT,
 @City VARCHAR(50),
 @Country VARCHAR(50),
@@ -461,12 +460,9 @@ AS BEGIN
 	UPDATE tbUser set
 		FirstName = @FirstName,
 		LastName = @LastName,
-		Password = @Password,
 		Age = @Age,
 		City = @City,
-		Country = @Country,
-		GenderID = @GenderID,
-		SexualOrientationID = @SexualOrientationID
+		Country = @Country
 	WHERE UserID = @UserID
 END
 GO
