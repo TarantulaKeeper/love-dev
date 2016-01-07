@@ -60,7 +60,7 @@ namespace LoveDevLib
             return MatchUserIDList;
         }
 
-        static public int RegisterUser(string FirstName, string LastName, string Password, int Age, string City, string Country, string Email, int GenderID, List<int> Preferences, Guid g)
+        static public void RegisterUser(string FirstName, string LastName, string Password, int Age, string City, string Country, string Email, int GenderID, List<int> Preferences, Guid g)
         {
             DAL d = new DAL();
             d.AddParam("FirstName", FirstName);
@@ -74,7 +74,6 @@ namespace LoveDevLib
             d.AddParam("Guid", g);
             SendEmailVerification(Email, FirstName + " " + LastName, g);
             AddSexualOrientation(int.Parse(d.ExecuteScalar("spRegisterUser")), GenderID);
-            return 
         }
         static public void AddSexualOrientation(int UserID, int GenderID)
         {
