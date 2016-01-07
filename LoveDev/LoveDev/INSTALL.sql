@@ -33,6 +33,7 @@ IsActive BIT NOT NULL,
 IsAdmin BIT NOT NULL,
 UserPhoto VARCHAR(250) NOT NULL,
 GenderID INT FOREIGN KEY REFERENCES tbGender(GenderID) NOT NULL,
+Bio VARCHAR(500) NOT NULL
 )
 
 INSERT INTO tbUser(FirstName, LastName, Password, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID)
@@ -181,7 +182,6 @@ go
 
 
 
-
 --</Tables>
 --<Procedures>
 
@@ -216,7 +216,7 @@ CREATE PROC spGetUserByID
 @userID INT
 )
 AS BEGIN
-	SELECT UserID, FirstName, LastName, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto
+	SELECT UserID, FirstName, LastName, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, Bio
 	FROM   tbUser
 	WHERE  UserID= @userID
 END
@@ -479,7 +479,8 @@ CREATE PROC spEditUserData
 @City VARCHAR(50),
 @Country VARCHAR(50),
 @GenderID INT,
-@SexualOrientationID INT
+@SexualOrientationID INT,
+@Bio VARCHAR(500)
 )
 AS BEGIN
 	UPDATE tbUser set
@@ -487,7 +488,8 @@ AS BEGIN
 		LastName = @LastName,
 		Age = @Age,
 		City = @City,
-		Country = @Country
+		Country = @Country,
+		Bio = @Bio
 	WHERE UserID = @UserID
 END
 GO

@@ -26,6 +26,8 @@
                     <asp:Label ID="lblGender" runat="server" />
                     <br />
                     <asp:Label ID="lblSexualOrientation" runat="server" />
+                    <br />
+                    <textarea id="txtareaUserBio" disabled="disabled" runat="server"></textarea>
                     <asp:ImageButton ImageUrl="/Images/EditIcon.png" ID="imgbtnEditBasicInfo" runat="server" OnClick="imgbtnEditBasicInfo_Click" />
                 </asp:Panel>
                 <asp:Panel ID="pnlBasicInformationEdit" Visible="false" runat="server">  
@@ -39,6 +41,7 @@
                     <br />
                    Country <asp:TextBox ID="tbCountry" runat="server" />  
                     <br />
+                    Bio <textarea id="txtareaEditBio" runat="server"></textarea>
                     <asp:Button Text="Save" ID="btnSaveBasicInformation" runat="server" OnClick="btnSaveBasicInformation_Click" />
                 </asp:Panel>
             </div>

@@ -130,6 +130,15 @@ namespace LoveDev {
         protected global::System.Web.UI.WebControls.Label lblSexualOrientation;
         
         /// <summary>
+        /// txtareaUserBio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtareaUserBio;
+        
+        /// <summary>
         /// imgbtnEditBasicInfo control.
         /// </summary>
         /// <remarks>
@@ -191,6 +200,15 @@ namespace LoveDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbCountry;
+        
+        /// <summary>
+        /// txtareaEditBio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtareaEditBio;
         
         /// <summary>
         /// btnSaveBasicInformation control.
