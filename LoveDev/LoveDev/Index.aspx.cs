@@ -58,8 +58,16 @@ namespace LoveDev
         protected void btnRegister_Click(object sender, EventArgs e)
         {
             Guid g = Guid.NewGuid();
+            List<int> Preferences = new List<int>();
+            foreach(ListItem item in cblOrientation.Items)
+            {
+                if (item.Selected)
+                {
+                    Preferences.Add(int.Parse(item.Value));
+                }
+            }
             lblError.Text = "Registration Successful! Please check your emails to verify account.";
-            UserManager.RegisterUser(txtFirstName.Text, txtLastName.Text, txtPassword.Text, int.Parse(txtAge.Text), txtCity.Text, txtCountry.Text, txtEmail.Text, int.Parse(ddlGender.SelectedValue), g);
+            UserManager.RegisterUser(txtFirstName.Text, txtLastName.Text, txtPassword.Text, int.Parse(txtAge.Text), txtCity.Text, txtCountry.Text, txtEmail.Text, int.Parse(ddlGender.SelectedValue),Preferences, g);
         }
 
         protected void btnContinue_register_Click(object sender, EventArgs e)
