@@ -17,28 +17,28 @@
                             </div>
                             <div class="displayinlineblock">
                                 <span style="padding-right: 10px;">I am </span>
-                                <span class="dropdown">
+                                <div class="dropdown">
                                     <asp:DropDownList ID="ddlGender" runat="server" CssClass="btn btn-default dropdown-toggle" />
 
                                     <asp:RequiredFieldValidator ID="rfGender" runat="server" ControlToValidate="ddlGender" ValidationGroup="ddl" Text="*" ErrorMessage="Gender Required" CssClass="text-danger" InitialValue="-1"></asp:RequiredFieldValidator>
 
-                                    <asp:DropDownList ID="ddlOrientation" runat="server" CssClass="btn btn-default dropdown-toggle" />
-
-                                    <asp:RequiredFieldValidator ID="rfOrientation" runat="server" ControlToValidate="ddlOrientation" ValidationGroup="ddl" Text="*" ErrorMessage="Sexual Orientation Required" CssClass="text-danger" InitialValue="-1"></asp:RequiredFieldValidator>
-                                    <asp:Button ID="btnContinue_register" Text="Continue" runat="server" ValidationGroup="ddl" OnClick="btnContinue_register_Click" CssClass="btn btn-warning navbar-btn" />
-                                </span>
-                                <div class="btn-group">
+                                    <div class="btn-group">
                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Action <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <asp:CheckBoxList runat="server">
-                                                <asp:ListItem Text="text1" />
-                                                <asp:ListItem Text="text2" />
-                                            </asp:CheckBoxList></li>
+                                            <asp:CheckBoxList runat="server" ID="cblOrientation"></asp:CheckBoxList>
+
+                                        </li>
                                     </ul>
                                 </div>
+                                    <%--<asp:DropDownList ID="ddlOrientation" runat="server" CssClass="btn btn-default dropdown-toggle" />--%>
+
+                                    <%--<asp:RequiredFieldValidator ID="rfOrientation" runat="server" ControlToValidate="ddlOrientation" ValidationGroup="ddl" Text="*" ErrorMessage="Sexual Orientation Required" CssClass="text-danger" InitialValue="-1"></asp:RequiredFieldValidator>--%>
+                                    <asp:Button ID="btnContinue_register" Text="Continue" runat="server" ValidationGroup="ddl" OnClick="btnContinue_register_Click" CssClass="btn btn-warning navbar-btn" />
+                                </div>
+                                
                             </div>
                             <%--Profile Photo: set to false for now.--%>
                             <asp:FileUpload ID="fupPhoto" runat="server" Visible="false" />
