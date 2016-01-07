@@ -60,7 +60,7 @@ namespace LoveDevLib
             return MatchUserIDList;
         }
 
-        static public void RegisterUser(string FirstName, string LastName, string Password, int Age, string City, string Country, string Email, int GenderID, int SexualOrientationID, Guid g)
+        static public void RegisterUser(string FirstName, string LastName, string Password, int Age, string City, string Country, string Email, Guid g)
         {
             DAL d = new DAL();
             d.AddParam("FirstName", FirstName);
@@ -70,30 +70,28 @@ namespace LoveDevLib
             d.AddParam("City", City);
             d.AddParam("Country", Country);
             d.AddParam("Email", Email);
-            d.AddParam("GenderID", GenderID);
-            d.AddParam("SexualOrientation", SexualOrientationID);
             d.AddParam("Guid", g);
             d.ExecuteNonQuery("spRegisterUser");
             SendEmailVerification(Email, FirstName + " " + LastName, g);
         }
 
-        static public void RegisterUser(string FirstName, string LastName, string Password, int Age, string City, string Country, string Email, int GenderID, int SexualOrientationID, string UserPhoto, Guid g)
-        {
-            DAL d = new DAL();
-            d.AddParam("FirstName", FirstName);
-            d.AddParam("LastName", LastName);
-            d.AddParam("Password", Password);
-            d.AddParam("Age", Age);
-            d.AddParam("City", City);
-            d.AddParam("Country", Country);
-            d.AddParam("Email", Email);
-            d.AddParam("GenderID", GenderID);
-            d.AddParam("SexualOrientation", SexualOrientationID);
-            d.AddParam("Guid", g);
-            d.AddParam("UserPhoto", UserPhoto);
-            d.ExecuteNonQuery("spRegisterUser");
-            SendEmailVerification(Email, FirstName + " " + LastName, g);
-        }
+        //static public void RegisterUser(string FirstName, string LastName, string Password, int Age, string City, string Country, string Email, int GenderID, int SexualOrientationID, string UserPhoto, Guid g)
+        //{
+        //    DAL d = new DAL();
+        //    d.AddParam("FirstName", FirstName);
+        //    d.AddParam("LastName", LastName);
+        //    d.AddParam("Password", Password);
+        //    d.AddParam("Age", Age);
+        //    d.AddParam("City", City);
+        //    d.AddParam("Country", Country);
+        //    d.AddParam("Email", Email);
+        //    d.AddParam("GenderID", GenderID);
+        //    d.AddParam("SexualOrientation", SexualOrientationID);
+        //    d.AddParam("Guid", g);
+        //    d.AddParam("UserPhoto", UserPhoto);
+        //    d.ExecuteNonQuery("spRegisterUser");
+        //    SendEmailVerification(Email, FirstName + " " + LastName, g);
+        //}
 
         static private void SendEmailVerification(string Email, string Name, Guid g)
         {

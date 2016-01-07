@@ -266,8 +266,6 @@ CREATE PROC spRegisterUser
 @IsActive  BIT =0, --Is not Active by default
 @IsAdmin   BIT =0, --Is not Admin by default
 @UserPhoto VARCHAR(250) ='Images/NoPhoto.jpg', --Sets photo to default photo if one is not provided
-@GenderID  INT,
-@SexualOrientation INT,
 @Guid VARCHAR(50)
 )
 AS BEGIN
@@ -511,6 +509,7 @@ exec spLogin'chris.jeffrey@robertsoncollege.net',1234
 exec spUsernameCheck 'chris.jeffrey@robertsoncollege.net'
 select * from tbUserGuid
 select * from tbInvalidLogins
+select * from tbSexualOrientation
 exec spGetMatchesForThisUserID 1
 select * from tbUserValues
 go

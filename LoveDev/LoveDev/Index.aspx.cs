@@ -56,7 +56,7 @@ namespace LoveDev
         {
             Guid g = Guid.NewGuid();
             lblError.Text = "Registration Successful! Please check your emails to verify account.";
-            UserManager.RegisterUser(txtFirstName.Text, txtLastName.Text, txtPassword.Text, int.Parse(txtAge.Text), txtCity.Text, txtCountry.Text, txtEmail.Text, int.Parse(ddlGender.SelectedValue), int.Parse(cblOrientation.SelectedValue), g);
+            UserManager.RegisterUser(txtFirstName.Text, txtLastName.Text, txtPassword.Text, int.Parse(txtAge.Text), txtCity.Text, txtCountry.Text, txtEmail.Text, int.Parse(ddlGender.SelectedValue), g);
         }
 
         protected void btnContinue_register_Click(object sender, EventArgs e)
