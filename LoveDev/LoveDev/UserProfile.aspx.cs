@@ -66,6 +66,7 @@ namespace LoveDev
             myDal.AddParam("Country", tbCountry.Text);
             myDal.AddParam("Bio", txtareaEditBio.InnerText);
             myDal.ExecuteProcedure("spEditUserData");
+            LoadUserInfo();
         }
 
         protected void btnSaveProfilePhoto_Click(object sender, EventArgs e)
@@ -75,7 +76,9 @@ namespace LoveDev
             string fileName = fuProfilePhoto.FileName;
            fuProfilePhoto.PostedFile.SaveAs(Path + fileName);
             myDal.AddParam("UserPhoto", "PROFILE_PHOTOS/" + fileName);
+            myDal.AddParam("UserID", Security.CurrentUser.UserID);
             myDal.ExecuteProcedure("spEditUserProfilePicture");
+            LoadUserInfo();
             pnlProfilePhotoEdit.Visible = false;
         }
 
