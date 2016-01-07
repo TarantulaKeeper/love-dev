@@ -3,6 +3,45 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="webpage_content">
+        <div>
+            <asp:Image ID="imgProfilePhoto" runat="server" />
+            <asp:ImageButton ImageUrl="imageurl" ID="imgbtnEditProfilePhoto" runat="server" />
 
+            <asp:Panel ID="pnlProfilePhotoEdit" runat="server">
+                <asp:FileUpload id="fuProfilePhoto" runat="server" />
+                <asp:Button Text="Save" ID="btnSaveProfilePhoto" runat="server" />
+            </asp:Panel>
+            <div>
+                <asp:Panel ID="pnlBasicInformation" runat="server">
+                    Name:
+                    <asp:Label ID="lblFirstName" runat="server" />
+                    <asp:Label ID="lblLastName" runat="server" />
+                    <br />
+                    <asp:Label ID="lblAge" runat="server" />
+                    <br />
+                    <asp:Label ID="lblCity" runat="server" />
+                    <br />
+                    <asp:Label ID="lblCountry" runat="server" />
+                    <br />
+                    <asp:Label ID="lblGender" runat="server" />
+                    <br />
+                    <asp:Label ID="lblSexualOrientation" runat="server" />
+                    <asp:ImageButton ImageUrl="imageurl" ID="imgbtnEditBasicInfo" runat="server" />
+                </asp:Panel>
+                <asp:Panel ID="pnlBasicInformationEdit" Visible="false" runat="server">  
+                   First Name: <asp:TextBox ID="tbFirstName" runat="server" /> 
+                    <br />
+                   Last Name: <asp:TextBox ID="tbLastName" runat="server" />   
+                    <br />
+                   Age: <asp:TextBox ID="tbAge" runat="server" />  
+                    <br />
+                   City: <asp:TextBox ID="tbCity" runat="server" />
+                    <br />
+                   Country <asp:TextBox ID="tbCountry" runat="server" />  
+                    <br />
+                    <asp:Button Text="Save" ID="btnSaveBasicInformation" runat="server" OnClick="btnSaveBasicInformation_Click" />
+                </asp:Panel>
+            </div>
+        </div>
     </div>
 </asp:Content>
