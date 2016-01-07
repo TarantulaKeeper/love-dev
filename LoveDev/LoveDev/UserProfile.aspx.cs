@@ -51,7 +51,6 @@ namespace LoveDev
             lblAge.Text = ds.Tables[0].Rows[0]["Age"].ToString();
             lblCity.Text = ds.Tables[0].Rows[0]["City"].ToString();
             lblCountry.Text = ds.Tables[0].Rows[0]["Country"].ToString();
-            lblGender.Text = ds.Tables[0].Rows[0]["GenderID"].ToString();
             txtareaUserBio.InnerText = ds.Tables[0].Rows[0]["Bio"].ToString();
             
         }
