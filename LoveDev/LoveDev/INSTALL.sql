@@ -87,7 +87,8 @@ MatchID INT PRIMARY KEY IDENTITY(1,1),
 UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
 OtherUserID INT FOREIGN KEY REFERENCES tbUser(UserID)
 )
---INSERT INTO tbMatches (UserID, OtherUserID) VALUES (1,3)
+INSERT INTO tbMatches (UserID, OtherUserID) VALUES (1,3)
+INSERT INTO tbMatches (UserID, OtherUserID) VALUES (3, 1)
 
 -- TABLE FOR QUESTIONS
 
@@ -418,6 +419,22 @@ AS BEGIN
 END
 GO
 
+-- PROCEDURE FOR GETTING MATCHES BASED ON USER ID
+
+CREATE PROCEDURE spGetMatchesForThisUserID(
+@UserID INT
+)
+
+AS BEGIN
+	
+	SELECT tbUser.FirstName, tbUser.UserID, tbUser.UserPhoto, GenderName FROM tbMatches 
+		JOIN tbUser ON tbMatches.OtherUserID = tbUser.UserID
+		JOIN tbGender ON tbUser.GenderID = tbGender.GenderID	
+	WHERE tbMatches.UserID = @UserID
+		
+END
+GO
+
 --REPORTS AND PROCEDURES FOR REPORT CREATION.
 CREATE PROC	 spInsertIntoInvalidLogin
 (
@@ -489,6 +506,7 @@ exec spLogin'chris.jeffrey@robertsoncollege.net',1234
 exec spUsernameCheck 'chris.jeffrey@robertsoncollege.net'
 select * from tbUserGuid
 select * from tbInvalidLogins
+exec spGetMatchesForThisUserID 1
 select * from tbUserValues
 go
 exec spInsertIntoInvalidLogin 'dgnrdnt', 'fgxnrgn'

@@ -125,7 +125,9 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Home.aspx" />
+    <Content Include="Images\EditIcon.png" />
     <Content Include="Images\favicon.ico" />
+    <Content Include="Images\LoveDevLogoTif.tif" />
     <Content Include="Images\NoPhoto.jpg" />
     <Content Include="Inbox.aspx" />
     <Content Include="Index.aspx" />

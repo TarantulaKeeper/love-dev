@@ -10,8 +10,9 @@
                 <div class="jumbotron">
                     <div class="row text-center">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
+                            
                             <div>
+                                <img src="Images/LoveDevLogoTif.tif"/>
                                 <h2>Let us help you develop your love.</h2>
                                 <h4>if (you == alone){ you + LoveDev = <span class="glyphicon glyphicon-heart"></span>; }</h4>
                             </div>
