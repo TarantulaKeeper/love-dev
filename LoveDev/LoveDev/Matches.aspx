@@ -18,7 +18,7 @@
                         <%# Eval("GenderName") %>
                     </div>
                     </div>
-            <input type="button" class="btn btn-success lightbox" id="btnMessage" value="Send Them a Message!" runat="server" data-commandargument='<%# Eval("UserID") %>' onclick="show(this)" />
+            <input type="button" class="btn btn-success chatbox" id="btnMessage" value="Send Them a Message!" runat="server" data-commandargument='<%# Eval("UserID") %>' onclick="show(this)" />
                 </ItemTemplate>
             </asp:DataList>
             <div class="backdrop"></div>
@@ -47,7 +47,7 @@
      <script type="text/javascript">
         $(document).ready(function () {
 
-            $('.lightbox').click(function () {
+            $('.chatbox').click(function () {
                 $('.backdrop, .popupbox').animate({ 'opacity': '.50' }, 300, 'linear');
                 $('.box').animate({ 'opacity': '1.00' }, 300, 'linear');
                 $('.backdrop, .popupbox').css('display', 'block');
