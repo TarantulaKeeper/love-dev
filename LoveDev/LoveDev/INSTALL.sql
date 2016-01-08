@@ -231,7 +231,7 @@ CREATE PROC spLogin
 AS BEGIN
 	IF EXISTS (SELECT UserId from tbUser where Email = @Email and Password = @Password)
 	BEGIN
-		select UserID, FirstName, LastName, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto
+		select UserID, FirstName, LastName, Age, City, Country, Email, GenderID, IsActive, IsAdmin, UserPhoto
 		from   tbUser
 		where  Email = @Email
 		and    Password = @Password
