@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger padtop" data-dismiss="modal">Close</button>
-                                    <button id="submit" type="button" class="btn btn-primary padtop" onclick="check_empty()">Send <span class="glyphicon glyphicon-envelope"></span></button>
+                                    <button id="btnSubmit" type="button" name="btnSubmit" class="btn btn-primary padtop" onclick="check_empty()">Send <span class="glyphicon glyphicon-envelope"></span></button>
 
                                 </div>
                             </div>
@@ -74,8 +74,7 @@
         function check_empty() {
             if($('#msg').text == "")
             {
-                alert("Message cannot be empty. Please fill in the message area.");
-                
+                <%--$('#<%= btnSubmit.ClientID %>')  --%>                            
             }
 
             else
@@ -83,7 +82,7 @@
                 $.ajax('SendMessage.ashx', {
                     data: {
                         toUserID: globalDOMElement, fromUserID: $('#<%= hfUserLoggedIn.ClientID %>').val(),
-                            message: $('#msg').text
+                            message: $('#msg').val()
                     },
 
                     success: function (response)

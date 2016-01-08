@@ -162,10 +162,8 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  FromUserID INT,
  ToUserID INT,
  Message VARCHAR(MAX),
- DateSent DATE DEFAULT CONVERT(VARCHAR(8),GETDATE(),101)
+ DateSent DATE DEFAULT GETDATE()
  )
-
- INSERT INTO tbMessages(FromUserID, ToUserID, Message, DateSent) VALUES (3, 2, 'Hello', '2015-12-01'), (1, 2, 'Yo', '2016-01-01'), (2, 3, 'Hey', '2016-01-01') 
 
  GO
  --TABLES FOR REPORTS
