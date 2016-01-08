@@ -22,7 +22,7 @@
                             </div>
                             </div>
             <input type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" 
-                id="btnMessage" value="Send Them a Message!" runat="server" data-commandargument='<%# Eval("UserID") %>' onclick="show(this)" />
+                id="btnMessage" value="Send Them a Message!" runat="server" data-id='<%# Eval("UserID") %>' onclick="show(this)" />
                         </ItemTemplate>
                     </asp:DataList>
                 </div>
@@ -61,16 +61,42 @@
             </div>
         </div>
     </div>
-    </div>
     <script type="text/javascript">
         var globalDOMElement;
         function show(DOMElement) {
-            var messageBox = $('#divPopupWindow');
-            messageBox.dialog();
-            var firstName = $("#" + DOMElement.id).parent().find("span[id*='FirstName']").html();
-            $('#txtboxToUser').val(firstName);
-            var fromFirstName = $('#hfFirstName').val();
+            globalDOMElement = $('#' + DOMElement.id).data('id');
+            var toFirstName = $("#" + DOMElement.id).parent().find("span[id*='FirstName']").html();
+            $('#txtboxToUser').val(toFirstName);
+            var fromFirstName = $('#<%= hfFirstName.ClientID %>').val()
             $('#txtboxFromUser').val(fromFirstName);
+        };
+
+        function check_empty() {
+            if($('#msg').text == "")
+            {
+                alert("Message cannot be empty. Please fill in the message area.");
+                
+            }
+
+            else
+            {
+                $.ajax('SendMessage.ashx', {
+                    data: {
+                        toUserID: globalDOMElement, fromUserID: $('#hfUserLoggedIn').val(),
+                            message: $('#msg').text
+                    },
+
+                    success: function (response)
+                    {
+                        alert("Message sent");
+                    },
+                    error: function (error)
+                    {
+                        var error = error;
+                    }
+
+                });
+            }
         };
 
     </script>
