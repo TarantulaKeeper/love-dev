@@ -18,7 +18,7 @@
             </div>
             <input type="button" class="btn btn-success lightbox" id="btnMessage" value="Send Them a Message!" runat="server" data-CommandArgument='<%# Eval("UserID") %>' onclick="show(this)" />
         </ItemTemplate>
-    </asp:DataList>
+    </asp:DataList>    
             <div class="backdrop"></div>
             <div id="divPopupWindow" class="popupbox">
                 <span id="close" onclick="div_hide()" class="closebox text-danger">[x]</span>
