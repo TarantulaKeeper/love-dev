@@ -507,7 +507,7 @@ CREATE PROC spEditUserProfilePicture(
 @UserPhoto VARCHAR(250)
 )
 AS BEGIN
-	UPDATE tbUser set
+	UPDATE tbUser SET
 		UserPhoto = ISNULL(@UserPhoto, UserPhoto)
 	WHERE UserID = @UserID
 END
