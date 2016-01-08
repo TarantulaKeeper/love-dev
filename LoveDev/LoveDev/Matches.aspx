@@ -49,7 +49,7 @@
 
             $('.chatbox').click(function () {
                 $('.backdrop, .popupbox').animate({ 'opacity': '.50' }, 300, 'linear');
-                $('.box').animate({ 'opacity': '1.00' }, 300, 'linear');
+                $('.popupbox').animate({ 'opacity': '1.00' }, 300, 'linear');
                 $('.backdrop, .popupbox').css('display', 'block');
             });
             $('.closebox').click(function () {
