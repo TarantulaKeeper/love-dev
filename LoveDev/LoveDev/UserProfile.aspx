@@ -13,9 +13,9 @@
 
                             <asp:ImageButton ImageUrl="/Images/EditIcon.png" ID="imgbtnEditProfilePhoto" runat="server" CssClass="btn btn-warning"  />
                         
-                            <asp:Panel ID="pnlProfilePhotoEdit" runat="server">
+                            <asp:Panel ID="pnlProfilePhotoEdit" Visible="false" runat="server">
                                 <asp:FileUpload ID="fuProfilePhoto" runat="server" />
-                                <asp:Button Text="Save" ID="btnSaveProfilePhoto" runat="server" CssClass="btn btn-danger" />
+                                <asp:Button Text="Save" ID="btnSaveProfilePhoto" runat="server" CssClass="btn btn-danger" OnClick="btnSaveProfilePhoto_Click" />
             </asp:Panel>
                         </div>
                     </div>

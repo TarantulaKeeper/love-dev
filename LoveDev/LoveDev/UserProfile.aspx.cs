@@ -71,11 +71,12 @@ namespace LoveDev
 
         protected void btnSaveProfilePhoto_Click(object sender, EventArgs e)
         {
+
             DAL myDal = new DAL();
             string Path = Server.MapPath(".").ToString() + "\\PROFILE_PHOTOS\\";
             string fileName = fuProfilePhoto.FileName;
            fuProfilePhoto.PostedFile.SaveAs(Path + fileName);
-            myDal.AddParam("UserPhoto", "PROFILE_PHOTOS/" + fileName);
+            myDal.AddParam("UserPhoto", @"PROFILE_PHOTOS/" + fileName);
             myDal.AddParam("UserID", Security.CurrentUser.UserID);
             myDal.ExecuteProcedure("spEditUserProfilePicture");
             LoadUserInfo();
