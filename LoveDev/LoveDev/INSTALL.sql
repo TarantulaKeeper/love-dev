@@ -40,7 +40,7 @@ INSERT INTO tbUser(FirstName, LastName, Password, Age, City, Country, Email, IsA
 	VALUES 
 		('Niko', 'Pastulovic', '1234', 20, 'Winnipeg', 'Canada', 'niko.pastulovic@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,''),
 		('T.J.', 'Petrowski', '1234', 24, 'Warren', 'Canada', 't.j.petrowski@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,''),
-		('Chris', 'Jeffrey', '1234', 21, 'Winnipeg', 'Canada', 'chris.jeffrey@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 5,''),
+		('Chris', 'Jeffrey', '1234', 21, 'Winnipeg', 'Canada', 'chris.jeffrey@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,''),
 		('Joseph', 'Maglalang', '1234', 30, 'Winnipeg', 'Canada', 'joseph.maglalang@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 6,'')
 
 -- TABLE FOR SEXUAL ORIENTATION 
@@ -50,7 +50,7 @@ SexualOrientationID INT PRIMARY KEY IDENTITY (1,1),
 UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
 GenderID INT FOREIGN KEY REFERENCES tbGender(GenderID)
 )
-INSERT INTO tbSexualOrientation (UserID, GenderID) VALUES (1,1),(1,2),(2,3),(3,3),(3,5),(3,4),(4,1),(4,3)
+INSERT INTO tbSexualOrientation (UserID, GenderID) VALUES (1,1),(1,2),(2,3),(3,1),(3,3),(3,5),(3,4),(4,1),(4,3)
 
 --INSERT INTO tbSexualOrientation(SexualOrientationName) VALUES ('Straight'), ('Gay'), ('Lesbian'), ('Asexual'),
 	--('Pansexual'), ('Bisexual'), ('Sapiosexual'), ('Heteroflexible'), ('Homoflexible')
@@ -216,7 +216,7 @@ CREATE PROC spGetUserByID
 @userID INT
 )
 AS BEGIN
-	SELECT UserID, FirstName, LastName, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, Bio
+	SELECT UserID, FirstName, LastName, Age, City, Country, Email, GenderID, IsActive, IsAdmin, UserPhoto, Bio
 	FROM   tbUser
 	WHERE  UserID= @userID
 END
@@ -263,14 +263,15 @@ CREATE PROC spRegisterUser
 @City	   VARCHAR(50),
 @Country   VARCHAR(50),
 @Email	   VARCHAR(50),
+@GenderID  INT,
 @IsActive  BIT =0, --Is not Active by default
 @IsAdmin   BIT =0, --Is not Admin by default
 @UserPhoto VARCHAR(250) ='Images/NoPhoto.jpg', --Sets photo to default photo if one is not provided
 @Guid VARCHAR(50)
 )
 AS BEGIN
-	INSERT INTO tbUser (FirstName,LastName,Password,Age,City,Country,Email,IsActive,IsAdmin,UserPhoto) VALUES
-					   (@FirstName,@LastName,@Password,@Age,@City,@Country,@Email,@IsActive,@IsAdmin,@UserPhoto)
+	INSERT INTO tbUser (FirstName,LastName,Password,Age,City,Country,Email,GenderID,IsActive,IsAdmin,UserPhoto) VALUES
+					   (@FirstName,@LastName,@Password,@Age,@City,@Country,@Email,@GenderID,@IsActive,@IsAdmin,@UserPhoto)
 	SELECT SCOPE_IDENTITY()
 	INSERT INTO tbUserGuid (UserID, Guid) VALUES
 						(SCOPE_IDENTITY(),@Guid)
