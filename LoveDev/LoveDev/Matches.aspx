@@ -2,31 +2,35 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:HiddenField ID="hfUserLoggedIn" runat="server" />
-    <asp:HiddenField ID="hfFirstName" runat="server" />
-    <asp:DataList ID="dlMatches" runat="server" RepeatColumns="1" DataKeyField="UserID">
-        <ItemTemplate>
-            <div>
-                <asp:Image ID="imgUserPhoto" ImageUrl='<%# Eval("UserPhoto") %>' runat="server" /> 
-            </div>
-            <div>
-                <asp:Label ID="lblFirstName" Text='<%# Eval("FirstName") %>' runat="server" />
-            </div>
-            <div>
-                <%# Eval("GenderName") %>
-            </div>
-            </div>
-            <input type="button" class="btn btn-success lightbox" id="btnMessage" value="Send Them a Message!" runat="server" data-CommandArgument='<%# Eval("UserID") %>' onclick="show(this)" />
-        </ItemTemplate>
-    </asp:DataList>
+    <div class="webpage_content">
+        <div class="container">
+            <asp:HiddenField ID="hfUserLoggedIn" runat="server" />
+            <asp:HiddenField ID="hfFirstName" runat="server" />
+            <asp:DataList ID="dlMatches" runat="server" RepeatColumns="1" DataKeyField="UserID">
+                <ItemTemplate>
+                    <div>
+                        <asp:Image ID="imgUserPhoto" ImageUrl='<%# Eval("UserPhoto") %>' runat="server" />
+                    </div>
+                    <div>
+                        <asp:Label ID="lblFirstName" Text='<%# Eval("FirstName") %>' runat="server" />
+                    </div>
+                    <div>
+                        <%# Eval("GenderName") %>
+                    </div>
+                    </div>
+            <input type="button" class="btn btn-success lightbox" id="btnMessage" value="Send Them a Message!" runat="server" data-commandargument='<%# Eval("UserID") %>' onclick="show(this)" />
+                </ItemTemplate>
+            </asp:DataList>
             <div class="backdrop"></div>
             <div id="divPopupWindow" class="popupbox">
                 <span id="close" onclick="div_hide()" class="closebox text-danger">[x]</span>
                 <input id="txtboxToUser" name="txtboxToUser" readonly="true" type="text" />
-                <input id="txtboxFromUser" name="txtboxFromUser" readonly="true" type="text"/>
+                <input id="txtboxFromUser" name="txtboxFromUser" readonly="true" type="text" />
                 <textarea id="msg" name="message" placeholder="Message"></textarea>
                 <button id="submit" type="button" class="btn btn-info" onclick="check_empty()">Send <span class="glyphicon glyphicon-envelope"></span></button>
-            </div>
+        </div>
+    </div>
+    </div>
     <script type="text/javascript">
         var globalDOMElement; 
         function show(DOMElement) {
