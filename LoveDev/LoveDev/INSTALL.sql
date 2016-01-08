@@ -176,7 +176,11 @@ InvalidPassword VARCHAR(50),
 DateOfAttempt DATETIME,
 TimeOfAttempt DATETIME
 )
-insert into tbInvalidLogins (InvalidEmail, invalidPassword) values ('TEST','132323'), ('ROFLMAO','WRONG'), ('WOWLOTSOFTESTDATA', 'WOW'), ('FALLOUT4TODAY', 'WOOOOO')
+insert into tbInvalidLogins (InvalidEmail, invalidPassword) 
+values
+ ('TEST','132323'),
+ ('ROFLMAO','WRONG'), ('WOWLOTSOFTESTDATA', 'WOW'),
+ ('FALLOUT4TODAY', 'WOOOOO')
 go
 
 
