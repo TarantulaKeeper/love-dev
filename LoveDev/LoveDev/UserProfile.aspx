@@ -77,6 +77,7 @@
                                     <span class="input-group-addon">Country:</span>
                                     <asp:TextBox ID="tbCountry" runat="server" />
                                 </div>
+                                About me:
                                 <textarea id="txtareaEditBio" runat="server"></textarea>
 
                                 <asp:Button Text="Save" CssClass="btn btn-danger" ID="btnSaveBasicInformation" runat="server" OnClick="btnSaveBasicInformation_Click" />
