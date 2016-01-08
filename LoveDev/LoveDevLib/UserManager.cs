@@ -72,8 +72,13 @@ namespace LoveDevLib
             d.AddParam("Email", Email);
             d.AddParam("GenderID", GenderID);
             d.AddParam("Guid", g);
+            int UserID = int.Parse(d.ExecuteScalar("spRegisterUser"));
             SendEmailVerification(Email, FirstName + " " + LastName, g);
-            AddSexualOrientation(int.Parse(d.ExecuteScalar("spRegisterUser")), GenderID);
+
+            foreach (int num in Preferences)
+            {
+                AddSexualOrientation(UserID, num);
+            }
         }
         static public void AddSexualOrientation(int UserID, int GenderID)
         {

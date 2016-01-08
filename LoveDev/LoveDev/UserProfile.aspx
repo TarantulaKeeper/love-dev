@@ -9,6 +9,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
                         <asp:Image ID="imgProfilePhoto" runat="server" class="img-thumbnail" />
                         <div class="panel panel-collapse">
+                        <asp:ImageButton ImageUrl="/Images/EditIcon.png" ID="imgbtnEditProfilePhoto" runat="server" CssClass="btn btn-warning" />
 
 
                             <asp:ImageButton ImageUrl="/Images/EditIcon.png" ID="imgbtnEditProfilePhoto" runat="server" CssClass="btn btn-warning"  />
@@ -51,7 +52,8 @@
                                         <span class="input-group-addon">Sexual Orientation:</span>
                                         <asp:Label ID="lblSexualOrientation" runat="server" CssClass="form-control" />
                                     </div>
-                                    <textarea id="txtareaUserBio" runat="server" disabled="disabled"></textarea>                                    <asp:ImageButton ImageUrl="/Images/EditIcon.png" ID="imgbtnEditBasicInfo" runat="server" />
+                                <textarea id="txtareaUserBio" runat="server" disabled="disabled"></textarea>
+                                <asp:ImageButton ImageUrl="/Images/EditIcon.png" ID="imgbtnEditBasicInfo" runat="server" />
                                 </div>
                 </asp:Panel>
                             <asp:Panel ID="pnlBasicInformationEdit" Visible="true" runat="server" CssClass="">
@@ -84,5 +86,4 @@
     </div>
             </div>
         </div>
-    </div>
 </asp:Content>

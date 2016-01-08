@@ -25,18 +25,20 @@
                 <input id="txtboxToUser" name="txtboxToUser" readonly="true" type="text" />
                 <input id="txtboxFromUser" name="txtboxFromUser" readonly="true" type="text"/>
                 <textarea id="msg" name="message" placeholder="Message"></textarea>
-                <button id="submit" type="button" onclick="check_empty()">Send</button>
+                <button id="submit" type="button" class="btn btn-info" onclick="check_empty()">Send <span class="glyphicon glyphicon-envelope"></span></button>
             </div>
-    <script>
+    <script type="text/javascript">
+        var globalDOMElement; 
         function show(DOMElement) {
-            var messageBox = $('#divBody');
-            messageBox.css('display', 'block');
+            var messageBox = $('#divPopupWindow');
             messageBox.dialog();
             var firstName = $("#" + DOMElement.id).parent().find("span[id*='FirstName']").html();
             $('#txtboxToUser').val(firstName);
             var fromFirstName = $('#hfFirstName').val();
             $('#txtboxFromUser').val(fromFirstName);
         };
+
+
     </script>
      <script type="text/javascript">
         $(document).ready(function () {
