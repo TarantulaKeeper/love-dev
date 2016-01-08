@@ -89,7 +89,7 @@ MatchID INT PRIMARY KEY IDENTITY(1,1),
 UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
 OtherUserID INT FOREIGN KEY REFERENCES tbUser(UserID)
 )
-INSERT INTO tbMatches (UserID, OtherUserID) VALUES (1,3)
+INSERT INTO tbMatches (UserID, OtherUserID) VALUES (2,3)
 INSERT INTO tbMatches (UserID, OtherUserID) VALUES (3, 1)
 
 -- TABLE FOR QUESTIONS
@@ -527,7 +527,7 @@ exec spUsernameCheck 'chris.jeffrey@robertsoncollege.net'
 select * from tbUserGuid
 select * from tbInvalidLogins
 select * from tbSexualOrientation
-exec spGetMatchesForThisUserID 1
+exec spGetMatchesForThisUserID 2
 select * from tbUserValues
 go
 exec spInsertIntoInvalidLogin 'dgnrdnt', 'fgxnrgn'
