@@ -74,7 +74,6 @@
                                 <asp:TextBox ID="tbCountry" runat="server" CssClass="form-control" />
                                 </div>
                                 About me:
-                                <textarea id="txtareaEditBio" runat="server"></textarea>
                             <textarea id="txtareaEditBio" runat="server" class="form-control"></textarea>
 
                                 <asp:Button Text="Save" CssClass="btn btn-danger" ID="btnSaveBasicInformation" runat="server" OnClick="btnSaveBasicInformation_Click" />
