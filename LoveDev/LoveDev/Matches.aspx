@@ -25,7 +25,7 @@
                 <input id="txtboxToUser" name="txtboxToUser" readonly="true" type="text" />
                 <input id="txtboxFromUser" name="txtboxFromUser" readonly="true" type="text"/>
                 <textarea id="msg" name="message" placeholder="Message"></textarea>
-                <button id="submit" type="button" onclick="check_empty()">Send</button>
+                <button id="submit" type="button" class="btn btn-info" onclick="check_empty()">Send <span class="glyphicon glyphicon-envelope"></span></button>
             </div>
     <script>
         function show(DOMElement) {
