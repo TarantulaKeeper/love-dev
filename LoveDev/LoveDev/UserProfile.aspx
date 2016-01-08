@@ -9,11 +9,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
                         <asp:Image ID="imgProfilePhoto" runat="server" class="img-thumbnail" />
                         <div class="panel panel-collapse">
-                        <asp:ImageButton ImageUrl="/Images/EditIcon.png" ID="imgbtnEditProfilePhoto" runat="server" CssClass="btn btn-warning" />
-
-
-                            <asp:ImageButton ImageUrl="/Images/EditIcon.png" ID="imgbtnEditProfilePhoto" runat="server" CssClass="btn btn-warning"  />
-                        
+                        <asp:ImageButton ImageUrl="/Images/EditIcon.png" ID="imgbtnEditProfilePhoto" runat="server" CssClass="btn btn-warning" />                        
                             <asp:Panel ID="pnlProfilePhotoEdit" Visible="false" runat="server">
                                 <asp:FileUpload ID="fuProfilePhoto" runat="server" />
                                 <asp:Button Text="Save" ID="btnSaveProfilePhoto" runat="server" CssClass="btn btn-danger" OnClick="btnSaveProfilePhoto_Click" />
