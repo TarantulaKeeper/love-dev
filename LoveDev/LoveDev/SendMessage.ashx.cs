@@ -17,9 +17,9 @@ namespace LoveDev
         {
             DAL myDAL = new DAL();
             context.Response.ContentType = "text/plain";
-            myDAL.AddParam("FromUsername", Security.CurrentUser.UserID);
-            myDAL.AddParam("ToUsername", context.Request.QueryString["toUserID"]);
-            myDAL.AddParam("Message", context.Request.QueryString["Message"]);
+            myDAL.AddParam("FromUserID", context.Request.QueryString["fromUserID"]);
+            myDAL.AddParam("ToUserID", context.Request.QueryString["toUserID"]);
+            myDAL.AddParam("Message", context.Request.QueryString["message"]);
             string result = myDAL.ExecuteScalar("spSendMessage");
 
             context.Response.Write(result);

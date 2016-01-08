@@ -31,7 +31,7 @@ namespace LoveDev
             ds = myDAL.ExecuteProcedure("spGetMatchesForThisUserID");
 
             dlMatches.DataSource = ds;
-            dlMatches.DataBind(); 
+            dlMatches.DataBind();
 
         }
     }

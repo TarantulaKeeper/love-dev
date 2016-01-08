@@ -89,7 +89,7 @@ MatchID INT PRIMARY KEY IDENTITY(1,1),
 UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
 OtherUserID INT FOREIGN KEY REFERENCES tbUser(UserID)
 )
-INSERT INTO tbMatches (UserID, OtherUserID) VALUES (1,3)
+INSERT INTO tbMatches (UserID, OtherUserID) VALUES (2,3)
 INSERT INTO tbMatches (UserID, OtherUserID) VALUES (3, 1)
 
 -- TABLE FOR QUESTIONS
@@ -162,11 +162,8 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  FromUserID INT,
  ToUserID INT,
  Message VARCHAR(MAX),
- DateSent DATE DEFAULT CONVERT(VARCHAR(8),GETDATE(),101),
- MessageRead BIT
+ DateSent DATE DEFAULT GETDATE()
  )
-
- INSERT INTO tbMessages(FromUserID, ToUserID, Message, MessageRead, DateSent) VALUES (3, 2, 'Hello', 0, '2015-12-01'), (1, 2, 'Yo', 0, '2016-01-01'), (2, 3, 'Hey', 0, '2016-01-01') 
 
  GO
  --TABLES FOR REPORTS
@@ -176,7 +173,11 @@ InvalidPassword VARCHAR(50),
 DateOfAttempt DATETIME,
 TimeOfAttempt DATETIME
 )
-insert into tbInvalidLogins (InvalidEmail, invalidPassword) values ('TEST','132323'), ('ROFLMAO','WRONG'), ('WOWLOTSOFTESTDATA', 'WOW'), ('FALLOUT4TODAY', 'WOOOOO')
+insert into tbInvalidLogins (InvalidEmail, invalidPassword) 
+values
+ ('TEST','132323'),
+ ('ROFLMAO','WRONG'), ('WOWLOTSOFTESTDATA', 'WOW'),
+ ('FALLOUT4TODAY', 'WOOOOO')
 go
 
 
@@ -397,7 +398,7 @@ CREATE PROCEDURE spCheckMail(
 )
 
 AS BEGIN
-	IF EXISTS (SELECT * FROM tbMessages WHERE ToUserID = @UserID AND MessageRead = 0)
+	IF EXISTS (SELECT * FROM tbMessages WHERE ToUserID = @UserID)
 		BEGIN
 			SELECT 'Unread Mail'
 		END
@@ -524,7 +525,7 @@ exec spUsernameCheck 'chris.jeffrey@robertsoncollege.net'
 select * from tbUserGuid
 select * from tbInvalidLogins
 select * from tbSexualOrientation
-exec spGetMatchesForThisUserID 1
+exec spGetMatchesForThisUserID 2
 select * from tbUserValues
 go
 exec spInsertIntoInvalidLogin 'dgnrdnt', 'fgxnrgn'
