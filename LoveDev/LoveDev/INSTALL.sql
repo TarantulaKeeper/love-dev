@@ -162,11 +162,10 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  FromUserID INT,
  ToUserID INT,
  Message VARCHAR(MAX),
- DateSent DATE DEFAULT CONVERT(VARCHAR(8),GETDATE(),101),
- MessageRead BIT
+ DateSent DATE DEFAULT CONVERT(VARCHAR(8),GETDATE(),101)
  )
 
- INSERT INTO tbMessages(FromUserID, ToUserID, Message, MessageRead, DateSent) VALUES (3, 2, 'Hello', 0, '2015-12-01'), (1, 2, 'Yo', 0, '2016-01-01'), (2, 3, 'Hey', 0, '2016-01-01') 
+ INSERT INTO tbMessages(FromUserID, ToUserID, Message, DateSent) VALUES (3, 2, 'Hello', '2015-12-01'), (1, 2, 'Yo', '2016-01-01'), (2, 3, 'Hey', '2016-01-01') 
 
  GO
  --TABLES FOR REPORTS
@@ -400,7 +399,7 @@ CREATE PROCEDURE spCheckMail(
 )
 
 AS BEGIN
-	IF EXISTS (SELECT * FROM tbMessages WHERE ToUserID = @UserID AND MessageRead = 0)
+	IF EXISTS (SELECT * FROM tbMessages WHERE ToUserID = @UserID)
 		BEGIN
 			SELECT 'Unread Mail'
 		END

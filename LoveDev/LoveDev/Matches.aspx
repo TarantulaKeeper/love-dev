@@ -82,7 +82,7 @@
             {
                 $.ajax('SendMessage.ashx', {
                     data: {
-                        toUserID: globalDOMElement, fromUserID: $('#hfUserLoggedIn').val(),
+                        toUserID: globalDOMElement, fromUserID: $('#<%= hfUserLoggedIn.ClientID %>').val(),
                             message: $('#msg').text
                     },
 
