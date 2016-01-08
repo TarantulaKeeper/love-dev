@@ -95,5 +95,7 @@ namespace LoveDev
         {
             pnlProfilePhotoEdit.Visible = true;
         }
+
+
     }
 }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using LoveDevLib;
+using DAL_Project;
 
 namespace LoveDev
 {
@@ -26,7 +27,20 @@ namespace LoveDev
                 {
                     Response.Redirect("Index.aspx?message=Must be administrator to view that page");
                 }
+                LoadInvalidLogins();
             }
+        }
+
+        private void LoadInvalidLogins()
+        {
+            DAL myDal = new DAL();
+            gvReportForInvalidLogins.DataSource = myDal.ExecuteProcedure("tbInvalidLogins");
+            gvReportForInvalidLogins.DataBind();
+        }
+
+        protected void gvReportForInvalidLogins_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+
         }
     }
 }
