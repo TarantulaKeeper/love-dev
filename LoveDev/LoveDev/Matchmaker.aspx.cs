@@ -27,7 +27,7 @@ namespace LoveDev
         private HtmlGenericControl CreateDiv(string CategoryName, int CategoryID)
         {
             d.AddParam("CategoryID", CategoryID);
-            DataSet ds = d.ExecuteProcedure("sp")
+            DataSet ds = d.ExecuteProcedure("sp");
             HtmlGenericControl div = new HtmlGenericControl("div");
             div.ID = "div" +CategoryName;
             div.InnerHtml = CategoryName;
