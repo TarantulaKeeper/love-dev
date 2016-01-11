@@ -39,5 +39,9 @@
                 </div>
             </div>
         </div>
+        <div>
+            <textarea id="txtboxReply" runat="server" placeholder="Write a Reply"></textarea>
+            <asp:Button ID="btnSend" Text="Send" runat="server" OnClick="btnSend_Click" />
+        </div>
     </div>
 </asp:Content>
