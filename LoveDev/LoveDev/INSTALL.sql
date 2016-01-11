@@ -437,6 +437,7 @@ AS BEGIN
 	SELECT UserID, FirstName FROM tbUser
 		JOIN tbMessages ON tbUser.UserID = tbMessages.FromUserID
 	WHERE UserID != @UserID
+	GROUP BY UserID, FirstName
 END
 GO
 
