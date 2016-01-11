@@ -185,10 +185,24 @@ go
 
 --</Tables>
 --<Procedures>
+CREATE PROC spGetQuestions
+(
+@CategoryID int
+)
+AS BEGIN
+	SELECT *
+	FROM tbQuestionsForQuiz
+	WHERE QuestionCategoryID = @CategoryID
+END
+GO
 
 
-
-
+CREATE PROC spGetQuestionCategories
+AS BEGIN
+	SELECT * 
+	FROM tbQuestionCategory
+END
+GO
 
 CREATE PROC spVerifyUser
 (
@@ -296,12 +310,6 @@ AS BEGIN
 END
 GO
 
---CREATE PROC spGetSexualOrientations
---AS BEGIN
---	SELECT * 
---	FROM tbSexualOrientation
---END
---GO
 CREATE PROC spGetSexualPreferences
 (
 @UserID INT
@@ -536,5 +544,6 @@ select * from tbInvalidLogins
 select * from tbSexualOrientation
 exec spGetMatchesForThisUserID 2
 select * from tbUserValues
+exec spGetQuestions 2
 go
 exec spInsertIntoInvalidLogin 'dgnrdnt', 'fgxnrgn'
