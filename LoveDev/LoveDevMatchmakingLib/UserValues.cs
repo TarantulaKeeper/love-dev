@@ -5,13 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL_Project;
 using System.Data;
+using LoveDevLib;
+
 namespace LoveDevMatchmakingLib
 {
     public class UserValues : IComparable<UserValues>
     {
         public int UserID { get; set; }
         public List<int> ValuesList { get; set; }
-        public int GenderID { get; set; }
+        //public int GenderID { get; set; }
         public List<int> SexualPreferencesList { get; set; }
 
         static DAL dal;
@@ -42,57 +44,73 @@ namespace LoveDevMatchmakingLib
         }
         public int CompareTo(UserValues other)
         {
+            User user = UserManager.getUserByID(UserID);
+            User otherUser = UserManager.getUserByID(other.UserID);
             List<bool> TrueFalseMatchList = new List<bool>();
             int Result = 0;
             int Count = 0;
-            foreach (int value in this.ValuesList)
+            if (CheckGenderAndPreferenceCompatibility(otherUser.GenderID,this.SexualPreferencesList) && CheckGenderAndPreferenceCompatibility(user.GenderID,other.SexualPreferencesList))
             {
-                if (value > other.ValuesList[Count])
+                foreach (int value in this.ValuesList)
                 {
-                    if (value > other.ValuesList[Count] + 5)
+                    if (value > other.ValuesList[Count])
                     {
-                        Result = 0;
+                        if (value > other.ValuesList[Count] + 5)
+                        {
+                            Result = 0;
+                        }
+                        else
+                        {
+                            Result = 1;
+                        }
+                    }
+                    else if (value < other.ValuesList[Count])
+                    {
+                        if (value < other.ValuesList[Count] - 5)
+                        {
+                            Result = 0;
+                        }
+                        else
+                        {
+                            Result = 1;
+                        }
                     }
                     else
                     {
                         Result = 1;
                     }
-
-                }
-                else if (value < other.ValuesList[Count])
-                {
-                    if (value < other.ValuesList[Count] - 5)
+                    if (Result == 1)
                     {
-                        Result = 0;
+                        TrueFalseMatchList.Add(true);
                     }
                     else
                     {
-                        Result = 1;
+                        TrueFalseMatchList.Add(false);
                     }
+                    Count++;
                 }
-                else
+                if (CalculateValues(TrueFalseMatchList) >= 3)
                 {
                     Result = 1;
                 }
-                if (Result == 1)
-                {
-                    TrueFalseMatchList.Add(true);
-                }
                 else
                 {
-                    TrueFalseMatchList.Add(false);
+                    Result = 0;
                 }
-                Count++;
-            }
-            if (CalculateValues(TrueFalseMatchList) >= 3)
-            {
-                Result = 1;
-            }
-            else
-            {
-                Result = 0;
             }
             return Result;
+        }
+
+        public bool CheckGenderAndPreferenceCompatibility(int otherGender, List<int> preferences)
+        {
+            foreach (int num in preferences)
+            {
+                if (num == otherGender)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

@@ -15,12 +15,13 @@ namespace LoveDevLib
         public string City { get; set; }
         public string Country { get; set; }
         public string Email { get; set; }
+        public int GenderID { get; set; }
         public string UserPhoto { get; set; }
         public bool IsAdmin { get; set; }
         public bool IsActive { get; set; }
         public List<int> MatchesUserIDList { get; set; }
 
-        public User(int UserID, string FirstName, string LastName, int Age, string City, string Country, string Email, bool IsAdmin, bool IsActive)
+        public User(int UserID, string FirstName, string LastName, int Age, string City, string Country, string Email, int GenderID, bool IsAdmin, bool IsActive)
         {
             this.UserID = UserID;
             this.FirstName = FirstName;
@@ -29,6 +30,7 @@ namespace LoveDevLib
             this.City = City;
             this.Country = Country;
             this.Email = Email;
+            this.GenderID = GenderID;
             this.IsActive = IsActive;
             this.IsAdmin = IsAdmin;
             this.MatchesUserIDList = UserManager.GetMatches(UserID);

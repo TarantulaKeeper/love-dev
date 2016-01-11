@@ -22,7 +22,7 @@
                             </div>
                             </div>
             <input type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" 
-                id="btnMessage" value="Send Them a Message!" runat="server" data-commandargument='<%# Eval("UserID") %>' onclick="show(this)" />
+                id="btnMessage" value="Send Them a Message!" runat="server" data-id='<%# Eval("UserID") %>' onclick="show(this)" />
                         </ItemTemplate>
                     </asp:DataList>
                 </div>
@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger padtop" data-dismiss="modal">Close</button>
-                                    <button id="submit" type="button" class="btn btn-primary padtop" onclick="check_empty()">Send <span class="glyphicon glyphicon-envelope"></span></button>
+                                    <button id="btnSubmit" type="button" name="btnSubmit" class="btn btn-primary padtop" onclick="check_empty()">Send <span class="glyphicon glyphicon-envelope"></span></button>
 
                                 </div>
                             </div>
@@ -61,18 +61,42 @@
             </div>
         </div>
     </div>
-    </div>
     <script type="text/javascript">
         var globalDOMElement;
         function show(DOMElement) {
-            var messageBox = $('#divPopupWindow');
-            messageBox.dialog();
-            var firstName = $("#" + DOMElement.id).parent().find("span[id*='FirstName']").html();
-            $('#txtboxToUser').val(firstName);
-            var fromFirstName = $('#hfFirstName').val();
+            globalDOMElement = $('#' + DOMElement.id).data('id');
+            var toFirstName = $("#" + DOMElement.id).parent().find("span[id*='FirstName']").html();
+            $('#txtboxToUser').val(toFirstName);
+            var fromFirstName = $('#<%= hfFirstName.ClientID %>').val()
             $('#txtboxFromUser').val(fromFirstName);
         };
 
+        function check_empty() {
+            if($('#msg').text == "")
+            {
+                <%--$('#<%= btnSubmit.ClientID %>')  --%>                            
+            }
+
+            else
+            {
+                $.ajax('SendMessage.ashx', {
+                    data: {
+                        toUserID: globalDOMElement, fromUserID: $('#<%= hfUserLoggedIn.ClientID %>').val(),
+                            message: $('#msg').val()
+                    },
+
+                    success: function (response)
+                    {
+                        alert("Message sent");
+                    },
+                    error: function (error)
+                    {
+                        var error = error;
+                    }
+
+                });
+            }
+        };
 
     </script>
     <script type="text/javascript">
