@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Developing Your Love | LoveDev</title>
-    <link href="Images/favicon.ico" rel="icon"/>
+    <link href="Images/favicon.ico" rel="icon" />
     <link href="Content/StyleSheet.css" rel="stylesheet" />
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <script src="Scripts/jquery-2.1.4.js"></script>
@@ -20,29 +20,39 @@
     <form id="form1" runat="server">
         <div id="header_bg" class="navbar navbar-inverse navbar-fixed-top">
             <div id="header_navbar" class="container">
-                <div id="header_links" class="navbar-left">
-                    <ul class="list-inline list-unstyled">
-                        <li>
-                            <asp:LinkButton ID="lnkIndex" runat="server" class="navbar-link" Visible="false" PostBackUrl="~/Index.aspx" />
-                            <%--index page is set to visible false--%>
-                        </li>
-                        <li>
-                            <asp:LinkButton ID="lnkHome" runat="server" class="navbar-link" Visible="false" PostBackUrl="~/Home.aspx">Home</asp:LinkButton>
-                        </li>
-                        <li>
-                            <asp:LinkButton ID="lnkUserProfile" runat="server" class="navbar-link" Visible="false" PostBackUrl="~/UserProfile.aspx">Profile</asp:LinkButton>
-                        </li>
-                        <li>
-                            <asp:LinkButton ID="lnkAdministration" runat="server" class="navbar-link" Visible="false" PostBackUrl="~/Administration.aspx">Administration</asp:LinkButton>
-                        </li>
-                    </ul>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </div>
+                <div class=" navbar-collapse collapse">
+                    <div id="header_links" class="navbar-left">
+                        <ul class="list-inline list-unstyled">
+                            <li>
+                                <asp:LinkButton ID="lnkIndex" runat="server" class="navbar-link" Visible="false" PostBackUrl="~/Index.aspx" />
+                                <%--index page is set to visible false--%>
+                            </li>
+                            <li>
+                                <asp:LinkButton ID="lnkHome" runat="server" class="navbar-link" Visible="false" PostBackUrl="~/Home.aspx">Home</asp:LinkButton>
+                            </li>
+                            <li>
+                                <asp:LinkButton ID="lnkUserProfile" runat="server" class="navbar-link" Visible="false" PostBackUrl="~/UserProfile.aspx">Profile</asp:LinkButton>
+                            </li>
+                            <li>
+                                <asp:LinkButton ID="lnkAdministration" runat="server" class="navbar-link" Visible="false" PostBackUrl="~/Administration.aspx">Administration</asp:LinkButton>
+                            </li>
+                        </ul>
+                    </div>
 
-                <div id="header_login" class="navbar-right navsigin">
-                    <span class="label label-default">Have an account?</span>
-                    <span>
-                        <input type="button" id="btnSignIn" runat="server" value="Sign In" class="btn btn-info navbar-btn lightbox" /></span>
-                    <span><asp:Button ID="btnSignOut" runat="server" Text="Sign Out" CssClass="btn btn-info navbar-btn" Visible="false" OnClick="btnSignOut_Click" /></span>
+                    <div id="header_login" class="navbar-right navsigin">
+                        <span class="label label-default">Have an account?</span>
+                        <span>
+                            <input type="button" id="btnSignIn" runat="server" value="Sign In" class="btn btn-info navbar-btn lightbox" /></span>
+                        <span>
+                            <asp:Button ID="btnSignOut" runat="server" Text="Sign Out" CssClass="btn btn-info navbar-btn" Visible="false" OnClick="btnSignOut_Click" /></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -50,12 +60,12 @@
         <div class="box">
             <div class="closebox text-danger">[x]</div>
             <div id="login_form">
-                <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" CssClass="input-bmargin input-sm input-width" /><br/>
+                <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" CssClass="input-bmargin input-sm input-width" /><br />
                 <asp:RequiredFieldValidator ID="rfEmail" ControlToValidate="txtEmail" CssClass="input-width input-bmargin text-danger" Text="*"
-                     ValidationGroup="login" runat="server" ErrorMessage="Email Required"></asp:RequiredFieldValidator>
+                    ValidationGroup="login" runat="server" ErrorMessage="Email Required"></asp:RequiredFieldValidator>
 
                 <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" TextMode="Password" CssClass="input-bmargin input-sm input-width" />
-                <asp:RequiredFieldValidator ID="rfPassword" ControlToValidate="txtPassword" CssClass="input-width input-bmargin"  ValidationGroup="login" runat="server" ErrorMessage="Password Required"></asp:RequiredFieldValidator><br />
+                <asp:RequiredFieldValidator ID="rfPassword" ControlToValidate="txtPassword" CssClass="input-width input-bmargin" ValidationGroup="login" runat="server" ErrorMessage="Password Required"></asp:RequiredFieldValidator><br />
                 <input type="button" id="btnLogin" runat="server" class="btn btn-success" validationgroup="login" value="Log In" />
                 <asp:Label ID="lblError" runat="server" CssClass="text-danger" />
 
@@ -73,7 +83,7 @@
             $("#btnLogin").click(function () {
                 $.ajax("LoginHandler.ashx", {
                     data: { Email: $("#txtEmail").val(), Password: $("#txtPassword").val() },
-                    cache:false,
+                    cache: false,
                     success: function (response) {
                         if (response == "Login Successful!") {
                             alert(response);

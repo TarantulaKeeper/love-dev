@@ -96,5 +96,20 @@ namespace LoveDev
                 counter = counter + 1;
             }
         }
+
+        protected void btnSend_Click(object sender, EventArgs e)
+        {
+            DAL myDAL = new DAL();
+            string toUserID = lstboxUsers.SelectedValue;
+            string message = txtboxReply.Value;
+
+            myDAL.AddParam("ToUserID", toUserID);
+            myDAL.AddParam("FromUserID", Security.CurrentUser.UserID);
+            myDAL.AddParam("Message", message);
+            myDAL.ExecuteNonQuery("spSendMessage");
+            Response.Redirect("Inbox.aspx");
+
+            
+        }
     }
 }

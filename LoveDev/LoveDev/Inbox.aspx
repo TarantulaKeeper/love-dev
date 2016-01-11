@@ -12,8 +12,8 @@
                             <h3 class="panel-title">Chat</h3>
                         </div>
                         <div class="panel-body">
-                            <div>
-                                <asp:ListBox ID="lstboxUsers" runat="server" AutoPostBack="true" OnSelectedIndexChanged="lstboxUsers_SelectedIndexChanged" CssClass="list-group-item"></asp:ListBox>
+                            <div class="list-group">
+                                <asp:ListBox ID="lstboxUsers" runat="server" AutoPostBack="true" OnSelectedIndexChanged="lstboxUsers_SelectedIndexChanged" CssClass="list-group-item" style="width:100%"></asp:ListBox>
                             </div>
                         </div>
                     </div>
@@ -23,7 +23,7 @@
                         <div class="panel-heading">
                             <h3 class="panel-title">Messages</h3>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body" style="min-height:150px;">
                             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                             <asp:UpdatePanel ID="updpnlMessages" runat="server" UpdateMode="Conditional">
                                 <Triggers>
@@ -38,6 +38,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div>
+            <textarea id="txtboxReply" runat="server" placeholder="Write a Reply"></textarea>
+            <asp:Button ID="btnSend" Text="Send" runat="server" OnClick="btnSend_Click" />
         </div>
     </div>
 </asp:Content>

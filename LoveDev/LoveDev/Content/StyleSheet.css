@@ -49,9 +49,7 @@
 }
 .popupbox {
     position: absolute;
-    top: 35%;
-    left:35%;
-    width: 350px;
+    min-width:450px;
     min-height: 192px;
     background: #e6e6e6;
     z-index: 51;
@@ -80,6 +78,9 @@
 }
 .padtop{
     padding-top:15px;
+}
+.modal-height{
+    height:200px;
 }
 
 /*---------media queries-------------*/

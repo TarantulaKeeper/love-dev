@@ -40,7 +40,7 @@ INSERT INTO tbUser(FirstName, LastName, Password, Age, City, Country, Email, IsA
 	VALUES 
 		('Niko', 'Pastulovic', '1234', 20, 'Winnipeg', 'Canada', 'niko.pastulovic@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,''),
 		('T.J.', 'Petrowski', '1234', 24, 'Warren', 'Canada', 't.j.petrowski@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,''),
-		('Chris', 'Jeffrey', '1234', 21, 'Winnipeg', 'Canada', 'chris.jeffrey@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 5,''),
+		('Chris', 'Jeffrey', '1234', 21, 'Winnipeg', 'Canada', 'chris.jeffrey@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,''),
 		('Joseph', 'Maglalang', '1234', 30, 'Winnipeg', 'Canada', 'joseph.maglalang@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 6,'')
 
 -- TABLE FOR SEXUAL ORIENTATION 
@@ -50,7 +50,7 @@ SexualOrientationID INT PRIMARY KEY IDENTITY (1,1),
 UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
 GenderID INT FOREIGN KEY REFERENCES tbGender(GenderID)
 )
-INSERT INTO tbSexualOrientation (UserID, GenderID) VALUES (1,1),(1,2),(2,3),(3,3),(3,5),(3,4),(4,1),(4,3)
+INSERT INTO tbSexualOrientation (UserID, GenderID) VALUES (1,1),(1,2),(2,3),(3,1),(3,3),(3,5),(3,4),(4,1),(4,3)
 
 --INSERT INTO tbSexualOrientation(SexualOrientationName) VALUES ('Straight'), ('Gay'), ('Lesbian'), ('Asexual'),
 	--('Pansexual'), ('Bisexual'), ('Sapiosexual'), ('Heteroflexible'), ('Homoflexible')
@@ -162,11 +162,8 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  FromUserID INT,
  ToUserID INT,
  Message VARCHAR(MAX),
- DateSent DATE DEFAULT CONVERT(VARCHAR(8),GETDATE(),101),
- MessageRead BIT
+ DateSent DATE DEFAULT GETDATE()
  )
-
- INSERT INTO tbMessages(FromUserID, ToUserID, Message, MessageRead, DateSent) VALUES (3, 2, 'Hello', 0, '2015-12-01'), (1, 2, 'Yo', 0, '2016-01-01'), (2, 3, 'Hey', 0, '2016-01-01') 
 
  GO
  --TABLES FOR REPORTS
@@ -220,7 +217,7 @@ CREATE PROC spGetUserByID
 @userID INT
 )
 AS BEGIN
-	SELECT UserID, FirstName, LastName, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, Bio
+	SELECT UserID, FirstName, LastName, Age, City, Country, Email, GenderID, IsActive, IsAdmin, UserPhoto, Bio
 	FROM   tbUser
 	WHERE  UserID= @userID
 END
@@ -234,7 +231,7 @@ CREATE PROC spLogin
 AS BEGIN
 	IF EXISTS (SELECT UserId from tbUser where Email = @Email and Password = @Password)
 	BEGIN
-		select UserID, FirstName, LastName, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto
+		select UserID, FirstName, LastName, Age, City, Country, Email, GenderID, IsActive, IsAdmin, UserPhoto
 		from   tbUser
 		where  Email = @Email
 		and    Password = @Password
@@ -267,14 +264,15 @@ CREATE PROC spRegisterUser
 @City	   VARCHAR(50),
 @Country   VARCHAR(50),
 @Email	   VARCHAR(50),
+@GenderID  INT,
 @IsActive  BIT =0, --Is not Active by default
 @IsAdmin   BIT =0, --Is not Admin by default
 @UserPhoto VARCHAR(250) ='Images/NoPhoto.jpg', --Sets photo to default photo if one is not provided
 @Guid VARCHAR(50)
 )
 AS BEGIN
-	INSERT INTO tbUser (FirstName,LastName,Password,Age,City,Country,Email,IsActive,IsAdmin,UserPhoto) VALUES
-					   (@FirstName,@LastName,@Password,@Age,@City,@Country,@Email,@IsActive,@IsAdmin,@UserPhoto)
+	INSERT INTO tbUser (FirstName,LastName,Password,Age,City,Country,Email,GenderID,IsActive,IsAdmin,UserPhoto) VALUES
+					   (@FirstName,@LastName,@Password,@Age,@City,@Country,@Email,@GenderID,@IsActive,@IsAdmin,@UserPhoto)
 	SELECT SCOPE_IDENTITY()
 	INSERT INTO tbUserGuid (UserID, Guid) VALUES
 						(SCOPE_IDENTITY(),@Guid)
@@ -304,14 +302,23 @@ GO
 --	FROM tbSexualOrientation
 --END
 --GO
+CREATE PROC spGetSexualPreferences
+(
+@UserID INT
+)
+AS BEGIN
+	SELECT GenderID
+	FROM tbSexualOrientation
+	WHERE UserID = @UserID
+END
+GO
 
 CREATE PROC spGetUserGeneralInterests
 (@UserID int)
 AS BEGIN
-	SELECT UV.UserCategoryValue as [generalInterests], S.GenderID
-	FROM tbUserValues UV full outer join
-		 tbSexualOrientation S on S.UserID = UV.UserID
-	WHERE UV.UserID = @UserID 
+	SELECT UserCategoryValue as [generalInterests]
+	FROM tbUserValues
+	WHERE UserID = @UserID
 END
 GO
 
@@ -400,7 +407,7 @@ CREATE PROCEDURE spCheckMail(
 )
 
 AS BEGIN
-	IF EXISTS (SELECT * FROM tbMessages WHERE ToUserID = @UserID AND MessageRead = 0)
+	IF EXISTS (SELECT * FROM tbMessages WHERE ToUserID = @UserID)
 		BEGIN
 			SELECT 'Unread Mail'
 		END
