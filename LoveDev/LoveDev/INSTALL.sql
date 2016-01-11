@@ -481,6 +481,12 @@ VALUES (@InvalidEmail, @InvalidPassword, CONVERT(VARCHAR(8),GETDATE(),101), CONV
 END
 GO
 
+CREATE PROC spGetInvalidUserLogins
+AS BEGIN
+SELECT * FROM tbInvalidLogins
+END
+GO
+
 CREATE PROC spGetUsersAndHowMuchTheyveBeenMatched
 AS BEGIN
 SELECT tbUser.UserID, COUNT(tbMatches.MatchID)

@@ -3,6 +3,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="webpage_content">
-        <asp:GridView ID="gvReportForInvalidLogins" OnPageIndexChanging="gvReportForInvalidLogins_PageIndexChanging" runat="server" AllowPaging="true" PageSize="6">   </asp:GridView>
+        <asp:GridView ID="gvReportForInvalidLogins" OnPageIndexChanging="gvReportForInvalidLogins_PageIndexChanging" runat="server" 
+            AllowPaging="true" PageSize="6">
+        </asp:GridView>
+        <asp:GridView ID="gvReportForUserMatchesCount" runat="server"></asp:GridView>
+        <asp:GridView ID="gvReportForNonActiveUsers" runat="server">   </asp:GridView>
     </div>
 </asp:Content>
