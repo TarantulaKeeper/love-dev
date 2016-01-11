@@ -20,5 +20,23 @@ namespace LoveDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvReportForInvalidLogins;
+        
+        /// <summary>
+        /// gvReportForUserMatchesCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvReportForUserMatchesCount;
+        
+        /// <summary>
+        /// gvReportForNonActiveUsers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvReportForNonActiveUsers;
     }
 }
