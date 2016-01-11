@@ -133,6 +133,7 @@
     <Content Include="Index.aspx" />
     <Content Include="INSTALL.sql" />
     <Content Include="Matches.aspx" />
+    <Content Include="Matchmaker.aspx" />
     <Content Include="MISCELLANEOUS FILES\BUSINESS LOGIC NOTES.txt" />
     <Content Include="MISCELLANEOUS FILES\QUESTIONS.txt" />
     <Content Include="packages.config" />
@@ -207,6 +208,13 @@
     </Compile>
     <Compile Include="Matches.aspx.designer.cs">
       <DependentUpon>Matches.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Matchmaker.aspx.cs">
+      <DependentUpon>Matchmaker.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Matchmaker.aspx.designer.cs">
+      <DependentUpon>Matchmaker.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SendMessage.ashx.cs">

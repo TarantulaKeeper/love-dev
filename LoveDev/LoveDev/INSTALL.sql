@@ -185,10 +185,24 @@ go
 
 --</Tables>
 --<Procedures>
+CREATE PROC spGetQuestions
+(
+@CategoryID int
+)
+AS BEGIN
+	SELECT *
+	FROM tbQuestionsForQuiz
+	WHERE QuestionCategoryID = @CategoryID
+END
+GO
 
 
-
-
+CREATE PROC spGetQuestionCategories
+AS BEGIN
+	SELECT * 
+	FROM tbQuestionCategory
+END
+GO
 
 CREATE PROC spVerifyUser
 (
@@ -297,20 +311,23 @@ AS BEGIN
 END
 GO
 
---CREATE PROC spGetSexualOrientations
---AS BEGIN
---	SELECT * 
---	FROM tbSexualOrientation
---END
---GO
+CREATE PROC spGetSexualPreferences
+(
+@UserID INT
+)
+AS BEGIN
+	SELECT GenderID
+	FROM tbSexualOrientation
+	WHERE UserID = @UserID
+END
+GO
 
 CREATE PROC spGetUserGeneralInterests
 (@UserID int)
 AS BEGIN
-	SELECT UV.UserCategoryValue as [generalInterests], S.GenderID
-	FROM tbUserValues UV full outer join
-		 tbSexualOrientation S on S.UserID = UV.UserID
-	WHERE UV.UserID = @UserID 
+	SELECT UserCategoryValue as [generalInterests]
+	FROM tbUserValues
+	WHERE UserID = @UserID
 END
 GO
 
@@ -465,6 +482,12 @@ VALUES (@InvalidEmail, @InvalidPassword, CONVERT(VARCHAR(8),GETDATE(),101), CONV
 END
 GO
 
+CREATE PROC spGetInvalidUserLogins
+AS BEGIN
+SELECT * FROM tbInvalidLogins
+END
+GO
+
 CREATE PROC spGetUsersAndHowMuchTheyveBeenMatched
 AS BEGIN
 SELECT tbUser.UserID, COUNT(tbMatches.MatchID)
@@ -528,5 +551,6 @@ select * from tbInvalidLogins
 select * from tbSexualOrientation
 exec spGetMatchesForThisUserID 2
 select * from tbUserValues
+exec spGetQuestions 2
 go
 exec spInsertIntoInvalidLogin 'dgnrdnt', 'fgxnrgn'
