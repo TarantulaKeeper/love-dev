@@ -73,9 +73,10 @@
                                     <span class="input-group-addon">Country:</span>
                                 <asp:TextBox ID="tbCountry" runat="server" CssClass="form-control" />
                                 </div>
-                                About me:
-                            <textarea id="txtareaEditBio" runat="server" class="form-control"></textarea>
-
+                                <div class="input-group">
+                                    <span class="input-group-addon">About me:</span>
+                                    <textarea id="txtareaEditBio" runat="server" class="form-control"></textarea>
+                                </div>
                                 <asp:Button Text="Save" CssClass="btn btn-danger" ID="btnSaveBasicInformation" runat="server" OnClick="btnSaveBasicInformation_Click" />
                 </asp:Panel>
             </div>
