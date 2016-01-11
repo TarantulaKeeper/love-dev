@@ -26,7 +26,7 @@
                         </ItemTemplate>
                     </asp:DataList>
                 </div>
-                <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
+                <div class="col-lg-9 col-md-8 col-sm-8">
 
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                         <div class="modal-dialog" role="document">
