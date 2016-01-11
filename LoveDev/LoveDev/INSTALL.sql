@@ -231,8 +231,8 @@ CREATE PROC spGetUserByID
 @userID INT
 )
 AS BEGIN
-	SELECT UserID, FirstName, LastName, Age, City, Country, Email, GenderID, IsActive, IsAdmin, UserPhoto, Bio
-	FROM   tbUser
+	SELECT UserID, FirstName, LastName, Age, City, Country, Email, tbUser.GenderID, GenderName, IsActive, IsAdmin, UserPhoto, Bio
+	FROM   tbUser JOIN tbGender ON tbUser.GenderID = tbGender.GenderID
 	WHERE  UserID= @userID
 END
 GO
@@ -512,8 +512,6 @@ CREATE PROC spEditUserData
 @Age INT,
 @City VARCHAR(50),
 @Country VARCHAR(50),
-@GenderID INT,
-@SexualOrientationID INT,
 @Bio VARCHAR(500)
 )
 AS BEGIN
