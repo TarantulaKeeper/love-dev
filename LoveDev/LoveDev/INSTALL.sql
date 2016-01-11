@@ -39,7 +39,7 @@ Bio VARCHAR(500) NOT NULL
 INSERT INTO tbUser(FirstName, LastName, Password, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID, Bio)
 	VALUES 
 		('Niko', 'Pastulovic', '1234', 20, 'Winnipeg', 'Canada', 'niko.pastulovic@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,''),
-		('T.J.', 'Petrowski', '1234', 24, 'Warren', 'Canada', 't.j.petrowski@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,''),
+		('T.J.', 'Petrowski', '1234', 24, 'Warren', 'Canada', 'tjpetrowski@mail.com', 1, 1, 'Images/NoPhoto.jpg', 1,''),
 		('Chris', 'Jeffrey', '1234', 21, 'Winnipeg', 'Canada', 'chris.jeffrey@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,''),
 		('Joseph', 'Maglalang', '1234', 30, 'Winnipeg', 'Canada', 'joseph.maglalang@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 6,'')
 
@@ -268,7 +268,7 @@ CREATE PROC spRegisterUser
 @IsActive  BIT =0, --Is not Active by default
 @IsAdmin   BIT =0, --Is not Admin by default
 @UserPhoto VARCHAR(250) ='Images/NoPhoto.jpg', --Sets photo to default photo if one is not provided
-@Bio VARCHAR(250),
+@Bio VARCHAR(250) = NULL,
 @Guid VARCHAR(50)
 )
 AS BEGIN
