@@ -107,9 +107,7 @@ namespace LoveDev
             myDAL.AddParam("FromUserID", Security.CurrentUser.UserID);
             myDAL.AddParam("Message", message);
             myDAL.ExecuteNonQuery("spSendMessage");
-            Response.Redirect("Inbox.aspx");
-
-            
+            Response.Redirect("Inbox.aspx");            
         }
     }
 }

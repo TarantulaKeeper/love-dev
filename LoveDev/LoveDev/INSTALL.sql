@@ -268,11 +268,12 @@ CREATE PROC spRegisterUser
 @IsActive  BIT =0, --Is not Active by default
 @IsAdmin   BIT =0, --Is not Admin by default
 @UserPhoto VARCHAR(250) ='Images/NoPhoto.jpg', --Sets photo to default photo if one is not provided
+@Bio VARCHAR(250),
 @Guid VARCHAR(50)
 )
 AS BEGIN
-	INSERT INTO tbUser (FirstName,LastName,Password,Age,City,Country,Email,GenderID,IsActive,IsAdmin,UserPhoto) VALUES
-					   (@FirstName,@LastName,@Password,@Age,@City,@Country,@Email,@GenderID,@IsActive,@IsAdmin,@UserPhoto)
+	INSERT INTO tbUser (FirstName,LastName,Password,Age,City,Country,Email,GenderID,IsActive,IsAdmin,UserPhoto, Bio) VALUES
+					   (@FirstName,@LastName,@Password,@Age,@City,@Country,@Email,@GenderID,@IsActive,@IsAdmin,@UserPhoto, ISNULL(@Bio, ''))
 	SELECT SCOPE_IDENTITY()
 	INSERT INTO tbUserGuid (UserID, Guid) VALUES
 						(SCOPE_IDENTITY(),@Guid)
