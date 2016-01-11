@@ -302,14 +302,23 @@ GO
 --	FROM tbSexualOrientation
 --END
 --GO
+CREATE PROC spGetSexualPreferences
+(
+@UserID INT
+)
+AS BEGIN
+	SELECT GenderID
+	FROM tbSexualOrientation
+	WHERE UserID = @UserID
+END
+GO
 
 CREATE PROC spGetUserGeneralInterests
 (@UserID int)
 AS BEGIN
-	SELECT UV.UserCategoryValue as [generalInterests], S.GenderID
-	FROM tbUserValues UV full outer join
-		 tbSexualOrientation S on S.UserID = UV.UserID
-	WHERE UV.UserID = @UserID 
+	SELECT UserCategoryValue as [generalInterests]
+	FROM tbUserValues
+	WHERE UserID = @UserID
 END
 GO
 
