@@ -87,7 +87,7 @@
                             </span>
                         </div>
                         <div class="input-group input-group-sm">
-                            <asp:TextBox ID="txtAge" runat="server" TextMode="Number" placeholder="Age" CssClass="form-control" />
+                            <asp:TextBox ID="txtAge" runat="server" TextMode="Number" MaxLength="2" placeholder="Age" CssClass="form-control" />
                             <span class="input-group-addon">
                                 <asp:RequiredFieldValidator ID="rfAge" runat="server" ControlToValidate="txtAge"
                                     ValidationGroup="Reg" Text="*" ErrorMessage="Age Required" CssClass="text-danger"></asp:RequiredFieldValidator><br />

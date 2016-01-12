@@ -99,8 +99,7 @@
                         $('#myModal').fadeOut(1000);
                         $('#myAlert').delay(1200).fadeOut(700);
                         $('.modal-backdrop').fadeOut(1200);
-                        $('#msg').text('Message');
-                        //still can't make textarea contents clear up'
+                        $('#msg').text('Message');                        
                     },
                     error: function (error) {
                         var error = error;
