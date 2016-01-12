@@ -165,6 +165,8 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  DateSent DATE DEFAULT GETDATE()
  )
 
+ INSERT INTO tbMessages(FromUserID, ToUserID, Message) VALUES (2, 1, 'You look like Harry Potter')
+
  GO
  --TABLES FOR REPORTS
 CREATE TABLE tbInvalidLogins(
