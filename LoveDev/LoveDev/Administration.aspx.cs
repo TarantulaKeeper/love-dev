@@ -27,15 +27,19 @@ namespace LoveDev
                 {
                     Response.Redirect("Index.aspx?message=Must be administrator to view that page");
                 }
-                LoadInvalidLogins();
+                LoadAllReports();
             }
         }
 
-        private void LoadInvalidLogins()
+        private void LoadAllReports()
         {
             DAL myDal = new DAL();
-            gvReportForInvalidLogins.DataSource = myDal.ExecuteProcedure("tbInvalidLogins");
+            gvReportForInvalidLogins.DataSource = myDal.ExecuteProcedure("spGetInvalidUserLogins");
             gvReportForInvalidLogins.DataBind();
+            gvReportForUserMatchesCount.DataSource = myDal.ExecuteProcedure("spGetUsersAndHowMuchTheyveBeenMatched");
+            gvReportForUserMatchesCount.DataBind();
+            gvReportForNonActiveUsers.DataSource = myDal.ExecuteProcedure("spGetNonActiveUsers");
+            gvReportForNonActiveUsers.DataBind();
         }
 
         protected void gvReportForInvalidLogins_PageIndexChanging(object sender, GridViewPageEventArgs e)

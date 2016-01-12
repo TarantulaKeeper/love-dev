@@ -185,10 +185,24 @@ go
 
 --</Tables>
 --<Procedures>
+CREATE PROC spGetQuestions
+(
+@CategoryID int
+)
+AS BEGIN
+	SELECT *
+	FROM tbQuestionsForQuiz
+	WHERE QuestionCategoryID = @CategoryID
+END
+GO
 
 
-
-
+CREATE PROC spGetQuestionCategories
+AS BEGIN
+	SELECT * 
+	FROM tbQuestionCategory
+END
+GO
 
 CREATE PROC spVerifyUser
 (
@@ -217,8 +231,8 @@ CREATE PROC spGetUserByID
 @userID INT
 )
 AS BEGIN
-	SELECT UserID, FirstName, LastName, Age, City, Country, Email, GenderID, IsActive, IsAdmin, UserPhoto, Bio
-	FROM   tbUser
+	SELECT UserID, FirstName, LastName, Age, City, Country, Email, tbUser.GenderID, GenderName, IsActive, IsAdmin, UserPhoto, Bio
+	FROM   tbUser JOIN tbGender ON tbUser.GenderID = tbGender.GenderID
 	WHERE  UserID= @userID
 END
 GO
@@ -268,11 +282,12 @@ CREATE PROC spRegisterUser
 @IsActive  BIT =0, --Is not Active by default
 @IsAdmin   BIT =0, --Is not Admin by default
 @UserPhoto VARCHAR(250) ='Images/NoPhoto.jpg', --Sets photo to default photo if one is not provided
+@Bio VARCHAR(250) = NULL,
 @Guid VARCHAR(50)
 )
 AS BEGIN
-	INSERT INTO tbUser (FirstName,LastName,Password,Age,City,Country,Email,GenderID,IsActive,IsAdmin,UserPhoto) VALUES
-					   (@FirstName,@LastName,@Password,@Age,@City,@Country,@Email,@GenderID,@IsActive,@IsAdmin,@UserPhoto)
+	INSERT INTO tbUser (FirstName,LastName,Password,Age,City,Country,Email,GenderID,IsActive,IsAdmin,UserPhoto, Bio) VALUES
+					   (@FirstName,@LastName,@Password,@Age,@City,@Country,@Email,@GenderID,@IsActive,@IsAdmin,@UserPhoto, ISNULL(@Bio, ''))
 	SELECT SCOPE_IDENTITY()
 	INSERT INTO tbUserGuid (UserID, Guid) VALUES
 						(SCOPE_IDENTITY(),@Guid)
@@ -296,20 +311,23 @@ AS BEGIN
 END
 GO
 
---CREATE PROC spGetSexualOrientations
---AS BEGIN
---	SELECT * 
---	FROM tbSexualOrientation
---END
---GO
+CREATE PROC spGetSexualPreferences
+(
+@UserID INT
+)
+AS BEGIN
+	SELECT GenderID
+	FROM tbSexualOrientation
+	WHERE UserID = @UserID
+END
+GO
 
 CREATE PROC spGetUserGeneralInterests
 (@UserID int)
 AS BEGIN
-	SELECT UV.UserCategoryValue as [generalInterests], S.GenderID
-	FROM tbUserValues UV full outer join
-		 tbSexualOrientation S on S.UserID = UV.UserID
-	WHERE UV.UserID = @UserID 
+	SELECT UserCategoryValue as [generalInterests]
+	FROM tbUserValues
+	WHERE UserID = @UserID
 END
 GO
 
@@ -419,6 +437,7 @@ AS BEGIN
 	SELECT UserID, FirstName FROM tbUser
 		JOIN tbMessages ON tbUser.UserID = tbMessages.FromUserID
 	WHERE UserID != @UserID
+	GROUP BY UserID, FirstName
 END
 GO
 
@@ -464,6 +483,12 @@ VALUES (@InvalidEmail, @InvalidPassword, CONVERT(VARCHAR(8),GETDATE(),101), CONV
 END
 GO
 
+CREATE PROC spGetInvalidUserLogins
+AS BEGIN
+SELECT * FROM tbInvalidLogins
+END
+GO
+
 CREATE PROC spGetUsersAndHowMuchTheyveBeenMatched
 AS BEGIN
 SELECT tbUser.UserID, COUNT(tbMatches.MatchID)
@@ -489,8 +514,6 @@ CREATE PROC spEditUserData
 @Age INT,
 @City VARCHAR(50),
 @Country VARCHAR(50),
-@GenderID INT,
-@SexualOrientationID INT,
 @Bio VARCHAR(500)
 )
 AS BEGIN
@@ -527,6 +550,7 @@ select * from tbInvalidLogins
 select * from tbSexualOrientation
 exec spGetMatchesForThisUserID 2
 select * from tbUserValues
+exec spGetQuestions 2
 go
 exec spInsertIntoInvalidLogin 'dgnrdnt', 'fgxnrgn'
 

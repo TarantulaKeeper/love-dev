@@ -20,11 +20,25 @@ namespace LoveDevMatchmakingLib
 
         public UserValues(int UserID)
         {
-            ValuesList = new List<int>();
-            SexualPreferencesList = new List<int>();
-
-            this.UserID = UserID;
             dal = new DAL();
+            this.UserID = UserID;
+            getValuesList(UserID);
+            getSexualPreferencesList(UserID);           
+        }
+
+        private void getSexualPreferencesList(int UserID)
+        {
+            SexualPreferencesList = new List<int>();
+            dal.AddParam("UserID", UserID);
+            DataSet ds = dal.ExecuteProcedure("spGetSexualPreferences"); //proc needed
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                this.SexualPreferencesList.Add(int.Parse(dr["GenderID"].ToString()));
+            }
+        }
+        private void getValuesList(int UserID)
+        {
+            ValuesList = new List<int>();
             dal.AddParam("UserID", UserID);
             DataSet ds = dal.ExecuteProcedure("spGetUserGeneralInterests");
             foreach (DataRow row in ds.Tables[0].Rows)
@@ -32,7 +46,7 @@ namespace LoveDevMatchmakingLib
                 this.ValuesList.Add(Convert.ToInt32(row["generalInterests"]));
             }
         }
-        public static int CalculateValues(List<bool> valList)
+        private static int CalculateValues(List<bool> valList)
         {
             int count = 0;
             for (int i = 0; i < valList.Count; i++)
@@ -49,6 +63,7 @@ namespace LoveDevMatchmakingLib
             List<bool> TrueFalseMatchList = new List<bool>();
             int Result = 0;
             int Count = 0;
+
             if (CheckGenderAndPreferenceCompatibility(otherUser.GenderID,this.SexualPreferencesList) && CheckGenderAndPreferenceCompatibility(user.GenderID,other.SexualPreferencesList))
             {
                 foreach (int value in this.ValuesList)
@@ -112,5 +127,7 @@ namespace LoveDevMatchmakingLib
             }
             return false;
         }
+
+
     }
 }

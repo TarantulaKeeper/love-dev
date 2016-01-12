@@ -49,10 +49,10 @@
                                         <asp:Label ID="lblSexualOrientation" runat="server" CssClass="form-control" />
                                     </div>
                                 <textarea id="txtareaUserBio" runat="server" disabled="disabled" class="form-control"></textarea>
-                                <asp:ImageButton ImageUrl="/Images/EditIcon.png" ID="imgbtnEditBasicInfo" runat="server" />
+                                <asp:ImageButton ImageUrl="/Images/EditIcon.png" ID="imgbtnEditBasicInfo" OnClick="imgbtnEditBasicInfo_Click" runat="server" />
                                 </div>
                 </asp:Panel>
-                            <asp:Panel ID="pnlBasicInformationEdit" Visible="true" runat="server" CssClass="">
+                            <asp:Panel ID="pnlBasicInformationEdit" Visible="false" runat="server"  CssClass="">
                                 <div class="input-group">
                                     <span class="input-group-addon">First Name:</span>
                                     <asp:TextBox ID="tbFirstName" runat="server" CssClass="form-control" />
