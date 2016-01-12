@@ -20,18 +20,54 @@ namespace LoveDev
             DataSet ds = d.ExecuteProcedure("spGetQuestionCategories");
             foreach (DataRow DR in ds.Tables[0].Rows)
             {
-                Page.Controls.Add(CreateDiv(DR["QuestionCategoryName"].ToString(), int.Parse(DR["QuestionCategoryID"].ToString())));
+                divPage.Controls.Add(CreateCategoryDiv(DR["QuestionCategoryName"].ToString(), int.Parse(DR["QuestionCategoryID"].ToString())));
             }
         }
 
-        private HtmlGenericControl CreateDiv(string CategoryName, int CategoryID)
+
+
+        private HtmlGenericControl CreateCategoryDiv(string CategoryName, int CategoryID)
+        {
+            HtmlGenericControl div = new HtmlGenericControl("div");
+            HtmlInputButton btn = new HtmlInputButton();
+            HtmlGenericControl Category = new HtmlGenericControl("h4");
+            Category.InnerText = CategoryName;
+            btn.ID = "btnContinue" + CategoryID;
+            btn.Value = "Continue";
+            div.ID = "div" + CategoryName;
+            div.Controls.Add(Category);
+            div.Controls.Add(CreateQuestionDiv(CategoryID));
+            div.Controls.Add(btn);
+            return div;
+        }
+
+        private HtmlGenericControl CreateQuestionDiv(int CategoryID)
         {
             d.AddParam("CategoryID", CategoryID);
-            DataSet ds = d.ExecuteProcedure("sp")
+            DataSet ds = d.ExecuteProcedure("spGetQuestions");
+            HtmlGenericControl h4 = new HtmlGenericControl("h4");
             HtmlGenericControl div = new HtmlGenericControl("div");
-            div.ID = "div" +CategoryName;
-            div.InnerHtml = CategoryName;
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                
+                Label lblNever = new Label();
+                lblNever.Text = "Never";
+                Label lblAlways = new Label();
+                lblAlways.Text = "Always";
+                Label lblQuestion = new Label();
+                lblQuestion.Text = ds.Tables[0].Rows[i]["QuestionString"].ToString() + "?";
+                TextBox txt = new TextBox();
+                txt.TextMode = TextBoxMode.Range;
+                txt.MaxLength = 1;
+                txt.ID = "txt" + CategoryID + i;
+                div.Controls.Add(lblQuestion);
+                div.Controls.Add(lblNever);
+                div.Controls.Add(txt);
+                div.Controls.Add(lblAlways);
+                div.Attributes.Add("hidden", "hidden");
+            }
             return div;
+
         }
     }
 }
