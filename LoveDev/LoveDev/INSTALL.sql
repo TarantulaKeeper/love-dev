@@ -529,3 +529,5 @@ exec spGetMatchesForThisUserID 2
 select * from tbUserValues
 go
 exec spInsertIntoInvalidLogin 'dgnrdnt', 'fgxnrgn'
+
+select * from tbMessages
