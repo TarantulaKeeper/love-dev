@@ -11,18 +11,22 @@
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                     <asp:DataList ID="dlMatches" runat="server" RepeatColumns="1" DataKeyField="UserID">
                         <ItemTemplate>
-                            <div>
-                                <asp:Image ID="imgUserPhoto" ImageUrl='<%# Eval("UserPhoto") %>' runat="server" />
+                            <div class="well-lg">
+                                <div class="well">
+                                    <div>
+                                        <asp:Image ID="imgUserPhoto" ImageUrl='<%# Eval("UserPhoto") %>' runat="server" style="max-height:250px;"/>
+                                    </div>
+                                    <div class="list-group">
+                                        <h4>
+                                            <asp:Label ID="lblFirstName" Text='<%# Eval("FirstName") %>' runat="server" /></h4>
+                                        <h5><%# Eval("GenderName") %></h5>
+                                        <p>
+                                            <input type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"
+                                                id="btnMessage" value="Send a Message!" runat="server" data-id='<%# Eval("UserID") %>' onclick="show(this)" />
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <asp:Label ID="lblFirstName" Text='<%# Eval("FirstName") %>' runat="server" />
-                            </div>
-                            <div>
-                                <%# Eval("GenderName") %>
-                            </div>
-                            </div>
-            <input type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"
-                id="btnMessage" value="Send Them a Message!" runat="server" data-id='<%# Eval("UserID") %>' onclick="show(this)" />
                         </ItemTemplate>
                     </asp:DataList>
                 </div>
@@ -33,21 +37,26 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">Messaging</h4>
-                                    <input id="txtboxToUser" name="txtboxToUser" readonly="true" type="text" />
-                                    <input id="txtboxFromUser" name="txtboxFromUser" readonly="true" type="text" />
+                                    <h4 class="modal-title" id="myModalLabel">You are writing a message  <span class="glyphicon glyphicon-pencil"></span></h4>
+
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-addon">To:</span>
+                                        <input id="txtboxToUser" name="txtboxToUser" readonly="true" type="text" class="form-control" />
+                                        <%--<span class="input-group-addon">From:</span>
+                                        <input id="txtboxFromUser" name="txtboxFromUser" readonly="true" type="text" class="form-control" />--%>
+                                    </div>
                                 </div>
                                 <div class="modal-body">
-                                    <textarea id="msg" name="message" placeholder="Message" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 modal-height "></textarea>
+                                    <textarea id="msg" name="message" placeholder="Message" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 modal-height input-bmargin"></textarea>
                                 </div>
-                                <div class="modal-footer" style="padding-top:5px;">
-                                   
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                        <button id="btnCustomClose" type="button" name="btnSubmit" data-toggle="modal" data-target="#myAlert"
-                                            class="btn btn-primary padtop" onclick="check_empty()">
-                                            Send <span class="glyphicon glyphicon-envelope"></span>
-                                        </button>
-                                   
+                                <div class="modal-footer" style="padding-top: 5px;">
+
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    <button id="btnCustomClose" type="button" name="btnSubmit" data-toggle="modal" data-target="#myAlert"
+                                        class="btn btn-primary padtop" onclick="check_empty()">
+                                        Send <span class="glyphicon glyphicon-envelope"></span>
+                                    </button>
+
 
                                 </div>
 
