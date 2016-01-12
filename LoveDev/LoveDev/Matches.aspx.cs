@@ -18,7 +18,6 @@ namespace LoveDev
             {
                 LoadMatches();
                 hfUserLoggedIn.Value = Security.CurrentUser.UserID.ToString();
-                hfFirstName.Value = Security.CurrentUser.FirstName;
             }
             
         }
