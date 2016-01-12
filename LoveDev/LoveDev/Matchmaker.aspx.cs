@@ -64,7 +64,7 @@ namespace LoveDev
                 div.Controls.Add(lblNever);
                 div.Controls.Add(txt);
                 div.Controls.Add(lblAlways);
-                div.Attributes.Add("hidden", "hidden");
+                div.Style.Add("display", "none");
             }
             return div;
 

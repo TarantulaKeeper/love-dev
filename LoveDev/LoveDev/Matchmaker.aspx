@@ -6,12 +6,12 @@
     </div>
     <script>
         $(document).ready(function () {
-            $("button").click(function () {
+            $(":button").click(function () {
                 $(this).closest('div').hide();
-                $(this).closest('div').next().show();
+                $(this).closest('div').next().find('div').show();
             });
-            $('h4').click(function () {
-                $(this).find('div').slideToggle();
+            $(':header').click(function () {
+                $(this).closest('div').find('div').slideToggle();
             });
                 //$('div').dblclick(function () {
                 //    $(this).slideToggle();

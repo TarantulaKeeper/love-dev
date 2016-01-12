@@ -34,8 +34,9 @@ namespace LoveDev
             tbLastName.Text = ds.Tables[0].Rows[0]["LastName"].ToString();
             tbAge.Text = ds.Tables[0].Rows[0]["Age"].ToString();
             tbCity.Text = ds.Tables[0].Rows[0]["City"].ToString();
-            tbCountry.Text = ds.Tables[0].Rows[0]["Country"].ToString();
-            txtareaUserBio.InnerText = ds.Tables[0].Rows[0]["Bio"].ToString();
+            tbCountry.Text = ds.Tables[0].Rows[0]["Country"].ToString();            
+            txtareaEditBio.InnerText = ds.Tables[0].Rows[0]["Bio"].ToString();
+            
 
         }
 
@@ -51,6 +52,7 @@ namespace LoveDev
             lblAge.Text = ds.Tables[0].Rows[0]["Age"].ToString();
             lblCity.Text = ds.Tables[0].Rows[0]["City"].ToString();
             lblCountry.Text = ds.Tables[0].Rows[0]["Country"].ToString();
+            lblGender.Text = ds.Tables[0].Rows[0]["GenderName"].ToString();
             txtareaUserBio.InnerText = ds.Tables[0].Rows[0]["Bio"].ToString();
             
         }
@@ -67,6 +69,8 @@ namespace LoveDev
             myDal.AddParam("Bio", txtareaEditBio.InnerText);
             myDal.ExecuteProcedure("spEditUserData");
             LoadUserInfo();
+            pnlBasicInformationEdit.Visible = false;
+            pnlBasicInformation.Visible = true;
         }
 
         protected void btnSaveProfilePhoto_Click(object sender, EventArgs e)

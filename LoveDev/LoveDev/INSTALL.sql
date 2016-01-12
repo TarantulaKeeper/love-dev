@@ -38,7 +38,7 @@ Bio VARCHAR(500) NOT NULL
 
 INSERT INTO tbUser(FirstName, LastName, Password, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID, Bio)
 	VALUES 
-		('Niko', 'Pastulovic', '1234', 20, 'Winnipeg', 'Canada', 'niko.pastulovic@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,''),
+		('Nikolai', 'Pastulovic', '1234', 20, 'Winnipeg', 'Canada', 'niko.pastulovic@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,''),
 		('T.J.', 'Petrowski', '1234', 24, 'Warren', 'Canada', 't.j.petrowski@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,''),
 		('Chris', 'Jeffrey', '1234', 21, 'Winnipeg', 'Canada', 'chris.jeffrey@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,''),
 		('Joseph', 'Maglalang', '1234', 30, 'Winnipeg', 'Canada', 'joseph.maglalang@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 6,'')
@@ -165,6 +165,8 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  DateSent DATE DEFAULT GETDATE()
  )
 
+ INSERT INTO tbMessages(FromUserID, ToUserID, Message) VALUES (2, 1, 'You look like Harry Potter')
+
  GO
  --TABLES FOR REPORTS
 CREATE TABLE tbInvalidLogins(
@@ -231,8 +233,8 @@ CREATE PROC spGetUserByID
 @userID INT
 )
 AS BEGIN
-	SELECT UserID, FirstName, LastName, Age, City, Country, Email, GenderID, IsActive, IsAdmin, UserPhoto, Bio
-	FROM   tbUser
+	SELECT UserID, FirstName, LastName, Age, City, Country, Email, tbUser.GenderID, GenderName, IsActive, IsAdmin, UserPhoto, Bio
+	FROM   tbUser JOIN tbGender ON tbUser.GenderID = tbGender.GenderID
 	WHERE  UserID= @userID
 END
 GO
@@ -282,11 +284,12 @@ CREATE PROC spRegisterUser
 @IsActive  BIT =0, --Is not Active by default
 @IsAdmin   BIT =0, --Is not Admin by default
 @UserPhoto VARCHAR(250) ='Images/NoPhoto.jpg', --Sets photo to default photo if one is not provided
+@Bio VARCHAR(250) = NULL,
 @Guid VARCHAR(50)
 )
 AS BEGIN
-	INSERT INTO tbUser (FirstName,LastName,Password,Age,City,Country,Email,GenderID,IsActive,IsAdmin,UserPhoto) VALUES
-					   (@FirstName,@LastName,@Password,@Age,@City,@Country,@Email,@GenderID,@IsActive,@IsAdmin,@UserPhoto)
+	INSERT INTO tbUser (FirstName,LastName,Password,Age,City,Country,Email,GenderID,IsActive,IsAdmin,UserPhoto, Bio) VALUES
+					   (@FirstName,@LastName,@Password,@Age,@City,@Country,@Email,@GenderID,@IsActive,@IsAdmin,@UserPhoto, ISNULL(@Bio, ''))
 	SELECT SCOPE_IDENTITY()
 	INSERT INTO tbUserGuid (UserID, Guid) VALUES
 						(SCOPE_IDENTITY(),@Guid)
@@ -436,6 +439,7 @@ AS BEGIN
 	SELECT UserID, FirstName FROM tbUser
 		JOIN tbMessages ON tbUser.UserID = tbMessages.FromUserID
 	WHERE UserID != @UserID
+	GROUP BY UserID, FirstName
 END
 GO
 
@@ -512,8 +516,6 @@ CREATE PROC spEditUserData
 @Age INT,
 @City VARCHAR(50),
 @Country VARCHAR(50),
-@GenderID INT,
-@SexualOrientationID INT,
 @Bio VARCHAR(500)
 )
 AS BEGIN
@@ -553,3 +555,5 @@ select * from tbUserValues
 exec spGetQuestions 2
 go
 exec spInsertIntoInvalidLogin 'dgnrdnt', 'fgxnrgn'
+
+select * from tbMessages
