@@ -82,7 +82,9 @@
 .modal-height{
     height:200px;
 }
-
+.minheight{
+   min-height:150px;
+}
 /*---------media queries-------------*/
 /*removes white space when screen is xs*/
 @media (max-width: 320px){
