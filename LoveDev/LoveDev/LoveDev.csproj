@@ -82,6 +82,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AboutUs.aspx" />
     <Content Include="Administration.aspx" />
     <Content Include="bin\DAL_Project.dll" />
     <Content Include="bin\LoveDev.dll" />
@@ -170,6 +171,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutUs.aspx.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AboutUs.aspx.designer.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administration.aspx.cs">
       <DependentUpon>Administration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -252,6 +260,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="PHOTOS_OF_US\" />
     <Folder Include="PROFILE_PHOTOS\" />
   </ItemGroup>
   <PropertyGroup>
