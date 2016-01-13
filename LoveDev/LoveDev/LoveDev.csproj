@@ -128,6 +128,7 @@
     <Content Include="Images\EditIcon.png" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\LoveDevLogo2.png" />
+    <Content Include="Images\LoveDevLogogo.png" />
     <Content Include="Images\LoveDevLogoTif.tif" />
     <Content Include="Images\newLogo.jpg" />
     <Content Include="Images\NoPhoto.jpg" />

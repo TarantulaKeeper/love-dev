@@ -76,7 +76,11 @@
             </asp:ContentPlaceHolder>
         </div>
 
-        <footer></footer>
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted">&copy; RobertsonCollegeSD21</p>
+            </div>
+        </footer>
     </form>
     <script>
         $(document).ready(function () {
