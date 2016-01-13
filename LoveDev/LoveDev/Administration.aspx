@@ -11,10 +11,12 @@
         <br />
         Users and how much they've been matched:
         <br />
-        <asp:GridView ID="gvReportForUserMatchesCount" runat="server"></asp:GridView>
+        <asp:GridView ID="gvReportForUserMatchesCount" OnPageIndexChanging="gvReportForInvalidLogins_PageIndexChanging" runat="server"
+             AllowPaging="true" PageSize="6"></asp:GridView>
         <br />
-        Non active users:
+        Non active users: 
         <br />
-        <asp:GridView ID="gvReportForNonActiveUsers" runat="server">   </asp:GridView>
+        <asp:GridView ID="gvReportForNonActiveUsers" OnPageIndexChanging="gvReportForInvalidLogins_PageIndexChanging" runat="server"
+            AllowPaging="true" PageSize="6">   </asp:GridView>
     </div>
 </asp:Content>
