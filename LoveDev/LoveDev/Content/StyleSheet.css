@@ -80,10 +80,16 @@
     padding-top:15px;
 }
 .modal-height{
-    height:200px;
+    height:300px;
+}
+.msgboxheight{
+    height:300px;
 }
 .minheight{
-   min-height:150px;
+   min-height:95px;
+}
+.minwidth{
+    min-width:150px;
 }
 /*---------media queries-------------*/
 /*removes white space when screen is xs*/
