@@ -68,33 +68,38 @@ namespace LoveDev
 
             foreach (DataRow row in ds.Tables[0].Rows)
             {
-                HtmlGenericControl messageDIV = new HtmlGenericControl("div");
-                HtmlGenericControl dateDIV = new HtmlGenericControl("div");
-                Image imgProfilePicture = new Image();
-
-                messageDIV.ID = "messageDIV" + counter;
-                dateDIV.ID = "dateDIV" + counter;
-                imgProfilePicture.ID = "imgProfilePicture" + counter;
-
-                messageDIV.InnerText = row["Message"].ToString();
-                dateDIV.InnerText = row["DateSent"].ToString();
-
-                if (row["FromUserID"].ToString() == fromUserID)
-                {
-                    imgProfilePicture.ImageUrl = fromUser.UserPhoto;
-                }
-
-                else
-                {
-                    imgProfilePicture.ImageUrl = toUser.UserPhoto;
-                }
-
-                divContainer.Controls.Add(messageDIV);
-                divContainer.Controls.Add(dateDIV);
-                divContainer.Controls.Add(imgProfilePicture);
-
-                counter = counter + 1;
+                
             }
+
+            //foreach (DataRow row in ds.Tables[0].Rows)
+            //{
+            //    HtmlGenericControl messageDIV = new HtmlGenericControl("div");
+            //    HtmlGenericControl dateDIV = new HtmlGenericControl("div");
+            //    Image imgProfilePicture = new Image();
+
+            //    messageDIV.ID = "messageDIV" + counter;
+            //    dateDIV.ID = "dateDIV" + counter;
+            //    imgProfilePicture.ID = "imgProfilePicture" + counter;
+
+            //    messageDIV.InnerText = row["Message"].ToString();
+            //    dateDIV.InnerText = row["DateSent"].ToString();
+
+            //    if (row["FromUserID"].ToString() == fromUserID)
+            //    {
+            //        imgProfilePicture.ImageUrl = fromUser.UserPhoto;
+            //    }
+
+            //    else
+            //    {
+            //        imgProfilePicture.ImageUrl = toUser.UserPhoto;
+            //    }
+
+            //    divContainer.Controls.Add(messageDIV);
+            //    divContainer.Controls.Add(dateDIV);
+            //    divContainer.Controls.Add(imgProfilePicture);
+
+            //    counter = counter + 1;
+            //}
         }
 
         protected void btnSend_Click(object sender, EventArgs e)

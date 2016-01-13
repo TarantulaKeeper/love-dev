@@ -165,7 +165,8 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  DateSent DATE DEFAULT GETDATE()
  )
 
- INSERT INTO tbMessages(FromUserID, ToUserID, Message) VALUES (2, 1, 'You look like Harry Potter')
+ INSERT INTO tbMessages(FromUserID, ToUserID, Message) VALUES (2, 1, 'You look like Harry Potter'), 
+	(1, 2, 'Fuck you')
 
  GO
  --TABLES FOR REPORTS
@@ -451,7 +452,10 @@ CREATE PROCEDURE spGetMessages(
 )
 
 AS BEGIN
-	SELECT * FROM tbMessages WHERE (FromUserID = @FromUserID AND ToUserID = @ToUserID) OR
+	SELECT FromUserID, ToUserID, Message, toUser.FirstName AS ToFirstName, fromUser.FirstName AS FromFirstName, DateSent FROM tbMessages
+		JOIN tbUser fromUser ON tbMessages.FromUserID = fromUser.UserID 
+		JOIN tbUser toUser ON tbMessages.ToUserID = toUser.UserID
+	WHERE (FromUserID = @FromUserID AND ToUserID = @ToUserID) OR
 	 (ToUserID = @FromUserID AND FromUserID = @ToUserID) ORDER BY DateSent DESC
 END
 GO
@@ -553,6 +557,7 @@ select * from tbSexualOrientation
 exec spGetMatchesForThisUserID 2
 select * from tbUserValues
 exec spGetQuestions 2
+exec spGetMessages 2, 1
 go
 exec spInsertIntoInvalidLogin 'dgnrdnt', 'fgxnrgn'
 
