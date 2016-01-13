@@ -31,6 +31,7 @@
                                         </Triggers>
                                         <ContentTemplate>
                                             <div id="divContainer" runat="server" class="h6 pull-left ">
+                                                <asp:ListBox ID="lstboxConverstion" runat="server" Enabled="false"></asp:ListBox>
                                             </div>
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
