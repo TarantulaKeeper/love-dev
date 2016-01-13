@@ -9,7 +9,7 @@ using System.Data;
 
 namespace LoveDevLib
 {
-    class ConversationManager
+    public static class ConversationManager
     {
         public static List<Message> Converstion { get; set; }
 
@@ -18,7 +18,9 @@ namespace LoveDevLib
             DAL myDAL = new DAL();
             myDAL.AddParam("ToUserID", toUserID);
             myDAL.AddParam("FromUserID", fromUserID);
-            DataSet ds = myDAL.ExecuteProcedure("spGetMessages");            
+            DataSet ds = myDAL.ExecuteProcedure("spGetMessages");
+
+            Converstion = new List<Message>();                
 
             foreach (DataRow row in ds.Tables[0].Rows)
             {
@@ -26,10 +28,12 @@ namespace LoveDevLib
                     Convert.ToInt32(row["FromUserID"]), row["ToFirstName"].ToString(), 
                     row["FromFirstName"].ToString(), row["DateSent"].ToString(), 
                     row["Message"].ToString());
-                
+
+                Converstion.Add(message);                        
                 
             }
 
+            return Converstion;
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LoveDevLib
 {
-    class Message
+    public class Message
     {
         public int ToUserID { get; set; }
         public int FromUserID { get; set; }

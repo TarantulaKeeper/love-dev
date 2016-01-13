@@ -48,28 +48,21 @@ namespace LoveDev
 
         protected void lstboxUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string fromUserID = lstboxUsers.SelectedValue.ToString();
-            string toUserID = Security.CurrentUser.UserID.ToString();
+            int fromUserID = Convert.ToInt32(lstboxUsers.SelectedValue);
+            int toUserID = Security.CurrentUser.UserID;
 
-            // Getting the user information from SQL 
+            List<Message> Converstion = ConversationManager.GetConversation(toUserID, fromUserID);
 
-            User fromUser = UserManager.getUserByID(Convert.ToInt32(fromUserID));
-            User toUser = UserManager.getUserByID(Convert.ToInt32(toUserID));
-
-            // Getting messages
-
-            DAL myDAL = new DAL();
-            DataSet ds = new DataSet();
-            myDAL.AddParam("FromUserID", fromUserID);
-            myDAL.AddParam("ToUserID", toUserID);
-            ds = myDAL.ExecuteProcedure("spGetMessages");
-
-            int counter = 0;
-
-            foreach (DataRow row in ds.Tables[0].Rows)
+            foreach (Message message in Converstion)
             {
-                
+                lstboxConverstion.Items.Add(message.FromFirstName);
+                lstboxConverstion.Items.Add(message.MessageSent);
+                lstboxConverstion.Items.Add(message.DateSent);
             }
+
+           
+
+
 
             //foreach (DataRow row in ds.Tables[0].Rows)
             //{
