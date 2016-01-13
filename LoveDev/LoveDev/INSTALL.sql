@@ -80,7 +80,7 @@ UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
 QuestionCategoryID INT FOREIGN KEY REFERENCES tbQuestionCategory(QuestionCategoryID),
 UserCategoryValue INT
 )
-INSERT INTO tbUserValues(UserID, QuestionCategoryID, UserCategoryValue) VALUES (1,1,20),(1,2,25),(1,3,30),(1,4,22),(1,5,11),(1,6,20),(1,7,20),
+INSERT INTO tbUserValues(UserID, QuestionCategoryID, UserCategoryValue) VALUES (1,1,15),(1,2,25),(1,3,10),(1,4,12),(1,5,16),(1,6,40),(1,7,10),
 																			   (3,1,20),(3,2,25),(3,3,30),(3,4,22),(3,5,11),(3,6,20),(3,7,20)
 
 CREATE TABLE tbMatches
