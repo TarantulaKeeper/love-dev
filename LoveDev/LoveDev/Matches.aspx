@@ -86,10 +86,10 @@
         var globalDOMElement;
         function show(DOMElement) {
             globalDOMElement = $('#' + DOMElement.id).data('id');
-            var toFirstName = $("#" + DOMElement.id).parent().find("span[id*='FirstName']").html();
+            var toFirstName = $('#' + DOMElement.id).closest('div').find('span').html()
+            //var toFirstName = $("#" + DOMElement.id).parent().find("span[id*='FirstName']").html();
             $('#txtboxToUser').val(toFirstName);
-            var fromFirstName = $('#<%= hfFirstName.ClientID %>').val()
-            $('#txtboxFromUser').val(fromFirstName);
+
         };
 
         function check_empty() {
