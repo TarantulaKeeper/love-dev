@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
-        <asp:Image ID="imgTJ" ImageUrl="imageurl" runat="server" />
+        <asp:Image ID="imgTJ" ImageUrl="~/PHOTOS_OF_US/TJ.jpg" runat="server" />
         <asp:Label ID="lblTJ" Text="T.J. Petrowski" runat="server" />
         <textarea id="txtTJ" runat="server"></textarea>
     </div>
