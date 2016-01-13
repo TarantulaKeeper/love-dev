@@ -8,7 +8,7 @@
         <textarea id="txtTJ" runat="server"></textarea>
     </div>
     <div>
-        <asp:Image ID="imgNiko" ImageUrl="imageurl" runat="server" />
+        <asp:Image ID="imgNiko" ImageUrl="/PHOTOS_OF_US/DAD.jpg" runat="server" />
         <asp:Label ID="lblNiko" Text="Niko Pastulovic" runat="server" />
         <textarea id="txtNiko" runat="server"></textarea>
     </div>

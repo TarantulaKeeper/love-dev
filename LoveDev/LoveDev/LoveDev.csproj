@@ -148,6 +148,7 @@
     <Content Include="EmailHandler.ashx" />
     <Content Include="LoginHandler.ashx" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="PHOTOS_OF_US\DAD.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
@@ -261,7 +262,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="PHOTOS_OF_US\" />
     <Folder Include="PROFILE_PHOTOS\" />
   </ItemGroup>
   <PropertyGroup>
