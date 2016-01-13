@@ -10,14 +10,23 @@
                 <div class="jumbotron">
                     <div class="row text-center">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            
+
                             <div>
-                                <img src="Images/LoveDevLogiTif.tif"/>
-                                <h2>Let us help you develop your love.</h2>
-                                <h4>if (you == alone){ you + LoveDev = <span class="glyphicon glyphicon-heart"></span>; }</h4>
+                                <img src="Images/LoveDevLogogo.png" />
+                                <h2 class="text-center">Let us help you develop your love.</h2>
+                                <div class=" col-lg-offset-5 col-lg-6">
+                                    <div class="text-left">
+                                        <h4><span>if (You == alone)</span></h4>
+                                        <h4>{</h4>
+                                        <div>
+                                            <h4> You + LoveDev = <span class="glyphicon glyphicon-heart"></span>;</h4>
+                                        </div>
+                                        <h4>}</h4>
+                                    </div>
+                                </div>
                             </div>
                             <div class="displayinlineblock">
-                                
+
                                 <div class="dropdown">
                                     <span style="padding-right: 10px;">I am </span>
                                     <asp:DropDownList ID="ddlGender" runat="server" CssClass="btn btn-default dropdown-toggle" />
@@ -25,33 +34,36 @@
                                     <asp:RequiredFieldValidator ID="rfGender" runat="server" ControlToValidate="ddlGender" ValidationGroup="ddl" Text="*" ErrorMessage="Gender Required" CssClass="text-danger" InitialValue="-1"></asp:RequiredFieldValidator>
                                     <span style="padding-right: 10px;">looking for </span>
                                     <div class="btn-group">
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        select preferences <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <asp:CheckBoxList runat="server" ID="cblOrientation"></asp:CheckBoxList>
-                                        </li>
-                                    </ul>
-                                </div>
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Select Preferences <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <asp:CheckBoxList runat="server" ID="cblOrientation"></asp:CheckBoxList>
+                                            </li>
+                                        </ul>
+                                    </div>
                                     <%--<asp:DropDownList ID="ddlOrientation" runat="server" CssClass="btn btn-default dropdown-toggle" />--%>
                                     <%--<asp:RequiredFieldValidator ID="rfOrientation" runat="server" ControlToValidate="ddlOrientation" ValidationGroup="ddl" Text="*" ErrorMessage="Sexual Orientation Required" CssClass="text-danger" InitialValue="-1"></asp:RequiredFieldValidator>--%>
                                     <asp:Button ID="btnContinue_register" Text="Continue" runat="server" ValidationGroup="ddl" OnClick="btnContinue_register_Click" CssClass="btn btn-warning navbar-btn" />
-                                </div>                                
+                                </div>
                             </div>
-                       </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </asp:Panel>
 
         <asp:Panel runat="server" ID="pnlRegistration_cont" Visible="false">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 col-md-8 col-md-6 col-sm-4">
+                    <div class="col-lg-4 col-md-5 col-sm-2"></div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" id="divval">
+                        <div style="margin-top:100px;">
                         <asp:ValidationSummary ID="vsReg" ValidationGroup="Reg" runat="server" CssClass="text-danger" />
+                        </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                    <div class="col-lg-5 col-md-4 col-sm-8 col-xs-12">
                         <asp:Label ID="lblError" runat="server" CssClass="text-danger" />
                         <h1>Registration</h1>
 
@@ -74,7 +86,7 @@
                             <span class="input-group-addon">
                                 <asp:RequiredFieldValidator ID="rfEmail" runat="server" ControlToValidate="txtEmail"
                                     ValidationGroup="Reg" Text="*" ErrorMessage="Email Required" CssClass="text-danger"></asp:RequiredFieldValidator>
-                                <asp:Image ID="imgEmail" runat="server" Style="height: 15px; width: 15px; display: none;" />
+                                <asp:Image ID="imgEmail" runat="server" Style="height: 15px; width: 13px; display: none;" />
                                 <asp:Label ID="lblEmail" runat="server" /><br />
                             </span>
                         </div>
