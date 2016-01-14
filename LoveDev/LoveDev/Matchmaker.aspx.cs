@@ -39,16 +39,28 @@ namespace LoveDev
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
-            int i = 1;
+            int x = 10;
             List<int> values = new List<int>();
-            foreach( div in divPage.Controls)
+            foreach(Control item in divPage.Controls)
             {
-                HtmlGenericControl txt = (HtmlGenericControl)div.FindControl("txt" + i);
-                values.Add(int.Parse(txt.InnerHtml));
-                i++;
+                if (item.GetType() == typeof(HtmlGenericControl))
+                {
+                    foreach(HtmlGenericControl div in item.Controls)
+                    {
+                        if (div.GetType() == typeof(HtmlGenericControl))
+                        {
+                            foreach (Control value in div.Controls)
+                            {
+                                if (value.GetType() == typeof(TextBox))
+                                {
+                                    //values.Add(int.Parse(value));
+                                }
+                            }
+                        }                           
+                    }
+                }               
             }
         }
-
         private HtmlGenericControl CreateCategoryDiv(string CategoryName, int CategoryID)
         {
             HtmlGenericControl div = new HtmlGenericControl("div");
@@ -90,7 +102,6 @@ namespace LoveDev
             }
             div.Controls.Add(btn);
             return div;
-
         }
     }
 }
