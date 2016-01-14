@@ -12,26 +12,26 @@
                             <h3 class="panel-title">Chat</h3>
                         </div>
                         <div class="list-group">
-                            <asp:ListBox ID="lstboxUsers" runat="server" AutoPostBack="true" OnSelectedIndexChanged="lstboxUsers_SelectedIndexChanged" CssClass="list-group-item h6" style="width:100%; height:520px;"></asp:ListBox>
+                            <asp:ListBox ID="lstboxUsers" runat="server" AutoPostBack="true" OnSelectedIndexChanged="lstboxUsers_SelectedIndexChanged" CssClass="list-group-item h6" Style="width: 100%; height: 530px;"></asp:ListBox>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-9">
+                <div class="col-lg-9 col-md-9">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Messages</h3>
                                 </div>
-                                <div class="panel-body msgboxheight">
+                                <div class="list-group msgboxheight">
                                     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                                     <asp:UpdatePanel ID="updpnlMessages" runat="server" UpdateMode="Conditional">
                                         <Triggers>
                                             <asp:AsyncPostBackTrigger ControlID="lstboxUsers" />
                                         </Triggers>
                                         <ContentTemplate>
-                                            <div id="divContainer" runat="server" class="h6 pull-left ">
-                                                <asp:ListBox ID="lstboxConverstion" runat="server" Enabled="false"></asp:ListBox>
+                                            <div id="divContainer" runat="server" class="msgboxheight">
+                                                <asp:ListBox ID="lstboxConverstion" runat="server" Enabled="false" CssClass="list-group-item h6" Style="width: 100%;  height:100%;"></asp:ListBox>
                                             </div>
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
