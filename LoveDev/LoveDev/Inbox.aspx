@@ -4,44 +4,56 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="webpage_content">
-        <div class="container">
+        <div class="container well">
             <div class="row">
-                <div class="col-lg-3 col-md-3 ">
-                    <div class="panel panel-default">
+                <div class="col-lg-3">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">
                             <h3 class="panel-title">Chat</h3>
                         </div>
-                        <div class="panel-body">
-                            <div class="list-group">
-                                <asp:ListBox ID="lstboxUsers" runat="server" AutoPostBack="true" OnSelectedIndexChanged="lstboxUsers_SelectedIndexChanged" CssClass="list-group-item" style="width:100%"></asp:ListBox>
+                        <div class="list-group">
+                            <asp:ListBox ID="lstboxUsers" runat="server" AutoPostBack="true" OnSelectedIndexChanged="lstboxUsers_SelectedIndexChanged" CssClass="list-group-item h6" style="width:100%; height:520px;"></asp:ListBox>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Messages</h3>
+                                </div>
+                                <div class="panel-body msgboxheight">
+                                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                                    <asp:UpdatePanel ID="updpnlMessages" runat="server" UpdateMode="Conditional">
+                                        <Triggers>
+                                            <asp:AsyncPostBackTrigger ControlID="lstboxUsers" />
+                                        </Triggers>
+                                        <ContentTemplate>
+                                            <div id="divContainer" runat="server" class="h6 pull-left ">
+                                                <asp:ListBox ID="lstboxConverstion" runat="server" Enabled="false"></asp:ListBox>
+                                            </div>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Reply</h3>
+                                </div>
+                                <div class="panel-body minheight">
+                                    <textarea id="txtboxReply" runat="server" placeholder="Write a Reply" class="input-width minheight"></textarea>
+                                    <asp:Button ID="btnSend" runat="server" OnClick="btnSend_Click" CssClass="btn btn-primary btn pull-right" Text="Send" />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-9 col-md-9">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Messages</h3>
-                        </div>
-                        <div class="panel-body" style="min-height:150px;">
-                            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                            <asp:UpdatePanel ID="updpnlMessages" runat="server" UpdateMode="Conditional">
-                                <Triggers>
-                                    <asp:AsyncPostBackTrigger ControlID="lstboxUsers" />
-                                </Triggers>
-                                <ContentTemplate>
-                                    <div id="divContainer" runat="server">
-                                    </div>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
-        <div>
-            <textarea id="txtboxReply" runat="server" placeholder="Write a Reply"></textarea>
-            <asp:Button ID="btnSend" Text="Send" runat="server" OnClick="btnSend_Click" />
         </div>
     </div>
 </asp:Content>

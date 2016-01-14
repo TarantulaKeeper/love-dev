@@ -80,7 +80,27 @@
     padding-top:15px;
 }
 .modal-height{
-    height:200px;
+    height:300px;
+}
+.msgboxheight{
+    height:300px;
+}
+.minheight{
+   min-height:95px;
+}
+.minwidth{
+    min-width:150px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+  background-color: #000;
+}
+.padpushdown{
+    top:200px;
 }
 
 /*---------media queries-------------*/
