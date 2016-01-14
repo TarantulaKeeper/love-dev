@@ -2,14 +2,20 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div id="datalistdiv" runat="server">
-        <asp:DataList ID="dlQuiz" runat="server" RepeatDirection="Vertical" DataKeyField="QuestionCategoryID" >
-            <HeaderTemplate>
-                <h4><%# Eval("QuestionCategoryName") %></h4>
-            </HeaderTemplate>
-            <ItemTemplate>
-
-            </ItemTemplate>
-        </asp:DataList>
+    <div id="divPage" runat="server" class="webpage_content container">
     </div>
+    <script>
+        $(document).ready(function () {
+            $(":button").click(function () {
+                $(this).closest('div').hide();
+                $(this).parent().parent().next().slideDown().find('div').slideToggle();
+            });
+            $(':header').click(function () {
+                $(this).closest('div').find('div').slideToggle();
+            });
+                //$('div').dblclick(function () {
+                //    $(this).slideToggle();
+                //})
+        })
+    </script>
 </asp:Content>
