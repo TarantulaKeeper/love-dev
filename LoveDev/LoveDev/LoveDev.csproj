@@ -148,6 +148,7 @@
     <Content Include="EmailHandler.ashx" />
     <Content Include="LoginHandler.ashx" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="PHOTOS_OF_US\barney.jpg" />
     <Content Include="PHOTOS_OF_US\TJ.jpg" />
     <Content Include="PHOTOS_OF_US\DAD.jpg" />
     <Content Include="Scripts\bootstrap.js" />

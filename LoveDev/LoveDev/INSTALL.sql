@@ -41,7 +41,19 @@ INSERT INTO tbUser(FirstName, LastName, Password, Age, City, Country, Email, IsA
 		('Nikolai', 'Pastulovic', '1234', 20, 'Winnipeg', 'Canada', 'niko.pastulovic@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,''),
 		('T.J.', 'Petrowski', '1234', 24, 'Warren', 'Canada', 't.j.petrowski@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,''),
 		('Chris', 'Jeffrey', '1234', 21, 'Winnipeg', 'Canada', 'chris.jeffrey@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,''),
-		('Joseph', 'Maglalang', '1234', 30, 'Winnipeg', 'Canada', 'joseph.maglalang@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 6,'')
+		('Joseph', 'Maglalang', '1234', 30, 'Winnipeg', 'Canada', 'joseph.maglalang@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 6,''),
+		('Alessa', 'Cara', '1234', 20, 'Winnipeg', 'Canada', 'fake.email@weeeeeee.com', 1, 0, '', 2, ''),
+		('Jane', 'Doe', '1234', 30, 'Winnipeg', 'Canada', 'ntrsijhirnht@njtnrskjtn.ca', 1, 0, '', 2, ''),
+		('Weenie', 'Hut', '1234', 99, 'Weenieland', 'Weenieland', 'reeee@normies.ca', 1, 0, '', 4, ''),
+		('Tupac', 'Shakur', 'BIGGIE', 25, 'Harlem', 'New york', 'WEST@SYDE.BOI', 1, 0, '', 1, ''),
+		('M.', 'Bison', 'AHHHHH', 50, 'UNKNOWN', 'UNKNOWN', 'EVIL@LOL.CA', 1, 0, '', 1, ''),
+		('Tina', 'Shorma', 'BIG', 24, 'Toronto', 'Canada', 'EAST@SYDE.BOI', 1, 0, '', 2, ''),
+		('Ming', 'Lee', 'BIz', 39, 'B.C', 'Canada', 'MING@SYDE.BOI', 1, 0, '', 3, ''),
+		('Pog', 'Champ', 'JTIOE', 40, 'Montreal', 'Canada', 'WEST@SYDE.BA', 1, 0, '', 4, ''),
+		('Buzz', 'Lightyear', 'XXX', 60, 'Nevada', 'U.S.A', 'WEST@SYDE.BOI', 1, 0, '', 5, ''),
+		('Spike', 'Lee', 'CJ', 49, 'Chicago', 'New york', 'WEST@SYDE.BOI', 1, 0, '', 3, ''),
+		('Grammy', 'Weeniehut', 'BIGGIE', 95, 'Harlem', 'New york', 'WEST@SYDE.BOI', 1, 0, '', 5, '')
+
 
 -- TABLE FOR SEXUAL ORIENTATION 
 
@@ -50,7 +62,8 @@ SexualOrientationID INT PRIMARY KEY IDENTITY (1,1),
 UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
 GenderID INT FOREIGN KEY REFERENCES tbGender(GenderID)
 )
-INSERT INTO tbSexualOrientation (UserID, GenderID) VALUES (1,1),(1,2),(2,3),(3,1),(3,3),(3,5),(3,4),(4,1),(4,3)
+INSERT INTO tbSexualOrientation (UserID, GenderID) VALUES (1,1),(1,2),(2,3),(3,1),(3,3),(3,5),(3,4),(4,1),(4,3),(5,1),(5,2),(6,2), (7,3), (8,2),
+(9, 4), (10, 3), (11, 5), (12, 6), (13,2), (14, 4)
 
 --INSERT INTO tbSexualOrientation(SexualOrientationName) VALUES ('Straight'), ('Gay'), ('Lesbian'), ('Asexual'),
 	--('Pansexual'), ('Bisexual'), ('Sapiosexual'), ('Heteroflexible'), ('Homoflexible')
@@ -80,8 +93,21 @@ UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
 QuestionCategoryID INT FOREIGN KEY REFERENCES tbQuestionCategory(QuestionCategoryID),
 UserCategoryValue INT
 )
-INSERT INTO tbUserValues(UserID, QuestionCategoryID, UserCategoryValue) VALUES (1,1,15),(1,2,25),(1,3,10),(1,4,12),(1,5,16),(1,6,40),(1,7,10),
-																			   (3,1,20),(3,2,25),(3,3,30),(3,4,22),(3,5,11),(3,6,20),(3,7,20)
+INSERT INTO tbUserValues(UserID, QuestionCategoryID, UserCategoryValue) VALUES (1,1,940),(1,299),(1,3,140),(1,4,320),(1,5,645),(1,6,750),(1,7,390),
+																			   (2,1,840),(2,2,300),(2,3,550),(2,4,180),(2,5,290),(2,6,340),(2,7,499),
+																			   (3,1,250),(3,2,550),(3,3,370),(3,4,800),(3,5,410),(3,6,290),(3,7,760),
+																			   (4,1,970),(4,2,330),(4,3,450),(4,4,780),(4,5,350),(4,6,440),(4,7,370),
+																			   (5,1,970),(5,2,830),(5,3,450),(5,4,780),(5,5,350),(5,6,440),(5,7,370),
+																			   (6,1,500),(6,2,530),(6,3,650),(6,4,980),(6,5,650),(6,6,640),(6,7,970),
+																			   (7,1,780),(7,2,630),(7,3,750),(7,4,380),(7,5,750),(7,6,940),(7,7,570),
+																			   (8,1,170),(8,2,130),(8,3,950),(8,4,580),(8,5,150),(8,6,580),(8,7,470),
+																			   (9,1,970),(9,2,530),(9,3,450),(9,4,780),(9,5,1000),(9,6,100),(9,7,1000),
+																			   (10,1,940),(10,299),(10,3,140),(10,4,320),(10,5,645),(10,6,750),(10,7,390),
+																			   (11,1,780),(11,2,630),(11,3,750),(11,4,380),(11,5,750),(11,6,940),(11,7,570),
+																			   (12,1,850),(12,2,530),(12,3,250),(12,4,450),(12,5,650),(12,6,540),(12,7,270),
+																			   (13,1,450),(13,2,350),(13,3,240),(13,4,200),(13,5,650),(13,6,340),(13,7,900),
+																			   (14,1,200),(14,2,600),(14,3,500),(14,4,600),(14,5, 300),(14,6,640),(14,7,470)
+
 
 CREATE TABLE tbMatches
 (
