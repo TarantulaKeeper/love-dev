@@ -104,7 +104,7 @@ namespace LoveDevMatchmakingLib
                     }
                     Count++;
                 }
-                if (CalculateValues(TrueFalseMatchList) >= 3)
+                if (CalculateValues(TrueFalseMatchList) >= 4)
                 {
                     Result = 1;
                 }

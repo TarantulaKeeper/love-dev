@@ -16,21 +16,91 @@ namespace LoveDev
         static DAL d;
         protected void Page_Load(object sender, EventArgs e)
         {
+                CreatePage();
+        }
+        private void CreatePage()
+        {
             d = new DAL();
             DataSet ds = d.ExecuteProcedure("spGetQuestionCategories");
             foreach (DataRow DR in ds.Tables[0].Rows)
             {
-                Page.Controls.Add(CreateDiv(DR["QuestionCategoryName"].ToString(), int.Parse(DR["QuestionCategoryID"].ToString())));
+                divPage.Controls.Add(CreateCategoryDiv(DR["QuestionCategoryName"].ToString(), int.Parse(DR["QuestionCategoryID"].ToString())));
             }
+            HtmlGenericControl div = (HtmlGenericControl)divPage.FindControl("divPolitics");
+            div.Style.Add("display", "block");
+            HtmlInputButton btn = new HtmlInputButton();
+            //btn.Click += new EventHandler(btnSubmit_Click);
+            btn.ServerClick += new EventHandler(btnSubmit_Click);
+            btn.ID = "btnSubmit";
+            btn.Value = "Submit quiz";
+            divPage.Controls.Add(btn);
         }
 
-        private HtmlGenericControl CreateDiv(string CategoryName, int CategoryID)
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            int x = 10;
+            List<int> values = new List<int>();
+            foreach(Control item in divPage.Controls)
+            {
+                if (item.GetType() == typeof(HtmlGenericControl))
+                {
+                    foreach(HtmlGenericControl div in item.Controls)
+                    {
+                        if (div.GetType() == typeof(HtmlGenericControl))
+                        {
+                            foreach (Control value in div.Controls)
+                            {
+                                if (value.GetType() == typeof(TextBox))
+                                {
+                                    //values.Add(int.Parse(value));
+                                }
+                            }
+                        }                           
+                    }
+                }               
+            }
+        }
+        private HtmlGenericControl CreateCategoryDiv(string CategoryName, int CategoryID)
+        {
+            HtmlGenericControl div = new HtmlGenericControl("div");
+            HtmlGenericControl Category = new HtmlGenericControl("h4");
+            Category.InnerText = CategoryName;
+            div.ID = "div" + CategoryName;
+            div.Controls.Add(Category);
+            div.Controls.Add(CreateQuestionDiv(CategoryID));
+            div.Style.Add("display", "none");
+            return div;
+        }
+
+        private HtmlGenericControl CreateQuestionDiv(int CategoryID)
         {
             d.AddParam("CategoryID", CategoryID);
-            DataSet ds = d.ExecuteProcedure("sp");
+            DataSet ds = d.ExecuteProcedure("spGetQuestions");
             HtmlGenericControl div = new HtmlGenericControl("div");
-            div.ID = "div" +CategoryName;
-            div.InnerHtml = CategoryName;
+            HtmlInputButton btn = new HtmlInputButton();
+            btn.ID = "btnContinue" + CategoryID;
+            btn.Value = "Continue";
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                Label lblNever = new Label();
+                lblNever.Text = "Never";
+                Label lblAlways = new Label();
+                lblAlways.Text = "Always";
+                Label lblQuestion = new Label();
+                lblQuestion.Text = ds.Tables[0].Rows[i]["QuestionString"].ToString() + "?";
+                TextBox txt = new TextBox();
+                txt.TextMode = TextBoxMode.Range;
+                txt.MaxLength = 1;
+                txt.ID = "txt" + CategoryID + i;
+                div.ID = "divQuestions" + CategoryID;
+                div.Controls.Add(lblQuestion);
+                div.Controls.Add(lblNever);
+                div.Controls.Add(txt);
+                div.Controls.Add(lblAlways);
+                div.Style.Add("display", "none");
+            }
+            div.Controls.Add(btn);
             return div;
         }
     }
