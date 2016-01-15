@@ -38,7 +38,7 @@ Bio VARCHAR(500) NOT NULL
 
 INSERT INTO tbUser(FirstName, LastName, Password, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID, Bio)
 	VALUES 
-		('Nikolai', 'Pastulovic', '1234', 20, 'Winnipeg', 'Canada', 'niko.pastulovic@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,''),
+		('Nikolai', 'Pastulovic', '1234', 20, 'Winnipeg', 'Canada', 'niko.pastulvic@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,''),
 		('T.J.', 'Petrowski', '1234', 24, 'Warren', 'Canada', 't.j.petrowski@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,'The Real Spider Man'),
 		('Chris', 'Jeffrey', '1234', 21, 'Winnipeg', 'Canada', 'chris.jeffrey@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,''),
 		('Joseph', 'Maglalang', '1234', 30, 'Winnipeg', 'Canada', 'joseph.maglalang@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 6,''),
