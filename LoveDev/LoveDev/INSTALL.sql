@@ -50,9 +50,9 @@ INSERT INTO tbUser(FirstName, LastName, Password, Age, City, Country, Email, IsA
 		('Tina', 'Shorma', 'BIG', 24, 'Toronto', 'Canada', 'EAST@SYDE.BOI', 1, 0, '', 2, ''),
 		('Ming', 'Lee', 'BIz', 39, 'B.C', 'Canada', 'MING@SYDE.BOI', 1, 0, '', 3, ''),
 		('Pog', 'Champ', 'JTIOE', 40, 'Montreal', 'Canada', 'WEST@SYDE.BA', 1, 0, '', 4, ''),
-		('Buzz', 'Lightyear', 'XXX', 60, 'Nevada', 'U.S.A', 'WEST@SYDE.BOI', 1, 0, '', 5, ''),
-		('Spike', 'Lee', 'CJ', 49, 'Chicago', 'New york', 'WEST@SYDE.BOI', 1, 0, '', 3, ''),
-		('Grammy', 'Weeniehut', 'BIGGIE', 95, 'Harlem', 'New york', 'WEST@SYDE.BOI', 1, 0, '', 5, '')
+		('Buzz', 'Lightyear', 'XXX', 60, 'Nevada', 'U.S.A', 'WEST@SYDE.BO', 1, 0, '', 5, ''),
+		('Spike', 'Lee', 'CJ', 49, 'Chicago', 'New york', 'WEST@SYDE.BOIS', 1, 0, '', 3, ''),
+		('Grammy', 'Weeniehut', 'BIGGIE', 95, 'Harlem', 'New york', 'WEST@SYDE', 1, 0, '', 5, '')
 
 
 -- TABLE FOR SEXUAL ORIENTATION 
