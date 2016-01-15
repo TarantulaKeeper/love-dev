@@ -50,9 +50,9 @@ INSERT INTO tbUser(FirstName, LastName, Password, Age, City, Country, Email, IsA
 		('Tina', 'Shorma', 'BIG', 24, 'Toronto', 'Canada', 'EAST@SYDE.BOI', 1, 0, '', 2, ''),
 		('Ming', 'Lee', 'BIz', 39, 'B.C', 'Canada', 'MING@SYDE.BOI', 1, 0, '', 3, ''),
 		('Pog', 'Champ', 'JTIOE', 40, 'Montreal', 'Canada', 'WEST@SYDE.BA', 1, 0, '', 4, ''),
-		('Buzz', 'Lightyear', 'XXX', 60, 'Nevada', 'U.S.A', 'WEST@SYDE.BOI', 1, 0, '', 5, ''),
-		('Spike', 'Lee', 'CJ', 49, 'Chicago', 'New york', 'WEST@SYDE.BOI', 1, 0, '', 3, ''),
-		('Grammy', 'Weeniehut', 'BIGGIE', 95, 'Harlem', 'New york', 'WEST@SYDE.BOI', 1, 0, '', 5, '')
+		('Buzz', 'Lightyear', 'XXX', 60, 'Nevada', 'U.S.A', 'WEST@SYDE.BO', 1, 0, '', 5, ''),
+		('Spike', 'Lee', 'CJ', 49, 'Chicago', 'New york', 'WEST@SYDE.BOIS', 1, 0, '', 3, ''),
+		('Grammy', 'Weeniehut', 'BIGGIE', 95, 'Harlem', 'New york', 'WEST@SYDE', 1, 0, '', 5, '')
 
 
 -- TABLE FOR SEXUAL ORIENTATION 
@@ -192,7 +192,7 @@ INSERT INTO tbQuestionsForQuiz(QuestionCategoryID, QuestionString) VALUES
  )
 
  INSERT INTO tbMessages(FromUserID, ToUserID, Message) VALUES (2, 1, 'You look like Harry Potter'), 
-	(1, 2, 'Fuck you')
+	(1, 2, 'Screw you')
 
  GO
  --TABLES FOR REPORTS
@@ -475,10 +475,27 @@ CREATE PROCEDURE spGetUsersForInbox(
 )
 
 AS BEGIN
-	SELECT UserID, FirstName FROM tbUser
-		JOIN tbMessages ON tbUser.UserID = tbMessages.FromUserID
-	WHERE UserID != @UserID
-	GROUP BY UserID, FirstName
+		SELECT 
+			--m.MessageID, FirstName,
+			--(CASE @UserID 
+			--	WHEN uFrom.UserID THEN 'TO'
+			--	WHEN uTo.UserID THEN 'FROM' END) AS TOFrom,
+			(CASE @UserID 
+				WHEN uFrom.UserID THEN uTo.UserID
+				WHEN uTo.UserID THEN uFrom.UserID END) AS UserID,
+			(CASE @UserID 
+				WHEN uFrom.UserID THEN uTo.FirstName
+				WHEN uTo.UserID THEN uFrom.FirstName END) AS FirstName
+			FROM tbMessages m 
+			JOIN tbUser uFrom ON m.FromUserID = uFrom.UserID
+			JOIN tbUser uTo ON uTo.UserID = m.ToUserID
+			WHERE ufrom.UserID = @UserID OR uto.UserID = @UserID
+			GROUP BY (CASE @UserID 
+				WHEN uFrom.UserID THEN uTo.UserID
+				WHEN uTo.UserID THEN uFrom.UserID END),
+				(CASE @UserID 
+				WHEN uFrom.UserID THEN uTo.FirstName
+				WHEN uTo.UserID THEN uFrom.FirstName END)
 END
 GO
 
@@ -598,5 +615,8 @@ exec spGetQuestions 2
 exec spGetMessages 2, 1
 go
 exec spInsertIntoInvalidLogin 'dgnrdnt', 'fgxnrgn'
+go
+exec spGetUsersForInbox 1
 
 select * from tbMessages
+select * from tbUser

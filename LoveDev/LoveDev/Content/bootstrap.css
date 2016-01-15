@@ -6019,6 +6019,9 @@ body.modal-open,
   -webkit-transition: 0.6s ease-in-out left;
           transition: 0.6s ease-in-out left;
 }
+.carousel-inner > .item > img {
+    margin: 0 auto;
+}
 
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
