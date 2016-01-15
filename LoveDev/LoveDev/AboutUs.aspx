@@ -28,7 +28,7 @@
                             <div class="col-lg-8 col-md-8 col-sm-7 col-xs-6">
                                 <div class="well">
                                     <h4>T.J. Petrowski</h4>
-                                    
+                                    <h3>The Real Spider Man! (P.S. That's an endangered species of Theraphosid on my face)</h3>
                                 </div>
                             </div>
                         </div>
