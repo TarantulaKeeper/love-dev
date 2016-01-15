@@ -52,34 +52,34 @@
                             <!-- Wrapper for slides -->
                             <div class="carousel-inner" role="listbox">
                                 <div class="item active">
-                                    <img src="PHOTOS_OF_US/sd21-1.jpg" alt="SD21" style="height:480px;"/>
+                                    <img src="PHOTOS_OF_US/sd21-1.jpg" alt="SD21" style="height:450px;"/>
                                 </div>
 
                                 <div class="item">
-                                    <img src="PHOTOS_OF_US/sd21-2.jpg" alt="SD21" style="height:480px;"/>
+                                    <img src="PHOTOS_OF_US/sd21-2.jpg" alt="SD21" style="height:450px;"/>
                                 </div>
 
                                 <div class="item">
-                                    <img src="PHOTOS_OF_US/sd21-3.jpg" alt="SD21" style="height:480px;"/>
+                                    <img src="PHOTOS_OF_US/sd21-3.jpg" alt="SD21" style="height:450px;"/>
                                 </div>
 
                                 <div class="item">
-                                    <img src="PHOTOS_OF_US/sd21-4.jpg" alt="SD21" style="height:480px;"/>
+                                    <img src="PHOTOS_OF_US/sd21-4.jpg" alt="SD21" style="height:450px;"/>
                                 </div>
                                 <div class="item">
-                                    <img src="PHOTOS_OF_US/sd21-5.jpg" alt="SD21" style="height:480px;"/>
+                                    <img src="PHOTOS_OF_US/sd21-5.jpg" alt="SD21" style="height:450px;"/>
                                 </div>
                                 <div class="item">
-                                    <img src="PHOTOS_OF_US/sd21-6.jpg" alt="SD21" style="height:480px;"/>
+                                    <img src="PHOTOS_OF_US/sd21-6.jpg" alt="SD21" style="height:450px;"/>
                                 </div>
                                 <div class="item">
-                                    <img src="PHOTOS_OF_US/sd21-7.jpg" alt="SD21" style="height:480px;"/>
+                                    <img src="PHOTOS_OF_US/sd21-7.jpg" alt="SD21" style="height:450px;"/>
                                 </div>
                                 <div class="item">
-                                    <img src="PHOTOS_OF_US/sd21-8.jpg" alt="SD21" style="height:480px;"/>
+                                    <img src="PHOTOS_OF_US/sd21-8.jpg" alt="SD21" style="height:450px;"/>
                                 </div>
                                 <div class="item">
-                                    <img src="PHOTOS_OF_US/sd21-9.jpg" alt="SD21" style="height:480px;"/>
+                                    <img src="PHOTOS_OF_US/sd21-9.jpg" alt="SD21" style="height:450px;"/>
                                 </div>
                             </div>
 

@@ -78,7 +78,7 @@
                         <div class="panel-body">
                             <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6">
                                 <div class="well">
-                                    <asp:Image ID="imgJoseph" ImageUrl="PHOTOS_OF_US/josephphoto.jpg" runat="server" />
+                                    <asp:Image ID="imgJoseph" ImageUrl="PHOTOS_OF_US/josephphoto.jpg" runat="server" Height="250px" />
 
                                 </div>
                             </div>
