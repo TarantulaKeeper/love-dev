@@ -47,6 +47,7 @@
                             <div class="col-lg-8 col-md-8 col-sm-7 col-xs-6">
                                 <div class="well">
                                     <h4>Niko Pastulovic</h4>
+                                    <h3>THAT YUNG BOI WIT DA FLOW</h3>
                                 </div>
                             </div>
                         </div>
