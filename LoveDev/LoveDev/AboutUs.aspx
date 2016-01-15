@@ -13,7 +13,7 @@
         <textarea id="txtNiko" runat="server"></textarea>
     </div>
     <div>
-        <asp:Image ID="imgChris" ImageUrl="imageurl" runat="server" />
+        <asp:Image ID="imgChris" ImageUrl="/PHOTOS_OF_US/barney.jpg" runat="server" />
         <asp:Label ID="lblChris" Text="Chris Jeffrey" runat="server" />
         <textarea id="txtChris" runat="server"></textarea>
     </div>
