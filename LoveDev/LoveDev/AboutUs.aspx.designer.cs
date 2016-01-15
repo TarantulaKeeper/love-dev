@@ -22,24 +22,6 @@ namespace LoveDev {
         protected global::System.Web.UI.WebControls.Image imgTJ;
         
         /// <summary>
-        /// lblTJ control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTJ;
-        
-        /// <summary>
-        /// txtTJ control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtTJ;
-        
-        /// <summary>
         /// imgNiko control.
         /// </summary>
         /// <remarks>
@@ -47,24 +29,6 @@ namespace LoveDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image imgNiko;
-        
-        /// <summary>
-        /// lblNiko control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNiko;
-        
-        /// <summary>
-        /// txtNiko control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtNiko;
         
         /// <summary>
         /// imgChris control.
@@ -76,24 +40,6 @@ namespace LoveDev {
         protected global::System.Web.UI.WebControls.Image imgChris;
         
         /// <summary>
-        /// lblChris control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblChris;
-        
-        /// <summary>
-        /// txtChris control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtChris;
-        
-        /// <summary>
         /// imgJoseph control.
         /// </summary>
         /// <remarks>
@@ -101,23 +47,5 @@ namespace LoveDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image imgJoseph;
-        
-        /// <summary>
-        /// lblJoseph control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblJoseph;
-        
-        /// <summary>
-        /// txtJoseph control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtJoseph;
     }
 }
