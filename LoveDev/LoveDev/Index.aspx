@@ -11,7 +11,6 @@
                 <div class="jumbotron">
                     <div class="row text-center">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
                             <div>
                                 <img src="Images/LoveDevLogogo.png" />
                                 <h2 class="text-center">Let us help you develop your love.</h2>
