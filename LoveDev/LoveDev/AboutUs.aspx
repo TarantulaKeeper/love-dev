@@ -28,7 +28,7 @@
                             <div class="col-lg-8 col-md-8 col-sm-7 col-xs-6">
                                 <div class="well">
                                     <h4>T.J. Petrowski</h4>
-                                    
+                                    <h3>The Real Spider Man! (P.S. That's an endangered species of Theraphosid on my face)</h3>
                                 </div>
                             </div>
                         </div>
@@ -47,6 +47,7 @@
                             <div class="col-lg-8 col-md-8 col-sm-7 col-xs-6">
                                 <div class="well">
                                     <h4>Niko Pastulovic</h4>
+                                    <h3>THAT YUNG BOI WIT DA FLOW</h3>
                                 </div>
                             </div>
                         </div>
@@ -77,7 +78,7 @@
                         <div class="panel-body">
                             <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6">
                                 <div class="well">
-                                    <asp:Image ID="imgJoseph" ImageUrl="PHOTOS_OF_US/josephphoto.jpg" runat="server" />
+                                    <asp:Image ID="imgJoseph" ImageUrl="PHOTOS_OF_US/josephphoto.jpg" runat="server" Height="250px" />
 
                                 </div>
                             </div>
