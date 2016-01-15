@@ -63,7 +63,7 @@ UserID INT FOREIGN KEY REFERENCES tbUser(UserID),
 GenderID INT FOREIGN KEY REFERENCES tbGender(GenderID)
 )
 INSERT INTO tbSexualOrientation (UserID, GenderID) VALUES (1,1),(1,2),(2,3),(3,1),(3,3),(3,5),(3,4),(4,1),(4,3),(5,1),(5,2),(6,2), (7,3), (8,2),
-(9, 4), (10, 3), (11, 5), (12, 6), (13,2), (14, 4)
+(9, 4), (10, 3), (11, 5), (12, 6), (13,2), (14, 4), (14, 2)
 
 --INSERT INTO tbSexualOrientation(SexualOrientationName) VALUES ('Straight'), ('Gay'), ('Lesbian'), ('Asexual'),
 	--('Pansexual'), ('Bisexual'), ('Sapiosexual'), ('Heteroflexible'), ('Homoflexible')
