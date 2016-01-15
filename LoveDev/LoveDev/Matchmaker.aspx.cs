@@ -113,8 +113,10 @@ namespace LoveDev
             {
                 Label lblNever = new Label();
                 lblNever.Text = "Never";
+                
                 Label lblAlways = new Label();
                 lblAlways.Text = "Always";
+                
                 Label lblQuestion = new Label();
                 lblQuestion.Text = ds.Tables[0].Rows[i]["QuestionString"].ToString() + "?";
                 TextBox txt = new TextBox();
@@ -127,6 +129,8 @@ namespace LoveDev
                 div.Controls.Add(txt);
                 div.Controls.Add(lblAlways);
                 div.Style.Add("display", "none");
+                lblNever.CssClass = "left";
+                lblAlways.CssClass = "right";
             }
             div.Controls.Add(btn);
             return div;

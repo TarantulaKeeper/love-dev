@@ -97,6 +97,10 @@
 .minheighthome{
     height:450px;
 }
+.itemcenter{
+    margin-left:auto;
+    margin-right:auto;
+}
 .footer {
   position: fixed;
   bottom: 0;
