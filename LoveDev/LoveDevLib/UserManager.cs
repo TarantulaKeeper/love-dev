@@ -101,7 +101,7 @@ namespace LoveDevLib
             string result = d.ExecuteScalar("spVerifyUser");
             if (result == "1")
             {
-                return "Account Verified!";
+                return "Account Verified! Login to continue.";
             }
             else
             {

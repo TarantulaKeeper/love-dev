@@ -356,6 +356,18 @@ AS BEGIN
 END
 GO
 
+CREATE PROC spSaveUserValues
+(
+@UserID int,
+@QuestionCategoryID int,
+@UserCategoryValue int
+)
+AS BEGIN
+	INSERT INTO tbUserValues (UserID, QuestionCategoryID, UserCategoryValue) VALUES (@UserID, @QuestionCategoryID, @UserCategoryValue)
+END
+GO
+
+
 CREATE PROC spGetAllUsersForMatch
 (@UserID int)
 AS BEGIN 

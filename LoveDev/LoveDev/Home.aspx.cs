@@ -22,6 +22,14 @@ namespace LoveDev
                 {
                     Response.Redirect("Index.aspx?message=Check emails and verify account to view that page");
                 }
+                if (Request.QueryString["message"] != null)
+                {
+                    lblQS.Text = Request.QueryString["message"].ToString();
+                }
+            }
+            else
+            {
+                lblQS.Text = "";
             }
         }
     }

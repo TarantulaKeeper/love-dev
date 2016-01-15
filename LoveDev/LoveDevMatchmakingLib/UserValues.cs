@@ -70,7 +70,7 @@ namespace LoveDevMatchmakingLib
                 {
                     if (value > other.ValuesList[Count])
                     {
-                        if (value > other.ValuesList[Count] + 5)
+                        if (value > other.ValuesList[Count] + 100)
                         {
                             Result = 0;
                         }
@@ -81,7 +81,7 @@ namespace LoveDevMatchmakingLib
                     }
                     else if (value < other.ValuesList[Count])
                     {
-                        if (value < other.ValuesList[Count] - 5)
+                        if (value < other.ValuesList[Count] - 100)
                         {
                             Result = 0;
                         }

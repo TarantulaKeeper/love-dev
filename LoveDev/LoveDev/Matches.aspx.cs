@@ -16,6 +16,10 @@ namespace LoveDev
         {
             if (!IsPostBack)
             {
+                if (Request.QueryString["message"] != null)
+                {
+                    lblQS.Text = Request.QueryString["message"].ToString();
+                }
                 LoadMatches();
                 hfUserLoggedIn.Value = Security.CurrentUser.UserID.ToString();
             }

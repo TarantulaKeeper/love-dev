@@ -19,21 +19,18 @@ namespace LoveDev
                 {
                     Response.Redirect("Home.aspx?message=Already Logged In");
                 }
-
                 loadGenders(ddlGender);
                 loadGenders(cblOrientation);
             }
             if (Request.QueryString["guid"] != null)
             {
-                lblError.Text = UserManager.VerifyUser(Request.QueryString["guid"]);
+                lblQS.Text = UserManager.VerifyUser(Request.QueryString["guid"]);
             }
             if (Request.QueryString["message"] != null)
             {
-                lblError.Text = Request.QueryString["message"];
+                lblQS.Text = Request.QueryString["message"];
             }
-
         }
-
         public void loadGenders(ListControl l)
         {
             DAL d = new DAL();

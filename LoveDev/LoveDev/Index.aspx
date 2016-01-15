@@ -5,6 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="webpage_content">
+        <asp:Label ID="lblQS" runat="server" />
         <asp:Panel ID="pnlWelcome" runat="server">
             <div class="container-fluid">
                 <div class="jumbotron">
