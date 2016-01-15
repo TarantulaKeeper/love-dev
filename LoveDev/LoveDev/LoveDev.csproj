@@ -149,6 +149,15 @@
     <Content Include="LoginHandler.ashx" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="PHOTOS_OF_US\barney.jpg" />
+    <Content Include="PHOTOS_OF_US\sd21-1.jpg" />
+    <Content Include="PHOTOS_OF_US\sd21-2.jpg" />
+    <Content Include="PHOTOS_OF_US\sd21-3.jpg" />
+    <Content Include="PHOTOS_OF_US\sd21-4.jpg" />
+    <Content Include="PHOTOS_OF_US\sd21-5.jpg" />
+    <Content Include="PHOTOS_OF_US\sd21-6.jpg" />
+    <Content Include="PHOTOS_OF_US\sd21-7.jpg" />
+    <Content Include="PHOTOS_OF_US\sd21-8.jpg" />
+    <Content Include="PHOTOS_OF_US\sd21-9.jpg" />
     <Content Include="PHOTOS_OF_US\TJ.jpg" />
     <Content Include="PHOTOS_OF_US\DAD.jpg" />
     <Content Include="Scripts\bootstrap.js" />

@@ -3,8 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="webpage_content container row">
-        <div id="myCarousel" class="carousel slide padtop" data-ride="carousel">
+    <div class="webpage_content container padpushdown">
+        <div class="row">
+                    <div id="myCarousel" class="carousel slide padtop" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -18,13 +19,13 @@
                 <div class="item active">
                     <div class="panel panel-info">
                         <div class="panel-body">
-                            <div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
+                            <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6">
                                 <div class="well">
                                     <asp:Image ID="imgTJ" ImageUrl="~/PHOTOS_OF_US/TJ.jpg" runat="server" Height="250px" />
 
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-8 col-sm-7 col-xs-6">
+                            <div class="col-lg-8 col-md-8 col-sm-7 col-xs-6">
                                 <div class="well">
                                     <asp:Label ID="lblTJ" Text="T.J. Petrowski" runat="server" />
                                     <textarea id="txtTJ" runat="server"></textarea>
@@ -104,16 +105,8 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
+
+        </div>
     </div>
 
-
-
-    <div>
-    </div>
-    <div>
-    </div>
-    <div>
-    </div>
-    <div>
-    </div>
 </asp:Content>
