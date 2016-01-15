@@ -38,16 +38,16 @@ Bio VARCHAR(500) NOT NULL
 
 INSERT INTO tbUser(FirstName, LastName, Password, Age, City, Country, Email, IsActive, IsAdmin, UserPhoto, GenderID, Bio)
 	VALUES 
-		('Nikolai', 'Pastulovic', '1234', 20, 'Winnipeg', 'Canada', 'niko.pastulvic@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,''),
-		('T.J.', 'Petrowski', '1234', 24, 'Warren', 'Canada', 't.j.petrowski@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,'The Real Spider Man'),
-		('Chris', 'Jeffrey', '1234', 21, 'Winnipeg', 'Canada', 'chris.jeffrey@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,''),
-		('Joseph', 'Maglalang', '1234', 30, 'Winnipeg', 'Canada', 'joseph.maglalang@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 6,''),
-		('Alessa', 'Cara', '1234', 20, 'Winnipeg', 'Canada', 'fake.email@weeeeeee.com', 1, 0, 'Images/shorty.jpg', 2, ''),
+		('Nikolai', 'Pastulovic', '1234', 20, 'Winnipeg', 'Canada', 'niko.pastulovic@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,'An all-around interesting guy'),
+		('T.J.', 'Petrowski', '1234', 24, 'Warren', 'Canada', 't.j.petrowski@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,'A boss of the spider kind'),
+		('Chris', 'Jeffrey', '1234', 21, 'Winnipeg', 'Canada', 'chris.jeffrey@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,'Logic guy'),
+		('Joseph', 'Maglalang', '1234', 30, 'Winnipeg', 'Canada', 'joseph.maglalang@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 6,'King of bootstrap'),
+		('Alessa', 'Cara', '1234', 20, 'Winnipeg', 'Canada', 'fake.email@weeeeeee.com', 0, 0, '', 2, ''),
 		('Jane', 'Doe', '1234', 30, 'Winnipeg', 'Canada', 'ntrsijhirnht@njtnrskjtn.ca', 1, 0, '', 2, ''),
 		('Weenie', 'Hut', '1234', 99, 'Weenieland', 'Weenieland', 'reeee@normies.ca', 1, 0, '', 4, ''),
 		('Tupac', 'Shakur', 'BIGGIE', 25, 'Harlem', 'New york', 'WEST@SYDE.BOI', 1, 0, '', 1, ''),
 		('M.', 'Bison', 'AHHHHH', 50, 'UNKNOWN', 'UNKNOWN', 'EVIL@LOL.CA', 1, 0, '', 1, ''),
-		('Tina', 'Shorma', 'BIG', 24, 'Toronto', 'Canada', 'EAST@SYDE.BOI', 1, 0, '', 2, ''),
+		('Tina', 'Shorma', 'BIG', 24, 'Toronto', 'Canada', 'EAST@SYDE.BOI', 0, 0, '', 2, ''),
 		('Ming', 'Lee', 'BIz', 39, 'B.C', 'Canada', 'MING@SYDE.BOI', 1, 0, '', 3, ''),
 		('Pog', 'Champ', 'JTIOE', 40, 'Montreal', 'Canada', 'WEST@SYDE.BA', 1, 0, '', 4, ''),
 		('Buzz', 'Lightyear', 'XXX', 60, 'Nevada', 'U.S.A', 'WEST@SYDE.BO', 1, 0, '', 5, ''),
