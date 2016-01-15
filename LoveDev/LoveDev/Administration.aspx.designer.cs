@@ -11,7 +11,7 @@ namespace LoveDev {
     
     
     public partial class Administration {
-        
+
         /// <summary>
         /// gvReportForI
         ///                                    nvalidLogins control.
@@ -20,8 +20,7 @@ namespace LoveDev {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvReportForI
-                                    nvalidLogins;
+        protected global::System.Web.UI.WebControls.GridView gvReportForInvalidLogins;
         
         /// <summary>
         /// gvReportForUserMatchesCount control.
