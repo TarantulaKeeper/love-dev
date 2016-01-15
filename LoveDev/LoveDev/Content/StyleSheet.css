@@ -88,6 +88,9 @@
 .minheight{
    min-height:95px;
 }
+.minheightgrid{
+    min-height:200px;
+}
 .minwidth{
     min-width:150px;
 }

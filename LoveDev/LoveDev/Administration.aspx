@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="webpage_content container">
-        <div id="myCarousel" class="carousel slide padtop" data-ride="carousel">
+        <div id="myCarousel" class="carousel slide padtop minheightgrid" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -21,7 +21,7 @@
                         </div>
                         <div class="panel-body">
                             <asp:GridView ID="gvReportForInvalidLogins" OnPageIndexChanging="gvReportForInvalidLogins_PageIndexChanging" runat="server"
-                                AllowPaging="true" PageSize="6" CssClass="table minheight">
+                                AllowPaging="true" PageSize="6" CssClass="table ">
                             </asp:GridView>
                         </div>
                     </div>
@@ -33,9 +33,11 @@
                             <h4>Users and how much they've been matched:</h4>
                         </div>
                         <div class="panel-body">
-                            <asp:GridView ID="gvReportForUserMatchesCount" OnPageIndexChanging="gvReportForInvalidLogins_PageIndexChanging" runat="server"
-                                AllowPaging="true" PageSize="6" CssClass="table minheight">
+                            <div class="minheightgrid">
+                                <asp:GridView ID="gvReportForUserMatchesCount" OnPageIndexChanging="gvReportForInvalidLogins_PageIndexChanging" runat="server"
+                                AllowPaging="true" PageSize="6" CssClass="table">
                             </asp:GridView>
+                            </div>  
                         </div>
                     </div>
                 </div>
@@ -47,7 +49,7 @@
                         </div>
                         <div class="panel-body">
                             <asp:GridView ID="gvReportForNonActiveUsers" OnPageIndexChanging="gvReportForInvalidLogins_PageIndexChanging" runat="server"
-                                AllowPaging="true" PageSize="6" CssClass="table minheight">
+                                AllowPaging="true" PageSize="6" CssClass="table minheightgrid">
                             </asp:GridView>
                         </div>
                     </div>
