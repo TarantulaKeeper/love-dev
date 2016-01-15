@@ -39,27 +39,44 @@ namespace LoveDev
             myDAL.AddParam("UserID", userID);
             ds = myDAL.ExecuteProcedure("spGetUsersForInbox");
 
-            foreach (DataRow row in ds.Tables[0].Rows)
+            if (ds.Tables[0].Rows.Count == 0)
             {
-                ListItem user = new ListItem(Convert.ToString(row["FirstName"]), Convert.ToString(row["UserID"]));
-                lstboxUsers.Items.Add(user);
-            }          
+                lstboxUsers.Items.Add("No Conversations");
+                
+            }
+
+            else
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    ListItem user = new ListItem(Convert.ToString(row["FirstName"]), Convert.ToString(row["UserID"]));
+                    lstboxUsers.Items.Add(user);
+                }
+            }                    
         }
 
         protected void lstboxUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int fromUserID = Convert.ToInt32(lstboxUsers.SelectedValue);
-            int toUserID = Security.CurrentUser.UserID;
-
-            List<Message> Converstion = ConversationManager.GetConversation(toUserID, fromUserID);
-
-            foreach (Message message in Converstion)
+            if (lstboxUsers.SelectedValue == "No Conversations")
             {
-                lstboxConverstion.Items.Add(message.FromFirstName);
-                lstboxConverstion.Items.Add(message.MessageSent);
-                lstboxConverstion.Items.Add(message.DateSent);
+
             }
 
+            else
+            {
+                int fromUserID = Convert.ToInt32(lstboxUsers.SelectedValue);
+                int toUserID = Security.CurrentUser.UserID;
+
+                List<Message> Converstion = ConversationManager.GetConversation(toUserID, fromUserID);
+
+                foreach (Message message in Converstion)
+                {
+                    lstboxConverstion.Items.Add(message.FromFirstName);
+                    lstboxConverstion.Items.Add(message.MessageSent);
+                    lstboxConverstion.Items.Add(message.DateSent);
+                }
+
+            }
            
 
 
