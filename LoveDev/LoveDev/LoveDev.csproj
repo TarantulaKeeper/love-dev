@@ -133,6 +133,7 @@
     <Content Include="Images\LoveDevLogoTif.tif" />
     <Content Include="Images\newLogo.jpg" />
     <Content Include="Images\NoPhoto.jpg" />
+    <Content Include="Images\shorty.jpg" />
     <Content Include="Inbox.aspx" />
     <Content Include="Index.aspx" />
     <Content Include="INSTALL.sql" />

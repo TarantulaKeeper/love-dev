@@ -42,7 +42,7 @@ INSERT INTO tbUser(FirstName, LastName, Password, Age, City, Country, Email, IsA
 		('T.J.', 'Petrowski', '1234', 24, 'Warren', 'Canada', 't.j.petrowski@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,'The Real Spider Man'),
 		('Chris', 'Jeffrey', '1234', 21, 'Winnipeg', 'Canada', 'chris.jeffrey@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 1,''),
 		('Joseph', 'Maglalang', '1234', 30, 'Winnipeg', 'Canada', 'joseph.maglalang@robertsoncollege.net', 1, 1, 'Images/NoPhoto.jpg', 6,''),
-		('Alessa', 'Cara', '1234', 20, 'Winnipeg', 'Canada', 'fake.email@weeeeeee.com', 1, 0, '', 2, ''),
+		('Alessa', 'Cara', '1234', 20, 'Winnipeg', 'Canada', 'fake.email@weeeeeee.com', 1, 0, 'Images/shorty.jpg', 2, ''),
 		('Jane', 'Doe', '1234', 30, 'Winnipeg', 'Canada', 'ntrsijhirnht@njtnrskjtn.ca', 1, 0, '', 2, ''),
 		('Weenie', 'Hut', '1234', 99, 'Weenieland', 'Weenieland', 'reeee@normies.ca', 1, 0, '', 4, ''),
 		('Tupac', 'Shakur', 'BIGGIE', 25, 'Harlem', 'New york', 'WEST@SYDE.BOI', 1, 0, '', 1, ''),
