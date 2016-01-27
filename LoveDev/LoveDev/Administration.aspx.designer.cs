@@ -11,10 +11,9 @@ namespace LoveDev {
     
     
     public partial class Administration {
-
+        
         /// <summary>
-        /// gvReportForI
-        ///                                    nvalidLogins control.
+        /// gvReportForInvalidLogins control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.

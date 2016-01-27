@@ -42,7 +42,9 @@ namespace DAL_Project
         /// <param name="connString">A string parameter to indicate the database to connect to.</param>
         public DAL()
         {
-            ConnString = "Data Source = localhost; Initial Catalog = dbLoveDev; Integrated Security = SSPI"; //"Data Source=localhost;Initial Catalog=dbAssignment3;Integrated Security=SSPI"; // Set the internal variable ConnString to the value of the user chosen value connString
+            //ConnString = "Data Source = ALAN\\SQLEXPRESS; Initial Catalog = dbLoveDev; Integrated Security = SSPI;"; //"Data Source=localhost;Initial Catalog=dbAssignment3;Integrated Security=SSPI"; // Set the internal variable ConnString to the value of the user chosen value connString
+            ConnString = "Data Source = ALAN\\SQLEXPRESS; Initial Catalog = dbLoveDev; Persist Security Info=True;User ID=intern;Password=intern"; //"Data Source=localhost;Initial Catalog=dbAssignment3;Integrated Security=SSPI"; // Set the internal variable ConnString to the value of the user chosen value connString
+
             _parameters = new List<SqlParameter>(); // initialize our list of parameters to 0
         }
 
