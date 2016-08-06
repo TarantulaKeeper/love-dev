@@ -22,8 +22,7 @@
                                     <h6>Invalid Logins:</h6>
                                 </div>
                                 <div class="panel-body">
-                                    <asp:GridView ID="gvReportForI
-                                    nvalidLogins"
+                                    <asp:GridView ID="gvReportForInvalidLogins"
                                         OnPageIndexChanging="gvReportForInvalidLogins_PageIndexChanging" runat="server"
                                         AllowPaging="true" PageSize="6" CssClass="table ">
                                     </asp:GridView>
